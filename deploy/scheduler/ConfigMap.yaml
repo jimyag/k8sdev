@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jimyag-scheduler
+  namespace: kube-system
+data:
+  scheduler-config.yaml: |
+    apiVersion: kubescheduler.config.k8s.io/v1
+    kind: KubeSchedulerConfiguration
+    schedulerName: jimyag-scheduler
+    plugins:
+      preFilter:
+        enabled:
+        - name: "JimyagCustom"
+      filter:
+        enabled:
+        - name: "JimyagCustom"
+      postFilter:
+        enabled:
+        - name: "JimyagCustom"
+      preScore:
+        enabled:
+        - name: "JimyagCustom"
+      score:
+        enabled:
+        - name: "JimyagCustom"
+      reserve:
+        enabled:
+        - name: "JimyagCustom"
+      permit:
+        enabled:
+        - name: "JimyagCustom"
+      preBind:
+        enabled:
+        - name: "JimyagCustom"
+      bind:
+        enabled:
+        - name: "JimyagCustom"
+      postBind:
+        enabled:
+        - name: "JimyagCustom"

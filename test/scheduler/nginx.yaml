@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-jimyag-scheduler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-jimyag-scheduler
+  template:
+    metadata:
+      labels:
+        app: test-jimyag-scheduler
+    spec:
+      schedulerName: jimyag-scheduler
+      containers:
+        - image: nginx:1.7.9
+          imagePullPolicy: IfNotPresent
+          name: nginx
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "640Mi"
+            limits:
+              cpu: "1000m"
+              memory: "1280Mi"

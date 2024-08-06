@@ -1,0 +1,13 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: jimyag-scheduler
+  namespace: kube-system
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: jimyag-scheduler
+subjects:
+  - kind: ServiceAccount
+    name: jimyag-scheduler
+    namespace: kube-system
