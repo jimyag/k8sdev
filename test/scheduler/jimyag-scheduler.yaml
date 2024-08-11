@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jimyag-scheduler-normal
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      scheduler.k8sdev.jimyag.com/filter: normal # 会调度到包含带相同标签的 node 上
+  template:
+    metadata:
+      labels:
+        scheduler.k8sdev.jimyag.com/filter: normal
+    spec:
+      schedulerName: jimyag-scheduler
+      containers:
+        - image: nginx:1.7.9
+          imagePullPolicy: IfNotPresent
+          name: nginx
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+            limits:
+              cpu: "100m"
+              memory: "128Mi"

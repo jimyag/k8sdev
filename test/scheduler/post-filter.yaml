@@ -1,16 +1,17 @@
+# post filter 只有所有的 node 被筛掉的时候才会执行
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test-jimyag-scheduler
+  name: jimyag-scheduler-post-filter
 spec:
   replicas: 3
   selector:
     matchLabels:
-      filter.k8sdev.jimyag.com: test # 会调度到包含带相同标签的 node 上
+      scheduler.k8sdev.jimyag.com/filter: post-filter # value 不为 normal，不会被调度
   template:
     metadata:
       labels:
-        filter.k8sdev.jimyag.com: test
+        scheduler.k8sdev.jimyag.com/filter: post-filter
     spec:
       schedulerName: jimyag-scheduler
       containers:

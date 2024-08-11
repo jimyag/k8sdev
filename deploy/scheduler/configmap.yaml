@@ -13,5 +13,8 @@ data:
           filter:
             enabled:
             - name: JimyagCustom
+          postFilter:
+            enabled:
+            - name: JimyagCustom
     leaderElection:
       leaderElect: false

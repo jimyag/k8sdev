@@ -64,14 +64,14 @@ const (
 	// 插件名称
 	Name = "JimyagCustom"
 	// 插件状态存储的 key
-	FilterLabel = "filter.k8sdev.jimyag.com"
+	FilterLabel = "scheduler.k8sdev.jimyag.com/filter"
 )
 
 var (
 	_ framework.Plugin = &JimyagCustom{}
 	// _ framework.PreFilterPlugin = &JimyagCustom{}
-	_ framework.FilterPlugin = &JimyagCustom{}
-	// _ framework.PostFilterPlugin = &JimyagCustom{}
+	_ framework.FilterPlugin     = &JimyagCustom{}
+	_ framework.PostFilterPlugin = &JimyagCustom{}
 	// _ framework.PreScorePlugin   = &JimyagCustom{}
 	// _ framework.ScorePlugin      = &JimyagCustom{} // 包含 NormalizeScore
 	//_ framework.ReservePlugin  = &JimyagCustom{}
@@ -146,7 +146,9 @@ func (c *JimyagCustom) Name() string {
 // }
 
 // Filter 过滤掉那些不满足要求的 node
-// 过滤掉不包含
+// 如果 node 没有  自定义的 label，则忽略
+// 如果 node 有，必须和 pod 的 label 匹配
+// 这个功能使用原生的 label selector 就可以实现，这里只是为了演示
 func (c *JimyagCustom) Filter(ctx context.Context, state *framework.CycleState, pod *v1.Pod, nodeInfo *framework.NodeInfo) *framework.Status {
 	node := nodeInfo.Node()
 	klog.Infof("Filter %s/%s/%s: start scheduler plugin", pod.Namespace, pod.Name, node.Name)
@@ -183,11 +185,11 @@ func (c *JimyagCustom) Filter(ctx context.Context, state *framework.CycleState, 
 
 // PostFilter 如果 Filter 阶段之后，所有 nodes 都被筛掉了，一个都没剩，才会执行这个阶段；否则不会执行这个阶段的 plugins。
 // 按 plugin 顺序依次执行，任何一个插件将 node 标记为 Shedable 就算成功，不再执行剩下的 PostFilter plugins。
-// func (c *JimyagCustom) PostFilter(ctx context.Context, state *framework.CycleState, pod *v1.Pod, filteredNodeStatusMap framework.NodeToStatusMap) (*framework.PostFilterResult, *framework.Status) {
-// 	klog.Infof("PostFilter %s/%s: start", pod.Namespace, pod.Name)
-// 	klog.Infof("PostFilter %s/%s: finish", pod.Namespace, pod.Name)
-// 	return nil, framework.NewStatus(framework.Success, "")
-// }
+func (c *JimyagCustom) PostFilter(ctx context.Context, state *framework.CycleState, pod *v1.Pod, filteredNodeStatusMap framework.NodeToStatusMap) (*framework.PostFilterResult, *framework.Status) {
+	klog.Infof("PostFilter %s/%s: start", pod.Namespace, pod.Name)
+	klog.Infof("PostFilter %s/%s: finish", pod.Namespace, pod.Name)
+	return nil, framework.NewStatus(framework.Success, "")
+}
 
 // func (c *JimyagCustom) PreScore(ctx context.Context, state *framework.CycleState, pod *v1.Pod, nodes []*v1.Node) *framework.Status {
 // 	klog.Infof("PreScore %s/%s: start", pod.Namespace, pod.Name)

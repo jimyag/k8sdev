@@ -23,7 +23,7 @@ spec:
         - command:
             - /app/scheduler
             - --config=/etc/kubernetes/jimyag-scheduler/jimyag-scheduler-config.yaml
-          image: registry.i.jimyag.com/k8sdev/scheduler:2024-08-11-14-22-30
+          image: registry.i.jimyag.com/k8sdev/scheduler:2024-08-11-23-29-47
           imagePullPolicy: Always
           livenessProbe:
             httpGet:

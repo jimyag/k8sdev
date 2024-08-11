@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jimyag-scheduler-without-scheduler-label
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      test: normal # 不包含 scheduler.k8sdev.jimyag.com/filter 标签 任意分配
+  template:
+    metadata:
+      labels:
+        test: normal
+    spec:
+      schedulerName: jimyag-scheduler
+      containers:
+        - image: nginx:1.7.9
+          imagePullPolicy: IfNotPresent
+          name: nginx
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+            limits:
+              cpu: "100m"
+              memory: "128Mi"
