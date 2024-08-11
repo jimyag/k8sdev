@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: custom-scheduler
+  name: jimyag-scheduler
   namespace: kube-system
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: custom-scheduler-as-kube-scheduler
+  name: jimyag-scheduler-as-kube-scheduler
 subjects:
   - kind: ServiceAccount
-    name: custom-scheduler
+    name: jimyag-scheduler
     namespace: kube-system
 roleRef:
   kind: ClusterRole
@@ -20,10 +20,10 @@ roleRef:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: custom-scheduler-as-volume-scheduler
+  name: jimyag-scheduler-as-volume-scheduler
 subjects:
   - kind: ServiceAccount
-    name: custom-scheduler
+    name: jimyag-scheduler
     namespace: kube-system
 roleRef:
   kind: ClusterRole
@@ -33,7 +33,7 @@ roleRef:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: custom-scheduler-extension-apiserver-authentication-reader
+  name: jimyag-scheduler-extension-apiserver-authentication-reader
   namespace: kube-system
 roleRef:
   kind: Role
@@ -41,20 +41,20 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 subjects:
   - kind: ServiceAccount
-    name: custom-scheduler
+    name: jimyag-scheduler
     namespace: kube-system
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: custom-scheduler-config
+  name: jimyag-scheduler-config
   namespace: kube-system
 data:
-  custom-scheduler-config.yaml: |
+  jimyag-scheduler-config.yaml: |
     apiVersion: kubescheduler.config.k8s.io/v1
     kind: KubeSchedulerConfiguration
     profiles:
-      - schedulerName: custom-scheduler
+      - schedulerName: jimyag-scheduler
         plugins:
           filter:
             enabled:
@@ -68,7 +68,7 @@ metadata:
   labels:
     component: scheduler
     tier: control-plane
-  name: custom-scheduler
+  name: jimyag-scheduler
   namespace: kube-system
 spec:
   selector:
@@ -83,11 +83,11 @@ spec:
         tier: control-plane
         version: second
     spec:
-      serviceAccountName: custom-scheduler
+      serviceAccountName: jimyag-scheduler
       containers:
         - command:
             - /app/scheduler
-            - --config=/etc/kubernetes/custom-scheduler/custom-scheduler-config.yaml
+            - --config=/etc/kubernetes/jimyag-scheduler/jimyag-scheduler-config.yaml
           image: registry.i.jimyag.com/k8sdev/scheduler:2024-08-11-14-22-30
           imagePullPolicy: Always
           livenessProbe:
@@ -113,10 +113,10 @@ spec:
             privileged: false
           volumeMounts:
             - name: config-volume
-              mountPath: /etc/kubernetes/custom-scheduler
+              mountPath: /etc/kubernetes/jimyag-scheduler
       hostNetwork: false
       hostPID: false
       volumes:
         - name: config-volume
           configMap:
-            name: custom-scheduler-config
+            name: jimyag-scheduler-config

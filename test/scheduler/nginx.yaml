@@ -12,7 +12,7 @@ spec:
       labels:
         filter.k8sdev.jimyag.com: test
     spec:
-      schedulerName: custom-scheduler
+      schedulerName: jimyag-scheduler
       containers:
         - image: nginx:1.7.9
           imagePullPolicy: IfNotPresent
