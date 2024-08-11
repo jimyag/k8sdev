@@ -2,7 +2,7 @@
 GOBIN=$(shell pwd)/bin
 GOPATH=$(shell go env GOPATH | awk -F: '{print $$1}')
 
-baseImageUrl?=registry.i.jimyag.com
+baseImageUrl?=registry.i.jimyag.com/
 baseImageTag?=$(shell TZ='Asia/Shanghai' date "+%Y-%m-%d-%H-%M-%S")
 
 
@@ -32,6 +32,6 @@ tidy:
 	go mod tidy
 
 container-scheduler: docker-base
-	docker build -t $(baseImageUrl)/k8sdev/scheduler:$(baseImageTag) \
+	docker build -t $(baseImageUrl/k8sdev/scheduler:$(baseImageTag) \
 		--progress=plain --target scheduler --push --platform linux/amd64 \
 		-f ./Dockerfile  .
