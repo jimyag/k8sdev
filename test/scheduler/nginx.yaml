@@ -3,24 +3,24 @@ kind: Deployment
 metadata:
   name: test-jimyag-scheduler
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: test-jimyag-scheduler
+      filter.k8sdev.jimyag.com: test
   template:
     metadata:
       labels:
-        app: test-jimyag-scheduler
+        filter.k8sdev.jimyag.com: test
     spec:
-      schedulerName: jimyag-scheduler
+      schedulerName: custom-scheduler
       containers:
         - image: nginx:1.7.9
           imagePullPolicy: IfNotPresent
           name: nginx
           resources:
             requests:
-              cpu: "500m"
-              memory: "640Mi"
+              cpu: "50m"
+              memory: "64Mi"
             limits:
-              cpu: "1000m"
-              memory: "1280Mi"
+              cpu: "100m"
+              memory: "128Mi"
