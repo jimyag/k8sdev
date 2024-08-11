@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    component: scheduler
+    tier: control-plane
+  name: jimyag-scheduler
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      component: scheduler
+      tier: control-plane
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        component: scheduler
+        tier: control-plane
+    spec:
+      serviceAccountName: jimyag-scheduler
+      containers:
+        - command:
+            - /app/scheduler
+            - --config=/etc/kubernetes/jimyag-scheduler/jimyag-scheduler-config.yaml
+          image: registry.i.jimyag.com/k8sdev/scheduler:2024-08-11-14-22-30
+          imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 10259
+              scheme: HTTPS
+            initialDelaySeconds: 15
+          name: jimyag-scheduler
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 10259
+              scheme: HTTPS
+          resources:
+            requests:
+              cpu: "0.1"
+              memory: 100Mi
+            limits:
+              cpu: "0.1"
+              memory: 100Mi
+          securityContext:
+            privileged: false
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/kubernetes/jimyag-scheduler
+      hostNetwork: false
+      hostPID: false
+      volumes:
+        - name: config-volume
+          configMap:
+            name: jimyag-scheduler-config
