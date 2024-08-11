@@ -5,6 +5,7 @@
 ## 部署
 
 修改 Makefile 中的 `baseImageUrl` 为自己的镜像站地址
+
 在仓库根目录执行如下命令，复制编译的镜像名称
 
 ```shell
@@ -30,8 +31,10 @@ kubectl apply -f ./
 kubectl apply -f ./
 ```
 
-查看 pod 的调度情况，有 `scheduler.k8sdev.jimyag.com/filter=normal` 被调度到 `k8s-worker2`
+查看 pod 的调度情况，有
 
-`scheduler.k8sdev.jimyag.com/filter=post-filter` 的 pod 由于找不到对应的 node，一直处于 Pending 状态
-不包含 `scheduler.k8sdev.jimyag.com/filter` 的 pod 被随机调度
+- `scheduler.k8sdev.jimyag.com/filter=normal` 被调度到 `k8s-worker2`
+- `scheduler.k8sdev.jimyag.com/filter=post-filter` 的 pod 由于找不到对应的 node，一直处于 Pending 状态
+- 不包含 `scheduler.k8sdev.jimyag.com/filter` 的 pod 被随机调度
+
 ![scheduler](./static/scheduler.png)
