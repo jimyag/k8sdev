@@ -1,0 +1,29 @@
+# 临时 pod 是 kubernetes 1.25 版本引入的一种新的 pod 类型，用于简化 pod 的创建和销毁
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ephemeral-pod
+  labels:
+    name: ephemeral-pod
+spec:
+  containers:
+    - name: container-1
+      image: registry.k8s.io/pause:3.1
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      ports:
+        - containerPort: 8080
+  restartPolicy: Always
+## kubectl exec -it ephemeral-pod -- sh                                                                      ✹ ✭main
+## error: Internal error occurred: Internal error occurred:
+## error executing command in container: failed to exec in container:
+## failed to start exec "81f1cca0e2a23b95f91bf2038603b9cafd3ee51d5bf6568c7c2966816f0fb41f":
+## OCI runtime exec failed: exec failed: unable to start container process: exec:
+## "sh": executable file not found in $PATH: unknown
+
+# 如果这个 pod 不能执行 exec 命令，可以使用 debug 进去排查
+
+## kubectl debug -it ephemeral-pod --image=busybox:1.28 --target=container-1

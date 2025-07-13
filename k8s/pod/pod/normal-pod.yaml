@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: normal-pod
+  labels:
+    name: normal-pod
+  namespace: jimyag
+spec:
+  restartPolicy: Always
+  containers:
+    - name: normal-pod1
+      image: busybox
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+        requests:
+          memory: "128Mi"
+          cpu: "500m"
+      ports:
+        - containerPort: 8080
+      command:
+        [
+          "sh",
+          "-c",
+          "echo 'pod 1 start' >> /tmp/pod1.log ;while true; do date ;echo 'pod 1 hello world'; sleep 1; done",
+        ]
+    - name: normal-pod-2
+      image: busybox
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+        requests:
+          memory: "128Mi"
+          cpu: "500m"
+      command:
+        [
+          "sh",
+          "-c",
+          "echo 'pod 2 start' >> /tmp/pod2.log ;while true; do date ;echo 'pod 2 hello world'; sleep 1; done",
+        ]

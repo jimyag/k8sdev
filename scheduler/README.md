@@ -12,7 +12,7 @@
 make container-scheduler
 ```
 
-到 scheduler 目录中找到 deploy 中的 deployment.yaml，修改为刚刚复制的镜像名称
+到 scheduler 目录中找到 deploy 中的 `deployment.yaml`，修改为刚刚复制的镜像名称
 
 在 deploy 目录中执行即可部署 scheduler
 

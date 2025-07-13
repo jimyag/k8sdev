@@ -1,0 +1,27 @@
+# 静态 pod 直接由 kubelet 创建，不需要通过 apiserver 创建
+# 静态 pod 不能引用 api 的对象 sa、cm、secret 等
+# 一般是在 /etc/kubernetes/manifests 目录下创建 pod 的描述文件
+
+# 控制平面的静态 pod 在 kube-system 命名空间下
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: static-web
+  labels:
+    role: myrole
+spec:
+  containers:
+    - name: web
+      image: nginx
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+        requests:
+          memory: "128Mi"
+          cpu: "500m"
+      ports:
+        - name: web
+          containerPort: 80
+          protocol: TCP

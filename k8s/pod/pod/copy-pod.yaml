@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: copy-pod
+  labels:
+    name: copy-pod
+spec:
+  restartPolicy: Always
+  containers:
+    - name: copy-pod
+      image: busybox:1.28
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+      ports:
+        - containerPort: 8080
+      command: ["sh", "-c", "echo 'shutdown ' >> /tmp/log.log ; sleep 2;exit 1"]
+## kubectl debug myapp -it --image=ubuntu --share-processes --copy-to=myapp-debug
+## kubectl debug copy-pod -it  --share-processes --copy-to=myapp-debug --container=copy-pod  -- sh
