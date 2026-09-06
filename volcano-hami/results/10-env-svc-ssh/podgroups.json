@@ -1,0 +1,61 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "scheduling.volcano.sh/v1beta1",
+            "kind": "PodGroup",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch.volcano.sh/v1alpha1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"name\":\"plugins\",\"namespace\":\"volcano-tests\"},\"spec\":{\"minAvailable\":2,\"plugins\":{\"env\":[],\"ssh\":[],\"svc\":[]},\"queue\":\"lab\",\"schedulerName\":\"volcano\",\"tasks\":[{\"name\":\"worker\",\"replicas\":2,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sleep\",\"3600\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"requests\":{\"cpu\":\"100m\",\"memory\":\"32Mi\"}}}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":0}}}]}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:13:58Z",
+                "generation": 4,
+                "name": "plugins-035b7dd2-e135-4340-baa8-187011a09b23",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "plugins",
+                        "uid": "035b7dd2-e135-4340-baa8-187011a09b23"
+                    }
+                ],
+                "resourceVersion": "2404",
+                "uid": "87c836ea-621f-41c8-ac3e-0fa5f5ea207c"
+            },
+            "spec": {
+                "minMember": 2,
+                "minResources": {
+                    "count/pods": "2",
+                    "cpu": "200m",
+                    "memory": "64Mi",
+                    "pods": "2",
+                    "requests.cpu": "200m",
+                    "requests.memory": "64Mi"
+                },
+                "minTaskMember": {
+                    "worker": 2
+                },
+                "queue": "lab"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-09-06T15:14:00Z",
+                        "reason": "tasks in gang are ready to be scheduled",
+                        "status": "True",
+                        "transitionID": "7426e203-d7ef-43f0-83ad-3f88414128a8",
+                        "type": "Scheduled"
+                    }
+                ],
+                "phase": "Running"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

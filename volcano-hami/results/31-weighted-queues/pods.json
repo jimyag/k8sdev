@@ -1,0 +1,4349 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-a-5c89fa3d-acc5-447a-84f0-14171c6bbba3",
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "0",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-a-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "0",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-a-worker-0",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-a",
+                        "uid": "5c89fa3d-acc5-447a-84f0-14171c6bbba3"
+                    }
+                ],
+                "resourceVersion": "5519",
+                "uid": "ac04a680-88ae-4a84-9cc4-676fdb98fd05"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-98v45",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "volcano-lab-worker",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-98v45",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:11Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:11Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:11Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "2",
+                            "memory": "32Mi"
+                        },
+                        "containerID": "containerd://3731160e2b7dec694b49d56fa998ac635f1f4ad12fc7bc9fe4eab7d2d8bf2600",
+                        "image": "docker.io/library/ubuntu:22.04",
+                        "imageID": "sha256:4d0600e5088ac5da5119401c70292ea3a9d9dc71f76a234ad5390c1f6a8e5669",
+                        "lastState": {},
+                        "name": "work",
+                        "ready": true,
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-06T15:23:11Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-98v45",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "172.30.0.6",
+                "hostIPs": [
+                    {
+                        "ip": "172.30.0.6"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.2.73",
+                "podIPs": [
+                    {
+                        "ip": "10.244.2.73"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-09-06T15:23:10Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-a-5c89fa3d-acc5-447a-84f0-14171c6bbba3",
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "1",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-a-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "1",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-a-worker-1",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-a",
+                        "uid": "5c89fa3d-acc5-447a-84f0-14171c6bbba3"
+                    }
+                ],
+                "resourceVersion": "5551",
+                "uid": "2d5438d4-44d3-433a-a0bd-e7d9aa0d10cf"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-mp5bd",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "volcano-lab-worker",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-mp5bd",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "2",
+                            "memory": "32Mi"
+                        },
+                        "containerID": "containerd://db2b997978e4904199d88c463373f9ad05a2cbe444ad25b75a9403adf81e9d87",
+                        "image": "docker.io/library/ubuntu:22.04",
+                        "imageID": "sha256:4d0600e5088ac5da5119401c70292ea3a9d9dc71f76a234ad5390c1f6a8e5669",
+                        "lastState": {},
+                        "name": "work",
+                        "ready": true,
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-06T15:23:11Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-mp5bd",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "172.30.0.6",
+                "hostIPs": [
+                    {
+                        "ip": "172.30.0.6"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.2.74",
+                "podIPs": [
+                    {
+                        "ip": "10.244.2.74"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-09-06T15:23:10Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-a-5c89fa3d-acc5-447a-84f0-14171c6bbba3",
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "10",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-a-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "10",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-a-worker-10",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-a",
+                        "uid": "5c89fa3d-acc5-447a-84f0-14171c6bbba3"
+                    }
+                ],
+                "resourceVersion": "5449",
+                "uid": "703241a0-8eba-4b7a-8043-62c7f6099dde"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-jkhgz",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-jkhgz",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "message": "Task weight-a-worker-10 with role spec worker has already predicated failed, skip",
+                        "reason": "Unschedulable",
+                        "status": "False",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "phase": "Pending",
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-a-5c89fa3d-acc5-447a-84f0-14171c6bbba3",
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "11",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-a-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "11",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-a-worker-11",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-a",
+                        "uid": "5c89fa3d-acc5-447a-84f0-14171c6bbba3"
+                    }
+                ],
+                "resourceVersion": "5446",
+                "uid": "afbffb60-48c1-4113-8c7e-65fae5dbb958"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-4dslb",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-4dslb",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "message": "Task weight-a-worker-11 with role spec worker has already predicated failed, skip",
+                        "reason": "Unschedulable",
+                        "status": "False",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "phase": "Pending",
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-a-5c89fa3d-acc5-447a-84f0-14171c6bbba3",
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "2",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-a-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "2",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-a-worker-2",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-a",
+                        "uid": "5c89fa3d-acc5-447a-84f0-14171c6bbba3"
+                    }
+                ],
+                "resourceVersion": "5539",
+                "uid": "797e1f77-efff-4662-8688-8a51ce670a54"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-dxlfz",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "volcano-lab-worker2",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-dxlfz",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "2",
+                            "memory": "32Mi"
+                        },
+                        "containerID": "containerd://ebec071d42a4a9260614ced02b9c8bd17accbc7ecd2009d2cac11a511b824c93",
+                        "image": "docker.io/library/ubuntu:22.04",
+                        "imageID": "sha256:4d0600e5088ac5da5119401c70292ea3a9d9dc71f76a234ad5390c1f6a8e5669",
+                        "lastState": {},
+                        "name": "work",
+                        "ready": true,
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-06T15:23:11Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-dxlfz",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "172.30.0.5",
+                "hostIPs": [
+                    {
+                        "ip": "172.30.0.5"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.1.33",
+                "podIPs": [
+                    {
+                        "ip": "10.244.1.33"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-09-06T15:23:10Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-a-5c89fa3d-acc5-447a-84f0-14171c6bbba3",
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "3",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-a-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "3",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-a-worker-3",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-a",
+                        "uid": "5c89fa3d-acc5-447a-84f0-14171c6bbba3"
+                    }
+                ],
+                "resourceVersion": "5547",
+                "uid": "9a58af00-0a1b-43fb-9eb4-e171d49135a8"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-4pgph",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "volcano-lab-worker2",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-4pgph",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "2",
+                            "memory": "32Mi"
+                        },
+                        "containerID": "containerd://8d843ba3216d376aca0be524e3159445e4c2990826e8c54d3d957967b22b43ed",
+                        "image": "docker.io/library/ubuntu:22.04",
+                        "imageID": "sha256:4d0600e5088ac5da5119401c70292ea3a9d9dc71f76a234ad5390c1f6a8e5669",
+                        "lastState": {},
+                        "name": "work",
+                        "ready": true,
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-06T15:23:11Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-4pgph",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "172.30.0.5",
+                "hostIPs": [
+                    {
+                        "ip": "172.30.0.5"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.1.36",
+                "podIPs": [
+                    {
+                        "ip": "10.244.1.36"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-09-06T15:23:10Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-a-5c89fa3d-acc5-447a-84f0-14171c6bbba3",
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "4",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-a-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "4",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-a-worker-4",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-a",
+                        "uid": "5c89fa3d-acc5-447a-84f0-14171c6bbba3"
+                    }
+                ],
+                "resourceVersion": "5448",
+                "uid": "d1f01cf6-1c88-4335-88fe-57002567405c"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-x9fgb",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-x9fgb",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "message": "0/3 nodes are unavailable: 1 node(s) had untolerated taint(s), 2 Insufficient cpu.",
+                        "reason": "Unschedulable",
+                        "status": "False",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "phase": "Pending",
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-a-5c89fa3d-acc5-447a-84f0-14171c6bbba3",
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "5",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-a-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "5",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-a-worker-5",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-a",
+                        "uid": "5c89fa3d-acc5-447a-84f0-14171c6bbba3"
+                    }
+                ],
+                "resourceVersion": "5443",
+                "uid": "5c01305d-2945-41bc-839a-3faa3461973f"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-xh5fs",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-xh5fs",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "message": "Task weight-a-worker-5 with role spec worker has already predicated failed, skip",
+                        "reason": "Unschedulable",
+                        "status": "False",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "phase": "Pending",
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-a-5c89fa3d-acc5-447a-84f0-14171c6bbba3",
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "6",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-a-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "6",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-a-worker-6",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-a",
+                        "uid": "5c89fa3d-acc5-447a-84f0-14171c6bbba3"
+                    }
+                ],
+                "resourceVersion": "5447",
+                "uid": "b2ed448a-d3c9-45b3-b932-3c5d147967d8"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-6pdjp",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-6pdjp",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "message": "Task weight-a-worker-6 with role spec worker has already predicated failed, skip",
+                        "reason": "Unschedulable",
+                        "status": "False",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "phase": "Pending",
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-a-5c89fa3d-acc5-447a-84f0-14171c6bbba3",
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "7",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-a-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "7",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-a-worker-7",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-a",
+                        "uid": "5c89fa3d-acc5-447a-84f0-14171c6bbba3"
+                    }
+                ],
+                "resourceVersion": "5445",
+                "uid": "224c43ca-9ca8-469f-9467-f8cee78637d6"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-nd9tg",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-nd9tg",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "message": "Task weight-a-worker-7 with role spec worker has already predicated failed, skip",
+                        "reason": "Unschedulable",
+                        "status": "False",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "phase": "Pending",
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-a-5c89fa3d-acc5-447a-84f0-14171c6bbba3",
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "8",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-a-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "8",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-a-worker-8",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-a",
+                        "uid": "5c89fa3d-acc5-447a-84f0-14171c6bbba3"
+                    }
+                ],
+                "resourceVersion": "5444",
+                "uid": "12a29beb-806a-4c2b-8530-ba2546f75e24"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-kpbgb",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-kpbgb",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "message": "Task weight-a-worker-8 with role spec worker has already predicated failed, skip",
+                        "reason": "Unschedulable",
+                        "status": "False",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "phase": "Pending",
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-a-5c89fa3d-acc5-447a-84f0-14171c6bbba3",
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "9",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-a-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-a",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-a",
+                    "volcano.sh/task-index": "9",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-a-worker-9",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-a",
+                        "uid": "5c89fa3d-acc5-447a-84f0-14171c6bbba3"
+                    }
+                ],
+                "resourceVersion": "5442",
+                "uid": "1169bb56-44ca-4906-8066-05fd4e22d1b7"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-5v9wk",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-5v9wk",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "message": "Task weight-a-worker-9 with role spec worker has already predicated failed, skip",
+                        "reason": "Unschedulable",
+                        "status": "False",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "phase": "Pending",
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-b-2b44c33d-8c81-44af-9e58-31b727a8c0a1",
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "0",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-b-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "0",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-b-worker-0",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-b",
+                        "uid": "2b44c33d-8c81-44af-9e58-31b727a8c0a1"
+                    }
+                ],
+                "resourceVersion": "5549",
+                "uid": "36bb9b74-e2da-4b64-851a-133e174aee1d"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-fqgnj",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "volcano-lab-worker",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-fqgnj",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "2",
+                            "memory": "32Mi"
+                        },
+                        "containerID": "containerd://5635061ed146f04b7a066ff6a7ef4f7a71a5c3db006a377122bf038a7411bcd2",
+                        "image": "docker.io/library/ubuntu:22.04",
+                        "imageID": "sha256:4d0600e5088ac5da5119401c70292ea3a9d9dc71f76a234ad5390c1f6a8e5669",
+                        "lastState": {},
+                        "name": "work",
+                        "ready": true,
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-06T15:23:11Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-fqgnj",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "172.30.0.6",
+                "hostIPs": [
+                    {
+                        "ip": "172.30.0.6"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.2.76",
+                "podIPs": [
+                    {
+                        "ip": "10.244.2.76"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-09-06T15:23:10Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-b-2b44c33d-8c81-44af-9e58-31b727a8c0a1",
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "1",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-b-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "1",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-b-worker-1",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-b",
+                        "uid": "2b44c33d-8c81-44af-9e58-31b727a8c0a1"
+                    }
+                ],
+                "resourceVersion": "5555",
+                "uid": "1d7c7f4e-7a3b-4e05-98ed-27e810a0b925"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-hwjsx",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "volcano-lab-worker",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-hwjsx",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "2",
+                            "memory": "32Mi"
+                        },
+                        "containerID": "containerd://144d0a3a906a67de6fcbec56a8c27e47a375c940cd4bd5a31256be85b8bbd9b2",
+                        "image": "docker.io/library/ubuntu:22.04",
+                        "imageID": "sha256:4d0600e5088ac5da5119401c70292ea3a9d9dc71f76a234ad5390c1f6a8e5669",
+                        "lastState": {},
+                        "name": "work",
+                        "ready": true,
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-06T15:23:11Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-hwjsx",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "172.30.0.6",
+                "hostIPs": [
+                    {
+                        "ip": "172.30.0.6"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.2.77",
+                "podIPs": [
+                    {
+                        "ip": "10.244.2.77"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-09-06T15:23:10Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-b-2b44c33d-8c81-44af-9e58-31b727a8c0a1",
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "10",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-b-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "10",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-b-worker-10",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-b",
+                        "uid": "2b44c33d-8c81-44af-9e58-31b727a8c0a1"
+                    }
+                ],
+                "resourceVersion": "5438",
+                "uid": "c731a35f-da46-4ec3-89b9-80256118b450"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-bm2ln",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-bm2ln",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "message": "Task weight-b-worker-10 with role spec worker has already predicated failed, skip",
+                        "reason": "Unschedulable",
+                        "status": "False",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "phase": "Pending",
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-b-2b44c33d-8c81-44af-9e58-31b727a8c0a1",
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "11",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-b-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "11",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-b-worker-11",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-b",
+                        "uid": "2b44c33d-8c81-44af-9e58-31b727a8c0a1"
+                    }
+                ],
+                "resourceVersion": "5436",
+                "uid": "3b18e9af-d27a-4469-b76a-4a162e7f2786"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-z2l5b",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-z2l5b",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "message": "Task weight-b-worker-11 with role spec worker has already predicated failed, skip",
+                        "reason": "Unschedulable",
+                        "status": "False",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "phase": "Pending",
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-b-2b44c33d-8c81-44af-9e58-31b727a8c0a1",
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "2",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-b-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "2",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-b-worker-2",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-b",
+                        "uid": "2b44c33d-8c81-44af-9e58-31b727a8c0a1"
+                    }
+                ],
+                "resourceVersion": "5553",
+                "uid": "47510e5d-0d26-4046-b9d5-ae5b3473be03"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-khh78",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "volcano-lab-worker",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-khh78",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "2",
+                            "memory": "32Mi"
+                        },
+                        "containerID": "containerd://db1f31451ada3c252ec72cc9bac1671f556201d151f364ca48a720f977f340df",
+                        "image": "docker.io/library/ubuntu:22.04",
+                        "imageID": "sha256:4d0600e5088ac5da5119401c70292ea3a9d9dc71f76a234ad5390c1f6a8e5669",
+                        "lastState": {},
+                        "name": "work",
+                        "ready": true,
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-06T15:23:11Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-khh78",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "172.30.0.6",
+                "hostIPs": [
+                    {
+                        "ip": "172.30.0.6"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.2.75",
+                "podIPs": [
+                    {
+                        "ip": "10.244.2.75"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-09-06T15:23:10Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-b-2b44c33d-8c81-44af-9e58-31b727a8c0a1",
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "3",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-b-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "3",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-b-worker-3",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-b",
+                        "uid": "2b44c33d-8c81-44af-9e58-31b727a8c0a1"
+                    }
+                ],
+                "resourceVersion": "5541",
+                "uid": "f7afd753-ab84-46ff-bc61-f717452af358"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-hrpk2",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "volcano-lab-worker2",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-hrpk2",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "2",
+                            "memory": "32Mi"
+                        },
+                        "containerID": "containerd://6a853eb26980d89903463dbe4b98d54aba4c648f2925eb9e719cefe2b820c66f",
+                        "image": "docker.io/library/ubuntu:22.04",
+                        "imageID": "sha256:4d0600e5088ac5da5119401c70292ea3a9d9dc71f76a234ad5390c1f6a8e5669",
+                        "lastState": {},
+                        "name": "work",
+                        "ready": true,
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-06T15:23:11Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-hrpk2",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "172.30.0.5",
+                "hostIPs": [
+                    {
+                        "ip": "172.30.0.5"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.1.32",
+                "podIPs": [
+                    {
+                        "ip": "10.244.1.32"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-09-06T15:23:10Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-b-2b44c33d-8c81-44af-9e58-31b727a8c0a1",
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "4",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-b-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "4",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-b-worker-4",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-b",
+                        "uid": "2b44c33d-8c81-44af-9e58-31b727a8c0a1"
+                    }
+                ],
+                "resourceVersion": "5543",
+                "uid": "5d479ae8-7501-4519-b1b0-b027f0011ba8"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-tccv7",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "volcano-lab-worker2",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-tccv7",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "2",
+                            "memory": "32Mi"
+                        },
+                        "containerID": "containerd://1c8740627dbd7ffed82ec91bc99064d24b393fe2fccbfb5f8f293d8ada999c1b",
+                        "image": "docker.io/library/ubuntu:22.04",
+                        "imageID": "sha256:4d0600e5088ac5da5119401c70292ea3a9d9dc71f76a234ad5390c1f6a8e5669",
+                        "lastState": {},
+                        "name": "work",
+                        "ready": true,
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-06T15:23:11Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-tccv7",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "172.30.0.5",
+                "hostIPs": [
+                    {
+                        "ip": "172.30.0.5"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.1.34",
+                "podIPs": [
+                    {
+                        "ip": "10.244.1.34"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-09-06T15:23:10Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-b-2b44c33d-8c81-44af-9e58-31b727a8c0a1",
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "5",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-b-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "5",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-b-worker-5",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-b",
+                        "uid": "2b44c33d-8c81-44af-9e58-31b727a8c0a1"
+                    }
+                ],
+                "resourceVersion": "5545",
+                "uid": "c2685938-456f-4dab-8405-495351e39b2a"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-9qmm8",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "volcano-lab-worker2",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-9qmm8",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "2",
+                            "memory": "32Mi"
+                        },
+                        "containerID": "containerd://9e8629fd783f90fe67b5da669e4794d97884d7ed983a3f833a8f9c2882627a73",
+                        "image": "docker.io/library/ubuntu:22.04",
+                        "imageID": "sha256:4d0600e5088ac5da5119401c70292ea3a9d9dc71f76a234ad5390c1f6a8e5669",
+                        "lastState": {},
+                        "name": "work",
+                        "ready": true,
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-06T15:23:11Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-9qmm8",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "172.30.0.5",
+                "hostIPs": [
+                    {
+                        "ip": "172.30.0.5"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.1.35",
+                "podIPs": [
+                    {
+                        "ip": "10.244.1.35"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-09-06T15:23:10Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-b-2b44c33d-8c81-44af-9e58-31b727a8c0a1",
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "6",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-b-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "6",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-b-worker-6",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-b",
+                        "uid": "2b44c33d-8c81-44af-9e58-31b727a8c0a1"
+                    }
+                ],
+                "resourceVersion": "5440",
+                "uid": "17eb2868-53a2-46b8-82e3-a05ff2a5aeb4"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-9krz6",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-9krz6",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "message": "0/3 nodes are unavailable: 1 node(s) had untolerated taint(s), 2 Insufficient cpu.",
+                        "reason": "Unschedulable",
+                        "status": "False",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "phase": "Pending",
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-b-2b44c33d-8c81-44af-9e58-31b727a8c0a1",
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "7",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-b-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "7",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-b-worker-7",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-b",
+                        "uid": "2b44c33d-8c81-44af-9e58-31b727a8c0a1"
+                    }
+                ],
+                "resourceVersion": "5439",
+                "uid": "87d7336a-3c34-43da-a9dd-1f5549f374b9"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-sbjjm",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-sbjjm",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "message": "Task weight-b-worker-7 with role spec worker has already predicated failed, skip",
+                        "reason": "Unschedulable",
+                        "status": "False",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "phase": "Pending",
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-b-2b44c33d-8c81-44af-9e58-31b727a8c0a1",
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "8",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-b-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "8",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-b-worker-8",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-b",
+                        "uid": "2b44c33d-8c81-44af-9e58-31b727a8c0a1"
+                    }
+                ],
+                "resourceVersion": "5437",
+                "uid": "4e4abfad-2dc3-45cc-9227-ed765570e4cf"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-wcrjm",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-wcrjm",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "message": "Task weight-b-worker-8 with role spec worker has already predicated failed, skip",
+                        "reason": "Unschedulable",
+                        "status": "False",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "phase": "Pending",
+                "qosClass": "Burstable"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "weight-b-2b44c33d-8c81-44af-9e58-31b727a8c0a1",
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "9",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "weight-b-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:23:09Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "weight-b",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "weight-b",
+                    "volcano.sh/task-index": "9",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "weight-b-worker-9",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-b",
+                        "uid": "2b44c33d-8c81-44af-9e58-31b727a8c0a1"
+                    }
+                ],
+                "resourceVersion": "5441",
+                "uid": "015af8e4-df26-4b38-b475-74a50ad1e916"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "2",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-gs8t6",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-gs8t6",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:23:10Z",
+                        "message": "Task weight-b-worker-9 with role spec worker has already predicated failed, skip",
+                        "reason": "Unschedulable",
+                        "status": "False",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "phase": "Pending",
+                "qosClass": "Burstable"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

@@ -1,0 +1,14 @@
+# 实际测试输入；已移除服务端生成的 metadata，便于复现。
+# CPU 为核；vgpu-memory 每单位代表 100 MiB；cores 为百分比。
+apiVersion: v1
+data:
+  volcano-scheduler.conf: "actions: enqueue, reclaim, allocate, backfill, preempt\n\
+    tiers:\n- plugins:\n  - name: priority\n  - name: gang\n  - name: conformance\n\
+    - plugins:\n  - name: drf\n    enablePreemptable: false\n  - name: predicates\n\
+    \  - name: proportion\n  - name: nodeorder\n  - name: binpack\n    arguments:\n\
+    \      binpack.weight: 10\n  - name: deviceshare\n    arguments:\n      deviceshare.VGPUEnable:\
+    \ true\n      deviceshare.SchedulePolicy: binpack\n  - name: resourcequota\n"
+kind: ConfigMap
+metadata:
+  name: volcano-scheduler-configmap
+  namespace: volcano-system

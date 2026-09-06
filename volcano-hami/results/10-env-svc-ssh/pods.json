@@ -1,0 +1,629 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "plugins-035b7dd2-e135-4340-baa8-187011a09b23",
+                    "volcano.sh/job-name": "plugins",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "lab",
+                    "volcano.sh/task-index": "0",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "plugins-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:13:58Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "plugins",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "lab",
+                    "volcano.sh/task-index": "0",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "plugins-worker-0",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "plugins",
+                        "uid": "035b7dd2-e135-4340-baa8-187011a09b23"
+                    }
+                ],
+                "resourceVersion": "2410",
+                "uid": "d220299b-db55-4054-b57d-3114a67f8591"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "env": [
+                            {
+                                "name": "VK_TASK_INDEX",
+                                "value": "0"
+                            },
+                            {
+                                "name": "VC_TASK_INDEX",
+                                "value": "0"
+                            },
+                            {
+                                "name": "VC_WORKER_HOSTS",
+                                "valueFrom": {
+                                    "configMapKeyRef": {
+                                        "key": "VC_WORKER_HOSTS",
+                                        "name": "plugins-svc"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "VC_WORKER_NUM",
+                                "valueFrom": {
+                                    "configMapKeyRef": {
+                                        "key": "VC_WORKER_NUM",
+                                        "name": "plugins-svc"
+                                    }
+                                }
+                            }
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/root/.ssh",
+                                "name": "plugins-ssh",
+                                "subPath": ".ssh"
+                            },
+                            {
+                                "mountPath": "/etc/volcano",
+                                "name": "plugins-svc"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-94lrh",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "hostname": "plugins-worker-0",
+                "nodeName": "volcano-lab-worker",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "subdomain": "plugins",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "plugins-ssh",
+                        "secret": {
+                            "defaultMode": 384,
+                            "items": [
+                                {
+                                    "key": "id_rsa",
+                                    "path": ".ssh/id_rsa"
+                                },
+                                {
+                                    "key": "id_rsa.pub",
+                                    "path": ".ssh/id_rsa.pub"
+                                },
+                                {
+                                    "key": "authorized_keys",
+                                    "path": ".ssh/authorized_keys"
+                                },
+                                {
+                                    "key": "config",
+                                    "path": ".ssh/config"
+                                }
+                            ],
+                            "secretName": "plugins-ssh"
+                        }
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "plugins-svc"
+                        },
+                        "name": "plugins-svc"
+                    },
+                    {
+                        "name": "kube-api-access-94lrh",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:14:01Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:13:59Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:14:01Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:14:01Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:13:59Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "100m",
+                            "memory": "32Mi"
+                        },
+                        "containerID": "containerd://8fcf762080daceb0e7bbea9d3b6d70ef272b1caab26ac451a735b7fdd2ba43ca",
+                        "image": "docker.io/library/ubuntu:22.04",
+                        "imageID": "sha256:4d0600e5088ac5da5119401c70292ea3a9d9dc71f76a234ad5390c1f6a8e5669",
+                        "lastState": {},
+                        "name": "work",
+                        "ready": true,
+                        "resources": {
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-06T15:14:00Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/root/.ssh",
+                                "name": "plugins-ssh"
+                            },
+                            {
+                                "mountPath": "/etc/volcano",
+                                "name": "plugins-svc"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-94lrh",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "172.30.0.6",
+                "hostIPs": [
+                    {
+                        "ip": "172.30.0.6"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.2.24",
+                "podIPs": [
+                    {
+                        "ip": "10.244.2.24"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-09-06T15:13:59Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "plugins-035b7dd2-e135-4340-baa8-187011a09b23",
+                    "volcano.sh/job-name": "plugins",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "lab",
+                    "volcano.sh/task-index": "1",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "plugins-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:13:58Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "plugins",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "lab",
+                    "volcano.sh/task-index": "1",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "plugins-worker-1",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "plugins",
+                        "uid": "035b7dd2-e135-4340-baa8-187011a09b23"
+                    }
+                ],
+                "resourceVersion": "2406",
+                "uid": "417bc07e-718c-44d1-805e-64d5e9e7b22e"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "env": [
+                            {
+                                "name": "VK_TASK_INDEX",
+                                "value": "1"
+                            },
+                            {
+                                "name": "VC_TASK_INDEX",
+                                "value": "1"
+                            },
+                            {
+                                "name": "VC_WORKER_HOSTS",
+                                "valueFrom": {
+                                    "configMapKeyRef": {
+                                        "key": "VC_WORKER_HOSTS",
+                                        "name": "plugins-svc"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "VC_WORKER_NUM",
+                                "valueFrom": {
+                                    "configMapKeyRef": {
+                                        "key": "VC_WORKER_NUM",
+                                        "name": "plugins-svc"
+                                    }
+                                }
+                            }
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/root/.ssh",
+                                "name": "plugins-ssh",
+                                "subPath": ".ssh"
+                            },
+                            {
+                                "mountPath": "/etc/volcano",
+                                "name": "plugins-svc"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-glwll",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "hostname": "plugins-worker-1",
+                "nodeName": "volcano-lab-worker",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "subdomain": "plugins",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "plugins-ssh",
+                        "secret": {
+                            "defaultMode": 384,
+                            "items": [
+                                {
+                                    "key": "id_rsa",
+                                    "path": ".ssh/id_rsa"
+                                },
+                                {
+                                    "key": "id_rsa.pub",
+                                    "path": ".ssh/id_rsa.pub"
+                                },
+                                {
+                                    "key": "authorized_keys",
+                                    "path": ".ssh/authorized_keys"
+                                },
+                                {
+                                    "key": "config",
+                                    "path": ".ssh/config"
+                                }
+                            ],
+                            "secretName": "plugins-ssh"
+                        }
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "plugins-svc"
+                        },
+                        "name": "plugins-svc"
+                    },
+                    {
+                        "name": "kube-api-access-glwll",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:14:01Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:13:59Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:14:01Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:14:01Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:13:59Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "100m",
+                            "memory": "32Mi"
+                        },
+                        "containerID": "containerd://5633f03b96e68b1349f33b6a42e80639985aff406ad81662281a6618f85bfe7c",
+                        "image": "docker.io/library/ubuntu:22.04",
+                        "imageID": "sha256:4d0600e5088ac5da5119401c70292ea3a9d9dc71f76a234ad5390c1f6a8e5669",
+                        "lastState": {},
+                        "name": "work",
+                        "ready": true,
+                        "resources": {
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-06T15:14:00Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/root/.ssh",
+                                "name": "plugins-ssh"
+                            },
+                            {
+                                "mountPath": "/etc/volcano",
+                                "name": "plugins-svc"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-glwll",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "172.30.0.6",
+                "hostIPs": [
+                    {
+                        "ip": "172.30.0.6"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.2.25",
+                "podIPs": [
+                    {
+                        "ip": "10.244.2.25"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-09-06T15:13:59Z"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

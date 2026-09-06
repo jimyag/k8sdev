@@ -1,0 +1,265 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:01Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "cron-29811800-bd3d4fe2-c1bf-4cac-a32e-f83a6fb2392c",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4397",
+        "uid": "5140970d-ef87-4128-9732-01b4879c10e1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:01Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 1 minAvailable",
+      "metadata": {
+        "name": "cron-29811800-bd3d4fe2-c1bf-4cac-a32e-f83a6fb2392c.18d2c473343c8e48",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:02Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "cron-29811800-bd3d4fe2-c1bf-4cac-a32e-f83a6fb2392c",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4404",
+        "uid": "5140970d-ef87-4128-9732-01b4879c10e1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:02Z",
+      "message": "0/1 tasks in gang unschedulable: pod group is ready, 1 Binding, 1 minAvailable",
+      "metadata": {
+        "name": "cron-29811800-bd3d4fe2-c1bf-4cac-a32e-f83a6fb2392c.18d2c473727b30a2",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:03Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "cron-29811800-bd3d4fe2-c1bf-4cac-a32e-f83a6fb2392c",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4415",
+        "uid": "5140970d-ef87-4128-9732-01b4879c10e1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:03Z",
+      "message": "pod group is ready",
+      "metadata": {
+        "name": "cron-29811800-bd3d4fe2-c1bf-4cac-a32e-f83a6fb2392c.18d2c473b038a078",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "cron-29811800-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4399",
+        "uid": "2753bc80-18df-4185-85de-7c9afd22a2c2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:02Z",
+      "message": "Successfully assigned volcano-tests/cron-29811800-worker-0 to volcano-lab-worker",
+      "metadata": {
+        "name": "cron-29811800-worker-0.18d2c473722f0e83",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "cron-29811800-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4403",
+        "uid": "2753bc80-18df-4185-85de-7c9afd22a2c2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:02Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "cron-29811800-worker-0.18d2c4738cd2ea4e",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "cron-29811800-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4403",
+        "uid": "2753bc80-18df-4185-85de-7c9afd22a2c2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:02Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "cron-29811800-worker-0.18d2c4738f06f054",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "cron-29811800-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4403",
+        "uid": "2753bc80-18df-4185-85de-7c9afd22a2c2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:02Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "cron-29811800-worker-0.18d2c47392baefa0",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:00Z",
+      "involvedObject": {
+        "apiVersion": "batch.volcano.sh/v1alpha1",
+        "kind": "CronJob",
+        "name": "cron",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4298",
+        "uid": "93d3d1d9-f936-4749-98e9-98ba95308908"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:00Z",
+      "message": "Created job cron-29811800 for CronJob volcano-tests/cron",
+      "metadata": {
+        "name": "cron.18d2c472f9cdc414",
+        "namespace": "volcano-tests"
+      },
+      "reason": "SuccessfulCreate",
+      "reportingComponent": "vc-controller-manager",
+      "reportingInstance": "",
+      "source": {
+        "component": "vc-controller-manager"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:04Z",
+      "involvedObject": {
+        "apiVersion": "batch.volcano.sh/v1alpha1",
+        "kind": "CronJob",
+        "name": "cron",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4393",
+        "uid": "93d3d1d9-f936-4749-98e9-98ba95308908"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:04Z",
+      "message": "Saw completed job: cron-29811800 in active, remove",
+      "metadata": {
+        "name": "cron.18d2c473e801222a",
+        "namespace": "volcano-tests"
+      },
+      "reason": "SawCompletedJob",
+      "reportingComponent": "vc-controller-manager",
+      "reportingInstance": "",
+      "source": {
+        "component": "vc-controller-manager"
+      },
+      "type": "Normal"
+    }
+  ],
+  "kind": "List",
+  "metadata": {}
+}

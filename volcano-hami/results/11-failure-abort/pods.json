@@ -1,0 +1,247 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "abort-eb7eab89-9a7b-4b43-a2d3-9306a2da8a24",
+                    "volcano.sh/job-name": "abort",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "lab",
+                    "volcano.sh/task-index": "0",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "abort-worker"
+                },
+                "creationTimestamp": "2026-09-06T15:14:03Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "abort",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "lab",
+                    "volcano.sh/task-index": "0",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "abort-worker-0",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "abort",
+                        "uid": "eb7eab89-9a7b-4b43-a2d3-9306a2da8a24"
+                    }
+                ],
+                "resourceVersion": "2466",
+                "uid": "cdcf2b28-f37d-4364-8b9a-a01b98c39812"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sh",
+                            "-c",
+                            "exit 7"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-wqr64",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "volcano-lab-worker",
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "kube-api-access-wqr64",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:14:06Z",
+                        "observedGeneration": 1,
+                        "status": "False",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:14:04Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:14:04Z",
+                        "observedGeneration": 1,
+                        "reason": "PodFailed",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:14:04Z",
+                        "observedGeneration": 1,
+                        "reason": "PodFailed",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:14:04Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "100m",
+                            "memory": "32Mi"
+                        },
+                        "containerID": "containerd://0d3a7ed9d5f4b97c77d3f9132169cf7b390d4dbd22285cdf11aa26d75d00c42a",
+                        "image": "docker.io/library/ubuntu:22.04",
+                        "imageID": "sha256:4d0600e5088ac5da5119401c70292ea3a9d9dc71f76a234ad5390c1f6a8e5669",
+                        "lastState": {},
+                        "name": "work",
+                        "ready": false,
+                        "resources": {
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "32Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://0d3a7ed9d5f4b97c77d3f9132169cf7b390d4dbd22285cdf11aa26d75d00c42a",
+                                "exitCode": 7,
+                                "finishedAt": "2026-09-06T15:14:04Z",
+                                "reason": "Error",
+                                "startedAt": "2026-09-06T15:14:04Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-wqr64",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "172.30.0.6",
+                "hostIPs": [
+                    {
+                        "ip": "172.30.0.6"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Failed",
+                "podIP": "10.244.2.26",
+                "podIPs": [
+                    {
+                        "ip": "10.244.2.26"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-09-06T15:14:04Z"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

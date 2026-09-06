@@ -1,0 +1,91 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "batch.volcano.sh/v1alpha1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch.volcano.sh/v1alpha1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"name\":\"child-b\",\"namespace\":\"volcano-tests\"},\"spec\":{\"minAvailable\":1,\"queue\":\"child-b\",\"schedulerName\":\"volcano\",\"tasks\":[{\"name\":\"worker\",\"replicas\":1,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sleep\",\"3600\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"requests\":{\"cpu\":\"4\",\"memory\":\"32Mi\"}}}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":0}}}]}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:23:36Z",
+                "generation": 1,
+                "name": "child-b",
+                "namespace": "volcano-tests",
+                "resourceVersion": "5936",
+                "uid": "aeeb0d98-a904-4b7c-af3b-313278835226"
+            },
+            "spec": {
+                "maxRetry": 3,
+                "minAvailable": 1,
+                "queue": "child-b",
+                "schedulerName": "volcano",
+                "tasks": [
+                    {
+                        "maxRetry": 3,
+                        "minAvailable": 1,
+                        "name": "worker",
+                        "replicas": 1,
+                        "template": {
+                            "metadata": {},
+                            "spec": {
+                                "containers": [
+                                    {
+                                        "command": [
+                                            "sleep",
+                                            "3600"
+                                        ],
+                                        "image": "ubuntu:22.04",
+                                        "imagePullPolicy": "IfNotPresent",
+                                        "name": "work",
+                                        "resources": {
+                                            "requests": {
+                                                "cpu": "4",
+                                                "memory": "32Mi"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "restartPolicy": "Never",
+                                "terminationGracePeriodSeconds": 0
+                            }
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-09-06T15:23:36Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:23:43Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:23:45Z",
+                        "status": "Running"
+                    }
+                ],
+                "minAvailable": 1,
+                "running": 1,
+                "state": {
+                    "lastTransitionTime": "2026-09-06T15:23:45Z",
+                    "phase": "Running"
+                },
+                "taskStatusCount": {
+                    "worker": {
+                        "phase": {
+                            "Running": 1
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

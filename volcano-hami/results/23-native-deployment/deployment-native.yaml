@@ -1,0 +1,33 @@
+# 实际测试输入；已移除服务端生成的 metadata，便于复现。
+# CPU 为核；vgpu-memory 每单位代表 100 MiB；cores 为百分比。
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: native
+  namespace: volcano-tests
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: native
+  template:
+    metadata:
+      annotations:
+        scheduling.volcano.sh/queue-name: lab
+      labels:
+        app: native
+    spec:
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 0
+      containers:
+      - name: work
+        image: ubuntu:22.04
+        imagePullPolicy: IfNotPresent
+        command:
+        - sleep
+        - '3600'
+        resources:
+          requests:
+            cpu: 100m
+            memory: 32Mi
+      schedulerName: volcano

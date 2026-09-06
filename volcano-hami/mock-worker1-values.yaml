@@ -1,0 +1,15 @@
+# 第一个工作节点的 mock 配置，使用上游 A100 profile 中的 UUID。
+gpu:
+  # 每张卡模拟 40960 MiB 显存，此节点只暴露前两张卡。
+  profile: a100
+  count: 2
+image:
+  # setup.sh 从固定的主分支提交构建，并通过 kind load 导入节点。
+  repository: volcano-lab/nvml-mock
+  tag: 874ab03
+  # 必须使用本地构建的镜像；未导入时直接报错，不拉取同名镜像。
+  pullPolicy: Never
+nodeSelector:
+  # 限定到第一个 GPU 节点，避免两个 release 同时写同一节点的驱动目录。
+  gpu: 'on'
+  kubernetes.io/hostname: volcano-lab-worker

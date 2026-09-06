@@ -1,0 +1,933 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:28Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "gpu-20ae6455-8094-4d98-b639-2a6bfebe0250",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3031",
+        "uid": "b8cd6b7a-ff20-423e-8faf-add2817f1156"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:28Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 1 minAvailable",
+      "metadata": {
+        "name": "gpu-20ae6455-8094-4d98-b639-2a6bfebe0250.18d2c441b8036c4f",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:29Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "gpu-20ae6455-8094-4d98-b639-2a6bfebe0250",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3037",
+        "uid": "b8cd6b7a-ff20-423e-8faf-add2817f1156"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:29Z",
+      "message": "0/1 tasks in gang unschedulable: pod group is ready, 1 Binding, 1 minAvailable",
+      "metadata": {
+        "name": "gpu-20ae6455-8094-4d98-b639-2a6bfebe0250.18d2c441f4c473e9",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:30Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "gpu-20ae6455-8094-4d98-b639-2a6bfebe0250",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3052",
+        "uid": "b8cd6b7a-ff20-423e-8faf-add2817f1156"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:30Z",
+      "message": "pod group is ready",
+      "metadata": {
+        "name": "gpu-20ae6455-8094-4d98-b639-2a6bfebe0250.18d2c44231f6d548",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:14:17Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "gpu-262af257-6a7d-4176-af1e-bb2389e3e3ea",
+        "namespace": "volcano-tests",
+        "resourceVersion": "2536",
+        "uid": "806fcc87-ce66-4b1d-af13-856be6133074"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:14:17Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 1 minAvailable",
+      "metadata": {
+        "name": "gpu-262af257-6a7d-4176-af1e-bb2389e3e3ea.18d2c4232250306c",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 24,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:14:18Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "gpu-262af257-6a7d-4176-af1e-bb2389e3e3ea",
+        "namespace": "volcano-tests",
+        "resourceVersion": "2541",
+        "uid": "806fcc87-ce66-4b1d-af13-856be6133074"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:14:41Z",
+      "message": "1/1 tasks in gang unschedulable: pod group is not ready, 1 Pending, 1 minAvailable; Pending: 1 Unschedulable",
+      "metadata": {
+        "name": "gpu-262af257-6a7d-4176-af1e-bb2389e3e3ea.18d2c4235f24a2e9",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:15Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "gpu-42cfcbbd-6b43-4987-8d5f-c02665aaa1a9",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3630",
+        "uid": "a9351a04-b3ed-4e17-9772-f92092d45518"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:15Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 1 minAvailable",
+      "metadata": {
+        "name": "gpu-42cfcbbd-6b43-4987-8d5f-c02665aaa1a9.18d2c45aabde8868",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:16Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "gpu-42cfcbbd-6b43-4987-8d5f-c02665aaa1a9",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3637",
+        "uid": "a9351a04-b3ed-4e17-9772-f92092d45518"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:16Z",
+      "message": "0/1 tasks in gang unschedulable: pod group is ready, 1 Binding, 1 minAvailable",
+      "metadata": {
+        "name": "gpu-42cfcbbd-6b43-4987-8d5f-c02665aaa1a9.18d2c45ae94925d0",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:17Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "gpu-42cfcbbd-6b43-4987-8d5f-c02665aaa1a9",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3653",
+        "uid": "a9351a04-b3ed-4e17-9772-f92092d45518"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:17Z",
+      "message": "pod group is ready",
+      "metadata": {
+        "name": "gpu-42cfcbbd-6b43-4987-8d5f-c02665aaa1a9.18d2c45b26f4e915",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:35Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "gpu-spread-6c9a3a2c-e8c6-4557-8d7d-27c0d8f8ff91",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3140",
+        "uid": "fa84a6a4-039e-48d3-8092-1744469ce26d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:35Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 2 minAvailable",
+      "metadata": {
+        "name": "gpu-spread-6c9a3a2c-e8c6-4557-8d7d-27c0d8f8ff91.18d2c443650029bf",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:36Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "gpu-spread-6c9a3a2c-e8c6-4557-8d7d-27c0d8f8ff91",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3153",
+        "uid": "fa84a6a4-039e-48d3-8092-1744469ce26d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:36Z",
+      "message": "0/2 tasks in gang unschedulable: pod group is ready, 2 Binding, 2 minAvailable",
+      "metadata": {
+        "name": "gpu-spread-6c9a3a2c-e8c6-4557-8d7d-27c0d8f8ff91.18d2c443a3043ec7",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:37Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "gpu-spread-6c9a3a2c-e8c6-4557-8d7d-27c0d8f8ff91",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3179",
+        "uid": "fa84a6a4-039e-48d3-8092-1744469ce26d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:37Z",
+      "message": "pod group is ready",
+      "metadata": {
+        "name": "gpu-spread-6c9a3a2c-e8c6-4557-8d7d-27c0d8f8ff91.18d2c443e0578e3b",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:36Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "gpu-spread-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3144",
+        "uid": "efa25c9b-d875-4845-a05c-d2675b7a106e"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:36Z",
+      "message": "Successfully assigned volcano-tests/gpu-spread-worker-0 to volcano-lab-worker",
+      "metadata": {
+        "name": "gpu-spread-worker-0.18d2c443a3558e77",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:37Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "gpu-spread-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3155",
+        "uid": "efa25c9b-d875-4845-a05c-d2675b7a106e"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:37Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "gpu-spread-worker-0.18d2c443c3f072bc",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:37Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "gpu-spread-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3155",
+        "uid": "efa25c9b-d875-4845-a05c-d2675b7a106e"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:37Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "gpu-spread-worker-0.18d2c443c70442bb",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:37Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "gpu-spread-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3155",
+        "uid": "efa25c9b-d875-4845-a05c-d2675b7a106e"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:37Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "gpu-spread-worker-0.18d2c443cc1fb629",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:39Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "gpu-spread-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3155",
+        "uid": "efa25c9b-d875-4845-a05c-d2675b7a106e"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:39Z",
+      "message": "Stopping container work",
+      "metadata": {
+        "name": "gpu-spread-worker-0.18d2c44445b1b48e",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Killing",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:36Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "gpu-spread-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3143",
+        "uid": "31dfc2ad-8f7e-49fc-be79-9fb34a0ad806"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:36Z",
+      "message": "Successfully assigned volcano-tests/gpu-spread-worker-1 to volcano-lab-worker",
+      "metadata": {
+        "name": "gpu-spread-worker-1.18d2c443a355256c",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:37Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "gpu-spread-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3154",
+        "uid": "31dfc2ad-8f7e-49fc-be79-9fb34a0ad806"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:37Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "gpu-spread-worker-1.18d2c443c2557514",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:37Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "gpu-spread-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3154",
+        "uid": "31dfc2ad-8f7e-49fc-be79-9fb34a0ad806"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:37Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "gpu-spread-worker-1.18d2c443c504953c",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:37Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "gpu-spread-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3154",
+        "uid": "31dfc2ad-8f7e-49fc-be79-9fb34a0ad806"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:37Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "gpu-spread-worker-1.18d2c443ca492c8d",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:39Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "gpu-spread-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3154",
+        "uid": "31dfc2ad-8f7e-49fc-be79-9fb34a0ad806"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:39Z",
+      "message": "Stopping container work",
+      "metadata": {
+        "name": "gpu-spread-worker-1.18d2c44445b12a5d",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Killing",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:14:18Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "gpu-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "2538",
+        "uid": "d658928f-ea14-4eee-b602-12fd9291f6fc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:14:18Z",
+      "message": "pod group is not ready, 1 Pending, 1 minAvailable; Pending: 1 Unschedulable",
+      "metadata": {
+        "name": "gpu-worker-0.18d2c4235f257ffe",
+        "namespace": "volcano-tests"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:29Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "gpu-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3033",
+        "uid": "74b26b6d-81e8-4695-8262-57e5abcc2b2d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:29Z",
+      "message": "Successfully assigned volcano-tests/gpu-worker-0 to volcano-lab-worker",
+      "metadata": {
+        "name": "gpu-worker-0.18d2c441f5a60172",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:30Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "gpu-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3040",
+        "uid": "74b26b6d-81e8-4695-8262-57e5abcc2b2d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:30Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "gpu-worker-0.18d2c442133cee87",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:30Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "gpu-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3040",
+        "uid": "74b26b6d-81e8-4695-8262-57e5abcc2b2d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:30Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "gpu-worker-0.18d2c44215830aad",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:30Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "gpu-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3040",
+        "uid": "74b26b6d-81e8-4695-8262-57e5abcc2b2d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:30Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "gpu-worker-0.18d2c4421b5a77e0",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:32Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "gpu-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3040",
+        "uid": "74b26b6d-81e8-4695-8262-57e5abcc2b2d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:32Z",
+      "message": "Stopping container work",
+      "metadata": {
+        "name": "gpu-worker-0.18d2c442a30449e7",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Killing",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:16Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "gpu-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3632",
+        "uid": "466c3538-817d-46be-97d4-c34915f54c98"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:16Z",
+      "message": "Successfully assigned volcano-tests/gpu-worker-0 to volcano-lab-worker",
+      "metadata": {
+        "name": "gpu-worker-0.18d2c45aea89d7b2",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:17Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "gpu-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3640",
+        "uid": "466c3538-817d-46be-97d4-c34915f54c98"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:17Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "gpu-worker-0.18d2c45b08a6696d",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:17Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "gpu-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3640",
+        "uid": "466c3538-817d-46be-97d4-c34915f54c98"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:17Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "gpu-worker-0.18d2c45b0b933e01",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:17Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "gpu-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3640",
+        "uid": "466c3538-817d-46be-97d4-c34915f54c98"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:17Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "gpu-worker-0.18d2c45b1137a4a5",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:14:18Z",
+      "involvedObject": {
+        "apiVersion": "batch.volcano.sh/v1alpha1",
+        "kind": "Job",
+        "name": "gpu",
+        "namespace": "volcano-tests",
+        "resourceVersion": "2539",
+        "uid": "262af257-6a7d-4176-af1e-bb2389e3e3ea"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:14:18Z",
+      "message": "PodGroup volcano-tests:gpu unschedulable, reason: 1/1 tasks in gang unschedulable: pod group is not ready, 1 Pending, 1 minAvailable; Pending: 1 Unschedulable",
+      "metadata": {
+        "name": "gpu.18d2c4235fb71aef",
+        "namespace": "volcano-tests"
+      },
+      "reason": "PodGroupPending",
+      "reportingComponent": "vc-controller-manager",
+      "reportingInstance": "",
+      "source": {
+        "component": "vc-controller-manager"
+      },
+      "type": "Warning"
+    }
+  ],
+  "kind": "List",
+  "metadata": {}
+}

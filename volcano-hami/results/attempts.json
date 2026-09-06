@@ -1,0 +1,398 @@
+[
+  {
+    "round": "results-first",
+    "case": "01-job-completion",
+    "status": "PASS",
+    "seconds": 5.82,
+    "error": null,
+    "evidence": "01-job-completion/"
+  },
+  {
+    "round": "results-first",
+    "case": "02-gang-release",
+    "status": "PASS",
+    "seconds": 11.69,
+    "error": null,
+    "evidence": "02-gang-release/"
+  },
+  {
+    "round": "results-first",
+    "case": "03-elastic-minavailable",
+    "status": "PASS",
+    "seconds": 4.9,
+    "error": null,
+    "evidence": "03-elastic-minavailable/"
+  },
+  {
+    "round": "results-first",
+    "case": "04-queue-capability",
+    "status": "FAIL",
+    "seconds": 75.99,
+    "error": "Traceback (most recent call last):\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 121, in case\n    fn()\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 153, in quota\n    pending('second',1)\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 57, in pending\n    wait(lambda: len(pods(job)) == count)\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 47, in wait\n    raise AssertionError(f'condition timed out after {timeout}s: {last}')\nAssertionError: condition timed out after 70s: False\n"
+  },
+  {
+    "round": "results-first",
+    "case": "05-queue-close-open",
+    "status": "FAIL",
+    "seconds": 0.63,
+    "error": "Traceback (most recent call last):\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 121, in case\n    fn()\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 159, in closed\n    apply(queue('closed',state='Closed'))\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 37, in apply\n    return k('apply', '-f', '-', obj=obj)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 23, in k\n    raise RuntimeError(p.stderr or p.stdout)\nRuntimeError: Error from server (BadRequest): error when creating \"STDIN\": Queue in version \"v1beta1\" cannot be handled as a Queue: strict decoding error: unknown field \"spec.state\"\n\n"
+  },
+  {
+    "round": "results-first",
+    "case": "06-priority-preemption",
+    "status": "PASS",
+    "seconds": 8.26,
+    "error": null,
+    "evidence": "06-priority-preemption/"
+  },
+  {
+    "round": "results-first",
+    "case": "07-capacity-borrow-reclaim",
+    "status": "PASS",
+    "seconds": 11.29,
+    "error": null,
+    "evidence": "07-capacity-borrow-reclaim/"
+  },
+  {
+    "round": "results-first",
+    "case": "08-binpack",
+    "status": "PASS",
+    "seconds": 5.5,
+    "error": null,
+    "evidence": "08-binpack/"
+  },
+  {
+    "round": "results-first",
+    "case": "09-pod-antiaffinity",
+    "status": "PASS",
+    "seconds": 3.86,
+    "error": null,
+    "evidence": "09-pod-antiaffinity/"
+  },
+  {
+    "round": "results-first",
+    "case": "10-env-svc-ssh",
+    "status": "PASS",
+    "seconds": 4.07,
+    "error": null,
+    "evidence": "10-env-svc-ssh/"
+  },
+  {
+    "round": "results-first",
+    "case": "11-failure-abort",
+    "status": "PASS",
+    "seconds": 4.9,
+    "error": null,
+    "evidence": "11-failure-abort/"
+  },
+  {
+    "round": "results-first",
+    "case": "12-ttl-cleanup",
+    "status": "PASS",
+    "seconds": 9.16,
+    "error": null,
+    "evidence": "12-ttl-cleanup/"
+  },
+  {
+    "round": "results-first",
+    "case": "13-vgpu-allocation",
+    "status": "FAIL",
+    "seconds": 71.59,
+    "error": "Traceback (most recent call last):\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 121, in case\n    fn()\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 218, in gpu_basic\n    wait(lambda:len(running('gpu'))==1)\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 47, in wait\n    raise AssertionError(f'condition timed out after {timeout}s: {last}')\nAssertionError: condition timed out after 70s: False\n"
+  },
+  {
+    "round": "results-fixes",
+    "case": "04-queue-capability",
+    "status": "PASS",
+    "seconds": 13.9,
+    "error": null,
+    "evidence": "04-queue-capability/"
+  },
+  {
+    "round": "results-fixes",
+    "case": "05-queue-close-open",
+    "status": "FAIL",
+    "seconds": 0.75,
+    "error": "Traceback (most recent call last):\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 121, in case\n    fn()\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 173, in closed\n    queue_command('closed','CloseQueue')\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 167, in queue_command\n    apply({'apiVersion':'bus.volcano.sh/v1alpha1','kind':'Command',\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 37, in apply\n    return k('apply', '-f', '-', obj=obj)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 23, in k\n    raise RuntimeError(p.stderr or p.stdout)\nRuntimeError: Error from server (BadRequest): error when creating \"STDIN\": Command in version \"v1alpha1\" cannot be handled as a Command: strict decoding error: unknown field \"targetObject\"\n\n"
+  },
+  {
+    "round": "results-fixes",
+    "case": "13-vgpu-allocation",
+    "status": "FAIL",
+    "seconds": 3.93,
+    "error": "Traceback (most recent call last):\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 121, in case\n    fn()\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 242, in gpu_basic\n    assert 'volcano.sh/vgpu-devices-allocated' in p['metadata']['annotations'],p['metadata']['annotations']\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'scheduling.k8s.io/group-name': 'gpu-20ae6455-8094-4d98-b639-2a6bfebe0250', 'volcano.sh/bind-phase': 'success', 'volcano.sh/bind-time': '1788707789', 'volcano.sh/devices-to-allocate': '', 'volcano.sh/job-name': 'gpu', 'volcano.sh/job-retry-count': '0', 'volcano.sh/job-version': '0', 'volcano.sh/queue-name': 'lab', 'volcano.sh/task-index': '0', 'volcano.sh/task-spec': 'worker', 'volcano.sh/template-uid': 'gpu-worker', 'volcano.sh/vgpu-ids-new': 'GPU-12345678-1234-1234-1234-123456780000,NVIDIA,30,25:', 'volcano.sh/vgpu-node': 'volcano-lab-worker', 'volcano.sh/vgpu-time': '18446744073709551615'}\n"
+  },
+  {
+    "round": "results-fixes",
+    "case": "14-vgpu-sharing",
+    "status": "FAIL",
+    "seconds": 3.91,
+    "error": "Traceback (most recent call last):\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 121, in case\n    fn()\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 253, in gpu_share\n    allocations=[p['metadata']['annotations']['volcano.sh/vgpu-devices-allocated'] for p in running('share')]\n                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nKeyError: 'volcano.sh/vgpu-devices-allocated'\n"
+  },
+  {
+    "round": "results-fixes",
+    "case": "15-vgpu-device-spread",
+    "status": "FAIL",
+    "seconds": 2.85,
+    "error": "Traceback (most recent call last):\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 121, in case\n    fn()\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 260, in gpu_spread\n    a=[p['metadata']['annotations']['volcano.sh/vgpu-devices-allocated'] for p in running('gpu-spread')]\n       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nKeyError: 'volcano.sh/vgpu-devices-allocated'\n"
+  },
+  {
+    "round": "results-fixes",
+    "case": "16-vgpu-memory-reject",
+    "status": "PASS",
+    "seconds": 8.0,
+    "error": null,
+    "evidence": "16-vgpu-memory-reject/"
+  },
+  {
+    "round": "results-fixes",
+    "case": "17-vgpu-core-reject",
+    "status": "PASS",
+    "seconds": 8.0,
+    "error": null,
+    "evidence": "17-vgpu-core-reject/"
+  },
+  {
+    "round": "results-fixes",
+    "case": "18-vgpu-count-reject",
+    "status": "PASS",
+    "seconds": 8.04,
+    "error": null,
+    "evidence": "18-vgpu-count-reject/"
+  },
+  {
+    "round": "results-fixes",
+    "case": "19-vgpu-release",
+    "status": "PASS",
+    "seconds": 14.77,
+    "error": null,
+    "evidence": "19-vgpu-release/"
+  },
+  {
+    "round": "results-confirmed",
+    "case": "05-queue-close-open",
+    "status": "PASS",
+    "seconds": 4.34,
+    "error": null,
+    "evidence": "05-queue-close-open/"
+  },
+  {
+    "round": "results-confirmed",
+    "case": "13-vgpu-allocation",
+    "status": "PASS",
+    "seconds": 4.16,
+    "error": null,
+    "evidence": "13-vgpu-allocation/"
+  },
+  {
+    "round": "results-confirmed",
+    "case": "14-vgpu-sharing",
+    "status": "PASS",
+    "seconds": 5.01,
+    "error": null,
+    "evidence": "14-vgpu-sharing/"
+  },
+  {
+    "round": "results-confirmed",
+    "case": "15-vgpu-device-spread",
+    "status": "PASS",
+    "seconds": 4.0,
+    "error": null,
+    "evidence": "15-vgpu-device-spread/"
+  },
+  {
+    "round": "results-advanced",
+    "case": "20-nodegroup",
+    "status": "PASS",
+    "seconds": 5.58,
+    "error": null,
+    "evidence": "20-nodegroup/"
+  },
+  {
+    "round": "results-advanced",
+    "case": "21-hypernode-hard",
+    "status": "FAIL",
+    "seconds": 9.24,
+    "error": "Traceback (most recent call last):\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 121, in case\n    fn()\n  File \"/home/jimyag/opt/volcano-lab/run-advanced.py\", line 31, in hypernode\n    t.k('-n',t.NS,'patch','jobs.batch.volcano.sh','topo','--type=merge','-p',json.dumps({'spec':{'networkTopology':{'mode':'hard','highestTierAllowed':2}}}))\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 23, in k\n    raise RuntimeError(p.stderr or p.stdout)\nRuntimeError: Error from server: admission webhook \"validatejob.volcano.sh\" denied the request: job updates may not change fields other than `minAvailable`, `tasks[*].replicas under spec` and `PriorityClassName`\n\n"
+  },
+  {
+    "round": "results-advanced",
+    "case": "22-task-topology",
+    "status": "PASS",
+    "seconds": 5.54,
+    "error": null
+  },
+  {
+    "round": "results-advanced",
+    "case": "23-native-deployment",
+    "status": "FAIL",
+    "seconds": 1.91,
+    "error": "Traceback (most recent call last):\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 121, in case\n    fn()\n  File \"/home/jimyag/opt/volcano-lab/run-advanced.py\", line 51, in native\n    t.apply({'apiVersion':'apps/v1','kind':'Deployment','metadata':{'name':'native','namespace':t.NS},\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 37, in apply\n    return k('apply', '-f', '-', obj=obj)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 23, in k\n    raise RuntimeError(p.stderr or p.stdout)\nRuntimeError: The Deployment \"native\" is invalid: spec.template.spec.restartPolicy: Unsupported value: \"Never\": supported values: \"Always\"\n\n"
+  },
+  {
+    "round": "results-advanced",
+    "case": "24-job-restart",
+    "status": "PASS",
+    "seconds": 6.34,
+    "error": null,
+    "evidence": "24-job-restart/"
+  },
+  {
+    "round": "results-advanced",
+    "case": "25-task-dependency",
+    "status": "PASS",
+    "seconds": 9.26,
+    "error": null,
+    "evidence": "25-task-dependency/"
+  },
+  {
+    "round": "results-advanced",
+    "case": "26-cronjob",
+    "status": "PASS",
+    "seconds": 58.99,
+    "error": null,
+    "evidence": "26-cronjob/"
+  },
+  {
+    "round": "results-advanced",
+    "case": "27-jobflow",
+    "status": "PASS",
+    "seconds": 12.54,
+    "error": null,
+    "evidence": "27-jobflow/"
+  },
+  {
+    "round": "results-advanced",
+    "case": "28-drf-fairness",
+    "status": "PASS",
+    "seconds": 7.73,
+    "error": null,
+    "evidence": "28-drf-fairness/"
+  },
+  {
+    "round": "results-advanced",
+    "case": "29-metrics",
+    "status": "PASS",
+    "seconds": 0.75,
+    "error": null,
+    "evidence": "29-metrics/"
+  },
+  {
+    "round": "results-advanced",
+    "case": "30-vgpu-node-spread",
+    "status": "FAIL",
+    "seconds": 72.47,
+    "error": "Traceback (most recent call last):\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 121, in case\n    fn()\n  File \"/home/jimyag/opt/volcano-lab/run-advanced.py\", line 126, in gpu_node_spread\n    t.wait(lambda:len(t.running('node-spread'))==2)\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 47, in wait\n    raise AssertionError(f'condition timed out after {timeout}s: {last}')\nAssertionError: condition timed out after 70s: False\n"
+  },
+  {
+    "round": "results-advanced-fixes",
+    "case": "21-hypernode-hard",
+    "status": "PASS",
+    "seconds": 15.1,
+    "error": null,
+    "evidence": "21-hypernode-hard/"
+  },
+  {
+    "round": "results-advanced-fixes",
+    "case": "23-native-deployment",
+    "status": "PASS",
+    "seconds": 4.52,
+    "error": null,
+    "evidence": "23-native-deployment/"
+  },
+  {
+    "round": "results-boundaries",
+    "case": "31-weighted-queues",
+    "status": "PASS",
+    "seconds": 9.2,
+    "error": null,
+    "evidence": "31-weighted-queues/"
+  },
+  {
+    "round": "results-boundaries",
+    "case": "32-namespace-quota",
+    "status": "PASS",
+    "seconds": 16.11,
+    "error": null,
+    "evidence": "32-namespace-quota/"
+  },
+  {
+    "round": "results-boundaries",
+    "case": "33-hierarchical-queue",
+    "status": "PASS",
+    "seconds": 17.01,
+    "error": null,
+    "evidence": "33-hierarchical-queue/"
+  },
+  {
+    "round": "results-boundaries",
+    "case": "34-resource-strategy-fit",
+    "status": "PASS",
+    "seconds": 8.65,
+    "error": null,
+    "evidence": "34-resource-strategy-fit/"
+  },
+  {
+    "round": "results-boundaries",
+    "case": "35-small-job-progress",
+    "status": "PASS",
+    "seconds": 14.09,
+    "error": null,
+    "evidence": "35-small-job-progress/"
+  },
+  {
+    "round": "results-boundaries",
+    "case": "36-invalid-job",
+    "status": "PASS",
+    "seconds": 0.73,
+    "error": null,
+    "evidence": "36-invalid-job/"
+  },
+  {
+    "round": "results-boundaries",
+    "case": "37-taint-toleration",
+    "status": "PASS",
+    "seconds": 11.93,
+    "error": null,
+    "evidence": "37-taint-toleration/"
+  },
+  {
+    "round": "results-boundaries",
+    "case": "38-nvml-observation",
+    "status": "PASS",
+    "seconds": 4.07,
+    "error": null,
+    "evidence": "38-nvml-observation/"
+  },
+  {
+    "round": "results-spread-recheck",
+    "case": "30-vgpu-node-spread",
+    "status": "FAIL",
+    "seconds": 5.76,
+    "error": "Traceback (most recent call last):\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 121, in case\n    fn()\n  File \"/home/jimyag/opt/volcano-lab/run-advanced.py\", line 132, in gpu_node_spread\n    assert len({p['spec']['nodeName'] for p in t.running('node-spread')})==2\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+  },
+  {
+    "round": "results-spread-final",
+    "case": "30-vgpu-spread-policy",
+    "status": "FAIL",
+    "seconds": 4.24,
+    "error": "Traceback (most recent call last):\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 121, in case\n    fn()\n  File \"/home/jimyag/opt/volcano-lab/run-advanced.py\", line 131, in gpu_device_policy\n    assert len(t.running('node-spread'))==2\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+    "evidence": "30-vgpu-spread-policy/"
+  },
+  {
+    "round": "results-startup-probe",
+    "case": "39-restart-heartbeat-probe",
+    "status": "PASS",
+    "seconds": 92.28,
+    "error": null,
+    "evidence": "39-restart-heartbeat-probe/"
+  },
+  {
+    "round": "results-semantic-check",
+    "case": "22-task-topology",
+    "status": "PASS",
+    "seconds": 5.61,
+    "error": null,
+    "evidence": "22-task-topology/"
+  }
+]

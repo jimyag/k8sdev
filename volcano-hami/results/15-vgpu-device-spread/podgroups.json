@@ -1,0 +1,62 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "scheduling.volcano.sh/v1beta1",
+            "kind": "PodGroup",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch.volcano.sh/v1alpha1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"name\":\"gpu-spread\",\"namespace\":\"volcano-tests\"},\"spec\":{\"minAvailable\":2,\"queue\":\"lab\",\"schedulerName\":\"volcano\",\"tasks\":[{\"name\":\"worker\",\"replicas\":2,\"template\":{\"metadata\":{\"annotations\":{\"volcano.sh/vgpu-podgroup-policy\":\"spread\"}},\"spec\":{\"containers\":[{\"command\":[\"sleep\",\"3600\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"limits\":{\"volcano.sh/vgpu-cores\":20,\"volcano.sh/vgpu-memory\":30,\"volcano.sh/vgpu-number\":1},\"requests\":{\"cpu\":\"100m\",\"memory\":\"32Mi\"}},\"volumeMounts\":[{\"mountPath\":\"/usr/lib/x86_64-linux-gnu/libcuda.so.1\",\"name\":\"cuda\",\"readOnly\":true}]}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"volcano-lab-worker\"},\"restartPolicy\":\"Never\",\"runtimeClassName\":\"nvidia\",\"terminationGracePeriodSeconds\":0,\"volumes\":[{\"hostPath\":{\"path\":\"/var/lib/nvml-mock/driver/usr/lib64/libcuda.so.1\",\"type\":\"File\"},\"name\":\"cuda\"}]}}}]}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:18:24Z",
+                "generation": 4,
+                "name": "gpu-spread-b14d7af3-913e-4183-9ca2-24e8c49c0bf9",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "gpu-spread",
+                        "uid": "b14d7af3-913e-4183-9ca2-24e8c49c0bf9"
+                    }
+                ],
+                "resourceVersion": "3781",
+                "uid": "213b9d49-f935-4040-a2a2-e6072e70ef01"
+            },
+            "spec": {
+                "minMember": 2,
+                "minResources": {
+                    "count/pods": "2",
+                    "cpu": "200m",
+                    "memory": "64Mi",
+                    "pods": "2",
+                    "requests.cpu": "200m",
+                    "requests.memory": "64Mi"
+                },
+                "minTaskMember": {
+                    "worker": 2
+                },
+                "queue": "lab"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-09-06T15:18:27Z",
+                        "reason": "tasks in gang are ready to be scheduled",
+                        "status": "True",
+                        "transitionID": "b4f9e683-e2a3-4f15-a7f4-1507b40f5360",
+                        "type": "Scheduled"
+                    }
+                ],
+                "phase": "Running",
+                "running": 2
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

@@ -1,0 +1,120 @@
+I0906 15:24:08.698958       1 cache.go:1171] Retry to delete Job <volcano-tests/small-4e3be14b-44c1-4093-a978-6119e435c56e:volcano-tests/small-4e3be14b-44c1-4093-a978-6119e435c56e>
+I0906 15:24:08.719226       1 cache.go:1171] Retry to delete Job <volcano-tests/small-4e3be14b-44c1-4093-a978-6119e435c56e:volcano-tests/small-4e3be14b-44c1-4093-a978-6119e435c56e>
+I0906 15:24:08.759633       1 cache.go:1171] Retry to delete Job <volcano-tests/small-4e3be14b-44c1-4093-a978-6119e435c56e:volcano-tests/small-4e3be14b-44c1-4093-a978-6119e435c56e>
+I0906 15:24:08.840385       1 cache.go:1171] Retry to delete Job <volcano-tests/small-4e3be14b-44c1-4093-a978-6119e435c56e:volcano-tests/small-4e3be14b-44c1-4093-a978-6119e435c56e>
+I0906 15:24:08.955757       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:24:08.955803       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":0,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780000","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:24:08.955839       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":1,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780001","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:24:08.955863       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:24:08.955892       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":0,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780000","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:24:08.955916       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":1,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780001","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+E0906 15:24:08.955957       1 device_info.go:189] pod volcano-device-plugin-jj26z has no annotation volcano.sh/devices-to-allocate
+E0906 15:24:08.955983       1 device_info.go:189] pod volcano-controllers-5b976c6d4b-rkqw6 has no annotation volcano.sh/devices-to-allocate
+E0906 15:24:08.956001       1 device_info.go:189] pod volcano-scheduler-679b8694f8-6smfw has no annotation volcano.sh/devices-to-allocate
+E0906 15:24:08.956019       1 device_info.go:189] pod kindnet-5whpw has no annotation volcano.sh/devices-to-allocate
+E0906 15:24:08.956032       1 device_info.go:189] pod kube-proxy-gwssg has no annotation volcano.sh/devices-to-allocate
+E0906 15:24:08.956063       1 device_info.go:189] pod mock2-nvml-mock-mtnbp has no annotation volcano.sh/devices-to-allocate
+E0906 15:24:08.956079       1 device_info.go:189] pod kube-state-metrics-5ffcdf767c-gf9d5 has no annotation volcano.sh/devices-to-allocate
+E0906 15:24:08.956096       1 device_info.go:189] pod volcano-admission-5b979dc8f6-8rdzl has no annotation volcano.sh/devices-to-allocate
+E0906 15:24:08.956110       1 device_info.go:189] pod prometheus-deployment-7cb9b4545b-h2fz4 has no annotation volcano.sh/devices-to-allocate
+I0906 15:24:08.956222       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:24:08.956248       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":0,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780000","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:24:08.956268       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":1,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780001","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:24:08.956290       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:24:08.956310       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":0,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780000","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:24:08.956334       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":1,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780001","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+E0906 15:24:08.956375       1 device_info.go:189] pod kindnet-k2m7h has no annotation volcano.sh/devices-to-allocate
+E0906 15:24:08.956395       1 device_info.go:189] pod kube-proxy-btcmr has no annotation volcano.sh/devices-to-allocate
+E0906 15:24:08.956410       1 device_info.go:189] pod mock1-nvml-mock-9rgh9 has no annotation volcano.sh/devices-to-allocate
+E0906 15:24:08.956424       1 device_info.go:189] pod volcano-device-plugin-2sg22 has no annotation volcano.sh/devices-to-allocate
+E0906 15:24:08.956442       1 device_info.go:189] pod grafana-7c5659d458-xrbnn has no annotation volcano.sh/devices-to-allocate
+I0906 15:24:08.956527       1 cache.go:1581] "SnapShot for scheduling" jobNum=1 QueueNum=3 NodeNum=3
+I0906 15:24:08.956546       1 session.go:1036] Start adjusting jobs' network topology spec according to hyperNodeTierNameMap map[]
+I0906 15:24:08.956554       1 session.go:1079] Finish adjusting jobs' network topology spec according to hyperNodeTierNameMap map[]
+I0906 15:24:08.956565       1 session.go:279] Open Session a1b6a4bb-81d8-4455-9886-d5f121c76c7c with <1> Job and <3> Queues. HyperNodesReadyToSchedule: true
+I0906 15:24:08.956833       1 gpuexclusive.go:437] gpuexclusive: no rules configured, skipping GPU exclusivity wrapping
+I0906 15:24:08.956850       1 enqueue.go:79] Try to enqueue PodGroup to 0 Queues
+I0906 15:24:08.956857       1 reclaim.go:68] There are <1> Jobs and <3> Queues in total for scheduling.
+I0906 15:24:08.956872       1 reclaim.go:140] Considering reclaim for 3 tasks of job <volcano-tests/large-25a2fbde-81aa-45df-87e1-96d8dab7de0a>.
+I0906 15:24:08.956929       1 predicate_helper.go:115] Predicates failed: task volcano-tests/large-worker-0 on node volcano-lab-control-plane fit failed: node(s) had untolerated taint(s)
+W0906 15:24:08.956972       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+I0906 15:24:08.956997       1 reclaim.go:185] Considering Task <volcano-tests/large-worker-0> on Node <volcano-lab-worker>.
+I0906 15:24:08.957005       1 reclaim.go:185] Considering Task <volcano-tests/large-worker-0> on Node <volcano-lab-worker2>.
+I0906 15:24:08.957020       1 reclaim.go:140] Considering reclaim for 2 tasks of job <volcano-tests/large-25a2fbde-81aa-45df-87e1-96d8dab7de0a>.
+W0906 15:24:08.957114       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+I0906 15:24:08.957119       1 predicate_helper.go:115] Predicates failed: task volcano-tests/large-worker-1 on node volcano-lab-control-plane fit failed: node(s) had untolerated taint(s)
+I0906 15:24:08.957143       1 reclaim.go:185] Considering Task <volcano-tests/large-worker-1> on Node <volcano-lab-worker>.
+I0906 15:24:08.957156       1 reclaim.go:185] Considering Task <volcano-tests/large-worker-1> on Node <volcano-lab-worker2>.
+I0906 15:24:08.957170       1 reclaim.go:140] Considering reclaim for 1 tasks of job <volcano-tests/large-25a2fbde-81aa-45df-87e1-96d8dab7de0a>.
+W0906 15:24:08.957226       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+I0906 15:24:08.957226       1 predicate_helper.go:115] Predicates failed: task volcano-tests/large-worker-2 on node volcano-lab-control-plane fit failed: node(s) had untolerated taint(s)
+I0906 15:24:08.957241       1 reclaim.go:185] Considering Task <volcano-tests/large-worker-2> on Node <volcano-lab-worker>.
+I0906 15:24:08.957248       1 reclaim.go:185] Considering Task <volcano-tests/large-worker-2> on Node <volcano-lab-worker2>.
+I0906 15:24:08.957259       1 reclaim.go:135] No preemptor task in job <volcano-tests/large-25a2fbde-81aa-45df-87e1-96d8dab7de0a>.
+I0906 15:24:08.957268       1 statement.go:366] Discarding operations ...
+I0906 15:24:08.957294       1 allocate.go:138] Try to allocate resource to 1 Queues
+I0906 15:24:08.957308       1 allocate.go:328] "Try to allocate resource" queue="lab" job="volcano-tests/large-25a2fbde-81aa-45df-87e1-96d8dab7de0a" taskNum=3
+I0906 15:24:08.957320       1 allocate.go:757] There are <3> nodes for Job <volcano-tests/large-25a2fbde-81aa-45df-87e1-96d8dab7de0a>
+I0906 15:24:08.957368       1 predicate_helper.go:115] Predicates failed: task volcano-tests/large-worker-0 on node volcano-lab-control-plane fit failed: node(s) had untolerated taint(s)
+W0906 15:24:08.957382       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+I0906 15:24:08.957515       1 allocate.go:934] Binding Task <volcano-tests/large-worker-0> to node <volcano-lab-worker>
+E0906 15:24:08.957533       1 device_info.go:189] pod large-worker-0 has no annotation volcano.sh/devices-to-allocate
+I0906 15:24:08.957541       1 statement.go:277] After allocated Task <volcano-tests/large-worker-0> to Node <volcano-lab-worker>: idle <cpu 1390.00, memory 27959619584.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 104.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>, used <cpu 10610.00, memory 1193279488.00, pods 6.00>, releasing <cpu 0.00, memory 0.00>
+I0906 15:24:08.957612       1 statement.go:307] Allocating operations ...
+I0906 15:24:08.957633       1 allocate.go:757] There are <3> nodes for Job <volcano-tests/large-25a2fbde-81aa-45df-87e1-96d8dab7de0a>
+I0906 15:24:08.957667       1 predicate_helper.go:115] Predicates failed: task volcano-tests/large-worker-1 on node volcano-lab-worker fit failed: Insufficient cpu
+W0906 15:24:08.957677       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+I0906 15:24:08.957688       1 allocate.go:934] Binding Task <volcano-tests/large-worker-1> to node <volcano-lab-worker2>
+I0906 15:24:08.957698       1 statement.go:277] After allocated Task <volcano-tests/large-worker-1> to Node <volcano-lab-worker2>: idle <cpu 1890.00, memory 29033361408.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 100.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>, used <cpu 10110.00, memory 119537664.00, pods 10.00>, releasing <cpu 0.00, memory 0.00>
+W0906 15:24:08.957740       1 predicates.go:249] Devices hamivgpu assertion conversion failed, skip
+I0906 15:24:08.957754       1 statement.go:307] Allocating operations ...
+I0906 15:24:08.957764       1 allocate.go:757] There are <3> nodes for Job <volcano-tests/large-25a2fbde-81aa-45df-87e1-96d8dab7de0a>
+I0906 15:24:08.957788       1 predicate_helper.go:115] Predicates failed: task volcano-tests/large-worker-2 on node volcano-lab-worker2 fit failed: Insufficient cpu
+I0906 15:24:08.957797       1 statement.go:366] Discarding operations ...
+I0906 15:24:08.957803       1 statement.go:347] Remove Task <large-worker-1> on node <volcano-lab-worker2>
+W0906 15:24:08.957815       1 predicates.go:294] Devices hamivgpu assertion conversion failed, skip
+I0906 15:24:08.957823       1 statement.go:347] Remove Task <large-worker-0> on node <volcano-lab-worker>
+I0906 15:24:08.957862       1 predicate_helper.go:115] Predicates failed: task volcano-tests/large-worker-0 on node volcano-lab-control-plane fit failed: node(s) had untolerated taint(s)
+W0906 15:24:08.957869       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+I0906 15:24:08.957939       1 preempt.go:350] Considering Task <volcano-tests/large-worker-0> on Node <volcano-lab-worker>.
+I0906 15:24:08.957947       1 preempt.go:406] Preempted <cpu 0.00, memory 0.00> for Task <volcano-tests/large-worker-0> requested <cpu 10000.00, memory 33554432.00, pods 1.00>.
+I0906 15:24:08.957965       1 statement.go:171] After pipelined Task <volcano-tests/large-worker-0> to Node <volcano-lab-worker>: idle <cpu 11390.00, memory 27993174016.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 105.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>, used <cpu 610.00, memory 1159725056.00, pods 5.00>, releasing <cpu 0.00, memory 0.00>
+W0906 15:24:08.958013       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+I0906 15:24:08.958159       1 preempt.go:350] Considering Task <volcano-tests/large-worker-1> on Node <volcano-lab-worker>.
+I0906 15:24:08.958188       1 preempt.go:365] No validated victims on Node <volcano-lab-worker>: not enough resources: requested <cpu 10000.00, memory 33554432.00, pods 1.00>, but future idle <cpu 1390.00, memory 27959619584.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 104.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>
+I0906 15:24:08.958195       1 preempt.go:350] Considering Task <volcano-tests/large-worker-1> on Node <volcano-lab-worker2>.
+I0906 15:24:08.958207       1 preempt.go:406] Preempted <cpu 0.00, memory 0.00> for Task <volcano-tests/large-worker-1> requested <cpu 10000.00, memory 33554432.00, pods 1.00>.
+I0906 15:24:08.958228       1 statement.go:171] After pipelined Task <volcano-tests/large-worker-1> to Node <volcano-lab-worker2>: idle <cpu 11890.00, memory 29066915840.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 101.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>, used <cpu 110.00, memory 85983232.00, pods 9.00>, releasing <cpu 0.00, memory 0.00>
+W0906 15:24:08.958255       1 predicates.go:249] Devices hamivgpu assertion conversion failed, skip
+W0906 15:24:08.958314       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+I0906 15:24:08.958443       1 preempt.go:350] Considering Task <volcano-tests/large-worker-2> on Node <volcano-lab-worker>.
+I0906 15:24:08.958458       1 preempt.go:365] No validated victims on Node <volcano-lab-worker>: not enough resources: requested <cpu 10000.00, memory 33554432.00, pods 1.00>, but future idle <cpu 1390.00, memory 27959619584.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 104.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>
+I0906 15:24:08.958461       1 preempt.go:350] Considering Task <volcano-tests/large-worker-2> on Node <volcano-lab-worker2>.
+I0906 15:24:08.958470       1 preempt.go:365] No validated victims on Node <volcano-lab-worker2>: not enough resources: requested <cpu 10000.00, memory 33554432.00, pods 1.00>, but future idle <cpu 1890.00, memory 29033361408.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 100.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>
+I0906 15:24:08.958485       1 preempt.go:191] No preemptor task in job <volcano-tests/large-25a2fbde-81aa-45df-87e1-96d8dab7de0a>.
+I0906 15:24:08.958490       1 statement.go:366] Discarding operations ...
+I0906 15:24:08.958500       1 statement.go:224] After unpipelined Task <volcano-tests/large-worker-1> to Node <volcano-lab-worker2>: idle <cpu 11890.00, memory 29066915840.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 101.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>, used <cpu 110.00, memory 85983232.00, pods 9.00>, releasing <cpu 0.00, memory 0.00>
+W0906 15:24:08.958513       1 predicates.go:294] Devices hamivgpu assertion conversion failed, skip
+I0906 15:24:08.958521       1 statement.go:224] After unpipelined Task <volcano-tests/large-worker-0> to Node <volcano-lab-worker>: idle <cpu 11390.00, memory 27993174016.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 105.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>, used <cpu 610.00, memory 1159725056.00, pods 5.00>, releasing <cpu 0.00, memory 0.00>
+W0906 15:24:08.958567       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+I0906 15:24:08.958644       1 preempt.go:350] Considering Task <volcano-tests/large-worker-0> on Node <volcano-lab-worker>.
+I0906 15:24:08.958652       1 preempt.go:406] Preempted <cpu 0.00, memory 0.00> for Task <volcano-tests/large-worker-0> requested <cpu 10000.00, memory 33554432.00, pods 1.00>.
+I0906 15:24:08.958669       1 statement.go:171] After pipelined Task <volcano-tests/large-worker-0> to Node <volcano-lab-worker>: idle <cpu 11390.00, memory 27993174016.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 105.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>, used <cpu 610.00, memory 1159725056.00, pods 5.00>, releasing <cpu 0.00, memory 0.00>
+I0906 15:24:08.958692       1 statement.go:393] Committing operations ...
+W0906 15:24:08.958718       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+I0906 15:24:08.958773       1 preempt.go:350] Considering Task <volcano-tests/large-worker-1> on Node <volcano-lab-worker>.
+I0906 15:24:08.958785       1 preempt.go:365] No validated victims on Node <volcano-lab-worker>: not enough resources: requested <cpu 10000.00, memory 33554432.00, pods 1.00>, but future idle <cpu 1390.00, memory 27959619584.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 104.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>
+I0906 15:24:08.958788       1 preempt.go:350] Considering Task <volcano-tests/large-worker-1> on Node <volcano-lab-worker2>.
+I0906 15:24:08.958794       1 preempt.go:406] Preempted <cpu 0.00, memory 0.00> for Task <volcano-tests/large-worker-1> requested <cpu 10000.00, memory 33554432.00, pods 1.00>.
+I0906 15:24:08.958803       1 statement.go:171] After pipelined Task <volcano-tests/large-worker-1> to Node <volcano-lab-worker2>: idle <cpu 11890.00, memory 29066915840.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 101.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>, used <cpu 110.00, memory 85983232.00, pods 9.00>, releasing <cpu 0.00, memory 0.00>
+W0906 15:24:08.958815       1 predicates.go:249] Devices hamivgpu assertion conversion failed, skip
+I0906 15:24:08.958824       1 statement.go:393] Committing operations ...
+W0906 15:24:08.958846       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+I0906 15:24:08.958910       1 preempt.go:350] Considering Task <volcano-tests/large-worker-2> on Node <volcano-lab-worker>.
+I0906 15:24:08.958924       1 preempt.go:365] No validated victims on Node <volcano-lab-worker>: not enough resources: requested <cpu 10000.00, memory 33554432.00, pods 1.00>, but future idle <cpu 1390.00, memory 27959619584.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 104.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>
+I0906 15:24:08.958928       1 preempt.go:350] Considering Task <volcano-tests/large-worker-2> on Node <volcano-lab-worker2>.
+I0906 15:24:08.958936       1 preempt.go:365] No validated victims on Node <volcano-lab-worker2>: not enough resources: requested <cpu 10000.00, memory 33554432.00, pods 1.00>, but future idle <cpu 1890.00, memory 29033361408.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 100.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>
+I0906 15:24:08.958948       1 statement.go:366] Discarding operations ...
+I0906 15:24:08.971233       1 session.go:577] Close Session a1b6a4bb-81d8-4455-9886-d5f121c76c7c
+I0906 15:24:09.000478       1 cache.go:1171] Retry to delete Job <volcano-tests/small-4e3be14b-44c1-4093-a978-6119e435c56e:volcano-tests/small-4e3be14b-44c1-4093-a978-6119e435c56e>
+I0906 15:24:09.321173       1 cache.go:1171] Retry to delete Job <volcano-tests/small-4e3be14b-44c1-4093-a978-6119e435c56e:volcano-tests/small-4e3be14b-44c1-4093-a978-6119e435c56e>

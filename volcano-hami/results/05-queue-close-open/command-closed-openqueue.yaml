@@ -1,0 +1,22 @@
+# 实际测试输入；已移除服务端生成的 metadata，便于复现。
+# CPU 为核；vgpu-memory 每单位代表 100 MiB；cores 为百分比。
+apiVersion: bus.volcano.sh/v1alpha1
+kind: Command
+metadata:
+  name: closed-openqueue
+  namespace: default
+  ownerReferences:
+  - apiVersion: scheduling.volcano.sh/v1beta1
+    kind: Queue
+    name: closed
+    uid: 11aa4cbb-b7fe-455d-a651-6db4f8a3b333
+    controller: true
+    blockOwnerDeletion: true
+target:
+  apiVersion: scheduling.volcano.sh/v1beta1
+  kind: Queue
+  name: closed
+  uid: 11aa4cbb-b7fe-455d-a651-6db4f8a3b333
+  controller: true
+  blockOwnerDeletion: true
+action: OpenQueue

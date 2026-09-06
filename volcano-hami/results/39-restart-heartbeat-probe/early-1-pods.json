@@ -1,0 +1,324 @@
+[
+  {
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+      "annotations": {
+        "scheduling.k8s.io/group-name": "early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c",
+        "volcano.sh/job-name": "early-1",
+        "volcano.sh/job-retry-count": "0",
+        "volcano.sh/job-version": "0",
+        "volcano.sh/queue-name": "lab",
+        "volcano.sh/task-index": "0",
+        "volcano.sh/task-spec": "worker",
+        "volcano.sh/template-uid": "early-1-worker"
+      },
+      "creationTimestamp": "2026-09-06T15:29:45Z",
+      "generation": 1,
+      "labels": {
+        "volcano.sh/job-name": "early-1",
+        "volcano.sh/job-namespace": "volcano-tests",
+        "volcano.sh/queue-name": "lab",
+        "volcano.sh/task-index": "0",
+        "volcano.sh/task-spec": "worker"
+      },
+      "name": "early-1-worker-0",
+      "namespace": "volcano-tests",
+      "ownerReferences": [
+        {
+          "apiVersion": "batch.volcano.sh/v1alpha1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "early-1",
+          "uid": "b8a05368-c0d6-42a6-bf07-62ca955ce09c"
+        }
+      ],
+      "resourceVersion": "7188",
+      "uid": "22abfd6b-bd55-480c-8fd2-f2e3b691f0e2"
+    },
+    "spec": {
+      "containers": [
+        {
+          "command": [
+            "sleep",
+            "3600"
+          ],
+          "image": "ubuntu:22.04",
+          "imagePullPolicy": "IfNotPresent",
+          "name": "work",
+          "resources": {
+            "limits": {
+              "volcano.sh/vgpu-cores": "20",
+              "volcano.sh/vgpu-memory": "30",
+              "volcano.sh/vgpu-number": "1"
+            },
+            "requests": {
+              "cpu": "100m",
+              "memory": "32Mi",
+              "volcano.sh/vgpu-cores": "20",
+              "volcano.sh/vgpu-memory": "30",
+              "volcano.sh/vgpu-number": "1"
+            }
+          },
+          "terminationMessagePath": "/dev/termination-log",
+          "terminationMessagePolicy": "File",
+          "volumeMounts": [
+            {
+              "mountPath": "/usr/lib/x86_64-linux-gnu/libcuda.so.1",
+              "name": "cuda",
+              "readOnly": true
+            },
+            {
+              "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+              "name": "kube-api-access-85wzt",
+              "readOnly": true
+            }
+          ]
+        }
+      ],
+      "dnsPolicy": "ClusterFirst",
+      "enableServiceLinks": true,
+      "nodeName": "volcano-lab-worker",
+      "preemptionPolicy": "PreemptLowerPriority",
+      "priority": 0,
+      "restartPolicy": "Never",
+      "runtimeClassName": "nvidia",
+      "schedulerName": "volcano",
+      "securityContext": {},
+      "serviceAccount": "default",
+      "serviceAccountName": "default",
+      "terminationGracePeriodSeconds": 0,
+      "tolerations": [
+        {
+          "effect": "NoExecute",
+          "key": "node.kubernetes.io/not-ready",
+          "operator": "Exists",
+          "tolerationSeconds": 300
+        },
+        {
+          "effect": "NoExecute",
+          "key": "node.kubernetes.io/unreachable",
+          "operator": "Exists",
+          "tolerationSeconds": 300
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": {
+            "path": "/var/lib/nvml-mock/driver/usr/lib64/libcuda.so.1",
+            "type": "File"
+          },
+          "name": "cuda"
+        },
+        {
+          "name": "kube-api-access-85wzt",
+          "projected": {
+            "defaultMode": 420,
+            "sources": [
+              {
+                "serviceAccountToken": {
+                  "expirationSeconds": 3607,
+                  "path": "token"
+                }
+              },
+              {
+                "configMap": {
+                  "items": [
+                    {
+                      "key": "ca.crt",
+                      "path": "ca.crt"
+                    }
+                  ],
+                  "name": "kube-root-ca.crt"
+                }
+              },
+              {
+                "downwardAPI": {
+                  "items": [
+                    {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.namespace"
+                      },
+                      "path": "namespace"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "status": {
+      "message": "Pod was rejected: Allocate failed due to rpc error: code = Unknown desc = cannot get valid pod, which is unexpected",
+      "observedGeneration": 1,
+      "phase": "Failed",
+      "qosClass": "Burstable",
+      "reason": "UnexpectedAdmissionError",
+      "startTime": "2026-09-06T15:29:46Z"
+    }
+  },
+  {
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+      "annotations": {
+        "scheduling.k8s.io/group-name": "early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c",
+        "volcano.sh/job-name": "early-1",
+        "volcano.sh/job-retry-count": "0",
+        "volcano.sh/job-version": "0",
+        "volcano.sh/queue-name": "lab",
+        "volcano.sh/task-index": "1",
+        "volcano.sh/task-spec": "worker",
+        "volcano.sh/template-uid": "early-1-worker"
+      },
+      "creationTimestamp": "2026-09-06T15:29:45Z",
+      "generation": 1,
+      "labels": {
+        "volcano.sh/job-name": "early-1",
+        "volcano.sh/job-namespace": "volcano-tests",
+        "volcano.sh/queue-name": "lab",
+        "volcano.sh/task-index": "1",
+        "volcano.sh/task-spec": "worker"
+      },
+      "name": "early-1-worker-1",
+      "namespace": "volcano-tests",
+      "ownerReferences": [
+        {
+          "apiVersion": "batch.volcano.sh/v1alpha1",
+          "blockOwnerDeletion": true,
+          "controller": true,
+          "kind": "Job",
+          "name": "early-1",
+          "uid": "b8a05368-c0d6-42a6-bf07-62ca955ce09c"
+        }
+      ],
+      "resourceVersion": "7191",
+      "uid": "0ce47517-3e76-4235-91d9-b60dc3154d0a"
+    },
+    "spec": {
+      "containers": [
+        {
+          "command": [
+            "sleep",
+            "3600"
+          ],
+          "image": "ubuntu:22.04",
+          "imagePullPolicy": "IfNotPresent",
+          "name": "work",
+          "resources": {
+            "limits": {
+              "volcano.sh/vgpu-cores": "20",
+              "volcano.sh/vgpu-memory": "30",
+              "volcano.sh/vgpu-number": "1"
+            },
+            "requests": {
+              "cpu": "100m",
+              "memory": "32Mi",
+              "volcano.sh/vgpu-cores": "20",
+              "volcano.sh/vgpu-memory": "30",
+              "volcano.sh/vgpu-number": "1"
+            }
+          },
+          "terminationMessagePath": "/dev/termination-log",
+          "terminationMessagePolicy": "File",
+          "volumeMounts": [
+            {
+              "mountPath": "/usr/lib/x86_64-linux-gnu/libcuda.so.1",
+              "name": "cuda",
+              "readOnly": true
+            },
+            {
+              "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+              "name": "kube-api-access-jq97p",
+              "readOnly": true
+            }
+          ]
+        }
+      ],
+      "dnsPolicy": "ClusterFirst",
+      "enableServiceLinks": true,
+      "nodeName": "volcano-lab-worker",
+      "preemptionPolicy": "PreemptLowerPriority",
+      "priority": 0,
+      "restartPolicy": "Never",
+      "runtimeClassName": "nvidia",
+      "schedulerName": "volcano",
+      "securityContext": {},
+      "serviceAccount": "default",
+      "serviceAccountName": "default",
+      "terminationGracePeriodSeconds": 0,
+      "tolerations": [
+        {
+          "effect": "NoExecute",
+          "key": "node.kubernetes.io/not-ready",
+          "operator": "Exists",
+          "tolerationSeconds": 300
+        },
+        {
+          "effect": "NoExecute",
+          "key": "node.kubernetes.io/unreachable",
+          "operator": "Exists",
+          "tolerationSeconds": 300
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": {
+            "path": "/var/lib/nvml-mock/driver/usr/lib64/libcuda.so.1",
+            "type": "File"
+          },
+          "name": "cuda"
+        },
+        {
+          "name": "kube-api-access-jq97p",
+          "projected": {
+            "defaultMode": 420,
+            "sources": [
+              {
+                "serviceAccountToken": {
+                  "expirationSeconds": 3607,
+                  "path": "token"
+                }
+              },
+              {
+                "configMap": {
+                  "items": [
+                    {
+                      "key": "ca.crt",
+                      "path": "ca.crt"
+                    }
+                  ],
+                  "name": "kube-root-ca.crt"
+                }
+              },
+              {
+                "downwardAPI": {
+                  "items": [
+                    {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.namespace"
+                      },
+                      "path": "namespace"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "status": {
+      "message": "Pod was rejected: Allocate failed due to rpc error: code = Unknown desc = cannot get valid pod, which is unexpected",
+      "observedGeneration": 1,
+      "phase": "Failed",
+      "qosClass": "Burstable",
+      "reason": "UnexpectedAdmissionError",
+      "startTime": "2026-09-06T15:29:46Z"
+    }
+  }
+]

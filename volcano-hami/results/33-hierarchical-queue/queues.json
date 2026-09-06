@@ -1,0 +1,205 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "scheduling.volcano.sh/v1beta1",
+            "kind": "Queue",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"scheduling.volcano.sh/v1beta1\",\"kind\":\"Queue\",\"metadata\":{\"annotations\":{},\"labels\":{\"lab\":\"volcano\"},\"name\":\"child-a\"},\"spec\":{\"capability\":{\"cpu\":\"6\"},\"deserved\":{\"cpu\":\"3\"},\"parent\":\"parent\",\"reclaimable\":true,\"weight\":1}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:23:33Z",
+                "generation": 1,
+                "labels": {
+                    "lab": "volcano"
+                },
+                "name": "child-a",
+                "resourceVersion": "5918",
+                "uid": "c597485d-a0c7-4f84-a81d-20910ca309c2"
+            },
+            "spec": {
+                "capability": {
+                    "cpu": "6"
+                },
+                "dequeueStrategy": "traverse",
+                "deserved": {
+                    "cpu": "3"
+                },
+                "parent": "parent",
+                "reclaimable": true,
+                "weight": 1
+            },
+            "status": {
+                "allocated": {
+                    "cpu": "0",
+                    "memory": "0"
+                },
+                "reservation": {},
+                "state": "Open"
+            }
+        },
+        {
+            "apiVersion": "scheduling.volcano.sh/v1beta1",
+            "kind": "Queue",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"scheduling.volcano.sh/v1beta1\",\"kind\":\"Queue\",\"metadata\":{\"annotations\":{},\"labels\":{\"lab\":\"volcano\"},\"name\":\"child-b\"},\"spec\":{\"capability\":{\"cpu\":\"6\"},\"deserved\":{\"cpu\":\"3\"},\"parent\":\"parent\",\"reclaimable\":true,\"weight\":1}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:23:33Z",
+                "generation": 1,
+                "labels": {
+                    "lab": "volcano"
+                },
+                "name": "child-b",
+                "resourceVersion": "5925",
+                "uid": "b3f9daef-7c8d-491a-bd57-e45e56034751"
+            },
+            "spec": {
+                "capability": {
+                    "cpu": "6"
+                },
+                "dequeueStrategy": "traverse",
+                "deserved": {
+                    "cpu": "3"
+                },
+                "parent": "parent",
+                "reclaimable": true,
+                "weight": 1
+            },
+            "status": {
+                "allocated": {
+                    "cpu": "4",
+                    "memory": "32Mi",
+                    "pods": "1"
+                },
+                "reservation": {},
+                "state": "Open"
+            }
+        },
+        {
+            "apiVersion": "scheduling.volcano.sh/v1beta1",
+            "kind": "Queue",
+            "metadata": {
+                "creationTimestamp": "2026-09-06T15:09:09Z",
+                "generation": 2,
+                "name": "default",
+                "resourceVersion": "979",
+                "uid": "ab712a61-3cf9-471a-a421-a5161e0856b9"
+            },
+            "spec": {
+                "dequeueStrategy": "traverse",
+                "guarantee": {},
+                "parent": "root",
+                "reclaimable": true,
+                "weight": 1
+            },
+            "status": {
+                "allocated": {
+                    "cpu": "0",
+                    "memory": "0"
+                },
+                "reservation": {},
+                "state": "Open"
+            }
+        },
+        {
+            "apiVersion": "scheduling.volcano.sh/v1beta1",
+            "kind": "Queue",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"scheduling.volcano.sh/v1beta1\",\"kind\":\"Queue\",\"metadata\":{\"annotations\":{},\"labels\":{\"lab\":\"volcano\"},\"name\":\"lab\"},\"spec\":{\"reclaimable\":true,\"weight\":1}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:23:30Z",
+                "generation": 2,
+                "labels": {
+                    "lab": "volcano"
+                },
+                "name": "lab",
+                "resourceVersion": "5772",
+                "uid": "ad91fd5e-14aa-484b-9907-bdeb27cdb318"
+            },
+            "spec": {
+                "dequeueStrategy": "traverse",
+                "parent": "root",
+                "reclaimable": true,
+                "weight": 1
+            },
+            "status": {
+                "allocated": {
+                    "cpu": "0",
+                    "memory": "0"
+                },
+                "reservation": {},
+                "state": "Open"
+            }
+        },
+        {
+            "apiVersion": "scheduling.volcano.sh/v1beta1",
+            "kind": "Queue",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"scheduling.volcano.sh/v1beta1\",\"kind\":\"Queue\",\"metadata\":{\"annotations\":{},\"labels\":{\"lab\":\"volcano\"},\"name\":\"parent\"},\"spec\":{\"capability\":{\"cpu\":\"6\"},\"deserved\":{\"cpu\":\"6\"},\"reclaimable\":true,\"weight\":1}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:23:33Z",
+                "generation": 2,
+                "labels": {
+                    "lab": "volcano"
+                },
+                "name": "parent",
+                "resourceVersion": "5929",
+                "uid": "6f0474b5-7fc9-4850-971a-524e3f33887d"
+            },
+            "spec": {
+                "capability": {
+                    "cpu": "6"
+                },
+                "dequeueStrategy": "traverse",
+                "deserved": {
+                    "cpu": "6"
+                },
+                "parent": "root",
+                "reclaimable": true,
+                "weight": 1
+            },
+            "status": {
+                "allocated": {
+                    "cpu": "4",
+                    "memory": "32Mi",
+                    "pods": "1"
+                },
+                "reservation": {},
+                "state": "Open"
+            }
+        },
+        {
+            "apiVersion": "scheduling.volcano.sh/v1beta1",
+            "kind": "Queue",
+            "metadata": {
+                "creationTimestamp": "2026-09-06T15:09:09Z",
+                "generation": 1,
+                "name": "root",
+                "resourceVersion": "5927",
+                "uid": "9e927eff-c3e7-4884-9adf-7d6798657afd"
+            },
+            "spec": {
+                "dequeueStrategy": "traverse",
+                "guarantee": {},
+                "reclaimable": false,
+                "weight": 1
+            },
+            "status": {
+                "allocated": {
+                    "cpu": "4",
+                    "memory": "32Mi",
+                    "pods": "1"
+                },
+                "reservation": {},
+                "state": "Open"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

@@ -1,0 +1,105 @@
+go: downloading k8s.io/apiserver v0.35.3
+go: downloading k8s.io/api v0.35.3
+go: downloading k8s.io/apimachinery v0.35.3
+go: downloading k8s.io/kube-scheduler v0.35.3
+go: downloading k8s.io/kubernetes v1.35.3
+go: downloading k8s.io/client-go v0.35.3
+go: downloading k8s.io/utils v0.0.0-20251002143259-bc988d571ff4
+go: downloading github.com/prometheus/client_golang v1.23.2
+go: downloading k8s.io/component-base v0.35.3
+go: downloading github.com/golang/mock v1.6.0
+go: downloading gopkg.in/inf.v0 v0.9.1
+go: downloading k8s.io/component-helpers v0.35.3
+go: downloading k8s.io/dynamic-resource-allocation v0.35.3
+go: downloading sigs.k8s.io/randfill v1.0.0
+go: downloading stathat.com/c/consistent v1.0.0
+go: downloading k8s.io/apiextensions-apiserver v0.35.3
+go: downloading k8s.io/controller-manager v0.35.3
+go: downloading github.com/google/cadvisor v0.53.0
+go: downloading k8s.io/csi-translation-lib v0.35.3
+go: downloading k8s.io/cloud-provider v0.35.3
+go: downloading github.com/elastic/go-elasticsearch/v7 v7.17.7
+go: downloading github.com/prometheus/common v0.67.5
+go: downloading k8s.io/metrics v0.35.3
+go: downloading github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822
+go: downloading golang.org/x/net v0.52.0
+go: downloading golang.org/x/term v0.41.0
+go: downloading github.com/prometheus/client_model v0.6.2
+go: downloading k8s.io/kube-openapi v0.0.0-20250910181357-589584f1c912
+go: downloading sigs.k8s.io/structured-merge-diff/v6 v6.3.2-0.20260122202528-d9cc6641c482
+go: downloading github.com/blang/semver/v4 v4.0.0
+go: downloading github.com/prometheus/procfs v0.16.1
+go: downloading sigs.k8s.io/json v0.0.0-20250730193827-2d320260d730
+go: downloading github.com/opencontainers/selinux v1.13.0
+go: downloading google.golang.org/grpc v1.79.3
+go: downloading k8s.io/mount-utils v0.35.3
+go: downloading github.com/google/gnostic-models v0.7.0
+go: downloading github.com/google/cel-go v0.26.0
+go: downloading gopkg.in/evanphx/json-patch.v4 v4.13.0
+go: downloading github.com/fxamacker/cbor/v2 v2.9.0
+go: downloading github.com/cyphar/filepath-securejoin v0.6.0
+go: downloading github.com/moby/sys/mountinfo v0.7.2
+go: downloading google.golang.org/genproto/googleapis/rpc v0.0.0-20260311181403-84a4fc48630c
+go: downloading github.com/go-openapi/jsonreference v0.21.5
+go: downloading github.com/go-openapi/swag v0.25.5
+go: downloading google.golang.org/genproto/googleapis/api v0.0.0-20260319201613-d00831a3d3e7
+go: downloading golang.org/x/text v0.35.0
+go: downloading github.com/stoewer/go-strcase v1.3.0
+go: downloading github.com/modern-go/reflect2 v1.0.3-0.20250322232337-35a7c28c31ee
+go: downloading github.com/spf13/cobra v1.10.0
+go: downloading github.com/x448/float16 v0.8.4
+go: downloading github.com/antlr4-go/antlr/v4 v4.13.0
+go: downloading github.com/go-openapi/swag/cmdutils v0.25.5
+go: downloading github.com/go-openapi/swag/conv v0.25.5
+go: downloading github.com/go-openapi/swag/fileutils v0.25.5
+go: downloading github.com/go-openapi/swag/jsonutils v0.25.5
+go: downloading github.com/go-openapi/swag/loading v0.25.5
+go: downloading github.com/go-openapi/swag/mangling v0.25.5
+go: downloading github.com/go-openapi/swag/netutils v0.25.5
+go: downloading github.com/go-openapi/swag/stringutils v0.25.5
+go: downloading github.com/go-openapi/swag/typeutils v0.25.5
+go: downloading github.com/go-openapi/swag/yamlutils v0.25.5
+go: downloading github.com/emicklei/go-restful/v3 v3.12.2
+go: downloading golang.org/x/exp v0.0.0-20260218203240-3dfff04db8fa
+ok  	volcano.sh/volcano/pkg/scheduler/plugins	0.023s
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/binpack	0.226s
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/capacity	21.264s
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/cdp	0.020s
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/conformance	0.122s
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/deviceshare	0.022s
+?   	volcano.sh/volcano/pkg/scheduler/plugins/deviceshare/devices/ascend/310p/vnpu	[no test files]
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/drf	0.231s
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/extender	0.081s
+?   	volcano.sh/volcano/pkg/scheduler/plugins/gang	[no test files]
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/network-topology-aware	2.223s
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/nodegroup	0.732s
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/nodeorder	3.328s
+?   	volcano.sh/volcano/pkg/scheduler/plugins/numaaware	[no test files]
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/numaaware/policy	0.017s
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/numaaware/provider/cpumanager	0.016s
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/overcommit	0.427s
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/pdb	0.021s
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/predicates	1.423s
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/priority	1.029s
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/proportion	11.952s
+?   	volcano.sh/volcano/pkg/scheduler/plugins/rescheduling	[no test files]
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/resource-strategy-fit	1.578s
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/resourcequota	0.426s
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/sla	0.324s
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/task-topology	0.019s
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/tdm	8.445s
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/usage	0.733s
+?   	volcano.sh/volcano/pkg/scheduler/plugins/util	[no test files]
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/util/k8s	0.021s
+ok  	volcano.sh/volcano/pkg/scheduler/plugins/util/nodelock	0.010s
+?   	volcano.sh/volcano/pkg/scheduler/plugins/util/nodescore	[no test files]
+?   	volcano.sh/volcano/pkg/scheduler/actions	[no test files]
+ok  	volcano.sh/volcano/pkg/scheduler/actions/allocate	37.591s
+ok  	volcano.sh/volcano/pkg/scheduler/actions/backfill	1.441s
+ok  	volcano.sh/volcano/pkg/scheduler/actions/enqueue	2.283s
+ok  	volcano.sh/volcano/pkg/scheduler/actions/gangpreempt	0.020s
+ok  	volcano.sh/volcano/pkg/scheduler/actions/gangreclaim	0.019s
+ok  	volcano.sh/volcano/pkg/scheduler/actions/preempt	12.280s
+ok  	volcano.sh/volcano/pkg/scheduler/actions/reclaim	5.010s
+ok  	volcano.sh/volcano/pkg/scheduler/actions/shuffle	0.474s
+ok  	volcano.sh/volcano/pkg/scheduler/actions/utils	0.021s

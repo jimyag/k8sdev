@@ -1,0 +1,66 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "scheduling.volcano.sh/v1beta1",
+            "kind": "PodGroup",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch.volcano.sh/v1alpha1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"name\":\"topo\",\"namespace\":\"volcano-tests\"},\"spec\":{\"minAvailable\":3,\"networkTopology\":{\"highestTierAllowed\":2,\"mode\":\"hard\"},\"queue\":\"lab\",\"schedulerName\":\"volcano\",\"tasks\":[{\"name\":\"worker\",\"replicas\":3,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sleep\",\"3600\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"requests\":{\"cpu\":\"5\",\"memory\":\"32Mi\"}}}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":0}}}]}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:22:55Z",
+                "generation": 5,
+                "name": "topo-77d6af48-2e6d-4f63-9ce9-847bc908c189",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "topo",
+                        "uid": "77d6af48-2e6d-4f63-9ce9-847bc908c189"
+                    }
+                ],
+                "resourceVersion": "5182",
+                "uid": "b1514fa3-a1c1-479f-ba2c-a59e69b8d378"
+            },
+            "spec": {
+                "minMember": 3,
+                "minResources": {
+                    "count/pods": "3",
+                    "cpu": "15",
+                    "memory": "96Mi",
+                    "pods": "3",
+                    "requests.cpu": "15",
+                    "requests.memory": "96Mi"
+                },
+                "minTaskMember": {
+                    "worker": 3
+                },
+                "networkTopology": {
+                    "highestTierAllowed": 2,
+                    "mode": "hard"
+                },
+                "queue": "lab"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-09-06T15:22:59Z",
+                        "reason": "tasks in gang are ready to be scheduled",
+                        "status": "True",
+                        "transitionID": "9a3354ca-748c-4c15-b20a-cd1bca5543ab",
+                        "type": "Scheduled"
+                    }
+                ],
+                "phase": "Running",
+                "running": 3
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

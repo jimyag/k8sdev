@@ -1,0 +1,707 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:35:07Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "task-topology-37a847d4-ad71-4796-8439-26ccf4fdd8f7",
+        "namespace": "volcano-tests",
+        "resourceVersion": "7932",
+        "uid": "b7227cd6-9972-4992-98cf-ee0e4914b34f"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:35:07Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 2 minAvailable",
+      "metadata": {
+        "name": "task-topology-37a847d4-ad71-4796-8439-26ccf4fdd8f7.18d2c54625b61b8d",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:35:08Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "task-topology-37a847d4-ad71-4796-8439-26ccf4fdd8f7",
+        "namespace": "volcano-tests",
+        "resourceVersion": "7939",
+        "uid": "b7227cd6-9972-4992-98cf-ee0e4914b34f"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:35:08Z",
+      "message": "0/2 tasks in gang unschedulable: pod group is ready, 2 Binding, 2 minAvailable",
+      "metadata": {
+        "name": "task-topology-37a847d4-ad71-4796-8439-26ccf4fdd8f7.18d2c546628c701d",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:35:09Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "task-topology-37a847d4-ad71-4796-8439-26ccf4fdd8f7",
+        "namespace": "volcano-tests",
+        "resourceVersion": "7962",
+        "uid": "b7227cd6-9972-4992-98cf-ee0e4914b34f"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:35:09Z",
+      "message": "pod group is ready",
+      "metadata": {
+        "name": "task-topology-37a847d4-ad71-4796-8439-26ccf4fdd8f7.18d2c5469fd5672a",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:45Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "task-topology-9aa8aa6f-234a-4fff-8119-3e8785fd78dc",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4043",
+        "uid": "bbc2902a-f4ba-410a-a935-b3d9ce364d20"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:45Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 2 minAvailable",
+      "metadata": {
+        "name": "task-topology-9aa8aa6f-234a-4fff-8119-3e8785fd78dc.18d2c4618b23bb88",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:46Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "task-topology-9aa8aa6f-234a-4fff-8119-3e8785fd78dc",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4052",
+        "uid": "bbc2902a-f4ba-410a-a935-b3d9ce364d20"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:46Z",
+      "message": "0/2 tasks in gang unschedulable: pod group is ready, 2 Binding, 2 minAvailable",
+      "metadata": {
+        "name": "task-topology-9aa8aa6f-234a-4fff-8119-3e8785fd78dc.18d2c461c7f5ccdc",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:47Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "task-topology-9aa8aa6f-234a-4fff-8119-3e8785fd78dc",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4070",
+        "uid": "bbc2902a-f4ba-410a-a935-b3d9ce364d20"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:48Z",
+      "message": "pod group is ready",
+      "metadata": {
+        "name": "task-topology-9aa8aa6f-234a-4fff-8119-3e8785fd78dc.18d2c46205783a63",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:46Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "task-topology-peer-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4046",
+        "uid": "04ac6f0e-1a2d-4b8c-859b-6de8ef0b67d6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:46Z",
+      "message": "Successfully assigned volcano-tests/task-topology-peer-0 to volcano-lab-worker",
+      "metadata": {
+        "name": "task-topology-peer-0.18d2c461c84ac229",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:46Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "task-topology-peer-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4054",
+        "uid": "04ac6f0e-1a2d-4b8c-859b-6de8ef0b67d6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:46Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "task-topology-peer-0.18d2c461e51bf9f4",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:46Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "task-topology-peer-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4054",
+        "uid": "04ac6f0e-1a2d-4b8c-859b-6de8ef0b67d6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:46Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "task-topology-peer-0.18d2c461e878d595",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:46Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "task-topology-peer-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4054",
+        "uid": "04ac6f0e-1a2d-4b8c-859b-6de8ef0b67d6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:46Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "task-topology-peer-0.18d2c461ebd40267",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:49Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "task-topology-peer-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4054",
+        "uid": "04ac6f0e-1a2d-4b8c-859b-6de8ef0b67d6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:49Z",
+      "message": "Stopping container work",
+      "metadata": {
+        "name": "task-topology-peer-0.18d2c4629bc39ce1",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Killing",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:35:08Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "task-topology-peer-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "7935",
+        "uid": "bf85c5cd-6abb-476e-999e-7362a9e19ca0"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:35:08Z",
+      "message": "Successfully assigned volcano-tests/task-topology-peer-0 to volcano-lab-worker2",
+      "metadata": {
+        "name": "task-topology-peer-0.18d2c54662df659d",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:35:08Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "task-topology-peer-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "7941",
+        "uid": "bf85c5cd-6abb-476e-999e-7362a9e19ca0"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:35:08Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "task-topology-peer-0.18d2c5467f8e7a48",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:35:08Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "task-topology-peer-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "7941",
+        "uid": "bf85c5cd-6abb-476e-999e-7362a9e19ca0"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:35:08Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "task-topology-peer-0.18d2c54682f584b0",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:35:08Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "task-topology-peer-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "7941",
+        "uid": "bf85c5cd-6abb-476e-999e-7362a9e19ca0"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:35:08Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "task-topology-peer-0.18d2c5468653714f",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:46Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "task-topology-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4045",
+        "uid": "4fde7878-9fe3-46fe-a633-ffc67e875490"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:46Z",
+      "message": "Successfully assigned volcano-tests/task-topology-worker-0 to volcano-lab-worker",
+      "metadata": {
+        "name": "task-topology-worker-0.18d2c461c849e3fc",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:46Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "task-topology-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4053",
+        "uid": "4fde7878-9fe3-46fe-a633-ffc67e875490"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:46Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "task-topology-worker-0.18d2c461e4f31d58",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:46Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "task-topology-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4053",
+        "uid": "4fde7878-9fe3-46fe-a633-ffc67e875490"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:46Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "task-topology-worker-0.18d2c461e82de8ab",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:46Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "task-topology-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4053",
+        "uid": "4fde7878-9fe3-46fe-a633-ffc67e875490"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:46Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "task-topology-worker-0.18d2c461ebd3fe0f",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:49Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "task-topology-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4053",
+        "uid": "4fde7878-9fe3-46fe-a633-ffc67e875490"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:49Z",
+      "message": "Stopping container work",
+      "metadata": {
+        "name": "task-topology-worker-0.18d2c4629bc308fb",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Killing",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:35:08Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "task-topology-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "7934",
+        "uid": "a80653d1-1478-49ba-9217-0a9c6689e916"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:35:08Z",
+      "message": "Successfully assigned volcano-tests/task-topology-worker-0 to volcano-lab-worker",
+      "metadata": {
+        "name": "task-topology-worker-0.18d2c54662dbcf64",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:35:08Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "task-topology-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "7940",
+        "uid": "a80653d1-1478-49ba-9217-0a9c6689e916"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:35:08Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "task-topology-worker-0.18d2c5467f8b8005",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:35:08Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "task-topology-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "7940",
+        "uid": "a80653d1-1478-49ba-9217-0a9c6689e916"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:35:08Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "task-topology-worker-0.18d2c54682b6647d",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:35:08Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "task-topology-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "7940",
+        "uid": "a80653d1-1478-49ba-9217-0a9c6689e916"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:35:08Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "task-topology-worker-0.18d2c546869c6d81",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    }
+  ],
+  "kind": "List",
+  "metadata": {}
+}

@@ -1,0 +1,99 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "batch.volcano.sh/v1alpha1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch.volcano.sh/v1alpha1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"name\":\"gang\",\"namespace\":\"volcano-tests\"},\"spec\":{\"minAvailable\":3,\"queue\":\"lab\",\"schedulerName\":\"volcano\",\"tasks\":[{\"name\":\"worker\",\"replicas\":3,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sleep\",\"3600\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"requests\":{\"cpu\":\"5\",\"memory\":\"32Mi\"}}}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":0}}}]}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:11:58Z",
+                "generation": 1,
+                "name": "gang",
+                "namespace": "volcano-tests",
+                "resourceVersion": "1527",
+                "uid": "ed8f159c-7136-4565-bbe7-e74c636c7fa3"
+            },
+            "spec": {
+                "maxRetry": 3,
+                "minAvailable": 3,
+                "queue": "lab",
+                "schedulerName": "volcano",
+                "tasks": [
+                    {
+                        "maxRetry": 3,
+                        "minAvailable": 3,
+                        "name": "worker",
+                        "replicas": 3,
+                        "template": {
+                            "metadata": {},
+                            "spec": {
+                                "containers": [
+                                    {
+                                        "command": [
+                                            "sleep",
+                                            "3600"
+                                        ],
+                                        "image": "ubuntu:22.04",
+                                        "imagePullPolicy": "IfNotPresent",
+                                        "name": "work",
+                                        "resources": {
+                                            "requests": {
+                                                "cpu": "5",
+                                                "memory": "32Mi"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "restartPolicy": "Never",
+                                "terminationGracePeriodSeconds": 0
+                            }
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-09-06T15:11:58Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:11:58Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:12:06Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:12:06Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:12:06Z",
+                        "status": "Running"
+                    }
+                ],
+                "minAvailable": 3,
+                "running": 3,
+                "state": {
+                    "lastTransitionTime": "2026-09-06T15:12:06Z",
+                    "phase": "Running"
+                },
+                "taskStatusCount": {
+                    "worker": {
+                        "phase": {
+                            "Running": 3
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

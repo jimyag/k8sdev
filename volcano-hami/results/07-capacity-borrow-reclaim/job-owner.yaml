@@ -1,0 +1,31 @@
+# 实际测试输入；已移除服务端生成的 metadata，便于复现。
+# CPU 为核；vgpu-memory 每单位代表 100 MiB；cores 为百分比。
+apiVersion: batch.volcano.sh/v1alpha1
+kind: Job
+metadata:
+  name: owner
+  namespace: volcano-tests
+spec:
+  schedulerName: volcano
+  minAvailable: 2
+  queue: owner
+  tasks:
+  - name: worker
+    replicas: 2
+    template:
+      metadata:
+        annotations: {}
+      spec:
+        restartPolicy: Never
+        terminationGracePeriodSeconds: 0
+        containers:
+        - name: work
+          image: ubuntu:22.04
+          imagePullPolicy: IfNotPresent
+          command:
+          - sleep
+          - '3600'
+          resources:
+            requests:
+              cpu: '5'
+              memory: 32Mi

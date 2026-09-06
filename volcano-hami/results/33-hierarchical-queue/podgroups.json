@@ -1,0 +1,62 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "scheduling.volcano.sh/v1beta1",
+            "kind": "PodGroup",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch.volcano.sh/v1alpha1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"name\":\"child-b\",\"namespace\":\"volcano-tests\"},\"spec\":{\"minAvailable\":1,\"queue\":\"child-b\",\"schedulerName\":\"volcano\",\"tasks\":[{\"name\":\"worker\",\"replicas\":1,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sleep\",\"3600\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"requests\":{\"cpu\":\"4\",\"memory\":\"32Mi\"}}}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":0}}}]}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:23:36Z",
+                "generation": 5,
+                "name": "child-b-aeeb0d98-a904-4b7c-af3b-313278835226",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "child-b",
+                        "uid": "aeeb0d98-a904-4b7c-af3b-313278835226"
+                    }
+                ],
+                "resourceVersion": "5937",
+                "uid": "f1b31cc8-431e-4fac-aac0-9b4787ef7e19"
+            },
+            "spec": {
+                "minMember": 1,
+                "minResources": {
+                    "count/pods": "1",
+                    "cpu": "4",
+                    "memory": "32Mi",
+                    "pods": "1",
+                    "requests.cpu": "4",
+                    "requests.memory": "32Mi"
+                },
+                "minTaskMember": {
+                    "worker": 1
+                },
+                "queue": "child-b"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-09-06T15:23:45Z",
+                        "reason": "tasks in gang are ready to be scheduled",
+                        "status": "True",
+                        "transitionID": "f93881b1-446f-4bf2-b9be-6af5785fdd4d",
+                        "type": "Scheduled"
+                    }
+                ],
+                "phase": "Running",
+                "running": 1
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

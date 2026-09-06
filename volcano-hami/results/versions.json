@@ -1,0 +1,69 @@
+{
+  "sources": {
+    "volcano": "8fc394c11e8db0d0ada5c17816b58bced9d7213d",
+    "k8s-test-infra": "874ab0319732981bc79cbc9b01c22c8fd00656e6",
+    "volcano-vgpu-device-plugin": "afefcc2ff7944e9e68275e83217cf5eb7fb4a585"
+  },
+  "go": "go version go1.26.5 linux/amd64",
+  "images": [
+    {
+      "tag": "volcano-lab/nvml-mock:874ab03",
+      "Id": "sha256:769605ff5cf5a6bebb7612a3f35ab94914019a55182af4675694d82ff59885cf",
+      "RepoDigests": [],
+      "Architecture": "amd64",
+      "Os": "linux"
+    },
+    {
+      "tag": "volcano-lab/kind-nvidia:local",
+      "Id": "sha256:a776f5645ab2d8a187add074b48cf62ff720cccc443b56f6909f8042c981779a",
+      "RepoDigests": [],
+      "Architecture": "amd64",
+      "Os": "linux"
+    },
+    {
+      "tag": "volcanosh/vc-scheduler:v1.15.0",
+      "Id": "sha256:ebcbf4dbf5c39a90a3e6e35e6c6415732a923c72cf5e1a3ecc217080189a3517",
+      "RepoDigests": [
+        "volcanosh/vc-scheduler@sha256:948aa9e98d0060fbb9dee4829debc73d8f96cc2f5685a03b6958c470cdb0a4d5"
+      ],
+      "Architecture": "amd64",
+      "Os": "linux"
+    },
+    {
+      "tag": "volcanosh/vc-controller-manager:v1.15.0",
+      "Id": "sha256:62a1f45f95ee6b70809a054672f86ae3714be96ca568051169ead82a38d81cf8",
+      "RepoDigests": [
+        "volcanosh/vc-controller-manager@sha256:0cfadf09008b89baa0b4a79353fbcc21789a2af5cdf113844a0c3abea78e94b7"
+      ],
+      "Architecture": "amd64",
+      "Os": "linux"
+    },
+    {
+      "tag": "volcanosh/vc-webhook-manager:v1.15.0",
+      "Id": "sha256:7ad9340a6691e42d15b39d05e12d6e4da3317e16de44b2f9727a5da64d26e428",
+      "RepoDigests": [
+        "volcanosh/vc-webhook-manager@sha256:08f72b5fd485436ac89a365f00388faf0ae8c66abd6d1db3812b8f606ce399c7"
+      ],
+      "Architecture": "amd64",
+      "Os": "linux"
+    },
+    {
+      "tag": "projecthami/volcano-vgpu-device-plugin:v1.12.0",
+      "Id": "sha256:7a04b738a84cf1e529ace2a345f4abec83977d5057d2ec099efb0abbb64c9d56",
+      "RepoDigests": [
+        "projecthami/volcano-vgpu-device-plugin@sha256:2272aaeb32573926f625ee636bb596c1450e61090a00f4e5acdd5211daa723e1"
+      ],
+      "Architecture": "amd64",
+      "Os": "linux"
+    },
+    {
+      "tag": "ubuntu:22.04",
+      "Id": "sha256:4d0600e5088ac5da5119401c70292ea3a9d9dc71f76a234ad5390c1f6a8e5669",
+      "RepoDigests": [
+        "ubuntu@sha256:2edbbc5dc405e9612ba3584ce95480277e3eb374407b5505fe26f17df77c7dbc"
+      ],
+      "Architecture": "amd64",
+      "Os": "linux"
+    }
+  ]
+}

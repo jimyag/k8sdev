@@ -1,0 +1,841 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:03Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "full-cc258366-449b-4b12-92c6-928887f5326f",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3352",
+        "uid": "dd435d88-c941-4e54-b395-9e891987b47d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:03Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 2 minAvailable",
+      "metadata": {
+        "name": "full-cc258366-449b-4b12-92c6-928887f5326f.18d2c449c9761dda",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:04Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "full-cc258366-449b-4b12-92c6-928887f5326f",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3363",
+        "uid": "dd435d88-c941-4e54-b395-9e891987b47d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:04Z",
+      "message": "0/2 tasks in gang unschedulable: pod group is ready, 2 Binding, 2 minAvailable",
+      "metadata": {
+        "name": "full-cc258366-449b-4b12-92c6-928887f5326f.18d2c44a07b31c70",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:05Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "full-cc258366-449b-4b12-92c6-928887f5326f",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3385",
+        "uid": "dd435d88-c941-4e54-b395-9e891987b47d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:06Z",
+      "message": "pod group is ready",
+      "metadata": {
+        "name": "full-cc258366-449b-4b12-92c6-928887f5326f.18d2c44a44f30c61",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "full-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3355",
+        "uid": "cbdf7e5e-6b3e-487c-8627-d67347c0aab0"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:04Z",
+      "message": "Successfully assigned volcano-tests/full-worker-0 to volcano-lab-worker",
+      "metadata": {
+        "name": "full-worker-0.18d2c44a088503dd",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "full-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3366",
+        "uid": "cbdf7e5e-6b3e-487c-8627-d67347c0aab0"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:04Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "full-worker-0.18d2c44a280e76d1",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "full-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3366",
+        "uid": "cbdf7e5e-6b3e-487c-8627-d67347c0aab0"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:04Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "full-worker-0.18d2c44a2b0fddf6",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "full-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3366",
+        "uid": "cbdf7e5e-6b3e-487c-8627-d67347c0aab0"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:04Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "full-worker-0.18d2c44a30af7c93",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:14Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "full-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3366",
+        "uid": "cbdf7e5e-6b3e-487c-8627-d67347c0aab0"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:14Z",
+      "message": "Stopping container work",
+      "metadata": {
+        "name": "full-worker-0.18d2c44c572f9b1f",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Killing",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "full-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3356",
+        "uid": "d919b8e8-d03a-49d4-8d05-7e0033a52fa6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:04Z",
+      "message": "Successfully assigned volcano-tests/full-worker-1 to volcano-lab-worker",
+      "metadata": {
+        "name": "full-worker-1.18d2c44a08b0cc7d",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "full-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3367",
+        "uid": "d919b8e8-d03a-49d4-8d05-7e0033a52fa6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:04Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "full-worker-1.18d2c44a29c44a9b",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "full-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3367",
+        "uid": "d919b8e8-d03a-49d4-8d05-7e0033a52fa6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:04Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "full-worker-1.18d2c44a2ca62847",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "full-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3367",
+        "uid": "d919b8e8-d03a-49d4-8d05-7e0033a52fa6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:04Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "full-worker-1.18d2c44a32c1e0c6",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:14Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "full-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3367",
+        "uid": "d919b8e8-d03a-49d4-8d05-7e0033a52fa6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:14Z",
+      "message": "Stopping container work",
+      "metadata": {
+        "name": "full-worker-1.18d2c44c56d85d77",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Killing",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:07Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "waiting-c1099719-c45d-4f85-971b-7d8ad5106b85",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3399",
+        "uid": "ae138865-91ef-4e3f-bda3-4097fc88d389"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:07Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 1 minAvailable",
+      "metadata": {
+        "name": "waiting-c1099719-c45d-4f85-971b-7d8ad5106b85.18d2c44abda5db30",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 4,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:08Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "waiting-c1099719-c45d-4f85-971b-7d8ad5106b85",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3405",
+        "uid": "ae138865-91ef-4e3f-bda3-4097fc88d389"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:13Z",
+      "message": "1/1 tasks in gang unschedulable: pod group is not ready, 1 Pending, 1 minAvailable; Pending: 1 Unschedulable. Origin reason is waiting-worker-0: 0/3 nodes are unavailable: 1 node(s) didn't match Pod's node affinity/selector, 2 Insufficient volcano.sh/vgpu-cores.",
+      "metadata": {
+        "name": "waiting-c1099719-c45d-4f85-971b-7d8ad5106b85.18d2c44afa1b1c7c",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:09Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "waiting-c1099719-c45d-4f85-971b-7d8ad5106b85",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3413",
+        "uid": "ae138865-91ef-4e3f-bda3-4097fc88d389"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:09Z",
+      "message": "1/1 tasks in gang unschedulable: pod group is not ready, 1 Pending, 1 minAvailable; Pending: 1 Unschedulable. Origin reason is waiting-worker-0: 0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-cores, 1 Insufficient volcano.sh/vgpu-number, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "waiting-c1099719-c45d-4f85-971b-7d8ad5106b85.18d2c44b37d4f6f9",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:11Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "waiting-c1099719-c45d-4f85-971b-7d8ad5106b85",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3427",
+        "uid": "ae138865-91ef-4e3f-bda3-4097fc88d389"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:11Z",
+      "message": "1/1 tasks in gang unschedulable: pod group is not ready, 1 Pending, 1 minAvailable; Pending: 1 Unschedulable. Origin reason is waiting-worker-0: 0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-cores, 1 Insufficient volcano.sh/vgpu-memory, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "waiting-c1099719-c45d-4f85-971b-7d8ad5106b85.18d2c44bb2aec90b",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:14Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "waiting-c1099719-c45d-4f85-971b-7d8ad5106b85",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3453",
+        "uid": "ae138865-91ef-4e3f-bda3-4097fc88d389"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:14Z",
+      "message": "0/1 tasks in gang unschedulable: pod group is ready, 1 Binding, 1 minAvailable",
+      "metadata": {
+        "name": "waiting-c1099719-c45d-4f85-971b-7d8ad5106b85.18d2c44c692d687a",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:15Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "waiting-c1099719-c45d-4f85-971b-7d8ad5106b85",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3466",
+        "uid": "ae138865-91ef-4e3f-bda3-4097fc88d389"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:16Z",
+      "message": "pod group is ready",
+      "metadata": {
+        "name": "waiting-c1099719-c45d-4f85-971b-7d8ad5106b85.18d2c44ca6bb4599",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 3,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:08Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "waiting-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3401",
+        "uid": "88c71415-2d2b-4dec-aa23-404e539678a6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:12Z",
+      "message": "0/3 nodes are unavailable: 1 node(s) didn't match Pod's node affinity/selector, 2 Insufficient volcano.sh/vgpu-cores.",
+      "metadata": {
+        "name": "waiting-worker-0.18d2c44afa1c6685",
+        "namespace": "volcano-tests"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:09Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "waiting-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3407",
+        "uid": "88c71415-2d2b-4dec-aa23-404e539678a6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:09Z",
+      "message": "0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-cores, 1 Insufficient volcano.sh/vgpu-number, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "waiting-worker-0.18d2c44b37d5c601",
+        "namespace": "volcano-tests"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:11Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "waiting-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3421",
+        "uid": "88c71415-2d2b-4dec-aa23-404e539678a6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:11Z",
+      "message": "0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-cores, 1 Insufficient volcano.sh/vgpu-memory, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "waiting-worker-0.18d2c44bb2afc5dd",
+        "namespace": "volcano-tests"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:14Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "waiting-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3435",
+        "uid": "88c71415-2d2b-4dec-aa23-404e539678a6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:14Z",
+      "message": "Successfully assigned volcano-tests/waiting-worker-0 to volcano-lab-worker",
+      "metadata": {
+        "name": "waiting-worker-0.18d2c44c699c8c52",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:14Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "waiting-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3454",
+        "uid": "88c71415-2d2b-4dec-aa23-404e539678a6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:14Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "waiting-worker-0.18d2c44c8760615d",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:15Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "waiting-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3454",
+        "uid": "88c71415-2d2b-4dec-aa23-404e539678a6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:15Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "waiting-worker-0.18d2c44c899b6a2b",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:15Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "waiting-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3454",
+        "uid": "88c71415-2d2b-4dec-aa23-404e539678a6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:15Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "waiting-worker-0.18d2c44c8f4a7043",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 4,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:08Z",
+      "involvedObject": {
+        "apiVersion": "batch.volcano.sh/v1alpha1",
+        "kind": "Job",
+        "name": "waiting",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3402",
+        "uid": "c1099719-c45d-4f85-971b-7d8ad5106b85"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:14Z",
+      "message": "PodGroup volcano-tests:waiting unschedulable, reason: 1/1 tasks in gang unschedulable: pod group is not ready, 1 Pending, 1 minAvailable; Pending: 1 Unschedulable. Origin reason is waiting-worker-0: 0/3 nodes are unavailable: 1 node(s) didn't match Pod's node affinity/selector, 2 Insufficient volcano.sh/vgpu-cores.",
+      "metadata": {
+        "name": "waiting.18d2c44afb2c1e34",
+        "namespace": "volcano-tests"
+      },
+      "reason": "PodGroupPending",
+      "reportingComponent": "vc-controller-manager",
+      "reportingInstance": "",
+      "source": {
+        "component": "vc-controller-manager"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:09Z",
+      "involvedObject": {
+        "apiVersion": "batch.volcano.sh/v1alpha1",
+        "kind": "Job",
+        "name": "waiting",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3402",
+        "uid": "c1099719-c45d-4f85-971b-7d8ad5106b85"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:09Z",
+      "message": "PodGroup volcano-tests:waiting unschedulable, reason: 1/1 tasks in gang unschedulable: pod group is not ready, 1 Pending, 1 minAvailable; Pending: 1 Unschedulable. Origin reason is waiting-worker-0: 0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-cores, 1 Insufficient volcano.sh/vgpu-number, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "waiting.18d2c44b39032d4c",
+        "namespace": "volcano-tests"
+      },
+      "reason": "PodGroupPending",
+      "reportingComponent": "vc-controller-manager",
+      "reportingInstance": "",
+      "source": {
+        "component": "vc-controller-manager"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:17:11Z",
+      "involvedObject": {
+        "apiVersion": "batch.volcano.sh/v1alpha1",
+        "kind": "Job",
+        "name": "waiting",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3402",
+        "uid": "c1099719-c45d-4f85-971b-7d8ad5106b85"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:17:11Z",
+      "message": "PodGroup volcano-tests:waiting unschedulable, reason: 1/1 tasks in gang unschedulable: pod group is not ready, 1 Pending, 1 minAvailable; Pending: 1 Unschedulable. Origin reason is waiting-worker-0: 0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-cores, 1 Insufficient volcano.sh/vgpu-memory, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "waiting.18d2c44bb3449edd",
+        "namespace": "volcano-tests"
+      },
+      "reason": "PodGroupPending",
+      "reportingComponent": "vc-controller-manager",
+      "reportingInstance": "",
+      "source": {
+        "component": "vc-controller-manager"
+      },
+      "type": "Warning"
+    }
+  ],
+  "kind": "List",
+  "metadata": {}
+}

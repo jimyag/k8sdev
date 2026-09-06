@@ -1,0 +1,69 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "scheduling.volcano.sh/v1beta1",
+            "kind": "PodGroup",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch.volcano.sh/v1alpha1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"name\":\"gang\",\"namespace\":\"volcano-tests\"},\"spec\":{\"minAvailable\":3,\"queue\":\"lab\",\"schedulerName\":\"volcano\",\"tasks\":[{\"name\":\"worker\",\"replicas\":3,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sleep\",\"3600\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"requests\":{\"cpu\":\"5\",\"memory\":\"32Mi\"}}}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":0}}}]}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:11:58Z",
+                "generation": 4,
+                "name": "gang-ed8f159c-7136-4565-bbe7-e74c636c7fa3",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "gang",
+                        "uid": "ed8f159c-7136-4565-bbe7-e74c636c7fa3"
+                    }
+                ],
+                "resourceVersion": "1500",
+                "uid": "67d9d549-aa90-4e80-abdd-a489495fb07b"
+            },
+            "spec": {
+                "minMember": 3,
+                "minResources": {
+                    "count/pods": "3",
+                    "cpu": "15",
+                    "memory": "96Mi",
+                    "pods": "3",
+                    "requests.cpu": "15",
+                    "requests.memory": "96Mi"
+                },
+                "minTaskMember": {
+                    "worker": 3
+                },
+                "queue": "lab"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-09-06T15:11:59Z",
+                        "message": "3/3 tasks in gang unschedulable: pod group is not ready, 3 Pending, 3 minAvailable; Pending: 3 Unschedulable. Origin reason is gang-worker-0: 0/3 nodes are unavailable: 1 node(s) had untolerated taint(s), 2 Insufficient cpu.",
+                        "reason": "NotEnoughResources",
+                        "status": "True",
+                        "transitionID": "c72f2c59-0c83-4a33-aa5e-9d9f430fc89e",
+                        "type": "Unschedulable"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:12:06Z",
+                        "reason": "tasks in gang are ready to be scheduled",
+                        "status": "True",
+                        "transitionID": "1cc48894-f17a-4437-bd1d-abee975fbe67",
+                        "type": "Scheduled"
+                    }
+                ],
+                "phase": "Inqueue"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

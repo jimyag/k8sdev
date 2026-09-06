@@ -1,0 +1,1175 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 5.98kB done
+#1 DONE 0.0s
+
+#2 [auth] library/golang:pull token for registry-1.docker.io
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/golang:1.26.6-bookworm
+#3 ...
+
+#4 [auth] library/debian:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#5 [internal] load metadata for docker.io/library/debian:bookworm-slim
+#5 DONE 1.4s
+
+#3 [internal] load metadata for docker.io/library/golang:1.26.6-bookworm
+#3 DONE 1.5s
+
+#6 [internal] load .dockerignore
+#6 transferring context: 354B done
+#6 DONE 0.0s
+
+#7 [builder  1/14] FROM docker.io/library/golang:1.26.6-bookworm@sha256:116d58cbd88c1297624acc6e967a060012422bacf9930927e23fb719189c6f36
+#7 DONE 0.0s
+
+#8 [stage-1  1/13] FROM docker.io/library/debian:bookworm-slim@sha256:88200866dfff7ea7f5cbcb6ec7c8a701889efe6fe859fe64d6990e4b07ea4171
+#8 CACHED
+
+#9 [builder  2/14] WORKDIR /src
+#9 CACHED
+
+#10 [internal] load build context
+#10 transferring context: 2.14MB 0.0s done
+#10 DONE 0.0s
+
+#11 [builder  3/14] COPY go.mod go.sum ./
+#11 DONE 0.1s
+
+#12 [builder  4/14] RUN --mount=type=secret,id=goauth,mode=0500     if [ -f /run/secrets/goauth ]; then export GOAUTH=/run/secrets/goauth; fi;     go mod download
+#12 DONE 14.4s
+
+#13 [builder  5/14] COPY pkg/ pkg/
+#13 DONE 0.1s
+
+#14 [builder  6/14] COPY cmd/ cmd/
+#14 DONE 0.1s
+
+#15 [builder  7/14] COPY internal/ internal/
+#15 DONE 0.1s
+
+#16 [builder  8/14] COPY shims/ shims/
+#16 DONE 0.1s
+
+#17 [builder  9/14] COPY Makefile ./
+#17 DONE 0.1s
+
+#18 [builder 10/14] RUN cd pkg/gpu/mocknvml && make clean && make
+#18 0.226 rm -f libnvidia-ml.so* libnvidia-ml.so.550.163.01.probe
+#18 0.229   Probing unpadded size for two-pass build (target: 14680064 bytes)...
+#18 7.527 # github.com/NVIDIA/go-nvml/pkg/nvml
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceFreezeNvLinkUtilizationCounter':
+#18 7.527 cgo-gcc-prolog:263:2: warning: 'nvmlDeviceFreezeNvLinkUtilizationCounter' is deprecated [-Wdeprecated-declarations]
+#18 7.527 In file included from /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.go:24:
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9722:39: note: declared here
+#18 7.527  9722 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceFreezeNvLinkUtilizationCounter (nvmlDevice_t device, unsigned int link,
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetApplicationsClock':
+#18 7.527 cgo-gcc-prolog:471:2: warning: 'nvmlDeviceGetApplicationsClock' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:5693:39: note: declared here
+#18 7.527  5693 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetApplicationsClock(nvmlDevice_t device, nvmlClockType_t clockType, unsigned int *clockMHz);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetCurrentClocksThrottleReasons':
+#18 7.527 cgo-gcc-prolog:1247:2: warning: 'nvmlDeviceGetCurrentClocksThrottleReasons' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:6147:39: note: declared here
+#18 7.527  6147 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetCurrentClocksThrottleReasons(nvmlDevice_t device, unsigned long long *clocksThrottleReasons);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetDefaultApplicationsClock':
+#18 7.527 cgo-gcc-prolog:1290:2: warning: 'nvmlDeviceGetDefaultApplicationsClock' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:5698:39: note: declared here
+#18 7.527  5698 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetDefaultApplicationsClock(nvmlDevice_t device, nvmlClockType_t clockType, unsigned int *clockMHz);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetDetailedEccErrors':
+#18 7.527 cgo-gcc-prolog:1332:2: warning: 'nvmlDeviceGetDetailedEccErrors' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:7045:39: note: declared here
+#18 7.527  7045 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetDetailedEccErrors(nvmlDevice_t device, nvmlMemoryErrorType_t errorType, nvmlEccCounterType_t counterType, nvmlEccErrorCounts_t *eccCounts);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetGpuFabricInfo':
+#18 7.527 cgo-gcc-prolog:1810:2: warning: 'nvmlDeviceGetGpuFabricInfo' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:7850:39: note: declared here
+#18 7.527  7850 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetGpuFabricInfo(nvmlDevice_t device, nvmlGpuFabricInfo_t *gpuFabricInfo);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetHandleBySerial':
+#18 7.527 cgo-gcc-prolog:2356:2: warning: 'nvmlDeviceGetHandleBySerial' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:4696:39: note: declared here
+#18 7.527  4696 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetHandleBySerial(const char *serial, nvmlDevice_t *device);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetNvLinkUtilizationControl':
+#18 7.527 cgo-gcc-prolog:3323:2: warning: 'nvmlDeviceGetNvLinkUtilizationControl' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9672:39: note: declared here
+#18 7.527  9672 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetNvLinkUtilizationControl(nvmlDevice_t device, unsigned int link, unsigned int counter,
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetNvLinkUtilizationCounter':
+#18 7.527 cgo-gcc-prolog:3346:2: warning: 'nvmlDeviceGetNvLinkUtilizationCounter' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9698:39: note: declared here
+#18 7.527  9698 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetNvLinkUtilizationCounter(nvmlDevice_t device, unsigned int link, unsigned int counter,
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetPowerManagementMode':
+#18 7.527 cgo-gcc-prolog:3816:2: warning: 'nvmlDeviceGetPowerManagementMode' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:6488:39: note: declared here
+#18 7.527  6488 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetPowerManagementMode(nvmlDevice_t device, nvmlEnableState_t *mode);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetPowerState':
+#18 7.527 cgo-gcc-prolog:3876:2: warning: 'nvmlDeviceGetPowerState' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:6198:39: note: declared here
+#18 7.527  6198 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetPowerState(nvmlDevice_t device, nvmlPstates_t *pState);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetSupportedClocksThrottleReasons':
+#18 7.527 cgo-gcc-prolog:4235:2: warning: 'nvmlDeviceGetSupportedClocksThrottleReasons' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:6176:39: note: declared here
+#18 7.527  6176 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetSupportedClocksThrottleReasons(nvmlDevice_t device, unsigned long long *supportedClocksThrottleReasons);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetTemperature':
+#18 7.527 cgo-gcc-prolog:4386:2: warning: 'nvmlDeviceGetTemperature' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:5979:39: note: declared here
+#18 7.527  5979 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetTemperature(nvmlDevice_t device, nvmlTemperatureSensors_t sensorType, unsigned int *temp);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetVgpuSchedulerLog':
+#18 7.527 cgo-gcc-prolog:4785:2: warning: 'nvmlDeviceGetVgpuSchedulerLog' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11859:39: note: declared here
+#18 7.527 11859 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetVgpuSchedulerLog(nvmlDevice_t device, nvmlVgpuSchedulerLog_t *pSchedulerLog);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetVgpuSchedulerState':
+#18 7.527 cgo-gcc-prolog:4825:2: warning: 'nvmlDeviceGetVgpuSchedulerState' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11878:39: note: declared here
+#18 7.527 11878 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetVgpuSchedulerState(nvmlDevice_t device, nvmlVgpuSchedulerGetState_t *pSchedulerState);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetViolationStatus':
+#18 7.527 cgo-gcc-prolog:4934:2: warning: 'nvmlDeviceGetViolationStatus' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:7696:39: note: declared here
+#18 7.527  7696 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetViolationStatus(nvmlDevice_t device, nvmlPerfPolicyType_t perfPolicyType, nvmlViolationTime_t *violTime);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceResetApplicationsClocks':
+#18 7.527 cgo-gcc-prolog:5216:2: warning: 'nvmlDeviceResetApplicationsClocks' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9053:39: note: declared here
+#18 7.527  9053 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceResetApplicationsClocks(nvmlDevice_t device);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceResetNvLinkUtilizationCounter':
+#18 7.527 cgo-gcc-prolog:5296:2: warning: 'nvmlDeviceResetNvLinkUtilizationCounter' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9744:39: note: declared here
+#18 7.527  9744 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceResetNvLinkUtilizationCounter (nvmlDevice_t device, unsigned int link, unsigned int counter);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceSetApplicationsClocks':
+#18 7.527 cgo-gcc-prolog:5359:2: warning: 'nvmlDeviceSetApplicationsClocks' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9045:39: note: declared here
+#18 7.527  9045 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceSetApplicationsClocks(nvmlDevice_t device, unsigned int memClockMHz, unsigned int graphicsClockMHz);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceSetGpcClkVfOffset':
+#18 7.527 cgo-gcc-prolog:5627:2: warning: 'nvmlDeviceSetGpcClkVfOffset' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9303:39: note: declared here
+#18 7.527  9303 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceSetGpcClkVfOffset(nvmlDevice_t device, int offset);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceSetMemClkVfOffset':
+#18 7.527 cgo-gcc-prolog:5710:2: warning: 'nvmlDeviceSetMemClkVfOffset' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9321:39: note: declared here
+#18 7.527  9321 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceSetMemClkVfOffset(nvmlDevice_t device, int offset);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceSetNvLinkUtilizationControl':
+#18 7.527 cgo-gcc-prolog:5797:2: warning: 'nvmlDeviceSetNvLinkUtilizationControl' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9649:39: note: declared here
+#18 7.527  9649 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceSetNvLinkUtilizationControl(nvmlDevice_t device, unsigned int link, unsigned int counter,
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceSetVgpuSchedulerState':
+#18 7.527 cgo-gcc-prolog:6002:2: warning: 'nvmlDeviceSetVgpuSchedulerState' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11905:39: note: declared here
+#18 7.527 11905 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceSetVgpuSchedulerState(nvmlDevice_t device, nvmlVgpuSchedulerSetState_t *pSchedulerState);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceWorkloadPowerProfileClearRequestedProfiles':
+#18 7.527 cgo-gcc-prolog:6101:2: warning: 'nvmlDeviceWorkloadPowerProfileClearRequestedProfiles' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:14284:39: note: declared here
+#18 7.527 14284 | DEPRECATED(13.1) nvmlReturn_t DECLDIR nvmlDeviceWorkloadPowerProfileClearRequestedProfiles(nvmlDevice_t device,
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceWorkloadPowerProfileSetRequestedProfiles':
+#18 7.527 cgo-gcc-prolog:6161:2: warning: 'nvmlDeviceWorkloadPowerProfileSetRequestedProfiles' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:14258:39: note: declared here
+#18 7.527 14258 | DEPRECATED(13.1) nvmlReturn_t DECLDIR nvmlDeviceWorkloadPowerProfileSetRequestedProfiles(nvmlDevice_t device,
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlGpuInstanceGetVgpuSchedulerLog':
+#18 7.527 cgo-gcc-prolog:6842:2: warning: 'nvmlGpuInstanceGetVgpuSchedulerLog' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11453:39: note: declared here
+#18 7.527 11453 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlGpuInstanceGetVgpuSchedulerLog(nvmlGpuInstance_t gpuInstance, nvmlVgpuSchedulerLogInfo_t *pSchedulerLogInfo);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlGpuInstanceGetVgpuSchedulerState':
+#18 7.527 cgo-gcc-prolog:6882:2: warning: 'nvmlGpuInstanceGetVgpuSchedulerState' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11428:39: note: declared here
+#18 7.527 11428 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlGpuInstanceGetVgpuSchedulerState(nvmlGpuInstance_t gpuInstance, nvmlVgpuSchedulerStateInfo_t *pSchedulerStateInfo);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlGpuInstanceSetVgpuSchedulerState':
+#18 7.527 cgo-gcc-prolog:6962:2: warning: 'nvmlGpuInstanceSetVgpuSchedulerState' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11406:39: note: declared here
+#18 7.527 11406 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlGpuInstanceSetVgpuSchedulerState(nvmlGpuInstance_t gpuInstance, nvmlVgpuSchedulerState_t *pScheduler);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 7.527 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlVgpuInstanceGetLicenseStatus':
+#18 7.527 cgo-gcc-prolog:8055:2: warning: 'nvmlVgpuInstanceGetLicenseStatus' is deprecated [-Wdeprecated-declarations]
+#18 7.527 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11031:39: note: declared here
+#18 7.527 11031 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlVgpuInstanceGetLicenseStatus(nvmlVgpuInstance_t vgpuInstance, unsigned int *licensed);
+#18 7.527       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 12.97   Padding: base=13842472 bytes, padding=837592 bytes, target=14680064 bytes
+#18 20.35 # github.com/NVIDIA/go-nvml/pkg/nvml
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceFreezeNvLinkUtilizationCounter':
+#18 20.35 cgo-gcc-prolog:263:2: warning: 'nvmlDeviceFreezeNvLinkUtilizationCounter' is deprecated [-Wdeprecated-declarations]
+#18 20.35 In file included from /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.go:24:
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9722:39: note: declared here
+#18 20.35  9722 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceFreezeNvLinkUtilizationCounter (nvmlDevice_t device, unsigned int link,
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetApplicationsClock':
+#18 20.35 cgo-gcc-prolog:471:2: warning: 'nvmlDeviceGetApplicationsClock' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:5693:39: note: declared here
+#18 20.35  5693 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetApplicationsClock(nvmlDevice_t device, nvmlClockType_t clockType, unsigned int *clockMHz);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetCurrentClocksThrottleReasons':
+#18 20.35 cgo-gcc-prolog:1247:2: warning: 'nvmlDeviceGetCurrentClocksThrottleReasons' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:6147:39: note: declared here
+#18 20.35  6147 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetCurrentClocksThrottleReasons(nvmlDevice_t device, unsigned long long *clocksThrottleReasons);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetDefaultApplicationsClock':
+#18 20.35 cgo-gcc-prolog:1290:2: warning: 'nvmlDeviceGetDefaultApplicationsClock' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:5698:39: note: declared here
+#18 20.35  5698 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetDefaultApplicationsClock(nvmlDevice_t device, nvmlClockType_t clockType, unsigned int *clockMHz);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetDetailedEccErrors':
+#18 20.35 cgo-gcc-prolog:1332:2: warning: 'nvmlDeviceGetDetailedEccErrors' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:7045:39: note: declared here
+#18 20.35  7045 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetDetailedEccErrors(nvmlDevice_t device, nvmlMemoryErrorType_t errorType, nvmlEccCounterType_t counterType, nvmlEccErrorCounts_t *eccCounts);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetGpuFabricInfo':
+#18 20.35 cgo-gcc-prolog:1810:2: warning: 'nvmlDeviceGetGpuFabricInfo' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:7850:39: note: declared here
+#18 20.35  7850 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetGpuFabricInfo(nvmlDevice_t device, nvmlGpuFabricInfo_t *gpuFabricInfo);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetHandleBySerial':
+#18 20.35 cgo-gcc-prolog:2356:2: warning: 'nvmlDeviceGetHandleBySerial' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:4696:39: note: declared here
+#18 20.35  4696 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetHandleBySerial(const char *serial, nvmlDevice_t *device);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetNvLinkUtilizationControl':
+#18 20.35 cgo-gcc-prolog:3323:2: warning: 'nvmlDeviceGetNvLinkUtilizationControl' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9672:39: note: declared here
+#18 20.35  9672 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetNvLinkUtilizationControl(nvmlDevice_t device, unsigned int link, unsigned int counter,
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetNvLinkUtilizationCounter':
+#18 20.35 cgo-gcc-prolog:3346:2: warning: 'nvmlDeviceGetNvLinkUtilizationCounter' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9698:39: note: declared here
+#18 20.35  9698 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetNvLinkUtilizationCounter(nvmlDevice_t device, unsigned int link, unsigned int counter,
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetPowerManagementMode':
+#18 20.35 cgo-gcc-prolog:3816:2: warning: 'nvmlDeviceGetPowerManagementMode' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:6488:39: note: declared here
+#18 20.35  6488 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetPowerManagementMode(nvmlDevice_t device, nvmlEnableState_t *mode);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetPowerState':
+#18 20.35 cgo-gcc-prolog:3876:2: warning: 'nvmlDeviceGetPowerState' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:6198:39: note: declared here
+#18 20.35  6198 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetPowerState(nvmlDevice_t device, nvmlPstates_t *pState);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetSupportedClocksThrottleReasons':
+#18 20.35 cgo-gcc-prolog:4235:2: warning: 'nvmlDeviceGetSupportedClocksThrottleReasons' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:6176:39: note: declared here
+#18 20.35  6176 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetSupportedClocksThrottleReasons(nvmlDevice_t device, unsigned long long *supportedClocksThrottleReasons);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetTemperature':
+#18 20.35 cgo-gcc-prolog:4386:2: warning: 'nvmlDeviceGetTemperature' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:5979:39: note: declared here
+#18 20.35  5979 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetTemperature(nvmlDevice_t device, nvmlTemperatureSensors_t sensorType, unsigned int *temp);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetVgpuSchedulerLog':
+#18 20.35 cgo-gcc-prolog:4785:2: warning: 'nvmlDeviceGetVgpuSchedulerLog' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11859:39: note: declared here
+#18 20.35 11859 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetVgpuSchedulerLog(nvmlDevice_t device, nvmlVgpuSchedulerLog_t *pSchedulerLog);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetVgpuSchedulerState':
+#18 20.35 cgo-gcc-prolog:4825:2: warning: 'nvmlDeviceGetVgpuSchedulerState' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11878:39: note: declared here
+#18 20.35 11878 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetVgpuSchedulerState(nvmlDevice_t device, nvmlVgpuSchedulerGetState_t *pSchedulerState);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetViolationStatus':
+#18 20.35 cgo-gcc-prolog:4934:2: warning: 'nvmlDeviceGetViolationStatus' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:7696:39: note: declared here
+#18 20.35  7696 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetViolationStatus(nvmlDevice_t device, nvmlPerfPolicyType_t perfPolicyType, nvmlViolationTime_t *violTime);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceResetApplicationsClocks':
+#18 20.35 cgo-gcc-prolog:5216:2: warning: 'nvmlDeviceResetApplicationsClocks' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9053:39: note: declared here
+#18 20.35  9053 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceResetApplicationsClocks(nvmlDevice_t device);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceResetNvLinkUtilizationCounter':
+#18 20.35 cgo-gcc-prolog:5296:2: warning: 'nvmlDeviceResetNvLinkUtilizationCounter' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9744:39: note: declared here
+#18 20.35  9744 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceResetNvLinkUtilizationCounter (nvmlDevice_t device, unsigned int link, unsigned int counter);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceSetApplicationsClocks':
+#18 20.35 cgo-gcc-prolog:5359:2: warning: 'nvmlDeviceSetApplicationsClocks' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9045:39: note: declared here
+#18 20.35  9045 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceSetApplicationsClocks(nvmlDevice_t device, unsigned int memClockMHz, unsigned int graphicsClockMHz);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceSetGpcClkVfOffset':
+#18 20.35 cgo-gcc-prolog:5627:2: warning: 'nvmlDeviceSetGpcClkVfOffset' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9303:39: note: declared here
+#18 20.35  9303 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceSetGpcClkVfOffset(nvmlDevice_t device, int offset);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceSetMemClkVfOffset':
+#18 20.35 cgo-gcc-prolog:5710:2: warning: 'nvmlDeviceSetMemClkVfOffset' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9321:39: note: declared here
+#18 20.35  9321 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceSetMemClkVfOffset(nvmlDevice_t device, int offset);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceSetNvLinkUtilizationControl':
+#18 20.35 cgo-gcc-prolog:5797:2: warning: 'nvmlDeviceSetNvLinkUtilizationControl' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9649:39: note: declared here
+#18 20.35  9649 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceSetNvLinkUtilizationControl(nvmlDevice_t device, unsigned int link, unsigned int counter,
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceSetVgpuSchedulerState':
+#18 20.35 cgo-gcc-prolog:6002:2: warning: 'nvmlDeviceSetVgpuSchedulerState' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11905:39: note: declared here
+#18 20.35 11905 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceSetVgpuSchedulerState(nvmlDevice_t device, nvmlVgpuSchedulerSetState_t *pSchedulerState);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceWorkloadPowerProfileClearRequestedProfiles':
+#18 20.35 cgo-gcc-prolog:6101:2: warning: 'nvmlDeviceWorkloadPowerProfileClearRequestedProfiles' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:14284:39: note: declared here
+#18 20.35 14284 | DEPRECATED(13.1) nvmlReturn_t DECLDIR nvmlDeviceWorkloadPowerProfileClearRequestedProfiles(nvmlDevice_t device,
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceWorkloadPowerProfileSetRequestedProfiles':
+#18 20.35 cgo-gcc-prolog:6161:2: warning: 'nvmlDeviceWorkloadPowerProfileSetRequestedProfiles' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:14258:39: note: declared here
+#18 20.35 14258 | DEPRECATED(13.1) nvmlReturn_t DECLDIR nvmlDeviceWorkloadPowerProfileSetRequestedProfiles(nvmlDevice_t device,
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlGpuInstanceGetVgpuSchedulerLog':
+#18 20.35 cgo-gcc-prolog:6842:2: warning: 'nvmlGpuInstanceGetVgpuSchedulerLog' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11453:39: note: declared here
+#18 20.35 11453 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlGpuInstanceGetVgpuSchedulerLog(nvmlGpuInstance_t gpuInstance, nvmlVgpuSchedulerLogInfo_t *pSchedulerLogInfo);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlGpuInstanceGetVgpuSchedulerState':
+#18 20.35 cgo-gcc-prolog:6882:2: warning: 'nvmlGpuInstanceGetVgpuSchedulerState' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11428:39: note: declared here
+#18 20.35 11428 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlGpuInstanceGetVgpuSchedulerState(nvmlGpuInstance_t gpuInstance, nvmlVgpuSchedulerStateInfo_t *pSchedulerStateInfo);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlGpuInstanceSetVgpuSchedulerState':
+#18 20.35 cgo-gcc-prolog:6962:2: warning: 'nvmlGpuInstanceSetVgpuSchedulerState' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11406:39: note: declared here
+#18 20.35 11406 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlGpuInstanceSetVgpuSchedulerState(nvmlGpuInstance_t gpuInstance, nvmlVgpuSchedulerState_t *pScheduler);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 20.35 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlVgpuInstanceGetLicenseStatus':
+#18 20.35 cgo-gcc-prolog:8055:2: warning: 'nvmlVgpuInstanceGetLicenseStatus' is deprecated [-Wdeprecated-declarations]
+#18 20.35 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11031:39: note: declared here
+#18 20.35 11031 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlVgpuInstanceGetLicenseStatus(nvmlVgpuInstance_t vgpuInstance, unsigned int *licensed);
+#18 20.35       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#18 28.11   Built libnvidia-ml.so.550.163.01: 14116368 bytes
+#18 28.11 ln -sf libnvidia-ml.so.550.163.01 libnvidia-ml.so.1
+#18 28.11 ln -sf libnvidia-ml.so.1 libnvidia-ml.so
+#18 DONE 28.5s
+
+#19 [builder 11/14] RUN cd pkg/gpu/mockcuda && make clean && make
+#19 0.275 fatal: not a git repository (or any of the parent directories): .git
+#19 0.279 rm -f libcuda.so*
+#19 0.280 fatal: not a git repository (or any of the parent directories): .git
+#19 0.281 go build -buildmode=c-shared -o libcuda.so.550.163.01 ./bridge
+#19 1.636 ln -sf libcuda.so.550.163.01 libcuda.so.1
+#19 1.637 ln -sf libcuda.so.1 libcuda.so
+#19 DONE 1.7s
+
+#20 [builder 12/14] RUN cd shims/libibmock && make clean && make
+#20 0.294 rm -f libibmocksys.so* libibmockumad.so* libibmockverbs.so*
+#20 0.302 cc -O2 -Wall -Wextra -fPIC -fvisibility=default -shared -ldl -Wl,-soname,libibmocksys.so.1 -o libibmocksys.so.1.0.0 src/shim.c
+#20 0.521 ln -sf libibmocksys.so.1.0.0 libibmocksys.so.1
+#20 0.522 ln -sf libibmocksys.so.1 libibmocksys.so
+#20 0.524 cc -O2 -Wall -Wextra -fPIC -fvisibility=default -shared -ldl -Wl,-soname,libibmockumad.so.1 -o libibmockumad.so.1.0.0 src/umad_shim.c
+#20 0.757 ln -sf libibmockumad.so.1.0.0 libibmockumad.so.1
+#20 0.758 ln -sf libibmockumad.so.1 libibmockumad.so
+#20 0.760 cc -O2 -Wall -Wextra -fPIC -fvisibility=default -shared -ldl -Wl,-soname,libibmockverbs.so.1 -o libibmockverbs.so.1.0.0 src/verbs_shim.c
+#20 0.952 ln -sf libibmockverbs.so.1.0.0 libibmockverbs.so.1
+#20 0.954 ln -sf libibmockverbs.so.1 libibmockverbs.so
+#20 DONE 1.0s
+
+#21 [builder 13/14] RUN cd shims/libpcisysfs && make clean && make
+#21 0.331 cc -O2 -Wall -Wextra -fPIC -fvisibility=default -shared -ldl -Wl,-soname,libpcisysfs.so.1 -o libpcisysfs.so.1.0.0 src/shim.c
+#21 0.557 cc -O2 -D_FORTIFY_SOURCE=2 -Wall -o open-fortified testbin/open-fortified.c
+#21 0.636 cc -O2 -Wall -o fopen-read testbin/fopen-read.c
+#21 DONE 0.8s
+
+#22 [builder 14/14] RUN make build
+#22 0.352 Building CLI..
+#22 0.372 🔨 check-fabric
+#22 12.21 # github.com/NVIDIA/go-nvml/pkg/nvml
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceFreezeNvLinkUtilizationCounter':
+#22 12.21 cgo-gcc-prolog:263:2: warning: 'nvmlDeviceFreezeNvLinkUtilizationCounter' is deprecated [-Wdeprecated-declarations]
+#22 12.21 In file included from /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.go:24:
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9722:39: note: declared here
+#22 12.21  9722 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceFreezeNvLinkUtilizationCounter (nvmlDevice_t device, unsigned int link,
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetApplicationsClock':
+#22 12.21 cgo-gcc-prolog:471:2: warning: 'nvmlDeviceGetApplicationsClock' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:5693:39: note: declared here
+#22 12.21  5693 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetApplicationsClock(nvmlDevice_t device, nvmlClockType_t clockType, unsigned int *clockMHz);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetCurrentClocksThrottleReasons':
+#22 12.21 cgo-gcc-prolog:1247:2: warning: 'nvmlDeviceGetCurrentClocksThrottleReasons' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:6147:39: note: declared here
+#22 12.21  6147 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetCurrentClocksThrottleReasons(nvmlDevice_t device, unsigned long long *clocksThrottleReasons);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetDefaultApplicationsClock':
+#22 12.21 cgo-gcc-prolog:1290:2: warning: 'nvmlDeviceGetDefaultApplicationsClock' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:5698:39: note: declared here
+#22 12.21  5698 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetDefaultApplicationsClock(nvmlDevice_t device, nvmlClockType_t clockType, unsigned int *clockMHz);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetDetailedEccErrors':
+#22 12.21 cgo-gcc-prolog:1332:2: warning: 'nvmlDeviceGetDetailedEccErrors' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:7045:39: note: declared here
+#22 12.21  7045 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetDetailedEccErrors(nvmlDevice_t device, nvmlMemoryErrorType_t errorType, nvmlEccCounterType_t counterType, nvmlEccErrorCounts_t *eccCounts);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetGpuFabricInfo':
+#22 12.21 cgo-gcc-prolog:1810:2: warning: 'nvmlDeviceGetGpuFabricInfo' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:7850:39: note: declared here
+#22 12.21  7850 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetGpuFabricInfo(nvmlDevice_t device, nvmlGpuFabricInfo_t *gpuFabricInfo);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetHandleBySerial':
+#22 12.21 cgo-gcc-prolog:2356:2: warning: 'nvmlDeviceGetHandleBySerial' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:4696:39: note: declared here
+#22 12.21  4696 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetHandleBySerial(const char *serial, nvmlDevice_t *device);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetNvLinkUtilizationControl':
+#22 12.21 cgo-gcc-prolog:3323:2: warning: 'nvmlDeviceGetNvLinkUtilizationControl' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9672:39: note: declared here
+#22 12.21  9672 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetNvLinkUtilizationControl(nvmlDevice_t device, unsigned int link, unsigned int counter,
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetNvLinkUtilizationCounter':
+#22 12.21 cgo-gcc-prolog:3346:2: warning: 'nvmlDeviceGetNvLinkUtilizationCounter' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9698:39: note: declared here
+#22 12.21  9698 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetNvLinkUtilizationCounter(nvmlDevice_t device, unsigned int link, unsigned int counter,
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetPowerManagementMode':
+#22 12.21 cgo-gcc-prolog:3816:2: warning: 'nvmlDeviceGetPowerManagementMode' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:6488:39: note: declared here
+#22 12.21  6488 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetPowerManagementMode(nvmlDevice_t device, nvmlEnableState_t *mode);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetPowerState':
+#22 12.21 cgo-gcc-prolog:3876:2: warning: 'nvmlDeviceGetPowerState' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:6198:39: note: declared here
+#22 12.21  6198 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetPowerState(nvmlDevice_t device, nvmlPstates_t *pState);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetSupportedClocksThrottleReasons':
+#22 12.21 cgo-gcc-prolog:4235:2: warning: 'nvmlDeviceGetSupportedClocksThrottleReasons' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:6176:39: note: declared here
+#22 12.21  6176 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetSupportedClocksThrottleReasons(nvmlDevice_t device, unsigned long long *supportedClocksThrottleReasons);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetTemperature':
+#22 12.21 cgo-gcc-prolog:4386:2: warning: 'nvmlDeviceGetTemperature' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:5979:39: note: declared here
+#22 12.21  5979 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetTemperature(nvmlDevice_t device, nvmlTemperatureSensors_t sensorType, unsigned int *temp);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetVgpuSchedulerLog':
+#22 12.21 cgo-gcc-prolog:4785:2: warning: 'nvmlDeviceGetVgpuSchedulerLog' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11859:39: note: declared here
+#22 12.21 11859 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetVgpuSchedulerLog(nvmlDevice_t device, nvmlVgpuSchedulerLog_t *pSchedulerLog);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetVgpuSchedulerState':
+#22 12.21 cgo-gcc-prolog:4825:2: warning: 'nvmlDeviceGetVgpuSchedulerState' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11878:39: note: declared here
+#22 12.21 11878 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetVgpuSchedulerState(nvmlDevice_t device, nvmlVgpuSchedulerGetState_t *pSchedulerState);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceGetViolationStatus':
+#22 12.21 cgo-gcc-prolog:4934:2: warning: 'nvmlDeviceGetViolationStatus' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:7696:39: note: declared here
+#22 12.21  7696 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceGetViolationStatus(nvmlDevice_t device, nvmlPerfPolicyType_t perfPolicyType, nvmlViolationTime_t *violTime);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceResetApplicationsClocks':
+#22 12.21 cgo-gcc-prolog:5216:2: warning: 'nvmlDeviceResetApplicationsClocks' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9053:39: note: declared here
+#22 12.21  9053 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceResetApplicationsClocks(nvmlDevice_t device);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceResetNvLinkUtilizationCounter':
+#22 12.21 cgo-gcc-prolog:5296:2: warning: 'nvmlDeviceResetNvLinkUtilizationCounter' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9744:39: note: declared here
+#22 12.21  9744 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceResetNvLinkUtilizationCounter (nvmlDevice_t device, unsigned int link, unsigned int counter);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceSetApplicationsClocks':
+#22 12.21 cgo-gcc-prolog:5359:2: warning: 'nvmlDeviceSetApplicationsClocks' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9045:39: note: declared here
+#22 12.21  9045 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceSetApplicationsClocks(nvmlDevice_t device, unsigned int memClockMHz, unsigned int graphicsClockMHz);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceSetGpcClkVfOffset':
+#22 12.21 cgo-gcc-prolog:5627:2: warning: 'nvmlDeviceSetGpcClkVfOffset' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9303:39: note: declared here
+#22 12.21  9303 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceSetGpcClkVfOffset(nvmlDevice_t device, int offset);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceSetMemClkVfOffset':
+#22 12.21 cgo-gcc-prolog:5710:2: warning: 'nvmlDeviceSetMemClkVfOffset' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9321:39: note: declared here
+#22 12.21  9321 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceSetMemClkVfOffset(nvmlDevice_t device, int offset);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceSetNvLinkUtilizationControl':
+#22 12.21 cgo-gcc-prolog:5797:2: warning: 'nvmlDeviceSetNvLinkUtilizationControl' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:9649:39: note: declared here
+#22 12.21  9649 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceSetNvLinkUtilizationControl(nvmlDevice_t device, unsigned int link, unsigned int counter,
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceSetVgpuSchedulerState':
+#22 12.21 cgo-gcc-prolog:6002:2: warning: 'nvmlDeviceSetVgpuSchedulerState' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11905:39: note: declared here
+#22 12.21 11905 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlDeviceSetVgpuSchedulerState(nvmlDevice_t device, nvmlVgpuSchedulerSetState_t *pSchedulerState);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceWorkloadPowerProfileClearRequestedProfiles':
+#22 12.21 cgo-gcc-prolog:6101:2: warning: 'nvmlDeviceWorkloadPowerProfileClearRequestedProfiles' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:14284:39: note: declared here
+#22 12.21 14284 | DEPRECATED(13.1) nvmlReturn_t DECLDIR nvmlDeviceWorkloadPowerProfileClearRequestedProfiles(nvmlDevice_t device,
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlDeviceWorkloadPowerProfileSetRequestedProfiles':
+#22 12.21 cgo-gcc-prolog:6161:2: warning: 'nvmlDeviceWorkloadPowerProfileSetRequestedProfiles' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:14258:39: note: declared here
+#22 12.21 14258 | DEPRECATED(13.1) nvmlReturn_t DECLDIR nvmlDeviceWorkloadPowerProfileSetRequestedProfiles(nvmlDevice_t device,
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlGpuInstanceGetVgpuSchedulerLog':
+#22 12.21 cgo-gcc-prolog:6842:2: warning: 'nvmlGpuInstanceGetVgpuSchedulerLog' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11453:39: note: declared here
+#22 12.21 11453 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlGpuInstanceGetVgpuSchedulerLog(nvmlGpuInstance_t gpuInstance, nvmlVgpuSchedulerLogInfo_t *pSchedulerLogInfo);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlGpuInstanceGetVgpuSchedulerState':
+#22 12.21 cgo-gcc-prolog:6882:2: warning: 'nvmlGpuInstanceGetVgpuSchedulerState' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11428:39: note: declared here
+#22 12.21 11428 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlGpuInstanceGetVgpuSchedulerState(nvmlGpuInstance_t gpuInstance, nvmlVgpuSchedulerStateInfo_t *pSchedulerStateInfo);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlGpuInstanceSetVgpuSchedulerState':
+#22 12.21 cgo-gcc-prolog:6962:2: warning: 'nvmlGpuInstanceSetVgpuSchedulerState' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11406:39: note: declared here
+#22 12.21 11406 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlGpuInstanceSetVgpuSchedulerState(nvmlGpuInstance_t gpuInstance, nvmlVgpuSchedulerState_t *pScheduler);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 12.21 cgo-gcc-prolog: In function '_cgo_3b745593b9e8_Cfunc_nvmlVgpuInstanceGetLicenseStatus':
+#22 12.21 cgo-gcc-prolog:8055:2: warning: 'nvmlVgpuInstanceGetLicenseStatus' is deprecated [-Wdeprecated-declarations]
+#22 12.21 /go/pkg/mod/github.com/!n!v!i!d!i!a/go-nvml@v0.13.3-1/pkg/nvml/nvml.h:11031:39: note: declared here
+#22 12.21 11031 | DEPRECATED(13.0) nvmlReturn_t DECLDIR nvmlVgpuInstanceGetLicenseStatus(nvmlVgpuInstance_t vgpuInstance, unsigned int *licensed);
+#22 12.21       |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#22 14.54 🔨 control-plane
+#22 23.08 🔨 generate-bridge
+#22 24.35 🔨 node-agent
+#22 28.81 🔨 nri-plugin
+#22 32.91 🔨 nvml-mock-ctl
+#22 35.77 Building Golang shims..
+#22 35.78 🔨 nvidia-imex-shim
+#22 DONE 36.0s
+
+#23 [stage-1  2/13] COPY --from=builder /src/pkg/gpu/mocknvml/libnvidia-ml.so.* /usr/local/lib/
+#23 DONE 0.1s
+
+#24 [stage-1  3/13] COPY --from=builder /src/pkg/gpu/mockcuda/libcuda.so.* /usr/local/lib/
+#24 DONE 0.1s
+
+#25 [stage-1  4/13] COPY --from=builder /src/shims/libibmock/libibmocksys.so.* /usr/local/lib/
+#25 DONE 0.1s
+
+#26 [stage-1  5/13] COPY --from=builder /src/shims/libibmock/libibmockumad.so.* /usr/local/lib/
+#26 DONE 0.1s
+
+#27 [stage-1  6/13] COPY --from=builder /src/shims/libibmock/libibmockverbs.so.* /usr/local/lib/
+#27 DONE 0.1s
+
+#28 [stage-1  7/13] COPY --from=builder /src/shims/libpcisysfs/libpcisysfs.so.* /usr/local/lib/
+#28 DONE 0.1s
+
+#29 [stage-1  8/13] COPY --from=builder /src/dist/nri-plugin /usr/local/bin/nri-plugin
+#29 DONE 0.1s
+
+#30 [stage-1  9/13] COPY --from=builder /src/dist/nvml-mock-ctl /usr/local/bin/nvml-mock-ctl
+#30 DONE 0.1s
+
+#31 [stage-1 10/13] COPY --from=builder /src/dist/check-fabric     /usr/local/bin/check-fabric
+#31 DONE 0.1s
+
+#32 [stage-1 11/13] COPY --from=builder /src/dist/node-agent /usr/local/bin/node-agent
+#32 DONE 0.1s
+
+#33 [stage-1 12/13] COPY deployments/nvml-mock/build/bundle-ib-tools.sh /usr/local/bin/bundle-ib-tools.sh
+#33 DONE 0.1s
+
+#34 [stage-1 13/13] RUN set -eux;     apt-get update;     apt-get install -y --no-install-recommends curl ca-certificates gnupg2         pciutils         infiniband-diags rdma-core ibverbs-utils ibverbs-providers;     rm -rf /var/lib/apt/lists/*;     mkdir -p /etc/libibverbs.d;     NVIDIA_REPO_ARCH=$(case amd64 in arm64) echo sbsa;; *) echo x86_64;; esac);     curl -fsSL "https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/${NVIDIA_REPO_ARCH}/3bf863cc.pub" |       gpg --dearmor -o /usr/share/keyrings/nvidia.gpg;     echo "deb [signed-by=/usr/share/keyrings/nvidia.gpg] https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/${NVIDIA_REPO_ARCH} /"       > /etc/apt/sources.list.d/nvidia.list;     apt-get update;     cd /tmp && apt-get download nvidia-utils-580=580.65.06-0ubuntu1;     dpkg-deb -x /tmp/nvidia-utils-580*.deb /tmp/nvidia-utils;     cp /tmp/nvidia-utils/usr/bin/nvidia-smi /usr/local/bin/nvidia-smi;     chmod +x /usr/local/bin/nvidia-smi;     apt-get install -y --no-install-recommends patchelf;     patchelf --set-rpath '$ORIGIN/../lib64' /usr/local/bin/nvidia-smi;     sh /usr/local/bin/bundle-ib-tools.sh;     rm -rf /var/lib/apt/lists/*;     rm -rf /tmp/nvidia-utils /tmp/nvidia-utils-580*.deb            /usr/share/keyrings/nvidia.gpg /etc/apt/sources.list.d/nvidia.list;     apt-get purge -y --auto-remove curl ca-certificates gnupg2 patchelf
+#34 0.226 + apt-get update
+#34 0.478 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+#34 0.669 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+#34 0.859 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [34.8 kB]
+#34 1.050 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8790 kB]
+#34 1.311 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+#34 1.500 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [337 kB]
+#34 1.913 Fetched 9375 kB in 2s (5628 kB/s)
+#34 1.913 Reading package lists...
+#34 2.256 + apt-get install -y --no-install-recommends curl ca-certificates gnupg2 pciutils infiniband-diags rdma-core ibverbs-utils ibverbs-providers
+#34 2.270 Reading package lists...
+#34 2.611 Building dependency tree...
+#34 2.717 Reading state information...
+#34 2.804 The following additional packages will be installed:
+#34 2.804   dirmngr gnupg gnupg-l10n gnupg-utils gpg gpg-agent gpg-wks-client
+#34 2.804   gpg-wks-server gpgconf gpgsm libassuan0 libbrotli1 libcurl4 libgdbm-compat4
+#34 2.804   libgdbm6 libgssapi-krb5-2 libibmad5 libibnetdisc5 libibumad3 libibverbs1
+#34 2.804   libk5crypto3 libkeyutils1 libkmod2 libkrb5-3 libkrb5support0 libksba8
+#34 2.804   libldap-2.5-0 libncursesw6 libnghttp2-14 libnl-3-200 libnl-route-3-200
+#34 2.804   libnpth0 libpci3 libperl5.36 libpsl5 libreadline8 librtmp1 libsasl2-2
+#34 2.804   libsasl2-modules-db libsqlite3-0 libssh2-1 libssl3 openssl pci.ids perl
+#34 2.804   perl-modules-5.36 pinentry-curses readline-common udev
+#34 2.805 Suggested packages:
+#34 2.805   dbus-user-session libpam-systemd pinentry-gnome3 tor parcimonie xloadimage
+#34 2.805   scdaemon gdbm-l10n krb5-doc krb5-user sensible-utils bzip2 perl-doc
+#34 2.805   libterm-readline-gnu-perl | libterm-readline-perl-perl make
+#34 2.805   libtap-harness-archive-perl pinentry-doc readline-doc
+#34 2.805 Recommended packages:
+#34 2.805   krb5-locales libldap-common libgpm2 publicsuffix libsasl2-modules netbase
+#34 2.805   dmidecode ethtool iproute2
+#34 3.030 The following NEW packages will be installed:
+#34 3.030   ca-certificates curl dirmngr gnupg gnupg-l10n gnupg-utils gnupg2 gpg
+#34 3.030   gpg-agent gpg-wks-client gpg-wks-server gpgconf gpgsm ibverbs-providers
+#34 3.030   ibverbs-utils infiniband-diags libassuan0 libbrotli1 libcurl4
+#34 3.030   libgdbm-compat4 libgdbm6 libgssapi-krb5-2 libibmad5 libibnetdisc5 libibumad3
+#34 3.030   libibverbs1 libk5crypto3 libkeyutils1 libkmod2 libkrb5-3 libkrb5support0
+#34 3.030   libksba8 libldap-2.5-0 libncursesw6 libnghttp2-14 libnl-3-200
+#34 3.030   libnl-route-3-200 libnpth0 libpci3 libperl5.36 libpsl5 libreadline8 librtmp1
+#34 3.030   libsasl2-2 libsasl2-modules-db libsqlite3-0 libssh2-1 libssl3 openssl
+#34 3.030   pci.ids pciutils perl perl-modules-5.36 pinentry-curses rdma-core
+#34 3.030   readline-common udev
+#34 3.244 0 upgraded, 57 newly installed, 0 to remove and 1 not upgraded.
+#34 3.244 Need to get 26.0 MB of archives.
+#34 3.244 After this operation, 99.8 MB of additional disk space will be used.
+#34 3.244 Get:1 http://deb.debian.org/debian bookworm/main amd64 perl-modules-5.36 all 5.36.0-7+deb12u3 [2815 kB]
+#34 3.483 Get:2 http://deb.debian.org/debian bookworm/main amd64 libgdbm6 amd64 1.23-3 [72.2 kB]
+#34 3.485 Get:3 http://deb.debian.org/debian bookworm/main amd64 libgdbm-compat4 amd64 1.23-3 [48.2 kB]
+#34 3.485 Get:4 http://deb.debian.org/debian bookworm/main amd64 libperl5.36 amd64 5.36.0-7+deb12u3 [4196 kB]
+#34 3.552 Get:5 http://deb.debian.org/debian bookworm/main amd64 perl amd64 5.36.0-7+deb12u3 [239 kB]
+#34 3.555 Get:6 http://deb.debian.org/debian bookworm/main amd64 libssl3 amd64 3.0.20-1~deb12u2 [2036 kB]
+#34 3.587 Get:7 http://deb.debian.org/debian bookworm/main amd64 libkmod2 amd64 30+20221128-1 [57.9 kB]
+#34 3.587 Get:8 http://deb.debian.org/debian bookworm/main amd64 udev amd64 252.39-1~deb12u2 [1721 kB]
+#34 3.698 Get:9 http://deb.debian.org/debian bookworm/main amd64 libnl-3-200 amd64 3.7.0-0.2+b1 [63.1 kB]
+#34 3.699 Get:10 http://deb.debian.org/debian bookworm/main amd64 rdma-core amd64 44.0-2 [59.5 kB]
+#34 3.703 Get:11 http://deb.debian.org/debian bookworm/main amd64 readline-common all 8.2-1.3 [69.0 kB]
+#34 3.704 Get:12 http://deb.debian.org/debian bookworm/main amd64 openssl amd64 3.0.20-1~deb12u2 [1439 kB]
+#34 3.726 Get:13 http://deb.debian.org/debian-security bookworm-security/main amd64 ca-certificates all 20250419~deb12u1 [162 kB]
+#34 3.744 Get:14 http://deb.debian.org/debian bookworm/main amd64 pci.ids all 0.0~2023.04.11-1 [243 kB]
+#34 3.751 Get:15 http://deb.debian.org/debian bookworm/main amd64 libpci3 amd64 1:3.9.0-4 [67.4 kB]
+#34 3.780 Get:16 http://deb.debian.org/debian bookworm/main amd64 pciutils amd64 1:3.9.0-4 [104 kB]
+#34 3.788 Get:17 http://deb.debian.org/debian bookworm/main amd64 libbrotli1 amd64 1.0.9-2+b6 [275 kB]
+#34 3.887 Get:18 http://deb.debian.org/debian bookworm/main amd64 libkrb5support0 amd64 1.20.1-2+deb12u5 [33.2 kB]
+#34 3.888 Get:19 http://deb.debian.org/debian bookworm/main amd64 libk5crypto3 amd64 1.20.1-2+deb12u5 [79.7 kB]
+#34 3.890 Get:20 http://deb.debian.org/debian bookworm/main amd64 libkeyutils1 amd64 1.6.3-2 [8808 B]
+#34 3.894 Get:21 http://deb.debian.org/debian bookworm/main amd64 libkrb5-3 amd64 1.20.1-2+deb12u5 [332 kB]
+#34 3.913 Get:22 http://deb.debian.org/debian bookworm/main amd64 libgssapi-krb5-2 amd64 1.20.1-2+deb12u5 [135 kB]
+#34 3.932 Get:23 http://deb.debian.org/debian bookworm/main amd64 libsasl2-modules-db amd64 2.1.28+dfsg-10 [20.3 kB]
+#34 3.937 Get:24 http://deb.debian.org/debian bookworm/main amd64 libsasl2-2 amd64 2.1.28+dfsg-10 [59.7 kB]
+#34 3.939 Get:25 http://deb.debian.org/debian bookworm/main amd64 libldap-2.5-0 amd64 2.5.13+dfsg-5 [183 kB]
+#34 3.970 Get:26 http://deb.debian.org/debian bookworm/main amd64 libnghttp2-14 amd64 1.52.0-1+deb12u3 [72.4 kB]
+#34 3.980 Get:27 http://deb.debian.org/debian bookworm/main amd64 libpsl5 amd64 0.21.2-1 [58.7 kB]
+#34 4.077 Get:28 http://deb.debian.org/debian bookworm/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-2+b2 [60.8 kB]
+#34 4.079 Get:29 http://deb.debian.org/debian-security bookworm-security/main amd64 libssh2-1 amd64 1.10.0-3+deb12u1 [176 kB]
+#34 4.084 Get:30 http://deb.debian.org/debian bookworm/main amd64 libcurl4 amd64 7.88.1-10+deb12u15 [392 kB]
+#34 4.092 Get:31 http://deb.debian.org/debian bookworm/main amd64 curl amd64 7.88.1-10+deb12u15 [316 kB]
+#34 4.106 Get:32 http://deb.debian.org/debian bookworm/main amd64 libassuan0 amd64 2.5.5-5 [48.5 kB]
+#34 4.123 Get:33 http://deb.debian.org/debian bookworm/main amd64 libreadline8 amd64 8.2-1.3 [166 kB]
+#34 4.130 Get:34 http://deb.debian.org/debian bookworm/main amd64 gpgconf amd64 2.2.40-1.1+deb12u2 [565 kB]
+#34 4.142 Get:35 http://deb.debian.org/debian bookworm/main amd64 libksba8 amd64 1.6.3-2 [128 kB]
+#34 4.161 Get:36 http://deb.debian.org/debian bookworm/main amd64 libnpth0 amd64 1.6-3 [19.0 kB]
+#34 4.173 Get:37 http://deb.debian.org/debian bookworm/main amd64 dirmngr amd64 2.2.40-1.1+deb12u2 [793 kB]
+#34 4.271 Get:38 http://deb.debian.org/debian bookworm/main amd64 gnupg-l10n all 2.2.40-1.1+deb12u2 [1093 kB]
+#34 4.288 Get:39 http://deb.debian.org/debian bookworm/main amd64 gnupg-utils amd64 2.2.40-1.1+deb12u2 [927 kB]
+#34 4.302 Get:40 http://deb.debian.org/debian bookworm/main amd64 libsqlite3-0 amd64 3.40.1-2+deb12u2 [839 kB]
+#34 4.317 Get:41 http://deb.debian.org/debian bookworm/main amd64 gpg amd64 2.2.40-1.1+deb12u2 [950 kB]
+#34 4.336 Get:42 http://deb.debian.org/debian bookworm/main amd64 libncursesw6 amd64 6.4-4 [134 kB]
+#34 4.339 Get:43 http://deb.debian.org/debian bookworm/main amd64 pinentry-curses amd64 1.2.1-1 [77.4 kB]
+#34 4.342 Get:44 http://deb.debian.org/debian bookworm/main amd64 gpg-agent amd64 2.2.40-1.1+deb12u2 [695 kB]
+#34 4.357 Get:45 http://deb.debian.org/debian bookworm/main amd64 gpg-wks-client amd64 2.2.40-1.1+deb12u2 [541 kB]
+#34 4.366 Get:46 http://deb.debian.org/debian bookworm/main amd64 gpg-wks-server amd64 2.2.40-1.1+deb12u2 [531 kB]
+#34 4.378 Get:47 http://deb.debian.org/debian bookworm/main amd64 gpgsm amd64 2.2.40-1.1+deb12u2 [671 kB]
+#34 4.491 Get:48 http://deb.debian.org/debian bookworm/main amd64 gnupg all 2.2.40-1.1+deb12u2 [846 kB]
+#34 4.514 Get:49 http://deb.debian.org/debian bookworm/main amd64 gnupg2 all 2.2.40-1.1+deb12u2 [446 kB]
+#34 4.522 Get:50 http://deb.debian.org/debian bookworm/main amd64 libnl-route-3-200 amd64 3.7.0-0.2+b1 [185 kB]
+#34 4.533 Get:51 http://deb.debian.org/debian bookworm/main amd64 libibverbs1 amd64 44.0-2 [60.7 kB]
+#34 4.546 Get:52 http://deb.debian.org/debian bookworm/main amd64 ibverbs-providers amd64 44.0-2 [335 kB]
+#34 4.697 Get:53 http://deb.debian.org/debian bookworm/main amd64 ibverbs-utils amd64 44.0-2 [55.3 kB]
+#34 4.848 Get:54 http://deb.debian.org/debian bookworm/main amd64 libibumad3 amd64 44.0-2 [27.4 kB]
+#34 4.990 Get:55 http://deb.debian.org/debian bookworm/main amd64 libibmad5 amd64 44.0-2 [42.5 kB]
+#34 5.125 Get:56 http://deb.debian.org/debian bookworm/main amd64 libibnetdisc5 amd64 44.0-2 [32.7 kB]
+#34 5.127 Get:57 http://deb.debian.org/debian bookworm/main amd64 infiniband-diags amd64 44.0-2 [227 kB]
+#34 5.227 debconf: delaying package configuration, since apt-utils is not installed
+#34 5.250 Fetched 26.0 MB in 2s (12.4 MB/s)
+#34 5.276 Selecting previously unselected package perl-modules-5.36.
+#34 5.276 (Reading database ...
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 6096 files and directories currently installed.)
+#34 5.281 Preparing to unpack .../00-perl-modules-5.36_5.36.0-7+deb12u3_all.deb ...
+#34 5.291 Unpacking perl-modules-5.36 (5.36.0-7+deb12u3) ...
+#34 5.583 Selecting previously unselected package libgdbm6:amd64.
+#34 5.585 Preparing to unpack .../01-libgdbm6_1.23-3_amd64.deb ...
+#34 5.604 Unpacking libgdbm6:amd64 (1.23-3) ...
+#34 5.681 Selecting previously unselected package libgdbm-compat4:amd64.
+#34 5.682 Preparing to unpack .../02-libgdbm-compat4_1.23-3_amd64.deb ...
+#34 5.692 Unpacking libgdbm-compat4:amd64 (1.23-3) ...
+#34 5.764 Selecting previously unselected package libperl5.36:amd64.
+#34 5.765 Preparing to unpack .../03-libperl5.36_5.36.0-7+deb12u3_amd64.deb ...
+#34 5.775 Unpacking libperl5.36:amd64 (5.36.0-7+deb12u3) ...
+#34 6.064 Selecting previously unselected package perl.
+#34 6.066 Preparing to unpack .../04-perl_5.36.0-7+deb12u3_amd64.deb ...
+#34 6.083 Unpacking perl (5.36.0-7+deb12u3) ...
+#34 6.175 Selecting previously unselected package libssl3:amd64.
+#34 6.177 Preparing to unpack .../05-libssl3_3.0.20-1~deb12u2_amd64.deb ...
+#34 6.187 Unpacking libssl3:amd64 (3.0.20-1~deb12u2) ...
+#34 6.339 Selecting previously unselected package libkmod2:amd64.
+#34 6.340 Preparing to unpack .../06-libkmod2_30+20221128-1_amd64.deb ...
+#34 6.350 Unpacking libkmod2:amd64 (30+20221128-1) ...
+#34 6.440 Selecting previously unselected package udev.
+#34 6.442 Preparing to unpack .../07-udev_252.39-1~deb12u2_amd64.deb ...
+#34 6.454 Unpacking udev (252.39-1~deb12u2) ...
+#34 6.628 Selecting previously unselected package libnl-3-200:amd64.
+#34 6.630 Preparing to unpack .../08-libnl-3-200_3.7.0-0.2+b1_amd64.deb ...
+#34 6.640 Unpacking libnl-3-200:amd64 (3.7.0-0.2+b1) ...
+#34 6.731 Selecting previously unselected package rdma-core.
+#34 6.732 Preparing to unpack .../09-rdma-core_44.0-2_amd64.deb ...
+#34 6.750 Unpacking rdma-core (44.0-2) ...
+#34 6.819 Selecting previously unselected package readline-common.
+#34 6.821 Preparing to unpack .../10-readline-common_8.2-1.3_all.deb ...
+#34 6.831 Unpacking readline-common (8.2-1.3) ...
+#34 6.903 Selecting previously unselected package openssl.
+#34 6.904 Preparing to unpack .../11-openssl_3.0.20-1~deb12u2_amd64.deb ...
+#34 6.914 Unpacking openssl (3.0.20-1~deb12u2) ...
+#34 7.060 Selecting previously unselected package ca-certificates.
+#34 7.061 Preparing to unpack .../12-ca-certificates_20250419~deb12u1_all.deb ...
+#34 7.071 Unpacking ca-certificates (20250419~deb12u1) ...
+#34 7.168 Selecting previously unselected package pci.ids.
+#34 7.169 Preparing to unpack .../13-pci.ids_0.0~2023.04.11-1_all.deb ...
+#34 7.179 Unpacking pci.ids (0.0~2023.04.11-1) ...
+#34 7.264 Selecting previously unselected package libpci3:amd64.
+#34 7.265 Preparing to unpack .../14-libpci3_1%3a3.9.0-4_amd64.deb ...
+#34 7.274 Unpacking libpci3:amd64 (1:3.9.0-4) ...
+#34 7.349 Selecting previously unselected package pciutils.
+#34 7.350 Preparing to unpack .../15-pciutils_1%3a3.9.0-4_amd64.deb ...
+#34 7.364 Unpacking pciutils (1:3.9.0-4) ...
+#34 7.442 Selecting previously unselected package libbrotli1:amd64.
+#34 7.443 Preparing to unpack .../16-libbrotli1_1.0.9-2+b6_amd64.deb ...
+#34 7.452 Unpacking libbrotli1:amd64 (1.0.9-2+b6) ...
+#34 7.540 Selecting previously unselected package libkrb5support0:amd64.
+#34 7.542 Preparing to unpack .../17-libkrb5support0_1.20.1-2+deb12u5_amd64.deb ...
+#34 7.551 Unpacking libkrb5support0:amd64 (1.20.1-2+deb12u5) ...
+#34 7.624 Selecting previously unselected package libk5crypto3:amd64.
+#34 7.626 Preparing to unpack .../18-libk5crypto3_1.20.1-2+deb12u5_amd64.deb ...
+#34 7.635 Unpacking libk5crypto3:amd64 (1.20.1-2+deb12u5) ...
+#34 7.710 Selecting previously unselected package libkeyutils1:amd64.
+#34 7.712 Preparing to unpack .../19-libkeyutils1_1.6.3-2_amd64.deb ...
+#34 7.721 Unpacking libkeyutils1:amd64 (1.6.3-2) ...
+#34 7.793 Selecting previously unselected package libkrb5-3:amd64.
+#34 7.795 Preparing to unpack .../20-libkrb5-3_1.20.1-2+deb12u5_amd64.deb ...
+#34 7.805 Unpacking libkrb5-3:amd64 (1.20.1-2+deb12u5) ...
+#34 7.906 Selecting previously unselected package libgssapi-krb5-2:amd64.
+#34 7.907 Preparing to unpack .../21-libgssapi-krb5-2_1.20.1-2+deb12u5_amd64.deb ...
+#34 7.916 Unpacking libgssapi-krb5-2:amd64 (1.20.1-2+deb12u5) ...
+#34 7.980 Selecting previously unselected package libsasl2-modules-db:amd64.
+#34 7.981 Preparing to unpack .../22-libsasl2-modules-db_2.1.28+dfsg-10_amd64.deb ...
+#34 7.991 Unpacking libsasl2-modules-db:amd64 (2.1.28+dfsg-10) ...
+#34 8.059 Selecting previously unselected package libsasl2-2:amd64.
+#34 8.060 Preparing to unpack .../23-libsasl2-2_2.1.28+dfsg-10_amd64.deb ...
+#34 8.070 Unpacking libsasl2-2:amd64 (2.1.28+dfsg-10) ...
+#34 8.155 Selecting previously unselected package libldap-2.5-0:amd64.
+#34 8.156 Preparing to unpack .../24-libldap-2.5-0_2.5.13+dfsg-5_amd64.deb ...
+#34 8.166 Unpacking libldap-2.5-0:amd64 (2.5.13+dfsg-5) ...
+#34 8.248 Selecting previously unselected package libnghttp2-14:amd64.
+#34 8.250 Preparing to unpack .../25-libnghttp2-14_1.52.0-1+deb12u3_amd64.deb ...
+#34 8.259 Unpacking libnghttp2-14:amd64 (1.52.0-1+deb12u3) ...
+#34 8.329 Selecting previously unselected package libpsl5:amd64.
+#34 8.331 Preparing to unpack .../26-libpsl5_0.21.2-1_amd64.deb ...
+#34 8.340 Unpacking libpsl5:amd64 (0.21.2-1) ...
+#34 8.415 Selecting previously unselected package librtmp1:amd64.
+#34 8.416 Preparing to unpack .../27-librtmp1_2.4+20151223.gitfa8646d.1-2+b2_amd64.deb ...
+#34 8.425 Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b2) ...
+#34 8.498 Selecting previously unselected package libssh2-1:amd64.
+#34 8.500 Preparing to unpack .../28-libssh2-1_1.10.0-3+deb12u1_amd64.deb ...
+#34 8.508 Unpacking libssh2-1:amd64 (1.10.0-3+deb12u1) ...
+#34 8.594 Selecting previously unselected package libcurl4:amd64.
+#34 8.595 Preparing to unpack .../29-libcurl4_7.88.1-10+deb12u15_amd64.deb ...
+#34 8.605 Unpacking libcurl4:amd64 (7.88.1-10+deb12u15) ...
+#34 8.677 Selecting previously unselected package curl.
+#34 8.679 Preparing to unpack .../30-curl_7.88.1-10+deb12u15_amd64.deb ...
+#34 8.688 Unpacking curl (7.88.1-10+deb12u15) ...
+#34 8.767 Selecting previously unselected package libassuan0:amd64.
+#34 8.769 Preparing to unpack .../31-libassuan0_2.5.5-5_amd64.deb ...
+#34 8.778 Unpacking libassuan0:amd64 (2.5.5-5) ...
+#34 8.853 Selecting previously unselected package libreadline8:amd64.
+#34 8.854 Preparing to unpack .../32-libreadline8_8.2-1.3_amd64.deb ...
+#34 8.864 Unpacking libreadline8:amd64 (8.2-1.3) ...
+#34 8.927 Selecting previously unselected package gpgconf.
+#34 8.928 Preparing to unpack .../33-gpgconf_2.2.40-1.1+deb12u2_amd64.deb ...
+#34 8.938 Unpacking gpgconf (2.2.40-1.1+deb12u2) ...
+#34 9.035 Selecting previously unselected package libksba8:amd64.
+#34 9.037 Preparing to unpack .../34-libksba8_1.6.3-2_amd64.deb ...
+#34 9.051 Unpacking libksba8:amd64 (1.6.3-2) ...
+#34 9.152 Selecting previously unselected package libnpth0:amd64.
+#34 9.153 Preparing to unpack .../35-libnpth0_1.6-3_amd64.deb ...
+#34 9.163 Unpacking libnpth0:amd64 (1.6-3) ...
+#34 9.246 Selecting previously unselected package dirmngr.
+#34 9.247 Preparing to unpack .../36-dirmngr_2.2.40-1.1+deb12u2_amd64.deb ...
+#34 9.267 Unpacking dirmngr (2.2.40-1.1+deb12u2) ...
+#34 9.340 Selecting previously unselected package gnupg-l10n.
+#34 9.341 Preparing to unpack .../37-gnupg-l10n_2.2.40-1.1+deb12u2_all.deb ...
+#34 9.350 Unpacking gnupg-l10n (2.2.40-1.1+deb12u2) ...
+#34 9.460 Selecting previously unselected package gnupg-utils.
+#34 9.462 Preparing to unpack .../38-gnupg-utils_2.2.40-1.1+deb12u2_amd64.deb ...
+#34 9.474 Unpacking gnupg-utils (2.2.40-1.1+deb12u2) ...
+#34 9.641 Selecting previously unselected package libsqlite3-0:amd64.
+#34 9.643 Preparing to unpack .../39-libsqlite3-0_3.40.1-2+deb12u2_amd64.deb ...
+#34 9.657 Unpacking libsqlite3-0:amd64 (3.40.1-2+deb12u2) ...
+#34 9.756 Selecting previously unselected package gpg.
+#34 9.758 Preparing to unpack .../40-gpg_2.2.40-1.1+deb12u2_amd64.deb ...
+#34 9.766 Unpacking gpg (2.2.40-1.1+deb12u2) ...
+#34 9.861 Selecting previously unselected package libncursesw6:amd64.
+#34 9.862 Preparing to unpack .../41-libncursesw6_6.4-4_amd64.deb ...
+#34 9.872 Unpacking libncursesw6:amd64 (6.4-4) ...
+#34 9.943 Selecting previously unselected package pinentry-curses.
+#34 9.945 Preparing to unpack .../42-pinentry-curses_1.2.1-1_amd64.deb ...
+#34 9.960 Unpacking pinentry-curses (1.2.1-1) ...
+#34 10.05 Selecting previously unselected package gpg-agent.
+#34 10.05 Preparing to unpack .../43-gpg-agent_2.2.40-1.1+deb12u2_amd64.deb ...
+#34 10.06 Unpacking gpg-agent (2.2.40-1.1+deb12u2) ...
+#34 10.13 Selecting previously unselected package gpg-wks-client.
+#34 10.13 Preparing to unpack .../44-gpg-wks-client_2.2.40-1.1+deb12u2_amd64.deb ...
+#34 10.14 Unpacking gpg-wks-client (2.2.40-1.1+deb12u2) ...
+#34 10.21 Selecting previously unselected package gpg-wks-server.
+#34 10.22 Preparing to unpack .../45-gpg-wks-server_2.2.40-1.1+deb12u2_amd64.deb ...
+#34 10.23 Unpacking gpg-wks-server (2.2.40-1.1+deb12u2) ...
+#34 10.32 Selecting previously unselected package gpgsm.
+#34 10.32 Preparing to unpack .../46-gpgsm_2.2.40-1.1+deb12u2_amd64.deb ...
+#34 10.33 Unpacking gpgsm (2.2.40-1.1+deb12u2) ...
+#34 10.42 Selecting previously unselected package gnupg.
+#34 10.42 Preparing to unpack .../47-gnupg_2.2.40-1.1+deb12u2_all.deb ...
+#34 10.44 Unpacking gnupg (2.2.40-1.1+deb12u2) ...
+#34 10.55 Selecting previously unselected package gnupg2.
+#34 10.56 Preparing to unpack .../48-gnupg2_2.2.40-1.1+deb12u2_all.deb ...
+#34 10.56 Unpacking gnupg2 (2.2.40-1.1+deb12u2) ...
+#34 10.66 Selecting previously unselected package libnl-route-3-200:amd64.
+#34 10.66 Preparing to unpack .../49-libnl-route-3-200_3.7.0-0.2+b1_amd64.deb ...
+#34 10.67 Unpacking libnl-route-3-200:amd64 (3.7.0-0.2+b1) ...
+#34 10.76 Selecting previously unselected package libibverbs1:amd64.
+#34 10.76 Preparing to unpack .../50-libibverbs1_44.0-2_amd64.deb ...
+#34 10.77 Unpacking libibverbs1:amd64 (44.0-2) ...
+#34 10.88 Selecting previously unselected package ibverbs-providers:amd64.
+#34 10.88 Preparing to unpack .../51-ibverbs-providers_44.0-2_amd64.deb ...
+#34 10.91 Unpacking ibverbs-providers:amd64 (44.0-2) ...
+#34 11.00 Selecting previously unselected package ibverbs-utils.
+#34 11.00 Preparing to unpack .../52-ibverbs-utils_44.0-2_amd64.deb ...
+#34 11.01 Unpacking ibverbs-utils (44.0-2) ...
+#34 11.09 Selecting previously unselected package libibumad3:amd64.
+#34 11.09 Preparing to unpack .../53-libibumad3_44.0-2_amd64.deb ...
+#34 11.09 Unpacking libibumad3:amd64 (44.0-2) ...
+#34 11.17 Selecting previously unselected package libibmad5:amd64.
+#34 11.17 Preparing to unpack .../54-libibmad5_44.0-2_amd64.deb ...
+#34 11.18 Unpacking libibmad5:amd64 (44.0-2) ...
+#34 11.33 Selecting previously unselected package libibnetdisc5:amd64.
+#34 11.33 Preparing to unpack .../55-libibnetdisc5_44.0-2_amd64.deb ...
+#34 11.34 Unpacking libibnetdisc5:amd64 (44.0-2) ...
+#34 11.43 Selecting previously unselected package infiniband-diags.
+#34 11.43 Preparing to unpack .../56-infiniband-diags_44.0-2_amd64.deb ...
+#34 11.44 Unpacking infiniband-diags (44.0-2) ...
+#34 11.58 Setting up libksba8:amd64 (1.6.3-2) ...
+#34 11.62 Setting up libkeyutils1:amd64 (1.6.3-2) ...
+#34 11.67 Setting up pci.ids (0.0~2023.04.11-1) ...
+#34 11.72 Setting up libpsl5:amd64 (0.21.2-1) ...
+#34 11.76 Setting up libbrotli1:amd64 (1.0.9-2+b6) ...
+#34 11.81 Setting up libsqlite3-0:amd64 (3.40.1-2+deb12u2) ...
+#34 11.84 Setting up libssl3:amd64 (3.0.20-1~deb12u2) ...
+#34 11.87 Setting up libnghttp2-14:amd64 (1.52.0-1+deb12u3) ...
+#34 11.90 Setting up libibumad3:amd64 (44.0-2) ...
+#34 11.93 Setting up libnpth0:amd64 (1.6-3) ...
+#34 11.97 Setting up libibmad5:amd64 (44.0-2) ...
+#34 12.01 Setting up libassuan0:amd64 (2.5.5-5) ...
+#34 12.06 Setting up libkrb5support0:amd64 (1.20.1-2+deb12u5) ...
+#34 12.10 Setting up libsasl2-modules-db:amd64 (2.1.28+dfsg-10) ...
+#34 12.14 Setting up perl-modules-5.36 (5.36.0-7+deb12u3) ...
+#34 12.17 Setting up gnupg-l10n (2.2.40-1.1+deb12u2) ...
+#34 12.20 Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b2) ...
+#34 12.23 Setting up libibnetdisc5:amd64 (44.0-2) ...
+#34 12.26 Setting up libncursesw6:amd64 (6.4-4) ...
+#34 12.29 Setting up libk5crypto3:amd64 (1.20.1-2+deb12u5) ...
+#34 12.32 Setting up libsasl2-2:amd64 (2.1.28+dfsg-10) ...
+#34 12.35 Setting up libpci3:amd64 (1:3.9.0-4) ...
+#34 12.38 Setting up libnl-3-200:amd64 (3.7.0-0.2+b1) ...
+#34 12.42 Setting up libssh2-1:amd64 (1.10.0-3+deb12u1) ...
+#34 12.45 Setting up libkrb5-3:amd64 (1.20.1-2+deb12u5) ...
+#34 12.48 Setting up openssl (3.0.20-1~deb12u2) ...
+#34 12.52 Setting up readline-common (8.2-1.3) ...
+#34 12.55 Setting up libkmod2:amd64 (30+20221128-1) ...
+#34 12.58 Setting up libgdbm6:amd64 (1.23-3) ...
+#34 12.61 Setting up pinentry-curses (1.2.1-1) ...
+#34 12.65 Setting up libreadline8:amd64 (8.2-1.3) ...
+#34 12.67 Setting up libldap-2.5-0:amd64 (2.5.13+dfsg-5) ...
+#34 12.71 Setting up libnl-route-3-200:amd64 (3.7.0-0.2+b1) ...
+#34 12.74 Setting up ca-certificates (20250419~deb12u1) ...
+#34 12.81 debconf: unable to initialize frontend: Dialog
+#34 12.81 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#34 12.81 debconf: falling back to frontend: Readline
+#34 12.82 debconf: unable to initialize frontend: Readline
+#34 12.82 debconf: (This frontend requires a controlling tty.)
+#34 12.82 debconf: falling back to frontend: Teletype
+#34 13.24 Updating certificates in /etc/ssl/certs...
+#34 13.86 150 added, 0 removed; done.
+#34 13.92 Setting up libgssapi-krb5-2:amd64 (1.20.1-2+deb12u5) ...
+#34 13.95 Setting up udev (252.39-1~deb12u2) ...
+#34 14.49 invoke-rc.d: could not determine current runlevel
+#34 14.49 invoke-rc.d: policy-rc.d denied execution of start.
+#34 14.51 Setting up libgdbm-compat4:amd64 (1.23-3) ...
+#34 14.55 Setting up pciutils (1:3.9.0-4) ...
+#34 14.59 Setting up gpgconf (2.2.40-1.1+deb12u2) ...
+#34 14.62 Setting up libcurl4:amd64 (7.88.1-10+deb12u15) ...
+#34 14.65 Setting up curl (7.88.1-10+deb12u15) ...
+#34 14.68 Setting up rdma-core (44.0-2) ...
+#34 14.82 invoke-rc.d: could not determine current runlevel
+#34 14.82 invoke-rc.d: policy-rc.d denied execution of start.
+#34 14.83 eth0: Failed to write 'change' to '/sys/devices/virtual/net/eth0/uevent': Read-only file system
+
+#34 14.84 Setting up libperl5.36:amd64 (5.36.0-7+deb12u3) ...
+#34 14.87 Setting up gpg (2.2.40-1.1+deb12u2) ...
+#34 14.92 Setting up gnupg-utils (2.2.40-1.1+deb12u2) ...
+#34 14.95 Setting up libibverbs1:amd64 (44.0-2) ...
+#34 15.04 Setting up gpg-agent (2.2.40-1.1+deb12u2) ...
+#34 15.44 Setting up ibverbs-providers:amd64 (44.0-2) ...
+#34 15.68 Setting up gpgsm (2.2.40-1.1+deb12u2) ...
+#34 15.72 Setting up dirmngr (2.2.40-1.1+deb12u2) ...
+#34 15.84 Setting up perl (5.36.0-7+deb12u3) ...
+#34 15.89 Setting up ibverbs-utils (44.0-2) ...
+#34 15.91 Setting up gpg-wks-server (2.2.40-1.1+deb12u2) ...
+#34 15.95 Setting up gpg-wks-client (2.2.40-1.1+deb12u2) ...
+#34 15.99 Setting up infiniband-diags (44.0-2) ...
+#34 16.04 Setting up gnupg (2.2.40-1.1+deb12u2) ...
+#34 16.07 Setting up gnupg2 (2.2.40-1.1+deb12u2) ...
+#34 16.10 Processing triggers for libc-bin (2.36-9+deb12u14) ...
+#34 16.12 ldconfig: /usr/local/lib/libcuda.so.550.163.h is not an ELF file - it has the wrong magic bytes at the start.
+#34 16.12
+#34 16.12 ldconfig: /usr/local/lib/libnvidia-ml.so.550.163.01.h is not an ELF file - it has the wrong magic bytes at the start.
+#34 16.12
+#34 16.12 ldconfig: /usr/local/lib/libnvidia-ml.so.550.163.h is not an ELF file - it has the wrong magic bytes at the start.
+#34 16.12
+#34 16.12 ldconfig: /usr/local/lib/libnvidia-ml.so.1 is not a symbolic link
+#34 16.12
+#34 16.12 ldconfig: /usr/local/lib/libibmocksys.so.1 is not a symbolic link
+#34 16.12
+#34 16.12 ldconfig: /usr/local/lib/libibmockumad.so.1 is not a symbolic link
+#34 16.12
+#34 16.12 ldconfig: /usr/local/lib/libibmockverbs.so.1 is not a symbolic link
+#34 16.12
+#34 16.12 ldconfig: /usr/local/lib/libpcisysfs.so.1 is not a symbolic link
+#34 16.12
+#34 16.15 Processing triggers for ca-certificates (20250419~deb12u1) ...
+#34 16.16 Updating certificates in /etc/ssl/certs...
+#34 16.61 0 added, 0 removed; done.
+#34 16.61 Running hooks in /etc/ca-certificates/update.d...
+#34 16.61 done.
+#34 16.67 + rm -rf /var/lib/apt/lists/auxfiles /var/lib/apt/lists/deb.debian.org_debian-security_dists_bookworm-security_InRelease /var/lib/apt/lists/deb.debian.org_debian-security_dists_bookworm-security_main_binary-amd64_Packages.lz4 /var/lib/apt/lists/deb.debian.org_debian_dists_bookworm-updates_InRelease /var/lib/apt/lists/deb.debian.org_debian_dists_bookworm-updates_main_binary-amd64_Packages.lz4 /var/lib/apt/lists/deb.debian.org_debian_dists_bookworm_InRelease /var/lib/apt/lists/deb.debian.org_debian_dists_bookworm_main_binary-amd64_Packages.lz4 /var/lib/apt/lists/lock /var/lib/apt/lists/partial
+#34 16.68 + mkdir -p /etc/libibverbs.d
+#34 16.68 + echo x86_64
+#34 16.68 + NVIDIA_REPO_ARCH=x86_64
+#34 16.68 + curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/3bf863cc.pub
+#34 16.68 + gpg --dearmor -o /usr/share/keyrings/nvidia.gpg
+#34 18.36 + echo deb [signed-by=/usr/share/keyrings/nvidia.gpg] https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64 /
+#34 18.36 + apt-get update
+#34 18.63 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+#34 18.83 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+#34 19.02 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [34.8 kB]
+#34 19.20 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8790 kB]
+#34 19.43 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+#34 19.45 Get:6 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64  InRelease [1578 B]
+#34 19.62 Get:7 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [337 kB]
+#34 20.31 Get:8 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64  Packages [2920 kB]
+#34 20.68 Fetched 12.3 MB in 2s (5359 kB/s)
+#34 20.68 Reading package lists...
+#34 21.09 + cd /tmp
+#34 21.09 + apt-get download nvidia-utils-580=580.65.06-0ubuntu1
+#34 23.72 Get:1 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64  nvidia-utils-580 580.65.06-0ubuntu1 [480 kB]
+#34 24.15 Fetched 480 kB in 2s (196 kB/s)
+#34 24.15 + dpkg-deb -x /tmp/nvidia-utils-580_580.65.06-0ubuntu1_amd64.deb /tmp/nvidia-utils
+#34 24.17 + cp /tmp/nvidia-utils/usr/bin/nvidia-smi /usr/local/bin/nvidia-smi
+#34 24.17 + chmod +x /usr/local/bin/nvidia-smi
+#34 24.17 + apt-get install -y --no-install-recommends patchelf
+#34 24.18 Reading package lists...
+#34 24.63 Building dependency tree...
+#34 24.77 Reading state information...
+#34 24.92 The following NEW packages will be installed:
+#34 24.92   patchelf
+#34 25.13 0 upgraded, 1 newly installed, 0 to remove and 1 not upgraded.
+#34 25.13 Need to get 65.5 kB of archives.
+#34 25.13 After this operation, 183 kB of additional disk space will be used.
+#34 25.13 Get:1 http://deb.debian.org/debian bookworm/main amd64 patchelf amd64 0.14.3-1+b1 [65.5 kB]
+#34 25.23 debconf: delaying package configuration, since apt-utils is not installed
+#34 25.25 Fetched 65.5 kB in 0s (310 kB/s)
+#34 25.28 Selecting previously unselected package patchelf.
+#34 25.28 (Reading database ...
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 9395 files and directories currently installed.)
+#34 25.29 Preparing to unpack .../patchelf_0.14.3-1+b1_amd64.deb ...
+#34 25.30 Unpacking patchelf (0.14.3-1+b1) ...
+#34 25.38 Setting up patchelf (0.14.3-1+b1) ...
+#34 25.43 + patchelf --set-rpath $ORIGIN/../lib64 /usr/local/bin/nvidia-smi
+#34 25.44 + sh /usr/local/bin/bundle-ib-tools.sh
+#34 25.54 Bundled IB tools: ibnetdiscover ibstat iblinkinfo sminfo ibping ibv_devinfo
+#34 25.54 Bundled IB libraries: libibmad.so.5 libibnetdisc.so.5 libibumad.so.3 libibverbs.so.1 libnl-3.so.200 libnl-route-3.so.200
+#34 25.54 + rm -rf /var/lib/apt/lists/auxfiles /var/lib/apt/lists/deb.debian.org_debian-security_dists_bookworm-security_InRelease /var/lib/apt/lists/deb.debian.org_debian-security_dists_bookworm-security_main_binary-amd64_Packages.lz4 /var/lib/apt/lists/deb.debian.org_debian_dists_bookworm-updates_InRelease /var/lib/apt/lists/deb.debian.org_debian_dists_bookworm-updates_main_binary-amd64_Packages.lz4 /var/lib/apt/lists/deb.debian.org_debian_dists_bookworm_InRelease /var/lib/apt/lists/deb.debian.org_debian_dists_bookworm_main_binary-amd64_Packages.lz4 /var/lib/apt/lists/developer.download.nvidia.com_compute_cuda_repos_ubuntu2204_x86%5f64_InRelease /var/lib/apt/lists/developer.download.nvidia.com_compute_cuda_repos_ubuntu2204_x86%5f64_Packages.lz4 /var/lib/apt/lists/lock /var/lib/apt/lists/partial
+#34 25.55 + rm -rf /tmp/nvidia-utils /tmp/nvidia-utils-580_580.65.06-0ubuntu1_amd64.deb /usr/share/keyrings/nvidia.gpg /etc/apt/sources.list.d/nvidia.list
+#34 25.55 + apt-get purge -y --auto-remove curl ca-certificates gnupg2 patchelf
+#34 25.56 Reading package lists...
+#34 25.56 Building dependency tree...
+#34 25.56 Reading state information...
+#34 25.57 The following packages will be REMOVED:
+#34 25.57   ca-certificates* curl* dirmngr* gnupg* gnupg-l10n* gnupg-utils* gnupg2* gpg*
+#34 25.57   gpg-agent* gpg-wks-client* gpg-wks-server* gpgconf* gpgsm* libassuan0*
+#34 25.57   libbrotli1* libcurl4* libgssapi-krb5-2* libk5crypto3* libkeyutils1*
+#34 25.57   libkrb5-3* libkrb5support0* libksba8* libldap-2.5-0* libncursesw6*
+#34 25.57   libnghttp2-14* libnpth0* libpsl5* libreadline8* librtmp1* libsasl2-2*
+#34 25.57   libsasl2-modules-db* libsqlite3-0* libssh2-1* openssl* patchelf*
+#34 25.57   pinentry-curses* readline-common*
+#34 25.65 0 upgraded, 0 newly installed, 37 to remove and 0 not upgraded.
+#34 25.65 After this operation, 27.9 MB disk space will be freed.
+#34 25.66 (Reading database ...
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 9402 files and directories currently installed.)
+#34 25.67 Removing ca-certificates (20250419~deb12u1) ...
+#34 25.71 Removing dangling symlinks from /etc/ssl/certs... done.
+#34 25.96 Removing curl (7.88.1-10+deb12u15) ...
+#34 26.07 Removing gnupg2 (2.2.40-1.1+deb12u2) ...
+#34 26.18 Removing gnupg (2.2.40-1.1+deb12u2) ...
+#34 26.28 Removing gpg-wks-client (2.2.40-1.1+deb12u2) ...
+#34 26.39 Removing dirmngr (2.2.40-1.1+deb12u2) ...
+#34 26.49 Removing gnupg-l10n (2.2.40-1.1+deb12u2) ...
+#34 26.61 Removing gnupg-utils (2.2.40-1.1+deb12u2) ...
+#34 26.71 Removing gpg-wks-server (2.2.40-1.1+deb12u2) ...
+#34 26.81 Removing gpg (2.2.40-1.1+deb12u2) ...
+#34 26.91 Removing gpg-agent (2.2.40-1.1+deb12u2) ...
+#34 26.99 Removing gpgsm (2.2.40-1.1+deb12u2) ...
+#34 27.08 Removing gpgconf (2.2.40-1.1+deb12u2) ...
+#34 27.17 Removing pinentry-curses (1.2.1-1) ...
+#34 27.27 Removing libassuan0:amd64 (2.5.5-5) ...
+#34 27.39 Removing libcurl4:amd64 (7.88.1-10+deb12u15) ...
+#34 27.49 Removing libbrotli1:amd64 (1.0.9-2+b6) ...
+#34 27.58 Removing libgssapi-krb5-2:amd64 (1.20.1-2+deb12u5) ...
+#34 27.65 Removing libkrb5-3:amd64 (1.20.1-2+deb12u5) ...
+#34 27.79 Removing libk5crypto3:amd64 (1.20.1-2+deb12u5) ...
+#34 27.91 Removing libkeyutils1:amd64 (1.6.3-2) ...
+#34 28.05 Removing libkrb5support0:amd64 (1.20.1-2+deb12u5) ...
+#34 28.18 Removing libksba8:amd64 (1.6.3-2) ...
+#34 28.28 Removing libldap-2.5-0:amd64 (2.5.13+dfsg-5) ...
+#34 28.39 Removing libncursesw6:amd64 (6.4-4) ...
+#34 28.50 Removing libnghttp2-14:amd64 (1.52.0-1+deb12u3) ...
+#34 28.61 Removing libnpth0:amd64 (1.6-3) ...
+#34 28.72 Removing libpsl5:amd64 (0.21.2-1) ...
+#34 28.83 Removing libreadline8:amd64 (8.2-1.3) ...
+#34 28.94 Removing librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2+b2) ...
+#34 29.03 Removing libsasl2-2:amd64 (2.1.28+dfsg-10) ...
+#34 29.15 Removing libsasl2-modules-db:amd64 (2.1.28+dfsg-10) ...
+#34 29.26 Removing libsqlite3-0:amd64 (3.40.1-2+deb12u2) ...
+#34 29.36 Removing libssh2-1:amd64 (1.10.0-3+deb12u1) ...
+#34 29.48 Removing openssl (3.0.20-1~deb12u2) ...
+#34 29.55 Removing patchelf (0.14.3-1+b1) ...
+#34 29.65 Removing readline-common (8.2-1.3) ...
+#34 29.73 Processing triggers for libc-bin (2.36-9+deb12u14) ...
+#34 29.74 ldconfig: /usr/local/lib/libcuda.so.550.163.h is not an ELF file - it has the wrong magic bytes at the start.
+#34 29.74
+#34 29.74 ldconfig: /usr/local/lib/libnvidia-ml.so.550.163.01.h is not an ELF file - it has the wrong magic bytes at the start.
+#34 29.74
+#34 29.74 ldconfig: /usr/local/lib/libnvidia-ml.so.550.163.h is not an ELF file - it has the wrong magic bytes at the start.
+#34 29.74
+#34 29.74 ldconfig: /usr/local/lib/libnvidia-ml.so.1 is not a symbolic link
+#34 29.74
+#34 29.74 ldconfig: /usr/local/lib/libibmocksys.so.1 is not a symbolic link
+#34 29.74
+#34 29.74 ldconfig: /usr/local/lib/libibmockumad.so.1 is not a symbolic link
+#34 29.74
+#34 29.74 ldconfig: /usr/local/lib/libibmockverbs.so.1 is not a symbolic link
+#34 29.74
+#34 29.74 ldconfig: /usr/local/lib/libpcisysfs.so.1 is not a symbolic link
+#34 29.74
+#34 29.80 (Reading database ...
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 8499 files and directories currently installed.)
+#34 29.80 Purging configuration files for gpg-agent (2.2.40-1.1+deb12u2) ...
+#34 29.92 Purging configuration files for dirmngr (2.2.40-1.1+deb12u2) ...
+#34 30.04 Purging configuration files for ca-certificates (20250419~deb12u1) ...
+#34 30.12 debconf: unable to initialize frontend: Dialog
+#34 30.12 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#34 30.12 debconf: falling back to frontend: Readline
+#34 30.13 debconf: unable to initialize frontend: Readline
+#34 30.13 debconf: (This frontend requires a controlling tty.)
+#34 30.13 debconf: falling back to frontend: Teletype
+#34 30.14 Removing dangling symlinks from /etc/ssl/certs... done.
+#34 30.19 Purging configuration files for libgssapi-krb5-2:amd64 (1.20.1-2+deb12u5) ...
+#34 30.27 Purging configuration files for openssl (3.0.20-1~deb12u2) ...
+#34 30.35 Purging configuration files for readline-common (8.2-1.3) ...
+#34 DONE 30.6s
+
+#35 exporting to image
+#35 exporting layers
+#35 exporting layers 0.4s done
+#35 writing image sha256:769605ff5cf5a6bebb7612a3f35ab94914019a55182af4675694d82ff59885cf done
+#35 naming to docker.io/volcano-lab/nvml-mock:874ab03 0.0s done
+#35 DONE 0.4s

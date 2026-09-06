@@ -1,0 +1,727 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:24:39Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "node-spread-07271fce-cdfb-4674-b8f5-ad0e6aeaac59",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6391",
+        "uid": "75d2f694-3a48-4a16-a64e-afba048141fd"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:24:39Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 2 minAvailable",
+      "metadata": {
+        "name": "node-spread-07271fce-cdfb-4674-b8f5-ad0e6aeaac59.18d2c4b3f58190b0",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:24:40Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "node-spread-07271fce-cdfb-4674-b8f5-ad0e6aeaac59",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6400",
+        "uid": "75d2f694-3a48-4a16-a64e-afba048141fd"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:24:40Z",
+      "message": "0/2 tasks in gang unschedulable: pod group is ready, 2 Binding, 2 minAvailable",
+      "metadata": {
+        "name": "node-spread-07271fce-cdfb-4674-b8f5-ad0e6aeaac59.18d2c4b432e270f6",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:24:41Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "node-spread-07271fce-cdfb-4674-b8f5-ad0e6aeaac59",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6424",
+        "uid": "75d2f694-3a48-4a16-a64e-afba048141fd"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:24:42Z",
+      "message": "pod group is ready",
+      "metadata": {
+        "name": "node-spread-07271fce-cdfb-4674-b8f5-ad0e6aeaac59.18d2c4b47092345a",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:25:31Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "node-spread-57ae3bd4-865c-4bc9-9370-7642e41481e6",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6565",
+        "uid": "6ef4e6b4-2d02-482a-a9a3-706c4d7907e8"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:25:31Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 2 minAvailable",
+      "metadata": {
+        "name": "node-spread-57ae3bd4-865c-4bc9-9370-7642e41481e6.18d2c4c024050d70",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:25:32Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "node-spread-57ae3bd4-865c-4bc9-9370-7642e41481e6",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6570",
+        "uid": "6ef4e6b4-2d02-482a-a9a3-706c4d7907e8"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:25:32Z",
+      "message": "0/2 tasks in gang unschedulable: pod group is ready, 2 Binding, 2 minAvailable",
+      "metadata": {
+        "name": "node-spread-57ae3bd4-865c-4bc9-9370-7642e41481e6.18d2c4c060e18f16",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:28Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "node-spread-67c65635-8998-41f9-8815-25f33d6ff301",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4787",
+        "uid": "4e8b671f-7661-4586-9a4b-ea2cef643f0a"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:28Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 2 minAvailable",
+      "metadata": {
+        "name": "node-spread-67c65635-8998-41f9-8815-25f33d6ff301.18d2c47986671e87",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:29Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "node-spread-67c65635-8998-41f9-8815-25f33d6ff301",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4795",
+        "uid": "4e8b671f-7661-4586-9a4b-ea2cef643f0a"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:29Z",
+      "message": "0/2 tasks in gang unschedulable: pod group is ready, 2 Binding, 2 minAvailable",
+      "metadata": {
+        "name": "node-spread-67c65635-8998-41f9-8815-25f33d6ff301.18d2c479c2771207",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:29Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "node-spread-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4790",
+        "uid": "e189a41b-4040-420c-9373-9402553ffcba"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:29Z",
+      "message": "Successfully assigned volcano-tests/node-spread-worker-0 to volcano-lab-worker",
+      "metadata": {
+        "name": "node-spread-worker-0.18d2c479c31e3b40",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:29Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "node-spread-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4799",
+        "uid": "e189a41b-4040-420c-9373-9402553ffcba"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:29Z",
+      "message": "Allocate failed due to rpc error: code = Unknown desc = cannot get valid pod, which is unexpected",
+      "metadata": {
+        "name": "node-spread-worker-0.18d2c479c3ae2e54",
+        "namespace": "volcano-tests"
+      },
+      "reason": "UnexpectedAdmissionError",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:24:40Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "node-spread-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6393",
+        "uid": "1a37bc60-3781-47e3-9374-2a570890ff2c"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:24:40Z",
+      "message": "Successfully assigned volcano-tests/node-spread-worker-0 to volcano-lab-worker",
+      "metadata": {
+        "name": "node-spread-worker-0.18d2c4b433229ab5",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:24:40Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "node-spread-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6401",
+        "uid": "1a37bc60-3781-47e3-9374-2a570890ff2c"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:24:40Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "node-spread-worker-0.18d2c4b4516abc84",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:24:40Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "node-spread-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6401",
+        "uid": "1a37bc60-3781-47e3-9374-2a570890ff2c"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:24:40Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "node-spread-worker-0.18d2c4b453a161fd",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:24:40Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "node-spread-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6401",
+        "uid": "1a37bc60-3781-47e3-9374-2a570890ff2c"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:24:40Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "node-spread-worker-0.18d2c4b45950cd11",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:24:43Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "node-spread-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6401",
+        "uid": "1a37bc60-3781-47e3-9374-2a570890ff2c"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:24:43Z",
+      "message": "Stopping container work",
+      "metadata": {
+        "name": "node-spread-worker-0.18d2c4b4fabc0b44",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Killing",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:25:32Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "node-spread-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6568",
+        "uid": "1d9d59fd-ec55-48aa-b09e-d1ffcb36739b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:25:32Z",
+      "message": "Successfully assigned volcano-tests/node-spread-worker-0 to volcano-lab-worker",
+      "metadata": {
+        "name": "node-spread-worker-0.18d2c4c0612e4075",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:25:32Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "node-spread-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6572",
+        "uid": "1d9d59fd-ec55-48aa-b09e-d1ffcb36739b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:25:32Z",
+      "message": "Allocate failed due to rpc error: code = Unknown desc = cannot get valid pod, which is unexpected",
+      "metadata": {
+        "name": "node-spread-worker-0.18d2c4c0630b145b",
+        "namespace": "volcano-tests"
+      },
+      "reason": "UnexpectedAdmissionError",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:29Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "node-spread-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4789",
+        "uid": "11c2fe74-3af0-4692-ab69-36f49308a60f"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:29Z",
+      "message": "Successfully assigned volcano-tests/node-spread-worker-1 to volcano-lab-worker",
+      "metadata": {
+        "name": "node-spread-worker-1.18d2c479c32f8024",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:29Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "node-spread-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4800",
+        "uid": "11c2fe74-3af0-4692-ab69-36f49308a60f"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:29Z",
+      "message": "Allocate failed due to rpc error: code = Unknown desc = cannot get valid pod, which is unexpected",
+      "metadata": {
+        "name": "node-spread-worker-1.18d2c479c4413eb9",
+        "namespace": "volcano-tests"
+      },
+      "reason": "UnexpectedAdmissionError",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:24:40Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "node-spread-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6394",
+        "uid": "07614bd3-4e56-4dcb-9bdd-4b00819e10e5"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:24:40Z",
+      "message": "Successfully assigned volcano-tests/node-spread-worker-1 to volcano-lab-worker",
+      "metadata": {
+        "name": "node-spread-worker-1.18d2c4b433221d0a",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:24:40Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "node-spread-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6402",
+        "uid": "07614bd3-4e56-4dcb-9bdd-4b00819e10e5"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:24:40Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "node-spread-worker-1.18d2c4b453c1b81f",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:24:40Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "node-spread-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6402",
+        "uid": "07614bd3-4e56-4dcb-9bdd-4b00819e10e5"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:24:40Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "node-spread-worker-1.18d2c4b4565add24",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:24:40Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "node-spread-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6402",
+        "uid": "07614bd3-4e56-4dcb-9bdd-4b00819e10e5"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:24:40Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "node-spread-worker-1.18d2c4b45befcce1",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:24:42Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "node-spread-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6402",
+        "uid": "07614bd3-4e56-4dcb-9bdd-4b00819e10e5"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:24:42Z",
+      "message": "Stopping container work",
+      "metadata": {
+        "name": "node-spread-worker-1.18d2c4b4c8ba199b",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Killing",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:25:32Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "node-spread-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6567",
+        "uid": "430d801a-4622-46ec-8cb6-53a6a52e677f"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:25:32Z",
+      "message": "Successfully assigned volcano-tests/node-spread-worker-1 to volcano-lab-worker",
+      "metadata": {
+        "name": "node-spread-worker-1.18d2c4c0612dcb66",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:25:32Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "node-spread-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6571",
+        "uid": "430d801a-4622-46ec-8cb6-53a6a52e677f"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:25:32Z",
+      "message": "Allocate failed due to rpc error: code = Unknown desc = cannot get valid pod, which is unexpected",
+      "metadata": {
+        "name": "node-spread-worker-1.18d2c4c061c20a32",
+        "namespace": "volcano-tests"
+      },
+      "reason": "UnexpectedAdmissionError",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Warning"
+    }
+  ],
+  "kind": "List",
+  "metadata": {}
+}

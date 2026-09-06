@@ -1,0 +1,123 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "batch.volcano.sh/v1alpha1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch.volcano.sh/v1alpha1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"name\":\"restart\",\"namespace\":\"volcano-tests\"},\"spec\":{\"minAvailable\":2,\"policies\":[{\"action\":\"RestartJob\",\"event\":\"PodEvicted\"}],\"queue\":\"lab\",\"schedulerName\":\"volcano\",\"tasks\":[{\"name\":\"worker\",\"replicas\":2,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sleep\",\"3600\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"requests\":{\"cpu\":\"100m\",\"memory\":\"32Mi\"}}}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":0}}}]}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:18:50Z",
+                "generation": 1,
+                "name": "restart",
+                "namespace": "volcano-tests",
+                "resourceVersion": "4214",
+                "uid": "f24924ab-fabb-49e3-9ece-c961c6f81a8e"
+            },
+            "spec": {
+                "maxRetry": 3,
+                "minAvailable": 2,
+                "policies": [
+                    {
+                        "action": "RestartJob",
+                        "event": "PodEvicted"
+                    }
+                ],
+                "queue": "lab",
+                "schedulerName": "volcano",
+                "tasks": [
+                    {
+                        "maxRetry": 3,
+                        "minAvailable": 2,
+                        "name": "worker",
+                        "replicas": 2,
+                        "template": {
+                            "metadata": {},
+                            "spec": {
+                                "containers": [
+                                    {
+                                        "command": [
+                                            "sleep",
+                                            "3600"
+                                        ],
+                                        "image": "ubuntu:22.04",
+                                        "imagePullPolicy": "IfNotPresent",
+                                        "name": "work",
+                                        "resources": {
+                                            "requests": {
+                                                "cpu": "100m",
+                                                "memory": "32Mi"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "restartPolicy": "Never",
+                                "terminationGracePeriodSeconds": 0
+                            }
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-09-06T15:18:50Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:18:50Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:18:52Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:18:52Z",
+                        "status": "Running"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:18:54Z",
+                        "status": "Running"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:18:54Z",
+                        "status": "Restarting"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:18:54Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:18:55Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:18:55Z",
+                        "status": "Running"
+                    }
+                ],
+                "minAvailable": 2,
+                "retryCount": 1,
+                "running": 2,
+                "state": {
+                    "lastTransitionTime": "2026-09-06T15:18:55Z",
+                    "phase": "Running"
+                },
+                "taskStatusCount": {
+                    "worker": {
+                        "phase": {
+                            "Running": 2
+                        }
+                    }
+                },
+                "version": 1
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

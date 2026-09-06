@@ -1,0 +1,15 @@
+# 独立实验集群：一个控制面、两个工作节点，用于比较跨节点调度策略。
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+# 控制面不标记 gpu=on，不部署模拟 GPU。
+- role: control-plane
+# setup.sh 固定集群名为 volcano-lab，此节点名为 volcano-lab-worker。
+- role: worker
+  labels:
+    # HAMi device-plugin 和 mock 都用此标签选择 GPU 节点。
+    gpu: 'on'
+# 第二个节点名为 volcano-lab-worker2，便于验证节点 spread 策略。
+- role: worker
+  labels:
+    gpu: 'on'

@@ -1,0 +1,759 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:22Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "fair-a-1d05748c-cf54-4c25-80a8-81e47728c915",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4641",
+        "uid": "988be156-5001-4b68-8c73-05c2aef62791"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:22Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 1 minAvailable",
+      "metadata": {
+        "name": "fair-a-1d05748c-cf54-4c25-80a8-81e47728c915.18d2c47818e9942b",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "fair-a-1d05748c-cf54-4c25-80a8-81e47728c915",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4656",
+        "uid": "988be156-5001-4b68-8c73-05c2aef62791"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "2/4 tasks in gang unschedulable: pod group is ready, 1 minAvailable, 2 Binding, 2 Pending; Pending: 2 Unschedulable. Origin reason is fair-a-worker-3: Task fair-a-worker-3 with role spec worker has already predicated failed, skip",
+      "metadata": {
+        "name": "fair-a-1d05748c-cf54-4c25-80a8-81e47728c915.18d2c4785548d53e",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:24Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "fair-a-1d05748c-cf54-4c25-80a8-81e47728c915",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4705",
+        "uid": "988be156-5001-4b68-8c73-05c2aef62791"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:24Z",
+      "message": "pod group is ready",
+      "metadata": {
+        "name": "fair-a-1d05748c-cf54-4c25-80a8-81e47728c915.18d2c4789379c424",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "fair-a-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4652",
+        "uid": "ef35fa95-94f0-447f-8c3c-33b09b94a5f8"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "Successfully assigned volcano-tests/fair-a-worker-0 to volcano-lab-worker",
+      "metadata": {
+        "name": "fair-a-worker-0.18d2c478562a3df0",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "fair-a-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4664",
+        "uid": "ef35fa95-94f0-447f-8c3c-33b09b94a5f8"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "fair-a-worker-0.18d2c47875969683",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "fair-a-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4664",
+        "uid": "ef35fa95-94f0-447f-8c3c-33b09b94a5f8"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "fair-a-worker-0.18d2c4787b11786e",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "fair-a-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4664",
+        "uid": "ef35fa95-94f0-447f-8c3c-33b09b94a5f8"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "fair-a-worker-0.18d2c4787e574027",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "fair-a-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4651",
+        "uid": "329b503a-ba2e-40d0-bf05-e96590636424"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "Successfully assigned volcano-tests/fair-a-worker-1 to volcano-lab-worker2",
+      "metadata": {
+        "name": "fair-a-worker-1.18d2c47856398669",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "fair-a-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4662",
+        "uid": "329b503a-ba2e-40d0-bf05-e96590636424"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "fair-a-worker-1.18d2c47875357f8b",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "fair-a-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4662",
+        "uid": "329b503a-ba2e-40d0-bf05-e96590636424"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "fair-a-worker-1.18d2c4787aa99a8f",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "fair-a-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4662",
+        "uid": "329b503a-ba2e-40d0-bf05-e96590636424"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "fair-a-worker-1.18d2c4787ea0dba0",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "fair-a-worker-2",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4650",
+        "uid": "5a79af2f-a698-4f3a-827e-d78f386ba662"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "0/3 nodes are unavailable: 1 node(s) had untolerated taint(s), 2 Insufficient cpu.",
+      "metadata": {
+        "name": "fair-a-worker-2.18d2c478554e6430",
+        "namespace": "volcano-tests"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "fair-a-worker-3",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4653",
+        "uid": "6bb35602-9509-40ca-a337-3aa50d1a2c4c"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "Task fair-a-worker-3 with role spec worker has already predicated failed, skip",
+      "metadata": {
+        "name": "fair-a-worker-3.18d2c478554e5ca3",
+        "namespace": "volcano-tests"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:22Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "fair-b-ef067f69-24d0-471a-9ee1-af751014a17e",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4640",
+        "uid": "c65c3641-93ec-4f93-844c-e7120b4372a4"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:22Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 1 minAvailable",
+      "metadata": {
+        "name": "fair-b-ef067f69-24d0-471a-9ee1-af751014a17e.18d2c47818d13a7f",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "fair-b-ef067f69-24d0-471a-9ee1-af751014a17e",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4657",
+        "uid": "c65c3641-93ec-4f93-844c-e7120b4372a4"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "2/4 tasks in gang unschedulable: pod group is ready, 1 minAvailable, 2 Binding, 2 Pending; Pending: 2 Unschedulable. Origin reason is fair-b-worker-3: Task fair-b-worker-3 with role spec worker has already predicated failed, skip",
+      "metadata": {
+        "name": "fair-b-ef067f69-24d0-471a-9ee1-af751014a17e.18d2c4785590a003",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:24Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "fair-b-ef067f69-24d0-471a-9ee1-af751014a17e",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4704",
+        "uid": "c65c3641-93ec-4f93-844c-e7120b4372a4"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:24Z",
+      "message": "pod group is ready",
+      "metadata": {
+        "name": "fair-b-ef067f69-24d0-471a-9ee1-af751014a17e.18d2c478932ee811",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "fair-b-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4644",
+        "uid": "6b2f6923-315c-447f-994c-d76f4ac1476a"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "Successfully assigned volcano-tests/fair-b-worker-0 to volcano-lab-worker",
+      "metadata": {
+        "name": "fair-b-worker-0.18d2c47856396589",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "fair-b-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4663",
+        "uid": "6b2f6923-315c-447f-994c-d76f4ac1476a"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "fair-b-worker-0.18d2c47874f943f8",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "fair-b-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4663",
+        "uid": "6b2f6923-315c-447f-994c-d76f4ac1476a"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "fair-b-worker-0.18d2c47878f54101",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "fair-b-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4663",
+        "uid": "6b2f6923-315c-447f-994c-d76f4ac1476a"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "fair-b-worker-0.18d2c4787e57e5ef",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "fair-b-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4645",
+        "uid": "11e42e5b-b5f7-4639-904b-d4451be06344"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "Successfully assigned volcano-tests/fair-b-worker-1 to volcano-lab-worker2",
+      "metadata": {
+        "name": "fair-b-worker-1.18d2c47856264bfe",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "fair-b-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4661",
+        "uid": "11e42e5b-b5f7-4639-904b-d4451be06344"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "fair-b-worker-1.18d2c47874fba529",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "fair-b-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4661",
+        "uid": "11e42e5b-b5f7-4639-904b-d4451be06344"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "fair-b-worker-1.18d2c47879cb94b9",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "fair-b-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4661",
+        "uid": "11e42e5b-b5f7-4639-904b-d4451be06344"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "fair-b-worker-1.18d2c4787db6e8a2",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "fair-b-worker-2",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4646",
+        "uid": "b827f4b3-1fe7-4527-8437-66011047428a"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "0/3 nodes are unavailable: 1 node(s) had untolerated taint(s), 2 Insufficient cpu.",
+      "metadata": {
+        "name": "fair-b-worker-2.18d2c47855917d7b",
+        "namespace": "volcano-tests"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:20:23Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "fair-b-worker-3",
+        "namespace": "volcano-tests",
+        "resourceVersion": "4643",
+        "uid": "4e1222f7-b1e9-41f1-bee5-636975fd1f3d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:20:23Z",
+      "message": "Task fair-b-worker-3 with role spec worker has already predicated failed, skip",
+      "metadata": {
+        "name": "fair-b-worker-3.18d2c478559341c7",
+        "namespace": "volcano-tests"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    }
+  ],
+  "kind": "List",
+  "metadata": {}
+}

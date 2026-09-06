@@ -1,0 +1,70 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "scheduling.volcano.sh/v1beta1",
+            "kind": "PodGroup",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch.volcano.sh/v1alpha1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"name\":\"waiting\",\"namespace\":\"volcano-tests\"},\"spec\":{\"minAvailable\":1,\"queue\":\"lab\",\"schedulerName\":\"volcano\",\"tasks\":[{\"name\":\"worker\",\"replicas\":1,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sleep\",\"3600\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"limits\":{\"volcano.sh/vgpu-cores\":1,\"volcano.sh/vgpu-memory\":10,\"volcano.sh/vgpu-number\":1},\"requests\":{\"cpu\":\"100m\",\"memory\":\"32Mi\"}},\"volumeMounts\":[{\"mountPath\":\"/usr/lib/x86_64-linux-gnu/libcuda.so.1\",\"name\":\"cuda\",\"readOnly\":true}]}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"volcano-lab-worker\"},\"restartPolicy\":\"Never\",\"runtimeClassName\":\"nvidia\",\"terminationGracePeriodSeconds\":0,\"volumes\":[{\"hostPath\":{\"path\":\"/var/lib/nvml-mock/driver/usr/lib64/libcuda.so.1\",\"type\":\"File\"},\"name\":\"cuda\"}]}}}]}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:17:06Z",
+                "generation": 10,
+                "name": "waiting-c1099719-c45d-4f85-971b-7d8ad5106b85",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "waiting",
+                        "uid": "c1099719-c45d-4f85-971b-7d8ad5106b85"
+                    }
+                ],
+                "resourceVersion": "3472",
+                "uid": "ae138865-91ef-4e3f-bda3-4097fc88d389"
+            },
+            "spec": {
+                "minMember": 1,
+                "minResources": {
+                    "count/pods": "1",
+                    "cpu": "100m",
+                    "memory": "32Mi",
+                    "pods": "1",
+                    "requests.cpu": "100m",
+                    "requests.memory": "32Mi"
+                },
+                "minTaskMember": {
+                    "worker": 1
+                },
+                "queue": "lab"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-09-06T15:17:12Z",
+                        "message": "1/1 tasks in gang unschedulable: pod group is not ready, 1 Pending, 1 minAvailable; Pending: 1 Unschedulable. Origin reason is waiting-worker-0: 0/3 nodes are unavailable: 1 node(s) didn't match Pod's node affinity/selector, 2 Insufficient volcano.sh/vgpu-cores.",
+                        "reason": "NotEnoughResources",
+                        "status": "True",
+                        "transitionID": "ea4d59aa-f71d-4306-b173-217ee3d6c9f6",
+                        "type": "Unschedulable"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:17:16Z",
+                        "reason": "tasks in gang are ready to be scheduled",
+                        "status": "True",
+                        "transitionID": "5527049b-1258-4f62-9fd4-b83c67297ee9",
+                        "type": "Scheduled"
+                    }
+                ],
+                "phase": "Running",
+                "running": 1
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

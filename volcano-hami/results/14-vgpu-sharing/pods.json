@@ -1,0 +1,843 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "share-221d448e-8292-405e-8f80-2a7b0c7c17ef",
+                    "volcano.sh/bind-phase": "success",
+                    "volcano.sh/bind-time": "1788707900",
+                    "volcano.sh/devices-to-allocate": "",
+                    "volcano.sh/job-name": "share",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "lab",
+                    "volcano.sh/task-index": "0",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "share-worker",
+                    "volcano.sh/vgpu-ids-new": "GPU-12345678-1234-1234-1234-123456780000,NVIDIA,30,20:",
+                    "volcano.sh/vgpu-node": "volcano-lab-worker",
+                    "volcano.sh/vgpu-time": "18446744073709551615"
+                },
+                "creationTimestamp": "2026-09-06T15:18:19Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "share",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "lab",
+                    "volcano.sh/task-index": "0",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "share-worker-0",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "share",
+                        "uid": "221d448e-8292-405e-8f80-2a7b0c7c17ef"
+                    }
+                ],
+                "resourceVersion": "3713",
+                "uid": "d040d039-63fb-403b-a717-f5e29c4f31e3"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "limits": {
+                                "volcano.sh/vgpu-cores": "20",
+                                "volcano.sh/vgpu-memory": "30",
+                                "volcano.sh/vgpu-number": "1"
+                            },
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "32Mi",
+                                "volcano.sh/vgpu-cores": "20",
+                                "volcano.sh/vgpu-memory": "30",
+                                "volcano.sh/vgpu-number": "1"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/usr/lib/x86_64-linux-gnu/libcuda.so.1",
+                                "name": "cuda",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-8s4r9",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "volcano-lab-worker",
+                "nodeSelector": {
+                    "kubernetes.io/hostname": "volcano-lab-worker"
+                },
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "runtimeClassName": "nvidia",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "hostPath": {
+                            "path": "/var/lib/nvml-mock/driver/usr/lib64/libcuda.so.1",
+                            "type": "File"
+                        },
+                        "name": "cuda"
+                    },
+                    {
+                        "name": "kube-api-access-8s4r9",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:18:21Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:18:20Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:18:21Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:18:21Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:18:20Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "100m",
+                            "memory": "32Mi",
+                            "volcano.sh/vgpu-cores": "20",
+                            "volcano.sh/vgpu-memory": "30",
+                            "volcano.sh/vgpu-number": "1"
+                        },
+                        "containerID": "containerd://b1e0acaa0cb9b79c9f4f0c0aa1847e58be9c3691ac1e9fa4f2ff0be23d97736f",
+                        "image": "docker.io/library/ubuntu:22.04",
+                        "imageID": "sha256:4d0600e5088ac5da5119401c70292ea3a9d9dc71f76a234ad5390c1f6a8e5669",
+                        "lastState": {},
+                        "name": "work",
+                        "ready": true,
+                        "resources": {
+                            "limits": {
+                                "volcano.sh/vgpu-cores": "20",
+                                "volcano.sh/vgpu-memory": "30",
+                                "volcano.sh/vgpu-number": "1"
+                            },
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "32Mi",
+                                "volcano.sh/vgpu-cores": "20",
+                                "volcano.sh/vgpu-memory": "30",
+                                "volcano.sh/vgpu-number": "1"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-06T15:18:21Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/usr/lib/x86_64-linux-gnu/libcuda.so.1",
+                                "name": "cuda",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-8s4r9",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "172.30.0.6",
+                "hostIPs": [
+                    {
+                        "ip": "172.30.0.6"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.2.43",
+                "podIPs": [
+                    {
+                        "ip": "10.244.2.43"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-09-06T15:18:20Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "share-221d448e-8292-405e-8f80-2a7b0c7c17ef",
+                    "volcano.sh/bind-phase": "success",
+                    "volcano.sh/bind-time": "1788707900",
+                    "volcano.sh/devices-to-allocate": "",
+                    "volcano.sh/job-name": "share",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "lab",
+                    "volcano.sh/task-index": "1",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "share-worker",
+                    "volcano.sh/vgpu-ids-new": "GPU-12345678-1234-1234-1234-123456780000,NVIDIA,30,20:",
+                    "volcano.sh/vgpu-node": "volcano-lab-worker",
+                    "volcano.sh/vgpu-time": "18446744073709551615"
+                },
+                "creationTimestamp": "2026-09-06T15:18:19Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "share",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "lab",
+                    "volcano.sh/task-index": "1",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "share-worker-1",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "share",
+                        "uid": "221d448e-8292-405e-8f80-2a7b0c7c17ef"
+                    }
+                ],
+                "resourceVersion": "3710",
+                "uid": "e42ea9d8-142b-4e72-8cd7-28fcd1d634fd"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "limits": {
+                                "volcano.sh/vgpu-cores": "20",
+                                "volcano.sh/vgpu-memory": "30",
+                                "volcano.sh/vgpu-number": "1"
+                            },
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "32Mi",
+                                "volcano.sh/vgpu-cores": "20",
+                                "volcano.sh/vgpu-memory": "30",
+                                "volcano.sh/vgpu-number": "1"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/usr/lib/x86_64-linux-gnu/libcuda.so.1",
+                                "name": "cuda",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-ssgsp",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "volcano-lab-worker",
+                "nodeSelector": {
+                    "kubernetes.io/hostname": "volcano-lab-worker"
+                },
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "runtimeClassName": "nvidia",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "hostPath": {
+                            "path": "/var/lib/nvml-mock/driver/usr/lib64/libcuda.so.1",
+                            "type": "File"
+                        },
+                        "name": "cuda"
+                    },
+                    {
+                        "name": "kube-api-access-ssgsp",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:18:21Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:18:20Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:18:21Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:18:21Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:18:20Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "100m",
+                            "memory": "32Mi",
+                            "volcano.sh/vgpu-cores": "20",
+                            "volcano.sh/vgpu-memory": "30",
+                            "volcano.sh/vgpu-number": "1"
+                        },
+                        "containerID": "containerd://8318f42adc93cae1d2e2647ab48ab7342a6cecdf396ea0f2fc0ba01b562bad4e",
+                        "image": "docker.io/library/ubuntu:22.04",
+                        "imageID": "sha256:4d0600e5088ac5da5119401c70292ea3a9d9dc71f76a234ad5390c1f6a8e5669",
+                        "lastState": {},
+                        "name": "work",
+                        "ready": true,
+                        "resources": {
+                            "limits": {
+                                "volcano.sh/vgpu-cores": "20",
+                                "volcano.sh/vgpu-memory": "30",
+                                "volcano.sh/vgpu-number": "1"
+                            },
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "32Mi",
+                                "volcano.sh/vgpu-cores": "20",
+                                "volcano.sh/vgpu-memory": "30",
+                                "volcano.sh/vgpu-number": "1"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-06T15:18:21Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/usr/lib/x86_64-linux-gnu/libcuda.so.1",
+                                "name": "cuda",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-ssgsp",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "172.30.0.6",
+                "hostIPs": [
+                    {
+                        "ip": "172.30.0.6"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.2.44",
+                "podIPs": [
+                    {
+                        "ip": "10.244.2.44"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-09-06T15:18:20Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "scheduling.k8s.io/group-name": "share-221d448e-8292-405e-8f80-2a7b0c7c17ef",
+                    "volcano.sh/bind-phase": "success",
+                    "volcano.sh/bind-time": "1788707900",
+                    "volcano.sh/devices-to-allocate": "",
+                    "volcano.sh/job-name": "share",
+                    "volcano.sh/job-retry-count": "0",
+                    "volcano.sh/job-version": "0",
+                    "volcano.sh/queue-name": "lab",
+                    "volcano.sh/task-index": "2",
+                    "volcano.sh/task-spec": "worker",
+                    "volcano.sh/template-uid": "share-worker",
+                    "volcano.sh/vgpu-ids-new": "GPU-12345678-1234-1234-1234-123456780000,NVIDIA,30,20:",
+                    "volcano.sh/vgpu-node": "volcano-lab-worker",
+                    "volcano.sh/vgpu-time": "18446744073709551615"
+                },
+                "creationTimestamp": "2026-09-06T15:18:19Z",
+                "generation": 1,
+                "labels": {
+                    "volcano.sh/job-name": "share",
+                    "volcano.sh/job-namespace": "volcano-tests",
+                    "volcano.sh/queue-name": "lab",
+                    "volcano.sh/task-index": "2",
+                    "volcano.sh/task-spec": "worker"
+                },
+                "name": "share-worker-2",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "share",
+                        "uid": "221d448e-8292-405e-8f80-2a7b0c7c17ef"
+                    }
+                ],
+                "resourceVersion": "3719",
+                "uid": "91c6b4cc-ea02-4027-97a2-2948194e8fa1"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "sleep",
+                            "3600"
+                        ],
+                        "image": "ubuntu:22.04",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "work",
+                        "resources": {
+                            "limits": {
+                                "volcano.sh/vgpu-cores": "20",
+                                "volcano.sh/vgpu-memory": "30",
+                                "volcano.sh/vgpu-number": "1"
+                            },
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "32Mi",
+                                "volcano.sh/vgpu-cores": "20",
+                                "volcano.sh/vgpu-memory": "30",
+                                "volcano.sh/vgpu-number": "1"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/usr/lib/x86_64-linux-gnu/libcuda.so.1",
+                                "name": "cuda",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-xlhpw",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "volcano-lab-worker",
+                "nodeSelector": {
+                    "kubernetes.io/hostname": "volcano-lab-worker"
+                },
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "runtimeClassName": "nvidia",
+                "schedulerName": "volcano",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 0,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "hostPath": {
+                            "path": "/var/lib/nvml-mock/driver/usr/lib64/libcuda.so.1",
+                            "type": "File"
+                        },
+                        "name": "cuda"
+                    },
+                    {
+                        "name": "kube-api-access-xlhpw",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:18:22Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:18:21Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:18:22Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:18:22Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-06T15:18:20Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "allocatedResources": {
+                            "cpu": "100m",
+                            "memory": "32Mi",
+                            "volcano.sh/vgpu-cores": "20",
+                            "volcano.sh/vgpu-memory": "30",
+                            "volcano.sh/vgpu-number": "1"
+                        },
+                        "containerID": "containerd://88c2cafac47f4bd7783f08ac72229817f99771aa43bec5411a9092dd5de68e7a",
+                        "image": "docker.io/library/ubuntu:22.04",
+                        "imageID": "sha256:4d0600e5088ac5da5119401c70292ea3a9d9dc71f76a234ad5390c1f6a8e5669",
+                        "lastState": {},
+                        "name": "work",
+                        "ready": true,
+                        "resources": {
+                            "limits": {
+                                "volcano.sh/vgpu-cores": "20",
+                                "volcano.sh/vgpu-memory": "30",
+                                "volcano.sh/vgpu-number": "1"
+                            },
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "32Mi",
+                                "volcano.sh/vgpu-cores": "20",
+                                "volcano.sh/vgpu-memory": "30",
+                                "volcano.sh/vgpu-number": "1"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-06T15:18:22Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/usr/lib/x86_64-linux-gnu/libcuda.so.1",
+                                "name": "cuda",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-xlhpw",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "172.30.0.6",
+                "hostIPs": [
+                    {
+                        "ip": "172.30.0.6"
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "10.244.2.45",
+                "podIPs": [
+                    {
+                        "ip": "10.244.2.45"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2026-09-06T15:18:21Z"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

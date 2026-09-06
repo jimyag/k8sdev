@@ -1,0 +1,277 @@
+# Copyright (c) 2019, NVIDIA CORPORATION.  All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# 实验适配：CDI runtime 注入模拟设备；仅 GPU worker 部署插件。
+# 共享名额为每卡 10 份，显存不超售；禁用额外 DeviceSpec，避免重复注入。
+# 两个容器统一固定 v1.12.0，使用本地预加载镜像。
+apiVersion: node.k8s.io/v1
+kind: RuntimeClass
+metadata:
+  name: nvidia
+handler: nvidia
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: volcano-vgpu-device-config
+  namespace: kube-system
+  labels:
+    app.kubernetes.io/component: volcano-vgpu-device-plugin
+data:
+  device-config.yaml: "# 每个显存资源单位代表 100 MiB，避免 ListAndWatch 超过 gRPC 4 MiB。\nnvidia:\n\
+    \  resourceCountName: volcano.sh/vgpu-number\n  resourceMemoryName: volcano.sh/vgpu-memory\n\
+    \  resourceMemoryPercentageName: volcano.sh/vgpu-memory-percentage\n  resourceCoreName:\
+    \ volcano.sh/vgpu-cores\n  overwriteEnv: false\n  defaultMemory: 0\n  defaultCores:\
+    \ 0\n  defaultGPUNum: 1\n  deviceSplitCount: 10\n  deviceMemoryScaling: 1\n  deviceCoreScaling:\
+    \ 1\n  gpuMemoryFactor: 100\n  knownMigGeometries:\n  - models:\n    - A30\n \
+    \   allowedGeometries:\n    - group: group1\n      geometries:\n      - name:\
+    \ 1g.6gb\n        memory: 6144\n        count: 4\n    - group: group2\n      geometries:\n\
+    \      - name: 2g.12gb\n        memory: 12288\n        count: 2\n    - group:\
+    \ group3\n      geometries:\n      - name: 4g.24gb\n        memory: 24576\n  \
+    \      count: 1\n  - models:\n    - A100-SXM4-40GB\n    - A100-40GB-PCIe\n   \
+    \ - A100-PCIE-40GB\n    - A100-SXM4-40GB\n    allowedGeometries:\n    - group:\
+    \ group1\n      geometries:\n      - name: 1g.5gb\n        memory: 5120\n    \
+    \    count: 7\n    - group: group2\n      geometries:\n      - name: 2g.10gb\n\
+    \        memory: 10240\n        count: 3\n      - name: 1g.5gb\n        memory:\
+    \ 5120\n        count: 1\n    - group: group3\n      geometries:\n      - name:\
+    \ 3g.20gb\n        memory: 20480\n        count: 2\n    - group: group4\n    \
+    \  geometries:\n      - name: 7g.40gb\n        memory: 40960\n        count: 1\n\
+    \  - models:\n    - A100-SXM4-80GB\n    - A100-80GB-PCIe\n    - A100-PCIE-80GB\n\
+    \    allowedGeometries:\n    - group: group1\n      geometries:\n      - name:\
+    \ 1g.10gb\n        memory: 9728\n        count: 7\n    - group: group2\n     \
+    \ geometries:\n      - name: 2g.20gb\n        memory: 19968\n        count: 3\n\
+    \      - name: 1g.10gb\n        memory: 9728\n        count: 1\n    - group: group3\n\
+    \      geometries:\n      - name: 3g.40gb\n        memory: 40192\n        count:\
+    \ 2\n    - group: group4\n      geometries:\n      - name: 7g.80gb\n        memory:\
+    \ 80896\n        count: 1\n"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: volcano-vgpu-node-config
+  namespace: kube-system
+  labels:
+    app.kubernetes.io/component: volcano-vgpu-node-plugin
+data:
+  config.json: "{\n  \"nodeconfig\": [\n    {\n      \"name\": \"volcano-lab-worker\"\
+    ,\n      \"operatingmode\": \"hami-core\",\n      \"devicememoryscaling\": 1,\n\
+    \      \"devicesplitcount\": 10,\n      \"migstrategy\": \"none\"\n    },\n  \
+    \  {\n      \"name\": \"volcano-lab-worker2\",\n      \"operatingmode\": \"hami-core\"\
+    ,\n      \"devicememoryscaling\": 1,\n      \"devicesplitcount\": 10,\n      \"\
+    migstrategy\": \"none\"\n    }\n  ]\n}"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: volcano-device-plugin
+  namespace: kube-system
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: volcano-device-plugin
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - nodes
+  verbs:
+  - get
+  - list
+  - watch
+  - update
+  - patch
+- apiGroups:
+  - ''
+  resources:
+  - nodes/status
+  verbs:
+  - patch
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+  - update
+  - patch
+  - watch
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: volcano-device-plugin
+subjects:
+- kind: ServiceAccount
+  name: volcano-device-plugin
+  namespace: kube-system
+roleRef:
+  kind: ClusterRole
+  name: volcano-device-plugin
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: volcano-device-plugin
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      name: volcano-device-plugin
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        scheduler.alpha.kubernetes.io/critical-pod: ''
+      labels:
+        name: volcano-device-plugin
+    spec:
+      tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists
+      - key: volcano.sh/gpu-memory
+        operator: Exists
+        effect: NoSchedule
+      priorityClassName: system-node-critical
+      serviceAccount: volcano-device-plugin
+      containers:
+      - image: projecthami/volcano-vgpu-device-plugin:v1.12.0
+        args:
+        - --device-split-count=10
+        - --pass-device-specs=false
+        - --nvidia-driver-root=/run/nvidia/driver
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - /bin/sh
+              - -c
+              - cp -f /k8s-vgpu/lib/nvidia/* /usr/local/vgpu/
+        name: volcano-device-plugin
+        env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: HOOK_PATH
+          value: /usr/local/vgpu
+        - name: NVIDIA_VISIBLE_DEVICES
+          value: all
+        - name: NVIDIA_MIG_MONITOR_DEVICES
+          value: all
+        - name: NVIDIA_DRIVER_CAPABILITIES
+          value: utility
+        securityContext:
+          allowPrivilegeEscalation: true
+          privileged: true
+          capabilities:
+            drop:
+            - ALL
+            add:
+            - SYS_ADMIN
+        volumeMounts:
+        - name: deviceconfig
+          mountPath: /config
+        - name: device-plugin
+          mountPath: /var/lib/kubelet/device-plugins
+        - name: lib
+          mountPath: /usr/local/vgpu
+        - name: hosttmp
+          mountPath: /tmp
+        imagePullPolicy: IfNotPresent
+      - image: projecthami/volcano-vgpu-device-plugin:v1.12.0
+        name: monitor
+        command:
+        - /bin/bash
+        - -c
+        - volcano-vgpu-monitor
+        env:
+        - name: NVIDIA_VISIBLE_DEVICES
+          value: all
+        - name: NVIDIA_MIG_MONITOR_DEVICES
+          value: all
+        - name: HOOK_PATH
+          value: /tmp/vgpu
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        securityContext:
+          privileged: true
+          allowPrivilegeEscalation: true
+          capabilities:
+            drop:
+            - ALL
+            add:
+            - SYS_ADMIN
+        volumeMounts:
+        - name: dockers
+          mountPath: /run/docker
+        - name: containerds
+          mountPath: /run/containerd
+        - name: sysinfo
+          mountPath: /sysinfo
+        - name: hostvar
+          mountPath: /hostvar
+        - name: hosttmp
+          mountPath: /tmp
+        imagePullPolicy: IfNotPresent
+      volumes:
+      - name: deviceconfig
+        configMap:
+          name: volcano-vgpu-node-config
+      - hostPath:
+          path: /var/lib/kubelet/device-plugins
+          type: Directory
+        name: device-plugin
+      - hostPath:
+          path: /usr/local/vgpu
+          type: DirectoryOrCreate
+        name: lib
+      - name: hosttmp
+        hostPath:
+          path: /tmp
+          type: DirectoryOrCreate
+      - name: dockers
+        hostPath:
+          path: /run/docker
+          type: DirectoryOrCreate
+      - name: containerds
+        hostPath:
+          path: /run/containerd
+          type: DirectoryOrCreate
+      - name: sysinfo
+        hostPath:
+          path: /sys
+          type: Directory
+      - name: hostvar
+        hostPath:
+          path: /var
+          type: Directory
+      runtimeClassName: nvidia
+      nodeSelector:
+        gpu: 'on'

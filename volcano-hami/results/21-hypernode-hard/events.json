@@ -1,0 +1,781 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:35Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "topo-482603f4-c7ec-4acd-a71f-4b3298e6cddb",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3951",
+        "uid": "7c9415ea-eb52-4660-ab9c-cee85ac8bbcc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:35Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 3 minAvailable",
+      "metadata": {
+        "name": "topo-482603f4-c7ec-4acd-a71f-4b3298e6cddb.18d2c45f6317a7b0",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 6,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:37Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "topo-482603f4-c7ec-4acd-a71f-4b3298e6cddb",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3958",
+        "uid": "7c9415ea-eb52-4660-ab9c-cee85ac8bbcc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:42Z",
+      "message": "3/3 tasks in gang unschedulable: pod group is not ready, 3 Pending, 3 minAvailable; Pending: 3 Unschedulable",
+      "metadata": {
+        "name": "topo-482603f4-c7ec-4acd-a71f-4b3298e6cddb.18d2c45f9ff51ced",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:56Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "topo-77d6af48-2e6d-4f63-9ce9-847bc908c189",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5143",
+        "uid": "b1514fa3-a1c1-479f-ba2c-a59e69b8d378"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:56Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 3 minAvailable",
+      "metadata": {
+        "name": "topo-77d6af48-2e6d-4f63-9ce9-847bc908c189.18d2c49bf111a925",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:57Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "topo-77d6af48-2e6d-4f63-9ce9-847bc908c189",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5150",
+        "uid": "b1514fa3-a1c1-479f-ba2c-a59e69b8d378"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:57Z",
+      "message": "0/3 tasks in gang unschedulable: pod group is ready, 3 Binding, 3 minAvailable",
+      "metadata": {
+        "name": "topo-77d6af48-2e6d-4f63-9ce9-847bc908c189.18d2c49c2d31f70a",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:58Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "topo-77d6af48-2e6d-4f63-9ce9-847bc908c189",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5173",
+        "uid": "b1514fa3-a1c1-479f-ba2c-a59e69b8d378"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:59Z",
+      "message": "pod group is ready",
+      "metadata": {
+        "name": "topo-77d6af48-2e6d-4f63-9ce9-847bc908c189.18d2c49c6b309fbb",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:47Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "topo-89b9b47d-fc80-4fca-ae00-7d63fb87a759",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5096",
+        "uid": "88c62f88-8673-408f-9ba5-b24acea4dbfd"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:47Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 3 minAvailable",
+      "metadata": {
+        "name": "topo-89b9b47d-fc80-4fca-ae00-7d63fb87a759.18d2c49a1051032d",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 6,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:49Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "topo-89b9b47d-fc80-4fca-ae00-7d63fb87a759",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5103",
+        "uid": "88c62f88-8673-408f-9ba5-b24acea4dbfd"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:54Z",
+      "message": "3/3 tasks in gang unschedulable: pod group is not ready, 3 Pending, 3 minAvailable; Pending: 3 Unschedulable",
+      "metadata": {
+        "name": "topo-89b9b47d-fc80-4fca-ae00-7d63fb87a759.18d2c49a4cf1b7fd",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:37Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "topo-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3955",
+        "uid": "3bc5033a-7c2b-4b92-9386-c1348b58afd0"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:37Z",
+      "message": "pod group is not ready, 3 Pending, 3 minAvailable; Pending: 3 Unschedulable",
+      "metadata": {
+        "name": "topo-worker-0.18d2c45f9ff6e826",
+        "namespace": "volcano-tests"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:49Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "topo-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5100",
+        "uid": "3a63db7a-8c56-4a33-b84e-2909cd6a2da2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:49Z",
+      "message": "pod group is not ready, 3 Pending, 3 minAvailable; Pending: 3 Unschedulable",
+      "metadata": {
+        "name": "topo-worker-0.18d2c49a4cf2c00a",
+        "namespace": "volcano-tests"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:57Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "topo-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5147",
+        "uid": "77133f27-e82b-4f30-81c9-2df1b8913ddd"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:57Z",
+      "message": "Successfully assigned volcano-tests/topo-worker-0 to volcano-lab-worker",
+      "metadata": {
+        "name": "topo-worker-0.18d2c49c2dd9dd7f",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:57Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "topo-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5152",
+        "uid": "77133f27-e82b-4f30-81c9-2df1b8913ddd"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:57Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "topo-worker-0.18d2c49c4beacc0d",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:57Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "topo-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5152",
+        "uid": "77133f27-e82b-4f30-81c9-2df1b8913ddd"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:57Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "topo-worker-0.18d2c49c4f1c23f7",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:57Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "topo-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5152",
+        "uid": "77133f27-e82b-4f30-81c9-2df1b8913ddd"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:57Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "topo-worker-0.18d2c49c52c96f30",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:37Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "topo-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3954",
+        "uid": "60f4395f-d60f-4230-a2a2-8cfad9736563"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:37Z",
+      "message": "pod group is not ready, 3 Pending, 3 minAvailable; Pending: 3 Unschedulable",
+      "metadata": {
+        "name": "topo-worker-1.18d2c45f9ff61c72",
+        "namespace": "volcano-tests"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:49Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "topo-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5099",
+        "uid": "eafd6ed9-57d9-4277-aec4-17027b3e67fa"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:49Z",
+      "message": "pod group is not ready, 3 Pending, 3 minAvailable; Pending: 3 Unschedulable",
+      "metadata": {
+        "name": "topo-worker-1.18d2c49a4cf34538",
+        "namespace": "volcano-tests"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:57Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "topo-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5145",
+        "uid": "d4d7d327-fb8a-41eb-a74a-7c1edf860965"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:57Z",
+      "message": "Successfully assigned volcano-tests/topo-worker-1 to volcano-lab-worker",
+      "metadata": {
+        "name": "topo-worker-1.18d2c49c2d87e298",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:57Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "topo-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5151",
+        "uid": "d4d7d327-fb8a-41eb-a74a-7c1edf860965"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:57Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "topo-worker-1.18d2c49c4b6132c0",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:57Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "topo-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5151",
+        "uid": "d4d7d327-fb8a-41eb-a74a-7c1edf860965"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:57Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "topo-worker-1.18d2c49c4fadef59",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:57Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "topo-worker-1",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5151",
+        "uid": "d4d7d327-fb8a-41eb-a74a-7c1edf860965"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:57Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "topo-worker-1.18d2c49c52ca0930",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:37Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "topo-worker-2",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3953",
+        "uid": "3ab4eb2b-81c0-4662-9472-48f25083ad85"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:37Z",
+      "message": "pod group is not ready, 3 Pending, 3 minAvailable; Pending: 3 Unschedulable",
+      "metadata": {
+        "name": "topo-worker-2.18d2c45f9ff606eb",
+        "namespace": "volcano-tests"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:49Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "topo-worker-2",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5098",
+        "uid": "e3fa192b-1e77-498f-ae0e-f6102b2b1af0"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:49Z",
+      "message": "pod group is not ready, 3 Pending, 3 minAvailable; Pending: 3 Unschedulable",
+      "metadata": {
+        "name": "topo-worker-2.18d2c49a4cf32a4b",
+        "namespace": "volcano-tests"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:57Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "topo-worker-2",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5146",
+        "uid": "770ef1e9-e443-452f-b875-8c0cdc561dde"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:57Z",
+      "message": "Successfully assigned volcano-tests/topo-worker-2 to volcano-lab-worker2",
+      "metadata": {
+        "name": "topo-worker-2.18d2c49c2de807e2",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:57Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "topo-worker-2",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5153",
+        "uid": "770ef1e9-e443-452f-b875-8c0cdc561dde"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:57Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "topo-worker-2.18d2c49c49e739f5",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:57Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "topo-worker-2",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5153",
+        "uid": "770ef1e9-e443-452f-b875-8c0cdc561dde"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:57Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "topo-worker-2.18d2c49c4cb9a9e6",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:57Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "topo-worker-2",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5153",
+        "uid": "770ef1e9-e443-452f-b875-8c0cdc561dde"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:57Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "topo-worker-2.18d2c49c503098d0",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 3,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:18:37Z",
+      "involvedObject": {
+        "apiVersion": "batch.volcano.sh/v1alpha1",
+        "kind": "Job",
+        "name": "topo",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3956",
+        "uid": "482603f4-c7ec-4acd-a71f-4b3298e6cddb"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:18:37Z",
+      "message": "PodGroup volcano-tests:topo unschedulable, reason: 3/3 tasks in gang unschedulable: pod group is not ready, 3 Pending, 3 minAvailable; Pending: 3 Unschedulable",
+      "metadata": {
+        "name": "topo.18d2c45fa08d7c58",
+        "namespace": "volcano-tests"
+      },
+      "reason": "PodGroupPending",
+      "reportingComponent": "vc-controller-manager",
+      "reportingInstance": "",
+      "source": {
+        "component": "vc-controller-manager"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 3,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:22:49Z",
+      "involvedObject": {
+        "apiVersion": "batch.volcano.sh/v1alpha1",
+        "kind": "Job",
+        "name": "topo",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5101",
+        "uid": "89b9b47d-fc80-4fca-ae00-7d63fb87a759"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:22:49Z",
+      "message": "PodGroup volcano-tests:topo unschedulable, reason: 3/3 tasks in gang unschedulable: pod group is not ready, 3 Pending, 3 minAvailable; Pending: 3 Unschedulable",
+      "metadata": {
+        "name": "topo.18d2c49a4dad9897",
+        "namespace": "volcano-tests"
+      },
+      "reason": "PodGroupPending",
+      "reportingComponent": "vc-controller-manager",
+      "reportingInstance": "",
+      "source": {
+        "component": "vc-controller-manager"
+      },
+      "type": "Warning"
+    }
+  ],
+  "kind": "List",
+  "metadata": {}
+}

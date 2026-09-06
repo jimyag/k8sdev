@@ -1,0 +1,483 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:38Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "reject-26d1de19-6619-440a-beb6-e8f092ea98ba",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3197",
+        "uid": "3ea18824-5a4f-49fb-8b54-5baebbc1dcaf"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:38Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 1 minAvailable",
+      "metadata": {
+        "name": "reject-26d1de19-6619-440a-beb6-e8f092ea98ba.18d2c4441c667eaf",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:39Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "reject-26d1de19-6619-440a-beb6-e8f092ea98ba",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3206",
+        "uid": "3ea18824-5a4f-49fb-8b54-5baebbc1dcaf"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:44Z",
+      "message": "1/1 tasks in gang unschedulable: pod group is not ready, 1 Pending, 1 minAvailable; Pending: 1 Unschedulable. Origin reason is reject-worker-0: 0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-memory, 1 hami-vgpuDeviceSharing error, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "reject-26d1de19-6619-440a-beb6-e8f092ea98ba.18d2c44459eaa0bf",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 4,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:40Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "reject-26d1de19-6619-440a-beb6-e8f092ea98ba",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3214",
+        "uid": "3ea18824-5a4f-49fb-8b54-5baebbc1dcaf"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:43Z",
+      "message": "1/1 tasks in gang unschedulable: pod group is not ready, 1 Pending, 1 minAvailable; Pending: 1 Unschedulable. Origin reason is reject-worker-0: 0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-number, 1 hami-vgpuDeviceSharing error, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "reject-26d1de19-6619-440a-beb6-e8f092ea98ba.18d2c44496be236f",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:45Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "reject-26d1de19-6619-440a-beb6-e8f092ea98ba",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3235",
+        "uid": "3ea18824-5a4f-49fb-8b54-5baebbc1dcaf"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:45Z",
+      "message": "1/1 tasks in gang unschedulable: pod group is not ready, 1 Pending, 1 minAvailable; Pending: 1 Unschedulable. Origin reason is reject-worker-0: 0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-cores, 1 hami-vgpuDeviceSharing error, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "reject-26d1de19-6619-440a-beb6-e8f092ea98ba.18d2c445c3e5ff52",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:46Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "reject-301746ee-0e6e-470d-9936-16274d00197f",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3253",
+        "uid": "2d5926bc-19df-4f3f-813d-0909926767db"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:46Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 1 minAvailable",
+      "metadata": {
+        "name": "reject-301746ee-0e6e-470d-9936-16274d00197f.18d2c44600914f71",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 4,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:47Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "reject-301746ee-0e6e-470d-9936-16274d00197f",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3260",
+        "uid": "2d5926bc-19df-4f3f-813d-0909926767db"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:52Z",
+      "message": "1/1 tasks in gang unschedulable: pod group is not ready, 1 Pending, 1 minAvailable; Pending: 1 Unschedulable. Origin reason is reject-worker-0: 0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-number, 1 hami-vgpuDeviceSharing error, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "reject-301746ee-0e6e-470d-9936-16274d00197f.18d2c4463d4a7b11",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:49Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "reject-301746ee-0e6e-470d-9936-16274d00197f",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3266",
+        "uid": "2d5926bc-19df-4f3f-813d-0909926767db"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:53Z",
+      "message": "1/1 tasks in gang unschedulable: pod group is not ready, 1 Pending, 1 minAvailable; Pending: 1 Unschedulable. Origin reason is reject-worker-0: 0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-memory, 1 hami-vgpuDeviceSharing error, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "reject-301746ee-0e6e-470d-9936-16274d00197f.18d2c4467b189aa6",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:39Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "reject-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3200",
+        "uid": "d035e995-0384-450a-a6fc-bf5af6bdf07b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:44Z",
+      "message": "0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-memory, 1 hami-vgpuDeviceSharing error, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "reject-worker-0.18d2c44459eb4b43",
+        "namespace": "volcano-tests"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:40Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "reject-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3208",
+        "uid": "d035e995-0384-450a-a6fc-bf5af6bdf07b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:40Z",
+      "message": "0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-number, 1 hami-vgpuDeviceSharing error, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "reject-worker-0.18d2c44496beccda",
+        "namespace": "volcano-tests"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:45Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "reject-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3231",
+        "uid": "d035e995-0384-450a-a6fc-bf5af6bdf07b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:45Z",
+      "message": "0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-cores, 1 hami-vgpuDeviceSharing error, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "reject-worker-0.18d2c445c3e6ea0f",
+        "namespace": "volcano-tests"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:47Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "reject-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3256",
+        "uid": "514007ce-6728-4588-8e2b-7f61d3ac5b5d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:50Z",
+      "message": "0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-number, 1 hami-vgpuDeviceSharing error, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "reject-worker-0.18d2c4463d4b52bf",
+        "namespace": "volcano-tests"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:49Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "reject-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3262",
+        "uid": "514007ce-6728-4588-8e2b-7f61d3ac5b5d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:53Z",
+      "message": "0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-memory, 1 hami-vgpuDeviceSharing error, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "reject-worker-0.18d2c4467b197073",
+        "namespace": "volcano-tests"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:39Z",
+      "involvedObject": {
+        "apiVersion": "batch.volcano.sh/v1alpha1",
+        "kind": "Job",
+        "name": "reject",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3202",
+        "uid": "26d1de19-6619-440a-beb6-e8f092ea98ba"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:44Z",
+      "message": "PodGroup volcano-tests:reject unschedulable, reason: 1/1 tasks in gang unschedulable: pod group is not ready, 1 Pending, 1 minAvailable; Pending: 1 Unschedulable. Origin reason is reject-worker-0: 0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-memory, 1 hami-vgpuDeviceSharing error, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "reject.18d2c4445a73b05d",
+        "namespace": "volcano-tests"
+      },
+      "reason": "PodGroupPending",
+      "reportingComponent": "vc-controller-manager",
+      "reportingInstance": "",
+      "source": {
+        "component": "vc-controller-manager"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:40Z",
+      "involvedObject": {
+        "apiVersion": "batch.volcano.sh/v1alpha1",
+        "kind": "Job",
+        "name": "reject",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3202",
+        "uid": "26d1de19-6619-440a-beb6-e8f092ea98ba"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:40Z",
+      "message": "PodGroup volcano-tests:reject unschedulable, reason: 1/1 tasks in gang unschedulable: pod group is not ready, 1 Pending, 1 minAvailable; Pending: 1 Unschedulable. Origin reason is reject-worker-0: 0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-number, 1 hami-vgpuDeviceSharing error, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "reject.18d2c444974b71a0",
+        "namespace": "volcano-tests"
+      },
+      "reason": "PodGroupPending",
+      "reportingComponent": "vc-controller-manager",
+      "reportingInstance": "",
+      "source": {
+        "component": "vc-controller-manager"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:45Z",
+      "involvedObject": {
+        "apiVersion": "batch.volcano.sh/v1alpha1",
+        "kind": "Job",
+        "name": "reject",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3202",
+        "uid": "26d1de19-6619-440a-beb6-e8f092ea98ba"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:45Z",
+      "message": "PodGroup volcano-tests:reject unschedulable, reason: 1/1 tasks in gang unschedulable: pod group is not ready, 1 Pending, 1 minAvailable; Pending: 1 Unschedulable. Origin reason is reject-worker-0: 0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-cores, 1 hami-vgpuDeviceSharing error, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "reject.18d2c445c47b6cb2",
+        "namespace": "volcano-tests"
+      },
+      "reason": "PodGroupPending",
+      "reportingComponent": "vc-controller-manager",
+      "reportingInstance": "",
+      "source": {
+        "component": "vc-controller-manager"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:47Z",
+      "involvedObject": {
+        "apiVersion": "batch.volcano.sh/v1alpha1",
+        "kind": "Job",
+        "name": "reject",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3257",
+        "uid": "301746ee-0e6e-470d-9936-16274d00197f"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:50Z",
+      "message": "PodGroup volcano-tests:reject unschedulable, reason: 1/1 tasks in gang unschedulable: pod group is not ready, 1 Pending, 1 minAvailable; Pending: 1 Unschedulable. Origin reason is reject-worker-0: 0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-number, 1 hami-vgpuDeviceSharing error, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "reject.18d2c4463dd2ff3d",
+        "namespace": "volcano-tests"
+      },
+      "reason": "PodGroupPending",
+      "reportingComponent": "vc-controller-manager",
+      "reportingInstance": "",
+      "source": {
+        "component": "vc-controller-manager"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:16:49Z",
+      "involvedObject": {
+        "apiVersion": "batch.volcano.sh/v1alpha1",
+        "kind": "Job",
+        "name": "reject",
+        "namespace": "volcano-tests",
+        "resourceVersion": "3257",
+        "uid": "301746ee-0e6e-470d-9936-16274d00197f"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:16:53Z",
+      "message": "PodGroup volcano-tests:reject unschedulable, reason: 1/1 tasks in gang unschedulable: pod group is not ready, 1 Pending, 1 minAvailable; Pending: 1 Unschedulable. Origin reason is reject-worker-0: 0/3 nodes are unavailable: 1 Insufficient volcano.sh/vgpu-memory, 1 hami-vgpuDeviceSharing error, 1 node(s) didn't match Pod's node affinity/selector.",
+      "metadata": {
+        "name": "reject.18d2c4467bac73e8",
+        "namespace": "volcano-tests"
+      },
+      "reason": "PodGroupPending",
+      "reportingComponent": "vc-controller-manager",
+      "reportingInstance": "",
+      "source": {
+        "component": "vc-controller-manager"
+      },
+      "type": "Warning"
+    }
+  ],
+  "kind": "List",
+  "metadata": {}
+}

@@ -1,0 +1,130 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "batch.volcano.sh/v1alpha1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch.volcano.sh/v1alpha1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"name\":\"dependency\",\"namespace\":\"volcano-tests\"},\"spec\":{\"minAvailable\":1,\"queue\":\"lab\",\"schedulerName\":\"volcano\",\"tasks\":[{\"name\":\"worker\",\"replicas\":1,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sh\",\"-c\",\"sleep 4; echo first\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"requests\":{\"cpu\":\"100m\",\"memory\":\"32Mi\"}}}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":0}}},{\"dependsOn\":{\"name\":[\"worker\"]},\"name\":\"second\",\"replicas\":1,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sh\",\"-c\",\"echo second\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"requests\":{\"cpu\":\"100m\",\"memory\":\"32Mi\"}}}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":0}}}]}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:18:57Z",
+                "generation": 1,
+                "name": "dependency",
+                "namespace": "volcano-tests",
+                "resourceVersion": "4284",
+                "uid": "62351380-9ccc-4fdc-a316-5ec47d04eead"
+            },
+            "spec": {
+                "maxRetry": 3,
+                "minAvailable": 1,
+                "queue": "lab",
+                "schedulerName": "volcano",
+                "tasks": [
+                    {
+                        "maxRetry": 3,
+                        "minAvailable": 1,
+                        "name": "worker",
+                        "replicas": 1,
+                        "template": {
+                            "metadata": {},
+                            "spec": {
+                                "containers": [
+                                    {
+                                        "command": [
+                                            "sh",
+                                            "-c",
+                                            "sleep 4; echo first"
+                                        ],
+                                        "image": "ubuntu:22.04",
+                                        "imagePullPolicy": "IfNotPresent",
+                                        "name": "work",
+                                        "resources": {
+                                            "requests": {
+                                                "cpu": "100m",
+                                                "memory": "32Mi"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "restartPolicy": "Never",
+                                "terminationGracePeriodSeconds": 0
+                            }
+                        }
+                    },
+                    {
+                        "dependsOn": {
+                            "name": [
+                                "worker"
+                            ]
+                        },
+                        "maxRetry": 3,
+                        "minAvailable": 1,
+                        "name": "second",
+                        "replicas": 1,
+                        "template": {
+                            "metadata": {},
+                            "spec": {
+                                "containers": [
+                                    {
+                                        "command": [
+                                            "sh",
+                                            "-c",
+                                            "echo second"
+                                        ],
+                                        "image": "ubuntu:22.04",
+                                        "imagePullPolicy": "IfNotPresent",
+                                        "name": "work",
+                                        "resources": {
+                                            "requests": {
+                                                "cpu": "100m",
+                                                "memory": "32Mi"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "restartPolicy": "Never",
+                                "terminationGracePeriodSeconds": 0
+                            }
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-09-06T15:18:57Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:18:57Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:18:59Z",
+                        "status": "Running"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:19:02Z",
+                        "status": "Running"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:19:05Z",
+                        "status": "Completed"
+                    }
+                ],
+                "minAvailable": 1,
+                "runningDuration": "8s",
+                "state": {
+                    "lastTransitionTime": "2026-09-06T15:19:05Z",
+                    "phase": "Completed"
+                },
+                "version": 1
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

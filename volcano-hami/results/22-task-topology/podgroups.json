@@ -1,0 +1,65 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "scheduling.volcano.sh/v1beta1",
+            "kind": "PodGroup",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch.volcano.sh/v1alpha1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{\"volcano.sh/task-topology-anti-affinity\":\"worker,peer\",\"volcano.sh/task-topology-task-order\":\"worker,peer\"},\"name\":\"task-topology\",\"namespace\":\"volcano-tests\"},\"spec\":{\"minAvailable\":2,\"queue\":\"lab\",\"schedulerName\":\"volcano\",\"tasks\":[{\"name\":\"worker\",\"replicas\":1,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sleep\",\"3600\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"requests\":{\"cpu\":\"100m\",\"memory\":\"32Mi\"}}}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":0}}},{\"name\":\"peer\",\"replicas\":1,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sleep\",\"3600\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"requests\":{\"cpu\":\"100m\",\"memory\":\"32Mi\"}}}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":0}}}]}}\n",
+                    "volcano.sh/task-topology-anti-affinity": "worker,peer",
+                    "volcano.sh/task-topology-task-order": "worker,peer"
+                },
+                "creationTimestamp": "2026-09-06T15:35:06Z",
+                "generation": 4,
+                "name": "task-topology-37a847d4-ad71-4796-8439-26ccf4fdd8f7",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "task-topology",
+                        "uid": "37a847d4-ad71-4796-8439-26ccf4fdd8f7"
+                    }
+                ],
+                "resourceVersion": "7962",
+                "uid": "b7227cd6-9972-4992-98cf-ee0e4914b34f"
+            },
+            "spec": {
+                "minMember": 2,
+                "minResources": {
+                    "count/pods": "2",
+                    "cpu": "200m",
+                    "memory": "64Mi",
+                    "pods": "2",
+                    "requests.cpu": "200m",
+                    "requests.memory": "64Mi"
+                },
+                "minTaskMember": {
+                    "peer": 1,
+                    "worker": 1
+                },
+                "queue": "lab"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-09-06T15:35:09Z",
+                        "reason": "tasks in gang are ready to be scheduled",
+                        "status": "True",
+                        "transitionID": "ff53b829-52b4-4696-9006-58bb344a1ac1",
+                        "type": "Scheduled"
+                    }
+                ],
+                "phase": "Running",
+                "running": 1
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

@@ -1,0 +1,209 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:24:23Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "nvml-8af64a33-6b63-46e6-a8f2-c0a66cd33229",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6287",
+        "uid": "83d533be-556d-4d6c-8e4e-6175361168ed"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:24:23Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 1 minAvailable",
+      "metadata": {
+        "name": "nvml-8af64a33-6b63-46e6-a8f2-c0a66cd33229.18d2c4b035603cfc",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:24:24Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "nvml-8af64a33-6b63-46e6-a8f2-c0a66cd33229",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6296",
+        "uid": "83d533be-556d-4d6c-8e4e-6175361168ed"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:24:24Z",
+      "message": "0/1 tasks in gang unschedulable: pod group is ready, 1 Binding, 1 minAvailable",
+      "metadata": {
+        "name": "nvml-8af64a33-6b63-46e6-a8f2-c0a66cd33229.18d2c4b073b874a2",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:24:25Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "nvml-8af64a33-6b63-46e6-a8f2-c0a66cd33229",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6311",
+        "uid": "83d533be-556d-4d6c-8e4e-6175361168ed"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:24:25Z",
+      "message": "pod group is ready",
+      "metadata": {
+        "name": "nvml-8af64a33-6b63-46e6-a8f2-c0a66cd33229.18d2c4b0b1f8b2df",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:24:24Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "nvml-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6289",
+        "uid": "5471fb39-0953-4d39-8d56-981e52b85c4e"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:24:24Z",
+      "message": "Successfully assigned volcano-tests/nvml-worker-0 to volcano-lab-worker",
+      "metadata": {
+        "name": "nvml-worker-0.18d2c4b074077b57",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:24:24Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "nvml-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6297",
+        "uid": "5471fb39-0953-4d39-8d56-981e52b85c4e"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:24:24Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "nvml-worker-0.18d2c4b090c809bb",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:24:24Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "nvml-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6297",
+        "uid": "5471fb39-0953-4d39-8d56-981e52b85c4e"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:24:24Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "nvml-worker-0.18d2c4b092f7a618",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:24:24Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "nvml-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "6297",
+        "uid": "5471fb39-0953-4d39-8d56-981e52b85c4e"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:24:24Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "nvml-worker-0.18d2c4b09844a6d2",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    }
+  ],
+  "kind": "List",
+  "metadata": {}
+}

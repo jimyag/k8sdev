@@ -1,0 +1,61 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "scheduling.volcano.sh/v1beta1",
+            "kind": "PodGroup",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch.volcano.sh/v1alpha1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"name\":\"closed\",\"namespace\":\"volcano-tests\"},\"spec\":{\"minAvailable\":1,\"queue\":\"closed\",\"schedulerName\":\"volcano\",\"tasks\":[{\"name\":\"worker\",\"replicas\":1,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sleep\",\"3600\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"requests\":{\"cpu\":\"100m\",\"memory\":\"32Mi\"}}}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":0}}}]}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:18:10Z",
+                "generation": 4,
+                "name": "closed-a64311a9-6f4d-4221-aa14-6942c8d22a8b",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "closed",
+                        "uid": "a64311a9-6f4d-4221-aa14-6942c8d22a8b"
+                    }
+                ],
+                "resourceVersion": "3608",
+                "uid": "c14b1240-f7f4-42ce-93de-1b15268b8676"
+            },
+            "spec": {
+                "minMember": 1,
+                "minResources": {
+                    "count/pods": "1",
+                    "cpu": "100m",
+                    "memory": "32Mi",
+                    "pods": "1",
+                    "requests.cpu": "100m",
+                    "requests.memory": "32Mi"
+                },
+                "minTaskMember": {
+                    "worker": 1
+                },
+                "queue": "closed"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-09-06T15:18:13Z",
+                        "reason": "tasks in gang are ready to be scheduled",
+                        "status": "True",
+                        "transitionID": "9ae58c2b-2ecf-4970-8bf9-4c9b61cddf1b",
+                        "type": "Scheduled"
+                    }
+                ],
+                "phase": "Running"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

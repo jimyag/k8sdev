@@ -1,0 +1,197 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "batch.volcano.sh/v1alpha1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch.volcano.sh/v1alpha1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"name\":\"high\",\"namespace\":\"volcano-tests\"},\"spec\":{\"minAvailable\":1,\"priorityClassName\":\"lab-high\",\"queue\":\"lab\",\"schedulerName\":\"volcano\",\"tasks\":[{\"name\":\"worker\",\"replicas\":1,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sleep\",\"3600\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"requests\":{\"cpu\":\"5\",\"memory\":\"32Mi\"}}}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":0}}}]}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:13:32Z",
+                "generation": 1,
+                "name": "high",
+                "namespace": "volcano-tests",
+                "resourceVersion": "1963",
+                "uid": "5b02751b-7354-464b-baf7-2cffdf7d1db6"
+            },
+            "spec": {
+                "maxRetry": 3,
+                "minAvailable": 1,
+                "priorityClassName": "lab-high",
+                "queue": "lab",
+                "schedulerName": "volcano",
+                "tasks": [
+                    {
+                        "maxRetry": 3,
+                        "minAvailable": 1,
+                        "name": "worker",
+                        "replicas": 1,
+                        "template": {
+                            "metadata": {},
+                            "spec": {
+                                "containers": [
+                                    {
+                                        "command": [
+                                            "sleep",
+                                            "3600"
+                                        ],
+                                        "image": "ubuntu:22.04",
+                                        "imagePullPolicy": "IfNotPresent",
+                                        "name": "work",
+                                        "resources": {
+                                            "requests": {
+                                                "cpu": "5",
+                                                "memory": "32Mi"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "restartPolicy": "Never",
+                                "terminationGracePeriodSeconds": 0
+                            }
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-09-06T15:13:32Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:13:32Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:13:36Z",
+                        "status": "Running"
+                    }
+                ],
+                "minAvailable": 1,
+                "running": 1,
+                "state": {
+                    "lastTransitionTime": "2026-09-06T15:13:36Z",
+                    "phase": "Running"
+                },
+                "taskStatusCount": {
+                    "worker": {
+                        "phase": {
+                            "Running": 1
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "apiVersion": "batch.volcano.sh/v1alpha1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch.volcano.sh/v1alpha1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"name\":\"low\",\"namespace\":\"volcano-tests\"},\"spec\":{\"minAvailable\":1,\"priorityClassName\":\"lab-low\",\"queue\":\"lab\",\"schedulerName\":\"volcano\",\"tasks\":[{\"name\":\"worker\",\"replicas\":4,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sleep\",\"3600\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"requests\":{\"cpu\":\"5\",\"memory\":\"32Mi\"}}}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":0}}}]}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:13:29Z",
+                "generation": 1,
+                "name": "low",
+                "namespace": "volcano-tests",
+                "resourceVersion": "1945",
+                "uid": "2298be68-bd94-413f-a18c-b7c227873965"
+            },
+            "spec": {
+                "maxRetry": 3,
+                "minAvailable": 1,
+                "priorityClassName": "lab-low",
+                "queue": "lab",
+                "schedulerName": "volcano",
+                "tasks": [
+                    {
+                        "maxRetry": 3,
+                        "minAvailable": 4,
+                        "name": "worker",
+                        "replicas": 4,
+                        "template": {
+                            "metadata": {},
+                            "spec": {
+                                "containers": [
+                                    {
+                                        "command": [
+                                            "sleep",
+                                            "3600"
+                                        ],
+                                        "image": "ubuntu:22.04",
+                                        "imagePullPolicy": "IfNotPresent",
+                                        "name": "work",
+                                        "resources": {
+                                            "requests": {
+                                                "cpu": "5",
+                                                "memory": "32Mi"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "restartPolicy": "Never",
+                                "terminationGracePeriodSeconds": 0
+                            }
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-09-06T15:13:29Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:13:29Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:13:32Z",
+                        "status": "Running"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:13:32Z",
+                        "status": "Running"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:13:32Z",
+                        "status": "Running"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:13:32Z",
+                        "status": "Running"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:13:33Z",
+                        "status": "Running"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:13:33Z",
+                        "status": "Running"
+                    }
+                ],
+                "minAvailable": 1,
+                "pending": 1,
+                "running": 3,
+                "state": {
+                    "lastTransitionTime": "2026-09-06T15:13:33Z",
+                    "phase": "Running"
+                },
+                "taskStatusCount": {
+                    "worker": {
+                        "phase": {
+                            "Pending": 1,
+                            "Running": 3
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

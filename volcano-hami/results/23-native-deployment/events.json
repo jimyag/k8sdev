@@ -1,0 +1,327 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:23:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "native-855479db74-b2s2l",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5249",
+        "uid": "d4da7dd7-aba2-4814-a1b0-84b3cbaf0a05"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:23:02Z",
+      "message": "Successfully assigned volcano-tests/native-855479db74-b2s2l to volcano-lab-worker",
+      "metadata": {
+        "name": "native-855479db74-b2s2l.18d2c49d5a770896",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:23:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "native-855479db74-b2s2l",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5259",
+        "uid": "d4da7dd7-aba2-4814-a1b0-84b3cbaf0a05"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:23:02Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "native-855479db74-b2s2l.18d2c49d76a90f03",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:23:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "native-855479db74-b2s2l",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5259",
+        "uid": "d4da7dd7-aba2-4814-a1b0-84b3cbaf0a05"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:23:02Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "native-855479db74-b2s2l.18d2c49d7ab4680f",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:23:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "native-855479db74-b2s2l",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5259",
+        "uid": "d4da7dd7-aba2-4814-a1b0-84b3cbaf0a05"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:23:02Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "native-855479db74-b2s2l.18d2c49d7de1e94c",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:23:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "native-855479db74-vz5vt",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5250",
+        "uid": "22f29d38-dd32-43b0-a6df-2d49b5a9b769"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:23:02Z",
+      "message": "Successfully assigned volcano-tests/native-855479db74-vz5vt to volcano-lab-worker",
+      "metadata": {
+        "name": "native-855479db74-vz5vt.18d2c49d5a768611",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:23:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "native-855479db74-vz5vt",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5260",
+        "uid": "22f29d38-dd32-43b0-a6df-2d49b5a9b769"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:23:02Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "native-855479db74-vz5vt.18d2c49d77335161",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:23:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "native-855479db74-vz5vt",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5260",
+        "uid": "22f29d38-dd32-43b0-a6df-2d49b5a9b769"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:23:02Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "native-855479db74-vz5vt.18d2c49d7a29f778",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:23:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "native-855479db74-vz5vt",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5260",
+        "uid": "22f29d38-dd32-43b0-a6df-2d49b5a9b769"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:23:02Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "native-855479db74-vz5vt.18d2c49d7de1e961",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:23:01Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "ReplicaSet",
+        "name": "native-855479db74",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5239",
+        "uid": "64669783-4d9e-419e-a40f-2a1925138159"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:23:01Z",
+      "message": "Created pod: native-855479db74-b2s2l",
+      "metadata": {
+        "name": "native-855479db74.18d2c49d28e6a0da",
+        "namespace": "volcano-tests"
+      },
+      "reason": "SuccessfulCreate",
+      "reportingComponent": "replicaset-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "replicaset-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:23:01Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "ReplicaSet",
+        "name": "native-855479db74",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5239",
+        "uid": "64669783-4d9e-419e-a40f-2a1925138159"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:23:01Z",
+      "message": "Created pod: native-855479db74-vz5vt",
+      "metadata": {
+        "name": "native-855479db74.18d2c49d29931d0a",
+        "namespace": "volcano-tests"
+      },
+      "reason": "SuccessfulCreate",
+      "reportingComponent": "replicaset-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "replicaset-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:23:01Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "Deployment",
+        "name": "native",
+        "namespace": "volcano-tests",
+        "resourceVersion": "5238",
+        "uid": "a819eff3-39e0-4a06-ba0e-6a87ed242888"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:23:01Z",
+      "message": "Scaled up replica set native-855479db74 from 0 to 2",
+      "metadata": {
+        "name": "native.18d2c49d285f4947",
+        "namespace": "volcano-tests"
+      },
+      "reason": "ScalingReplicaSet",
+      "reportingComponent": "deployment-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "deployment-controller"
+      },
+      "type": "Normal"
+    }
+  ],
+  "kind": "List",
+  "metadata": {}
+}

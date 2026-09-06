@@ -1,0 +1,313 @@
+2026/09/06 15:29:44 maxprocs: Leaving GOMAXPROCS=12: CPU quota undefined
+I0906 15:29:44.299472       1 flags.go:57] FLAG: --add-dir-header="false"
+I0906 15:29:44.299487       1 flags.go:57] FLAG: --alsologtostderr="false"
+I0906 15:29:44.299490       1 flags.go:57] FLAG: --alsologtostderrthreshold="0"
+I0906 15:29:44.299492       1 flags.go:57] FLAG: --ca-cert-file=""
+I0906 15:29:44.299494       1 flags.go:57] FLAG: --cache-dump-dir="/tmp"
+I0906 15:29:44.299496       1 flags.go:57] FLAG: --cache-dumper="true"
+I0906 15:29:44.299499       1 flags.go:57] FLAG: --csi-storage="false"
+I0906 15:29:44.299501       1 flags.go:57] FLAG: --default-queue="default"
+I0906 15:29:44.299503       1 flags.go:57] FLAG: --disable-default-scheduler-config="false"
+I0906 15:29:44.299505       1 flags.go:57] FLAG: --enable-healthz="true"
+I0906 15:29:44.299506       1 flags.go:57] FLAG: --enable-metrics="true"
+I0906 15:29:44.299508       1 flags.go:57] FLAG: --enable-pprof="false"
+I0906 15:29:44.299510       1 flags.go:57] FLAG: --feature-gates=""
+I0906 15:29:44.299526       1 flags.go:57] FLAG: --gate-removal-worker-num="5"
+I0906 15:29:44.299529       1 flags.go:57] FLAG: --healthz-address=":11251"
+I0906 15:29:44.299531       1 flags.go:57] FLAG: --ignored-provisioners="[]"
+I0906 15:29:44.299535       1 flags.go:57] FLAG: --kube-api-burst="2000"
+I0906 15:29:44.299537       1 flags.go:57] FLAG: --kube-api-qps="2000"
+I0906 15:29:44.299540       1 flags.go:57] FLAG: --kubeconfig=""
+I0906 15:29:44.299542       1 flags.go:57] FLAG: --leader-elect="false"
+I0906 15:29:44.299544       1 flags.go:57] FLAG: --leader-elect-lease-duration="15s"
+I0906 15:29:44.299546       1 flags.go:57] FLAG: --leader-elect-renew-deadline="10s"
+I0906 15:29:44.299548       1 flags.go:57] FLAG: --leader-elect-resource-lock="leases"
+I0906 15:29:44.299550       1 flags.go:57] FLAG: --leader-elect-resource-name="volcano"
+I0906 15:29:44.299552       1 flags.go:57] FLAG: --leader-elect-resource-namespace="volcano-system"
+I0906 15:29:44.299555       1 flags.go:57] FLAG: --leader-elect-retry-period="2s"
+I0906 15:29:44.299558       1 flags.go:57] FLAG: --legacy-stderr-threshold-behavior="false"
+I0906 15:29:44.299561       1 flags.go:57] FLAG: --listen-address=":8080"
+I0906 15:29:44.299564       1 flags.go:57] FLAG: --lock-object-namespace=""
+I0906 15:29:44.299567       1 flags.go:57] FLAG: --log-backtrace-at=":0"
+I0906 15:29:44.299571       1 flags.go:57] FLAG: --log-dir=""
+I0906 15:29:44.299573       1 flags.go:57] FLAG: --log-file=""
+I0906 15:29:44.299574       1 flags.go:57] FLAG: --log-file-max-size="1800"
+I0906 15:29:44.299581       1 flags.go:57] FLAG: --log-flush-frequency="5s"
+I0906 15:29:44.299583       1 flags.go:57] FLAG: --logtostderr="true"
+I0906 15:29:44.299585       1 flags.go:57] FLAG: --master=""
+I0906 15:29:44.299587       1 flags.go:57] FLAG: --minimum-feasible-nodes="100"
+I0906 15:29:44.299593       1 flags.go:57] FLAG: --minimum-percentage-nodes-to-find="5"
+I0906 15:29:44.299595       1 flags.go:57] FLAG: --node-selector="[]"
+I0906 15:29:44.299598       1 flags.go:57] FLAG: --node-worker-threads="20"
+I0906 15:29:44.299601       1 flags.go:57] FLAG: --one-output="false"
+I0906 15:29:44.299603       1 flags.go:57] FLAG: --percentage-nodes-to-find="0"
+I0906 15:29:44.299605       1 flags.go:57] FLAG: --plugins-dir=""
+I0906 15:29:44.299607       1 flags.go:57] FLAG: --priority-class="true"
+I0906 15:29:44.299608       1 flags.go:57] FLAG: --resource-sync-timeout="1m0s"
+I0906 15:29:44.299610       1 flags.go:57] FLAG: --resync-period="0s"
+I0906 15:29:44.299612       1 flags.go:57] FLAG: --schedule-period="1s"
+I0906 15:29:44.299614       1 flags.go:57] FLAG: --scheduler-conf="/volcano.scheduler/volcano-scheduler.conf"
+I0906 15:29:44.299616       1 flags.go:57] FLAG: --scheduler-name="[volcano]"
+I0906 15:29:44.299620       1 flags.go:57] FLAG: --scheduler-sharding-mode="none"
+I0906 15:29:44.299623       1 flags.go:57] FLAG: --scheduler-sharding-name="volcano"
+I0906 15:29:44.299626       1 flags.go:57] FLAG: --skip-headers="false"
+I0906 15:29:44.299629       1 flags.go:57] FLAG: --skip-log-headers="false"
+I0906 15:29:44.299632       1 flags.go:57] FLAG: --stderrthreshold="0"
+I0906 15:29:44.299634       1 flags.go:57] FLAG: --tls-cert-file=""
+I0906 15:29:44.299637       1 flags.go:57] FLAG: --tls-private-key-file=""
+I0906 15:29:44.299640       1 flags.go:57] FLAG: --v="3"
+I0906 15:29:44.299643       1 flags.go:57] FLAG: --version="false"
+I0906 15:29:44.299646       1 flags.go:57] FLAG: --vmodule=""
+W0906 15:29:44.299671       1 client_config.go:682] Neither --kubeconfig nor --master was specified.  Using the inClusterConfig.  This might not work.
+I0906 15:29:44.304038       1 registry.go:397] setting kube:feature gate emulation version to 1.35, min compatibility version to 1.34
+I0906 15:29:44.304379       1 cache.go:537] Creating default queue and root queue
+I0906 15:29:44.306153       1 cache.go:469] Queue root already exists, skip creating.
+I0906 15:29:44.307282       1 cache.go:469] Queue default already exists, skip creating.
+I0906 15:29:44.307511       1 cache.go:598] no registered bind method, new a default one
+I0906 15:29:44.308475       1 scheduler.go:159] Finished loading scheduler config. Final state: actions=[enqueue reclaim allocate backfill preempt], plugins=[priority gang conformance drf predicates proportion nodeorder binpack deviceshare]
+I0906 15:29:44.308572       1 reflector.go:367] "Starting reflector" type="*v1.PodDisruptionBudget" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308582       1 reflector.go:411] "Listing and watching" type="*v1.PodDisruptionBudget" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308652       1 reflector.go:367] "Starting reflector" type="*v1.Namespace" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308670       1 reflector.go:367] "Starting reflector" type="*v1.Service" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308667       1 reflector.go:411] "Listing and watching" type="*v1.Namespace" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308681       1 reflector.go:367] "Starting reflector" type="*v1.ReplicationController" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308686       1 reflector.go:411] "Listing and watching" type="*v1.Service" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308691       1 reflector.go:411] "Listing and watching" type="*v1.ReplicationController" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308679       1 reflector.go:367] "Starting reflector" type="*v1alpha1.Numatopology" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308698       1 reflector.go:367] "Starting reflector" type="*v1.PersistentVolumeClaim" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308695       1 reflector.go:367] "Starting reflector" type="*v1.CSINode" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308713       1 reflector.go:411] "Listing and watching" type="*v1alpha1.Numatopology" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308733       1 reflector.go:367] "Starting reflector" type="*v1beta1.Queue" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308761       1 reflector.go:367] "Starting reflector" type="*v1.PriorityClass" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308754       1 reflector.go:367] "Starting reflector" type="*v1.StatefulSet" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308767       1 reflector.go:367] "Starting reflector" type="*v1beta1.PodGroup" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308770       1 reflector.go:411] "Listing and watching" type="*v1.PriorityClass" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308773       1 reflector.go:411] "Listing and watching" type="*v1.StatefulSet" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308781       1 reflector.go:411] "Listing and watching" type="*v1beta1.PodGroup" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308795       1 reflector.go:367] "Starting reflector" type="*v1alpha1.HyperNode" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308806       1 reflector.go:367] "Starting reflector" type="*v1.PersistentVolume" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308813       1 reflector.go:411] "Listing and watching" type="*v1.PersistentVolume" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308814       1 reflector.go:367] "Starting reflector" type="*v1.DeviceClass" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308810       1 reflector.go:411] "Listing and watching" type="*v1alpha1.HyperNode" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308822       1 reflector.go:411] "Listing and watching" type="*v1.DeviceClass" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308824       1 reflector.go:367] "Starting reflector" type="*v1.Node" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308831       1 reflector.go:367] "Starting reflector" type="*v1.ResourceClaim" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308839       1 reflector.go:411] "Listing and watching" type="*v1.ResourceClaim" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308763       1 reflector.go:367] "Starting reflector" type="*v1.ResourceSlice" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308851       1 reflector.go:411] "Listing and watching" type="*v1.ResourceSlice" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308717       1 reflector.go:411] "Listing and watching" type="*v1.PersistentVolumeClaim" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308872       1 reflector.go:367] "Starting reflector" type="*v1.Pod" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308878       1 reflector.go:411] "Listing and watching" type="*v1.Pod" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308840       1 reflector.go:411] "Listing and watching" type="*v1.Node" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308889       1 reflector.go:367] "Starting reflector" type="*v1.ResourceQuota" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308729       1 reflector.go:367] "Starting reflector" type="*v1.VolumeAttachment" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308896       1 reflector.go:411] "Listing and watching" type="*v1.ResourceQuota" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308728       1 reflector.go:411] "Listing and watching" type="*v1.CSINode" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308857       1 reflector.go:367] "Starting reflector" type="*v1.StorageClass" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308944       1 reflector.go:411] "Listing and watching" type="*v1.StorageClass" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308653       1 reflector.go:367] "Starting reflector" type="*v1.ReplicaSet" resyncPeriod="0s" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308762       1 reflector.go:411] "Listing and watching" type="*v1beta1.Queue" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.308901       1 reflector.go:411] "Listing and watching" type="*v1.VolumeAttachment" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.309038       1 reflector.go:411] "Listing and watching" type="*v1.ReplicaSet" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.311629       1 reflector.go:446] "Caches populated" type="*v1.ReplicationController" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.311765       1 reflector.go:446] "Caches populated" type="*v1.StatefulSet" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.311770       1 reflector.go:446] "Caches populated" type="*v1.PriorityClass" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.311825       1 reflector.go:446] "Caches populated" type="*v1.ResourceClaim" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.311873       1 reflector.go:446] "Caches populated" type="*v1.PodDisruptionBudget" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.311969       1 reflector.go:446] "Caches populated" type="*v1alpha1.Numatopology" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.312003       1 reflector.go:446] "Caches populated" type="*v1.Namespace" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.312017       1 reflector.go:446] "Caches populated" type="*v1.ResourceSlice" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.312296       1 reflector.go:446] "Caches populated" type="*v1.ResourceQuota" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.312386       1 reflector.go:446] "Caches populated" type="*v1.CSINode" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.312748       1 reflector.go:446] "Caches populated" type="*v1alpha1.HyperNode" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.312798       1 reflector.go:446] "Caches populated" type="*v1.PersistentVolumeClaim" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.312839       1 reflector.go:446] "Caches populated" type="*v1.StorageClass" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.312894       1 reflector.go:446] "Caches populated" type="*v1.VolumeAttachment" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.312894       1 reflector.go:446] "Caches populated" type="*v1.PersistentVolume" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.312928       1 reflector.go:446] "Caches populated" type="*v1.Service" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.312952       1 reflector.go:446] "Caches populated" type="*v1.DeviceClass" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.313061       1 reflector.go:446] "Caches populated" type="*v1beta1.PodGroup" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.313228       1 reflector.go:446] "Caches populated" type="*v1.Node" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.313596       1 reflector.go:446] "Caches populated" type="*v1beta1.Queue" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.314773       1 reflector.go:446] "Caches populated" type="*v1.ReplicaSet" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+I0906 15:29:44.315580       1 reflector.go:446] "Caches populated" type="*v1.Pod" reflector="pkg/mod/k8s.io/client-go@v0.35.3/tools/cache/reflector.go:289"
+W0906 15:29:44.315686       1 node_info.go:359] received argument of nil node, no need to set other resources for
+W0906 15:29:44.315694       1 node_info.go:254] the argument node is null.
+I0906 15:29:44.315703       1 event_handlers.go:421] Added pod <volcano-system/volcano-scheduler-75847d877-kglkg> into cache.
+W0906 15:29:44.315713       1 node_info.go:359] received argument of nil node, no need to set other resources for
+W0906 15:29:44.315717       1 node_info.go:254] the argument node is null.
+I0906 15:29:44.315723       1 event_handlers.go:421] Added pod <volcano-system/volcano-scheduler-c7d5bf6df-hhh7c> into cache.
+W0906 15:29:44.315740       1 node_info.go:359] received argument of nil node, no need to set other resources for
+W0906 15:29:44.315744       1 node_info.go:254] the argument node is null.
+I0906 15:29:44.315749       1 event_handlers.go:421] Added pod <kube-system/etcd-volcano-lab-control-plane> into cache.
+I0906 15:29:44.315758       1 event_handlers.go:421] Added pod <kube-system/kindnet-5whpw> into cache.
+I0906 15:29:44.315775       1 event_handlers.go:421] Added pod <kube-system/kube-controller-manager-volcano-lab-control-plane> into cache.
+I0906 15:29:44.315786       1 event_handlers.go:421] Added pod <local-path-storage/local-path-provisioner-67b8995b4b-cs4p4> into cache.
+I0906 15:29:44.315795       1 event_handlers.go:421] Added pod <mock-system/mock2-nvml-mock-mtnbp> into cache.
+I0906 15:29:44.315803       1 event_handlers.go:421] Added pod <volcano-system/prometheus-deployment-7cb9b4545b-h2fz4> into cache.
+I0906 15:29:44.315814       1 event_handlers.go:421] Added pod <kube-system/coredns-7d764666f9-vzd7n> into cache.
+I0906 15:29:44.315822       1 event_handlers.go:421] Added pod <kube-system/kube-apiserver-volcano-lab-control-plane> into cache.
+I0906 15:29:44.315830       1 event_handlers.go:421] Added pod <kube-system/kube-proxy-5ckcv> into cache.
+I0906 15:29:44.315837       1 event_handlers.go:421] Added pod <volcano-system/kube-state-metrics-5ffcdf767c-gf9d5> into cache.
+I0906 15:29:44.315845       1 event_handlers.go:421] Added pod <volcano-system/volcano-admission-5b979dc8f6-8rdzl> into cache.
+I0906 15:29:44.315855       1 event_handlers.go:421] Added pod <kube-system/kube-scheduler-volcano-lab-control-plane> into cache.
+I0906 15:29:44.315864       1 event_handlers.go:421] Added pod <kube-system/coredns-7d764666f9-d2csr> into cache.
+I0906 15:29:44.315872       1 event_handlers.go:421] Added pod <kube-system/kindnet-k2m7h> into cache.
+I0906 15:29:44.315881       1 event_handlers.go:421] Added pod <kube-system/kindnet-xp5ff> into cache.
+I0906 15:29:44.315895       1 event_handlers.go:421] Added pod <kube-system/kube-proxy-btcmr> into cache.
+I0906 15:29:44.315904       1 event_handlers.go:421] Added pod <kube-system/kube-proxy-gwssg> into cache.
+I0906 15:29:44.315912       1 event_handlers.go:421] Added pod <volcano-system/grafana-7c5659d458-xrbnn> into cache.
+I0906 15:29:44.315919       1 event_handlers.go:421] Added pod <volcano-system/volcano-controllers-5b976c6d4b-rkqw6> into cache.
+I0906 15:29:44.315928       1 event_handlers.go:421] Added pod <kube-system/volcano-device-plugin-2sg22> into cache.
+I0906 15:29:44.315937       1 event_handlers.go:421] Added pod <kube-system/volcano-device-plugin-jj26z> into cache.
+I0906 15:29:44.315946       1 event_handlers.go:421] Added pod <mock-system/mock1-nvml-mock-9rgh9> into cache.
+I0906 15:29:44.408752       1 cache.go:877] Start metrics collection, metricsConf is map[]
+I0906 15:29:44.408787       1 cache.go:882] The interval for querying metrics data is 30s
+I0906 15:29:44.408840       1 cache.go:885] scheduler wait for handlers sync
+W0906 15:29:44.408925       1 node_info.go:359] received argument of nil node, no need to set other resources for
+W0906 15:29:44.408988       1 node_info.go:254] the argument node is null.
+I0906 15:29:44.408989       1 hyper_node_info.go:477] "HyperNode not exists in cache, maybe not created or not be watched, will set parent first" name="rack-a" parent="fabric"
+I0906 15:29:44.409029       1 hyper_node_info.go:477] "HyperNode not exists in cache, maybe not created or not be watched, will set parent first" name="rack-b" parent="fabric"
+I0906 15:29:44.408918       1 cache.go:1758] The metrics type is not set in the volcano scheduler configmap file. As a result, the CPU and memory load information of the node is not collected.
+I0906 15:29:44.409137       1 hyper_node_info.go:332] "Successfully built RealNodesSet with members" name="fabric" nodeSets={}
+W0906 15:29:44.409174       1 node_info.go:359] received argument of nil node, no need to set other resources for
+I0906 15:29:44.409178       1 hyper_node_info.go:332] "Successfully built RealNodesSet with members" name="rack-a" nodeSets={"volcano-lab-worker":{}}
+W0906 15:29:44.409186       1 node_info.go:254] the argument node is null.
+I0906 15:29:44.409201       1 hyper_node_info.go:332] "Successfully built RealNodesSet with members" name="fabric" nodeSets={"volcano-lab-worker":{}}
+I0906 15:29:44.409222       1 hyper_node_info.go:332] "Successfully built RealNodesSet with members" name="rack-b" nodeSets={"volcano-lab-worker2":{}}
+I0906 15:29:44.409236       1 hyper_node_info.go:332] "Successfully built RealNodesSet with members" name="fabric" nodeSets={"volcano-lab-worker":{},"volcano-lab-worker2":{}}
+I0906 15:29:44.409250       1 event_handlers.go:765] "No need to update hyperNode cache when node added or deleted"
+I0906 15:29:44.409261       1 event_handlers.go:765] "No need to update hyperNode cache when node added or deleted"
+I0906 15:29:44.409270       1 event_handlers.go:765] "No need to update hyperNode cache when node added or deleted"
+W0906 15:29:44.409349       1 node_info.go:359] received argument of nil node, no need to set other resources for
+W0906 15:29:44.409357       1 node_info.go:254] the argument node is null.
+I0906 15:29:44.509765       1 cache.go:887] scheduler finished handlers sync
+I0906 15:29:44.509794       1 scheduler.go:114] Scheduler completes Initialization and start to run
+I0906 15:29:44.510514       1 cache.go:1581] "SnapShot for scheduling" jobNum=0 QueueNum=3 NodeNum=3
+I0906 15:29:44.510573       1 session.go:1036] Start adjusting jobs' network topology spec according to hyperNodeTierNameMap map[]
+I0906 15:29:44.510598       1 session.go:1079] Finish adjusting jobs' network topology spec according to hyperNodeTierNameMap map[]
+I0906 15:29:44.510619       1 session.go:279] Open Session 18cb83dd-ec5e-4725-8878-53d39325ee5b with <0> Job and <3> Queues. HyperNodesReadyToSchedule: true
+I0906 15:29:44.514125       1 config.go:164] "Initializing volcano device config" device-configs={"NvidiaConfig":{"ResourceCountName":"volcano.sh/vgpu-number","ResourceMemoryName":"volcano.sh/vgpu-memory","ResourceCoreName":"volcano.sh/vgpu-cores","ResourceMemoryPercentageName":"volcano.sh/vgpu-memory-percentage","ResourcePriority":"","OverwriteEnv":false,"DefaultMemory":0,"DefaultCores":0,"DefaultGPUNum":1,"DeviceSplitCount":10,"DeviceMemoryScaling":1,"DeviceCoreScaling":1,"DisableCoreLimit":false,"MigGeometriesList":[{"Models":["A30"],"Geometries":[{"Group":"group1","Instances":[{"Name":"1g.6gb","Memory":6144,"Count":4}]},{"Group":"group2","Instances":[{"Name":"2g.12gb","Memory":12288,"Count":2}]},{"Group":"group3","Instances":[{"Name":"4g.24gb","Memory":24576,"Count":1}]}]},{"Models":["A100-SXM4-40GB","A100-40GB-PCIe","A100-PCIE-40GB","A100-SXM4-40GB"],"Geometries":[{"Group":"group1","Instances":[{"Name":"1g.5gb","Memory":5120,"Count":7}]},{"Group":"group2","Instances":[{"Name":"2g.10gb","Memory":10240,"Count":3},{"Name":"1g.5gb","Memory":5120,"Count":1}]},{"Group":"group3","Instances":[{"Name":"3g.20gb","Memory":20480,"Count":2}]},{"Group":"group4","Instances":[{"Name":"7g.40gb","Memory":40960,"Count":1}]}]},{"Models":["A100-SXM4-80GB","A100-80GB-PCIe","A100-PCIE-80GB"],"Geometries":[{"Group":"group1","Instances":[{"Name":"1g.10gb","Memory":9728,"Count":7}]},{"Group":"group2","Instances":[{"Name":"2g.20gb","Memory":19968,"Count":3},{"Name":"1g.10gb","Memory":9728,"Count":1}]},{"Group":"group3","Instances":[{"Name":"3g.40gb","Memory":40192,"Count":2}]},{"Group":"group4","Instances":[{"Name":"7g.80gb","Memory":80896,"Count":1}]}]}],"GPUMemoryFactor":100},"VNPUs":null}
+I0906 15:29:44.514153       1 gpuexclusive.go:437] gpuexclusive: no rules configured, skipping GPU exclusivity wrapping
+I0906 15:29:44.514173       1 enqueue.go:79] Try to enqueue PodGroup to 0 Queues
+I0906 15:29:44.514190       1 reclaim.go:68] There are <0> Jobs and <3> Queues in total for scheduling.
+I0906 15:29:44.514200       1 allocate.go:138] Try to allocate resource to 0 Queues
+I0906 15:29:44.514266       1 session.go:577] Close Session 18cb83dd-ec5e-4725-8878-53d39325ee5b
+I0906 15:29:45.514648       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:29:45.514800       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":0,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780000","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:29:45.514845       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":1,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780001","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:29:45.514870       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:29:45.514889       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":0,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780000","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:29:45.514933       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":1,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780001","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+E0906 15:29:45.514963       1 device_info.go:189] pod kindnet-k2m7h has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:45.515007       1 device_info.go:189] pod kube-proxy-btcmr has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:45.515017       1 device_info.go:189] pod grafana-7c5659d458-xrbnn has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:45.515027       1 device_info.go:189] pod volcano-device-plugin-2sg22 has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:45.515038       1 device_info.go:189] pod mock1-nvml-mock-9rgh9 has no annotation volcano.sh/devices-to-allocate
+I0906 15:29:45.515117       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:29:45.515136       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":0,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780000","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:29:45.515158       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":1,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780001","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:29:45.515176       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:29:45.515187       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":0,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780000","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:29:45.515212       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":1,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780001","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+E0906 15:29:45.515229       1 device_info.go:189] pod kindnet-5whpw has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:45.515241       1 device_info.go:189] pod mock2-nvml-mock-mtnbp has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:45.515252       1 device_info.go:189] pod kube-state-metrics-5ffcdf767c-gf9d5 has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:45.515261       1 device_info.go:189] pod volcano-device-plugin-jj26z has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:45.515270       1 device_info.go:189] pod prometheus-deployment-7cb9b4545b-h2fz4 has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:45.515279       1 device_info.go:189] pod volcano-admission-5b979dc8f6-8rdzl has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:45.515288       1 device_info.go:189] pod kube-proxy-gwssg has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:45.515297       1 device_info.go:189] pod volcano-controllers-5b976c6d4b-rkqw6 has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:45.515307       1 device_info.go:189] pod volcano-scheduler-c7d5bf6df-hhh7c has no annotation volcano.sh/devices-to-allocate
+I0906 15:29:45.515437       1 cache.go:1581] "SnapShot for scheduling" jobNum=1 QueueNum=3 NodeNum=3
+I0906 15:29:45.515449       1 session.go:1036] Start adjusting jobs' network topology spec according to hyperNodeTierNameMap map[]
+I0906 15:29:45.515455       1 session.go:1079] Finish adjusting jobs' network topology spec according to hyperNodeTierNameMap map[]
+I0906 15:29:45.515462       1 session.go:279] Open Session 0f9da7a6-bd8e-43b0-8d30-3e249b8eeac8 with <1> Job and <3> Queues. HyperNodesReadyToSchedule: true
+I0906 15:29:45.515761       1 gpuexclusive.go:437] gpuexclusive: no rules configured, skipping GPU exclusivity wrapping
+I0906 15:29:45.515775       1 enqueue.go:79] Try to enqueue PodGroup to 1 Queues
+I0906 15:29:45.515791       1 reclaim.go:68] There are <1> Jobs and <3> Queues in total for scheduling.
+I0906 15:29:45.515799       1 allocate.go:138] Try to allocate resource to 0 Queues
+I0906 15:29:45.523874       1 session.go:577] Close Session 0f9da7a6-bd8e-43b0-8d30-3e249b8eeac8
+I0906 15:29:45.536073       1 event_handlers.go:421] Added pod <volcano-tests/early-1-worker-1> into cache.
+I0906 15:29:45.536108       1 event_handlers.go:421] Added pod <volcano-tests/early-1-worker-0> into cache.
+I0906 15:29:46.167521       1 event_handlers.go:476] Deleted pod <volcano-system/volcano-scheduler-75847d877-kglkg> from cache.
+I0906 15:29:46.524280       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:29:46.524384       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":0,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780000","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:29:46.524443       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":1,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780001","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:29:46.524478       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:29:46.524502       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":0,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780000","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:29:46.524533       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":1,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780001","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+E0906 15:29:46.524567       1 device_info.go:189] pod mock1-nvml-mock-9rgh9 has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:46.524587       1 device_info.go:189] pod kindnet-k2m7h has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:46.524602       1 device_info.go:189] pod kube-proxy-btcmr has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:46.524617       1 device_info.go:189] pod grafana-7c5659d458-xrbnn has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:46.524631       1 device_info.go:189] pod volcano-device-plugin-2sg22 has no annotation volcano.sh/devices-to-allocate
+I0906 15:29:46.524707       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:29:46.524734       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":0,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780000","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:29:46.524778       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":1,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780001","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:29:46.524805       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:29:46.524828       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":0,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780000","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:29:46.524862       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":1,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780001","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+E0906 15:29:46.524927       1 device_info.go:189] pod kube-proxy-gwssg has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:46.524944       1 device_info.go:189] pod volcano-controllers-5b976c6d4b-rkqw6 has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:46.524962       1 device_info.go:189] pod volcano-scheduler-c7d5bf6df-hhh7c has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:46.524978       1 device_info.go:189] pod kindnet-5whpw has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:46.524992       1 device_info.go:189] pod mock2-nvml-mock-mtnbp has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:46.525040       1 device_info.go:189] pod kube-state-metrics-5ffcdf767c-gf9d5 has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:46.525075       1 device_info.go:189] pod volcano-device-plugin-jj26z has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:46.525090       1 device_info.go:189] pod prometheus-deployment-7cb9b4545b-h2fz4 has no annotation volcano.sh/devices-to-allocate
+E0906 15:29:46.525103       1 device_info.go:189] pod volcano-admission-5b979dc8f6-8rdzl has no annotation volcano.sh/devices-to-allocate
+I0906 15:29:46.525334       1 cache.go:1581] "SnapShot for scheduling" jobNum=1 QueueNum=3 NodeNum=3
+I0906 15:29:46.525384       1 session.go:1036] Start adjusting jobs' network topology spec according to hyperNodeTierNameMap map[]
+I0906 15:29:46.525410       1 session.go:1079] Finish adjusting jobs' network topology spec according to hyperNodeTierNameMap map[]
+I0906 15:29:46.525441       1 session.go:279] Open Session 9f5044b2-bb58-4d1d-bd94-9860d8472d62 with <1> Job and <3> Queues. HyperNodesReadyToSchedule: true
+I0906 15:29:46.526521       1 gpuexclusive.go:437] gpuexclusive: no rules configured, skipping GPU exclusivity wrapping
+I0906 15:29:46.526545       1 enqueue.go:79] Try to enqueue PodGroup to 0 Queues
+I0906 15:29:46.526553       1 reclaim.go:68] There are <1> Jobs and <3> Queues in total for scheduling.
+I0906 15:29:46.526571       1 reclaim.go:140] Considering reclaim for 2 tasks of job <volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c>.
+I0906 15:29:46.526648       1 predicate_helper.go:115] Predicates failed: task volcano-tests/early-1-worker-0 on node volcano-lab-control-plane fit failed: node(s) had untolerated taint(s)
+W0906 15:29:46.526669       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+W0906 15:29:46.526673       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+I0906 15:29:46.526693       1 reclaim.go:185] Considering Task <volcano-tests/early-1-worker-0> on Node <volcano-lab-worker>.
+I0906 15:29:46.526700       1 reclaim.go:185] Considering Task <volcano-tests/early-1-worker-0> on Node <volcano-lab-worker2>.
+I0906 15:29:46.526707       1 reclaim.go:140] Considering reclaim for 1 tasks of job <volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c>.
+I0906 15:29:46.526740       1 predicate_helper.go:115] Predicates failed: task volcano-tests/early-1-worker-1 on node volcano-lab-control-plane fit failed: node(s) had untolerated taint(s)
+W0906 15:29:46.526751       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+W0906 15:29:46.526755       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+I0906 15:29:46.526764       1 reclaim.go:185] Considering Task <volcano-tests/early-1-worker-1> on Node <volcano-lab-worker>.
+I0906 15:29:46.526769       1 reclaim.go:185] Considering Task <volcano-tests/early-1-worker-1> on Node <volcano-lab-worker2>.
+I0906 15:29:46.526774       1 reclaim.go:135] No preemptor task in job <volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c>.
+I0906 15:29:46.526779       1 statement.go:366] Discarding operations ...
+I0906 15:29:46.526792       1 allocate.go:138] Try to allocate resource to 1 Queues
+I0906 15:29:46.526807       1 allocate.go:328] "Try to allocate resource" queue="lab" job="volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c" taskNum=2
+I0906 15:29:46.526818       1 allocate.go:757] There are <3> nodes for Job <volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c>
+I0906 15:29:46.526846       1 predicate_helper.go:115] Predicates failed: task volcano-tests/early-1-worker-0 on node volcano-lab-control-plane fit failed: Insufficient volcano.sh/vgpu-memory
+W0906 15:29:46.526858       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+W0906 15:29:46.526869       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+I0906 15:29:46.526991       1 allocate.go:934] Binding Task <volcano-tests/early-1-worker-0> to node <volcano-lab-worker>
+I0906 15:29:46.527004       1 statement.go:277] After allocated Task <volcano-tests/early-1-worker-0> to Node <volcano-lab-worker>: idle <cpu 11290.00, memory 27959619584.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 104.00, volcano.sh/vgpu-cores 180000.00, volcano.sh/vgpu-memory 788000.00, volcano.sh/vgpu-number 19000.00>, used <cpu 710.00, memory 1193279488.00, pods 6.00, volcano.sh/vgpu-cores 20000.00, volcano.sh/vgpu-memory 30000.00, volcano.sh/vgpu-number 1000.00>, releasing <cpu 0.00, memory 0.00>
+W0906 15:29:46.527074       1 predicates.go:249] Devices hamivgpu assertion conversion failed, skip
+I0906 15:29:46.527110       1 statement.go:307] Allocating operations ...
+I0906 15:29:46.527126       1 allocate.go:757] There are <3> nodes for Job <volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c>
+W0906 15:29:46.527165       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+W0906 15:29:46.527165       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+I0906 15:29:46.527238       1 allocate.go:934] Binding Task <volcano-tests/early-1-worker-1> to node <volcano-lab-worker>
+I0906 15:29:46.527249       1 statement.go:277] After allocated Task <volcano-tests/early-1-worker-1> to Node <volcano-lab-worker>: idle <cpu 11190.00, memory 27926065152.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 103.00, volcano.sh/vgpu-cores 160000.00, volcano.sh/vgpu-memory 758000.00, volcano.sh/vgpu-number 18000.00>, used <cpu 810.00, memory 1226833920.00, pods 7.00, volcano.sh/vgpu-cores 40000.00, volcano.sh/vgpu-memory 60000.00, volcano.sh/vgpu-number 2000.00>, releasing <cpu 0.00, memory 0.00>
+W0906 15:29:46.527279       1 predicates.go:249] Devices hamivgpu assertion conversion failed, skip
+I0906 15:29:46.527295       1 statement.go:307] Allocating operations ...
+I0906 15:29:46.527309       1 allocate.go:833] "SubJob ready, return statement" job="volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c" subJob="volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c"
+I0906 15:29:46.527315       1 statement.go:393] Committing operations ...
+I0906 15:29:46.527345       1 proportion.go:326] Queue <lab> is overused: deserved <cpu 200.00, memory 67108864.00, ephemeral-storage 0.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 2.00, volcano.sh/vgpu-cores 40000.00, volcano.sh/vgpu-memory 60000.00, volcano.sh/vgpu-number 2000.00>, allocated <cpu 200.00, memory 67108864.00, pods 2.00, volcano.sh/vgpu-cores 40000.00, volcano.sh/vgpu-memory 60000.00, volcano.sh/vgpu-number 2000.00>, share <1>
+I0906 15:29:46.527358       1 allocate.go:295] Queue <lab> is overused, ignore it.
+I0906 15:29:46.551247       1 cache.go:992] bind ok, latency 21.141089ms
+I0906 15:29:46.551507       1 cache.go:992] bind ok, latency 21.355421ms
+I0906 15:29:46.560919       1 session.go:577] Close Session 9f5044b2-bb58-4d1d-bd94-9860d8472d62
+I0906 15:29:46.622196       1 cache.go:1126] Try to delete Job <volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c:volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c>
+I0906 15:29:46.622218       1 cache.go:1171] Retry to delete Job <volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c:volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c>
+I0906 15:29:46.627434       1 cache.go:1171] Retry to delete Job <volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c:volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c>
+I0906 15:29:46.637793       1 cache.go:1171] Retry to delete Job <volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c:volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c>
+I0906 15:29:46.658173       1 cache.go:1171] Retry to delete Job <volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c:volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c>
+I0906 15:29:46.698658       1 cache.go:1171] Retry to delete Job <volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c:volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c>
+I0906 15:29:46.779451       1 cache.go:1171] Retry to delete Job <volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c:volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c>
+I0906 15:29:46.939845       1 cache.go:1171] Retry to delete Job <volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c:volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c>
+I0906 15:29:47.260483       1 cache.go:1171] Retry to delete Job <volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c:volcano-tests/early-1-b8a05368-c0d6-42a6-bf07-62ca955ce09c>

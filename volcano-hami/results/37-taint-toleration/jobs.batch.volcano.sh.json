@@ -1,0 +1,102 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "batch.volcano.sh/v1alpha1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch.volcano.sh/v1alpha1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"name\":\"tolerated\",\"namespace\":\"volcano-tests\"},\"spec\":{\"minAvailable\":1,\"queue\":\"lab\",\"schedulerName\":\"volcano\",\"tasks\":[{\"name\":\"worker\",\"replicas\":1,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sleep\",\"3600\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"requests\":{\"cpu\":\"100m\",\"memory\":\"32Mi\"}}}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"volcano-lab-worker\"},\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":0,\"tolerations\":[{\"effect\":\"NoSchedule\",\"key\":\"lab\",\"operator\":\"Equal\",\"value\":\"reserved\"}]}}}]}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:24:18Z",
+                "generation": 1,
+                "name": "tolerated",
+                "namespace": "volcano-tests",
+                "resourceVersion": "6269",
+                "uid": "cc455a93-86b9-4da4-b8e0-35f0db443859"
+            },
+            "spec": {
+                "maxRetry": 3,
+                "minAvailable": 1,
+                "queue": "lab",
+                "schedulerName": "volcano",
+                "tasks": [
+                    {
+                        "maxRetry": 3,
+                        "minAvailable": 1,
+                        "name": "worker",
+                        "replicas": 1,
+                        "template": {
+                            "metadata": {},
+                            "spec": {
+                                "containers": [
+                                    {
+                                        "command": [
+                                            "sleep",
+                                            "3600"
+                                        ],
+                                        "image": "ubuntu:22.04",
+                                        "imagePullPolicy": "IfNotPresent",
+                                        "name": "work",
+                                        "resources": {
+                                            "requests": {
+                                                "cpu": "100m",
+                                                "memory": "32Mi"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "nodeSelector": {
+                                    "kubernetes.io/hostname": "volcano-lab-worker"
+                                },
+                                "restartPolicy": "Never",
+                                "terminationGracePeriodSeconds": 0,
+                                "tolerations": [
+                                    {
+                                        "effect": "NoSchedule",
+                                        "key": "lab",
+                                        "operator": "Equal",
+                                        "value": "reserved"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-09-06T15:24:18Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:24:19Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:24:21Z",
+                        "status": "Running"
+                    }
+                ],
+                "minAvailable": 1,
+                "running": 1,
+                "state": {
+                    "lastTransitionTime": "2026-09-06T15:24:21Z",
+                    "phase": "Running"
+                },
+                "taskStatusCount": {
+                    "worker": {
+                        "phase": {
+                            "Running": 1
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

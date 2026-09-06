@@ -1,0 +1,120 @@
+W0906 15:11:53.039713       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+I0906 15:11:53.039736       1 reclaim.go:185] Considering Task <volcano-tests/complete-worker-0> on Node <volcano-lab-worker>.
+I0906 15:11:53.039740       1 reclaim.go:185] Considering Task <volcano-tests/complete-worker-0> on Node <volcano-lab-worker2>.
+I0906 15:11:53.039748       1 reclaim.go:140] Considering reclaim for 1 tasks of job <volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3>.
+I0906 15:11:53.039779       1 predicate_helper.go:115] Predicates failed: task volcano-tests/complete-worker-1 on node volcano-lab-control-plane fit failed: node(s) had untolerated taint(s)
+W0906 15:11:53.039793       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+W0906 15:11:53.039795       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+I0906 15:11:53.039807       1 reclaim.go:185] Considering Task <volcano-tests/complete-worker-1> on Node <volcano-lab-worker2>.
+I0906 15:11:53.039812       1 reclaim.go:185] Considering Task <volcano-tests/complete-worker-1> on Node <volcano-lab-worker>.
+I0906 15:11:53.039821       1 reclaim.go:135] No preemptor task in job <volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3>.
+I0906 15:11:53.039828       1 statement.go:366] Discarding operations ...
+I0906 15:11:53.039847       1 allocate.go:138] Try to allocate resource to 1 Queues
+I0906 15:11:53.039876       1 allocate.go:328] "Try to allocate resource" queue="lab" job="volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3" taskNum=2
+I0906 15:11:53.039891       1 allocate.go:757] There are <3> nodes for Job <volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3>
+W0906 15:11:53.039936       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+W0906 15:11:53.039945       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+I0906 15:11:53.039944       1 predicate_helper.go:115] Predicates failed: task volcano-tests/complete-worker-0 on node volcano-lab-control-plane fit failed: node(s) had untolerated taint(s)
+I0906 15:11:53.040074       1 allocate.go:934] Binding Task <volcano-tests/complete-worker-0> to node <volcano-lab-worker>
+I0906 15:11:53.040088       1 statement.go:277] After allocated Task <volcano-tests/complete-worker-0> to Node <volcano-lab-worker>: idle <cpu 11290.00, memory 27959619584.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 104.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 0.00, volcano.sh/vgpu-number 20000.00>, used <cpu 710.00, memory 1193279488.00, pods 6.00>, releasing <cpu 0.00, memory 0.00>
+W0906 15:11:53.040135       1 predicates.go:249] Devices hamivgpu assertion conversion failed, skip
+I0906 15:11:53.040155       1 statement.go:307] Allocating operations ...
+I0906 15:11:53.040172       1 allocate.go:757] There are <3> nodes for Job <volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3>
+W0906 15:11:53.040207       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+W0906 15:11:53.040212       1 deviceshare.go:256] Devices hamivgpu assertion conversion failed, skip
+I0906 15:11:53.040271       1 allocate.go:934] Binding Task <volcano-tests/complete-worker-1> to node <volcano-lab-worker>
+I0906 15:11:53.040289       1 statement.go:277] After allocated Task <volcano-tests/complete-worker-1> to Node <volcano-lab-worker>: idle <cpu 11190.00, memory 27926065152.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 103.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 0.00, volcano.sh/vgpu-number 20000.00>, used <cpu 810.00, memory 1226833920.00, pods 7.00>, releasing <cpu 0.00, memory 0.00>
+W0906 15:11:53.040316       1 predicates.go:249] Devices hamivgpu assertion conversion failed, skip
+I0906 15:11:53.040333       1 statement.go:307] Allocating operations ...
+I0906 15:11:53.040350       1 allocate.go:833] "SubJob ready, return statement" job="volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3" subJob="volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3"
+I0906 15:11:53.040357       1 statement.go:393] Committing operations ...
+I0906 15:11:53.040389       1 proportion.go:326] Queue <lab> is overused: deserved <cpu 200.00, memory 67108864.00, ephemeral-storage 0.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 2.00, volcano.sh/vgpu-cores 0.00, volcano.sh/vgpu-memory 0.00, volcano.sh/vgpu-number 0.00>, allocated <cpu 200.00, memory 67108864.00, pods 2.00>, share <1>
+I0906 15:11:53.040401       1 allocate.go:295] Queue <lab> is overused, ignore it.
+I0906 15:11:53.060860       1 cache.go:992] bind ok, latency 18.518968ms
+I0906 15:11:53.060858       1 cache.go:992] bind ok, latency 18.455819ms
+I0906 15:11:53.072858       1 session.go:577] Close Session 7ceef755-4988-489a-87af-b75e9e3e1177
+I0906 15:11:54.073136       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:11:54.073170       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":0,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780000","PodMap":{},"Memory":40960,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:11:54.073198       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":1,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780001","PodMap":{},"Memory":40960,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:11:54.073215       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:11:54.073225       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":0,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780000","PodMap":{},"Memory":40960,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:11:54.073236       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":1,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780001","PodMap":{},"Memory":40960,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+E0906 15:11:54.073251       1 device_info.go:189] pod kube-state-metrics-5ffcdf767c-gf9d5 has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:54.073261       1 device_info.go:189] pod prometheus-deployment-7cb9b4545b-h2fz4 has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:54.073270       1 device_info.go:189] pod volcano-admission-5b979dc8f6-8rdzl has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:54.073276       1 device_info.go:189] pod volcano-scheduler-77656b46bb-589fc has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:54.073283       1 device_info.go:189] pod kube-proxy-gwssg has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:54.073289       1 device_info.go:189] pod volcano-controllers-5b976c6d4b-rkqw6 has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:54.073298       1 device_info.go:189] pod kindnet-5whpw has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:54.073313       1 device_info.go:189] pod volcano-device-plugin-ctx68 has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:54.073323       1 device_info.go:189] pod mock2-nvml-mock-mtnbp has no annotation volcano.sh/devices-to-allocate
+I0906 15:11:54.073368       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:11:54.073380       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":0,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780001","PodMap":{},"Memory":40960,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:11:54.073395       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":1,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780000","PodMap":{},"Memory":40960,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:11:54.073407       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:11:54.073416       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":0,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780001","PodMap":{},"Memory":40960,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:11:54.073426       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":1,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780000","PodMap":{},"Memory":40960,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+E0906 15:11:54.073442       1 device_info.go:189] pod complete-worker-0 has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:54.073450       1 device_info.go:189] pod complete-worker-1 has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:54.073461       1 device_info.go:189] pod mock1-nvml-mock-9rgh9 has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:54.073468       1 device_info.go:189] pod grafana-7c5659d458-xrbnn has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:54.073475       1 device_info.go:189] pod volcano-device-plugin-6nqrv has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:54.073482       1 device_info.go:189] pod kindnet-k2m7h has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:54.073489       1 device_info.go:189] pod kube-proxy-btcmr has no annotation volcano.sh/devices-to-allocate
+I0906 15:11:54.073559       1 cache.go:1581] "SnapShot for scheduling" jobNum=1 QueueNum=3 NodeNum=3
+I0906 15:11:54.073576       1 session.go:1036] Start adjusting jobs' network topology spec according to hyperNodeTierNameMap map[]
+I0906 15:11:54.073590       1 session.go:1079] Finish adjusting jobs' network topology spec according to hyperNodeTierNameMap map[]
+I0906 15:11:54.073605       1 session.go:279] Open Session bff8b2ff-2b97-435f-a9fa-9007e00e8029 with <1> Job and <3> Queues. HyperNodesReadyToSchedule: true
+I0906 15:11:54.073929       1 gpuexclusive.go:437] gpuexclusive: no rules configured, skipping GPU exclusivity wrapping
+I0906 15:11:54.073944       1 enqueue.go:79] Try to enqueue PodGroup to 0 Queues
+I0906 15:11:54.073951       1 reclaim.go:68] There are <1> Jobs and <3> Queues in total for scheduling.
+I0906 15:11:54.073959       1 proportion.go:326] Queue <lab> is overused: deserved <cpu 200.00, memory 67108864.00, ephemeral-storage 0.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 2.00, volcano.sh/vgpu-cores 0.00, volcano.sh/vgpu-memory 0.00, volcano.sh/vgpu-number 0.00>, allocated <cpu 200.00, memory 67108864.00, pods 2.00>, share <1>
+I0906 15:11:54.073973       1 reclaim.go:112] Queue <lab> is overused, ignore it.
+I0906 15:11:54.073983       1 allocate.go:138] Try to allocate resource to 0 Queues
+I0906 15:11:54.083696       1 session.go:577] Close Session bff8b2ff-2b97-435f-a9fa-9007e00e8029
+I0906 15:11:55.084274       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:11:55.084353       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":0,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780000","PodMap":{},"Memory":40960,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:11:55.084608       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":1,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780001","PodMap":{},"Memory":40960,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:11:55.084638       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:11:55.084649       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":0,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780000","PodMap":{},"Memory":40960,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:11:55.084698       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":1,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780001","PodMap":{},"Memory":40960,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+E0906 15:11:55.084741       1 device_info.go:189] pod mock2-nvml-mock-mtnbp has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:55.084752       1 device_info.go:189] pod kube-state-metrics-5ffcdf767c-gf9d5 has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:55.084758       1 device_info.go:189] pod prometheus-deployment-7cb9b4545b-h2fz4 has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:55.084764       1 device_info.go:189] pod volcano-admission-5b979dc8f6-8rdzl has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:55.084777       1 device_info.go:189] pod volcano-scheduler-77656b46bb-589fc has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:55.084781       1 device_info.go:189] pod kube-proxy-gwssg has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:55.084786       1 device_info.go:189] pod volcano-controllers-5b976c6d4b-rkqw6 has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:55.084792       1 device_info.go:189] pod kindnet-5whpw has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:55.084822       1 device_info.go:189] pod volcano-device-plugin-ctx68 has no annotation volcano.sh/devices-to-allocate
+I0906 15:11:55.084921       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:11:55.084935       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":0,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780001","PodMap":{},"Memory":40960,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:11:55.084950       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":1,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780000","PodMap":{},"Memory":40960,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:11:55.084959       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:11:55.084968       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":0,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780001","PodMap":{},"Memory":40960,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:11:55.084976       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":1,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780000","PodMap":{},"Memory":40960,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+E0906 15:11:55.084989       1 device_info.go:189] pod mock1-nvml-mock-9rgh9 has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:55.084999       1 device_info.go:189] pod grafana-7c5659d458-xrbnn has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:55.085005       1 device_info.go:189] pod volcano-device-plugin-6nqrv has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:55.085011       1 device_info.go:189] pod kindnet-k2m7h has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:55.085017       1 device_info.go:189] pod kube-proxy-btcmr has no annotation volcano.sh/devices-to-allocate
+E0906 15:11:55.085021       1 device_info.go:189] pod complete-worker-0 has no annotation volcano.sh/devices-to-allocate
+I0906 15:11:55.085137       1 cache.go:1581] "SnapShot for scheduling" jobNum=1 QueueNum=3 NodeNum=3
+I0906 15:11:55.085155       1 session.go:1036] Start adjusting jobs' network topology spec according to hyperNodeTierNameMap map[]
+I0906 15:11:55.085164       1 session.go:1079] Finish adjusting jobs' network topology spec according to hyperNodeTierNameMap map[]
+I0906 15:11:55.085176       1 session.go:279] Open Session a329b5c2-7aa4-4555-8ff2-ed51862f2a9c with <1> Job and <3> Queues. HyperNodesReadyToSchedule: true
+I0906 15:11:55.085516       1 gpuexclusive.go:437] gpuexclusive: no rules configured, skipping GPU exclusivity wrapping
+I0906 15:11:55.085531       1 enqueue.go:79] Try to enqueue PodGroup to 0 Queues
+I0906 15:11:55.085538       1 reclaim.go:68] There are <1> Jobs and <3> Queues in total for scheduling.
+I0906 15:11:55.085547       1 proportion.go:326] Queue <lab> is overused: deserved <cpu 100.00, memory 33554432.00, ephemeral-storage 0.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 1.00, volcano.sh/vgpu-cores 0.00, volcano.sh/vgpu-memory 0.00, volcano.sh/vgpu-number 0.00>, allocated <cpu 100.00, memory 33554432.00, pods 1.00>, share <1>
+I0906 15:11:55.085568       1 reclaim.go:112] Queue <lab> is overused, ignore it.
+I0906 15:11:55.085579       1 allocate.go:138] Try to allocate resource to 0 Queues
+I0906 15:11:55.119459       1 session.go:577] Close Session a329b5c2-7aa4-4555-8ff2-ed51862f2a9c
+I0906 15:11:55.120609       1 cache.go:1126] Try to delete Job <volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3:volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3>
+I0906 15:11:55.120623       1 cache.go:1171] Retry to delete Job <volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3:volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3>
+I0906 15:11:55.126666       1 cache.go:1171] Retry to delete Job <volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3:volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3>
+I0906 15:11:55.136867       1 cache.go:1171] Retry to delete Job <volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3:volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3>
+I0906 15:11:55.157257       1 cache.go:1171] Retry to delete Job <volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3:volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3>
+I0906 15:11:55.197807       1 cache.go:1171] Retry to delete Job <volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3:volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3>
+I0906 15:11:55.278667       1 cache.go:1171] Retry to delete Job <volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3:volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3>
+I0906 15:11:55.438961       1 cache.go:1171] Retry to delete Job <volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3:volcano-tests/complete-7d95c064-f991-4bfa-a833-905b857a48d3>

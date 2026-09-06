@@ -1,0 +1,115 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "batch.volcano.sh/v1alpha1",
+            "kind": "Job",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch.volcano.sh/v1alpha1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"name\":\"node-spread\",\"namespace\":\"volcano-tests\"},\"spec\":{\"minAvailable\":2,\"queue\":\"lab\",\"schedulerName\":\"volcano\",\"tasks\":[{\"name\":\"worker\",\"replicas\":2,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sleep\",\"3600\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"limits\":{\"volcano.sh/vgpu-cores\":20,\"volcano.sh/vgpu-memory\":30,\"volcano.sh/vgpu-number\":1},\"requests\":{\"cpu\":\"100m\",\"memory\":\"32Mi\"}},\"volumeMounts\":[{\"mountPath\":\"/usr/lib/x86_64-linux-gnu/libcuda.so.1\",\"name\":\"cuda\",\"readOnly\":true}]}],\"restartPolicy\":\"Never\",\"runtimeClassName\":\"nvidia\",\"terminationGracePeriodSeconds\":0,\"volumes\":[{\"hostPath\":{\"path\":\"/var/lib/nvml-mock/driver/usr/lib64/libcuda.so.1\",\"type\":\"File\"},\"name\":\"cuda\"}]}}}]}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:25:30Z",
+                "generation": 1,
+                "name": "node-spread",
+                "namespace": "volcano-tests",
+                "resourceVersion": "6586",
+                "uid": "57ae3bd4-865c-4bc9-9370-7642e41481e6"
+            },
+            "spec": {
+                "maxRetry": 3,
+                "minAvailable": 2,
+                "queue": "lab",
+                "schedulerName": "volcano",
+                "tasks": [
+                    {
+                        "maxRetry": 3,
+                        "minAvailable": 2,
+                        "name": "worker",
+                        "replicas": 2,
+                        "template": {
+                            "metadata": {},
+                            "spec": {
+                                "containers": [
+                                    {
+                                        "command": [
+                                            "sleep",
+                                            "3600"
+                                        ],
+                                        "image": "ubuntu:22.04",
+                                        "imagePullPolicy": "IfNotPresent",
+                                        "name": "work",
+                                        "resources": {
+                                            "limits": {
+                                                "volcano.sh/vgpu-cores": "20",
+                                                "volcano.sh/vgpu-memory": "30",
+                                                "volcano.sh/vgpu-number": "1"
+                                            },
+                                            "requests": {
+                                                "cpu": "100m",
+                                                "memory": "32Mi"
+                                            }
+                                        },
+                                        "volumeMounts": [
+                                            {
+                                                "mountPath": "/usr/lib/x86_64-linux-gnu/libcuda.so.1",
+                                                "name": "cuda",
+                                                "readOnly": true
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "restartPolicy": "Never",
+                                "runtimeClassName": "nvidia",
+                                "terminationGracePeriodSeconds": 0,
+                                "volumes": [
+                                    {
+                                        "hostPath": {
+                                            "path": "/var/lib/nvml-mock/driver/usr/lib64/libcuda.so.1",
+                                            "type": "File"
+                                        },
+                                        "name": "cuda"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-09-06T15:25:30Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:25:31Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:25:32Z",
+                        "status": "Pending"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:25:32Z",
+                        "status": "Running"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:25:32Z",
+                        "status": "Failed"
+                    }
+                ],
+                "minAvailable": 2,
+                "runningDuration": "2s",
+                "state": {
+                    "lastTransitionTime": "2026-09-06T15:25:32Z",
+                    "phase": "Failed"
+                },
+                "version": 1
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

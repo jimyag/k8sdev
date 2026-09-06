@@ -1,0 +1,107 @@
+[
+  {
+    "trial": 0,
+    "immediate": [
+      {
+        "name": "early-0-worker-0",
+        "node": "volcano-lab-worker",
+        "phase": "Failed",
+        "message": "Pod was rejected: Allocate failed due to rpc error: code = Unknown desc = cannot get valid pod, which is unexpected",
+        "allocation": null
+      },
+      {
+        "name": "early-0-worker-1",
+        "node": "volcano-lab-worker",
+        "phase": "Failed",
+        "message": "Pod was rejected: Allocate failed due to rpc error: code = Unknown desc = cannot get valid pod, which is unexpected",
+        "allocation": null
+      }
+    ],
+    "after_heartbeat": [
+      {
+        "name": "after-heartbeat-0-worker-0",
+        "node": "volcano-lab-worker",
+        "phase": "Running",
+        "message": null,
+        "allocation": "GPU-12345678-1234-1234-1234-123456780000,NVIDIA,30,20:"
+      },
+      {
+        "name": "after-heartbeat-0-worker-1",
+        "node": "volcano-lab-worker",
+        "phase": "Running",
+        "message": null,
+        "allocation": "GPU-12345678-1234-1234-1234-123456780001,NVIDIA,30,20:"
+      }
+    ]
+  },
+  {
+    "trial": 1,
+    "immediate": [
+      {
+        "name": "early-1-worker-0",
+        "node": "volcano-lab-worker",
+        "phase": "Failed",
+        "message": "Pod was rejected: Allocate failed due to rpc error: code = Unknown desc = cannot get valid pod, which is unexpected",
+        "allocation": null
+      },
+      {
+        "name": "early-1-worker-1",
+        "node": "volcano-lab-worker",
+        "phase": "Failed",
+        "message": "Pod was rejected: Allocate failed due to rpc error: code = Unknown desc = cannot get valid pod, which is unexpected",
+        "allocation": null
+      }
+    ],
+    "after_heartbeat": [
+      {
+        "name": "after-heartbeat-1-worker-0",
+        "node": "volcano-lab-worker",
+        "phase": "Running",
+        "message": null,
+        "allocation": "GPU-12345678-1234-1234-1234-123456780000,NVIDIA,30,20:"
+      },
+      {
+        "name": "after-heartbeat-1-worker-1",
+        "node": "volcano-lab-worker",
+        "phase": "Running",
+        "message": null,
+        "allocation": "GPU-12345678-1234-1234-1234-123456780001,NVIDIA,30,20:"
+      }
+    ]
+  },
+  {
+    "trial": 2,
+    "immediate": [
+      {
+        "name": "early-2-worker-0",
+        "node": "volcano-lab-worker",
+        "phase": "Failed",
+        "message": "Pod was rejected: Allocate failed due to rpc error: code = Unknown desc = cannot get valid pod, which is unexpected",
+        "allocation": null
+      },
+      {
+        "name": "early-2-worker-1",
+        "node": "volcano-lab-worker",
+        "phase": "Failed",
+        "message": "Pod was rejected: Allocate failed due to rpc error: code = Unknown desc = cannot get valid pod, which is unexpected",
+        "allocation": null
+      }
+    ],
+    "after_heartbeat": [
+      {
+        "name": "after-heartbeat-2-worker-0",
+        "node": "volcano-lab-worker",
+        "phase": "Running",
+        "message": null,
+        "allocation": "GPU-12345678-1234-1234-1234-123456780000,NVIDIA,30,20:"
+      },
+      {
+        "name": "after-heartbeat-2-worker-1",
+        "node": "volcano-lab-worker",
+        "phase": "Running",
+        "message": null,
+        "allocation": "GPU-12345678-1234-1234-1234-123456780001,NVIDIA,30,20:"
+      }
+    ]
+  }
+]

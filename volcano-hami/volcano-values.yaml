@@ -1,0 +1,26 @@
+# 固定 Volcano 版本；本地预加载镜像，避免节点重复下载。
+basic:
+  image_tag_version: v1.15.0
+  image_pull_policy: IfNotPresent
+custom:
+  # 导出调度指标，供实验验证使用。
+  metrics_enable: true
+  scheduler_config_override: |
+    # 回收和抢占显式启用；上游默认配置没有这两个 action。
+    actions: "enqueue, reclaim, allocate, backfill, preempt"
+    tiers:
+    - plugins:
+      - name: priority
+      - name: gang
+      - name: conformance
+    - plugins:
+      - name: drf
+      - name: predicates
+      - name: proportion
+      - name: nodeorder
+      - name: binpack
+      - name: deviceshare
+        arguments:
+          # 使用 HAMi 提供的 Volcano vGPU 插件协议。
+          deviceshare.VGPUEnable: true
+          deviceshare.SchedulePolicy: binpack

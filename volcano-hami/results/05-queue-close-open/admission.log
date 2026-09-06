@@ -1,0 +1,1 @@
+Error from server: error when creating "STDIN": admission webhook "validatejob.volcano.sh" denied the request: can only submit job to queue with state `Open`, queue `closed` status is `Closed`;

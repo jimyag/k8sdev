@@ -1,0 +1,115 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "scheduling.volcano.sh/v1beta1",
+            "kind": "PodGroup",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch.volcano.sh/v1alpha1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"name\":\"weight-a\",\"namespace\":\"volcano-tests\"},\"spec\":{\"minAvailable\":1,\"queue\":\"weight-a\",\"schedulerName\":\"volcano\",\"tasks\":[{\"name\":\"worker\",\"replicas\":12,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sleep\",\"3600\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"requests\":{\"cpu\":\"2\",\"memory\":\"32Mi\"}}}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":0}}}]}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:23:08Z",
+                "generation": 5,
+                "name": "weight-a-5c89fa3d-acc5-447a-84f0-14171c6bbba3",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-a",
+                        "uid": "5c89fa3d-acc5-447a-84f0-14171c6bbba3"
+                    }
+                ],
+                "resourceVersion": "5558",
+                "uid": "8042a48e-9e26-4e75-913e-04e8c9324350"
+            },
+            "spec": {
+                "minMember": 1,
+                "minResources": {
+                    "count/pods": "1",
+                    "cpu": "2",
+                    "memory": "32Mi",
+                    "pods": "1",
+                    "requests.cpu": "2",
+                    "requests.memory": "32Mi"
+                },
+                "minTaskMember": {
+                    "worker": 12
+                },
+                "queue": "weight-a"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "reason": "tasks in gang are ready to be scheduled",
+                        "status": "True",
+                        "transitionID": "3f3b94bd-ee55-49b7-b705-59d31840cb00",
+                        "type": "Scheduled"
+                    }
+                ],
+                "phase": "Running",
+                "running": 4
+            }
+        },
+        {
+            "apiVersion": "scheduling.volcano.sh/v1beta1",
+            "kind": "PodGroup",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch.volcano.sh/v1alpha1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"name\":\"weight-b\",\"namespace\":\"volcano-tests\"},\"spec\":{\"minAvailable\":1,\"queue\":\"weight-b\",\"schedulerName\":\"volcano\",\"tasks\":[{\"name\":\"worker\",\"replicas\":12,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sleep\",\"3600\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"requests\":{\"cpu\":\"2\",\"memory\":\"32Mi\"}}}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":0}}}]}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:23:08Z",
+                "generation": 5,
+                "name": "weight-b-2b44c33d-8c81-44af-9e58-31b727a8c0a1",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "weight-b",
+                        "uid": "2b44c33d-8c81-44af-9e58-31b727a8c0a1"
+                    }
+                ],
+                "resourceVersion": "5557",
+                "uid": "0f7ad27a-407b-47a7-a552-597bc705bcdb"
+            },
+            "spec": {
+                "minMember": 1,
+                "minResources": {
+                    "count/pods": "1",
+                    "cpu": "2",
+                    "memory": "32Mi",
+                    "pods": "1",
+                    "requests.cpu": "2",
+                    "requests.memory": "32Mi"
+                },
+                "minTaskMember": {
+                    "worker": 12
+                },
+                "queue": "weight-b"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-09-06T15:23:12Z",
+                        "reason": "tasks in gang are ready to be scheduled",
+                        "status": "True",
+                        "transitionID": "3f3b94bd-ee55-49b7-b705-59d31840cb00",
+                        "type": "Scheduled"
+                    }
+                ],
+                "phase": "Running",
+                "running": 6
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

@@ -1,0 +1,314 @@
+[
+  {
+    "round": "results-first",
+    "case": "01-job-completion",
+    "status": "PASS",
+    "seconds": 5.82,
+    "error": null,
+    "evidence": "01-job-completion/"
+  },
+  {
+    "round": "results-first",
+    "case": "02-gang-release",
+    "status": "PASS",
+    "seconds": 11.69,
+    "error": null,
+    "evidence": "02-gang-release/"
+  },
+  {
+    "round": "results-first",
+    "case": "03-elastic-minavailable",
+    "status": "PASS",
+    "seconds": 4.9,
+    "error": null,
+    "evidence": "03-elastic-minavailable/"
+  },
+  {
+    "round": "results-fixes",
+    "case": "04-queue-capability",
+    "status": "PASS",
+    "seconds": 13.9,
+    "error": null,
+    "evidence": "04-queue-capability/"
+  },
+  {
+    "round": "results-confirmed",
+    "case": "05-queue-close-open",
+    "status": "PASS",
+    "seconds": 4.34,
+    "error": null,
+    "evidence": "05-queue-close-open/"
+  },
+  {
+    "round": "results-first",
+    "case": "06-priority-preemption",
+    "status": "PASS",
+    "seconds": 8.26,
+    "error": null,
+    "evidence": "06-priority-preemption/"
+  },
+  {
+    "round": "results-first",
+    "case": "07-capacity-borrow-reclaim",
+    "status": "PASS",
+    "seconds": 11.29,
+    "error": null,
+    "evidence": "07-capacity-borrow-reclaim/"
+  },
+  {
+    "round": "results-first",
+    "case": "08-binpack",
+    "status": "PASS",
+    "seconds": 5.5,
+    "error": null,
+    "evidence": "08-binpack/"
+  },
+  {
+    "round": "results-first",
+    "case": "09-pod-antiaffinity",
+    "status": "PASS",
+    "seconds": 3.86,
+    "error": null,
+    "evidence": "09-pod-antiaffinity/"
+  },
+  {
+    "round": "results-first",
+    "case": "10-env-svc-ssh",
+    "status": "PASS",
+    "seconds": 4.07,
+    "error": null,
+    "evidence": "10-env-svc-ssh/"
+  },
+  {
+    "round": "results-first",
+    "case": "11-failure-abort",
+    "status": "PASS",
+    "seconds": 4.9,
+    "error": null,
+    "evidence": "11-failure-abort/"
+  },
+  {
+    "round": "results-first",
+    "case": "12-ttl-cleanup",
+    "status": "PASS",
+    "seconds": 9.16,
+    "error": null,
+    "evidence": "12-ttl-cleanup/"
+  },
+  {
+    "round": "results-confirmed",
+    "case": "13-vgpu-allocation",
+    "status": "PASS",
+    "seconds": 4.16,
+    "error": null,
+    "evidence": "13-vgpu-allocation/"
+  },
+  {
+    "round": "results-confirmed",
+    "case": "14-vgpu-sharing",
+    "status": "PASS",
+    "seconds": 5.01,
+    "error": null,
+    "evidence": "14-vgpu-sharing/"
+  },
+  {
+    "round": "results-confirmed",
+    "case": "15-vgpu-device-spread",
+    "status": "PASS",
+    "seconds": 4.0,
+    "error": null,
+    "evidence": "15-vgpu-device-spread/"
+  },
+  {
+    "round": "results-fixes",
+    "case": "16-vgpu-memory-reject",
+    "status": "PASS",
+    "seconds": 8.0,
+    "error": null,
+    "evidence": "16-vgpu-memory-reject/"
+  },
+  {
+    "round": "results-fixes",
+    "case": "17-vgpu-core-reject",
+    "status": "PASS",
+    "seconds": 8.0,
+    "error": null,
+    "evidence": "17-vgpu-core-reject/"
+  },
+  {
+    "round": "results-fixes",
+    "case": "18-vgpu-count-reject",
+    "status": "PASS",
+    "seconds": 8.04,
+    "error": null,
+    "evidence": "18-vgpu-count-reject/"
+  },
+  {
+    "round": "results-fixes",
+    "case": "19-vgpu-release",
+    "status": "PASS",
+    "seconds": 14.77,
+    "error": null,
+    "evidence": "19-vgpu-release/"
+  },
+  {
+    "round": "results-advanced",
+    "case": "20-nodegroup",
+    "status": "PASS",
+    "seconds": 5.58,
+    "error": null,
+    "evidence": "20-nodegroup/"
+  },
+  {
+    "round": "results-advanced-fixes",
+    "case": "21-hypernode-hard",
+    "status": "PASS",
+    "seconds": 15.1,
+    "error": null,
+    "evidence": "21-hypernode-hard/"
+  },
+  {
+    "round": "results-semantic-check",
+    "case": "22-task-topology",
+    "status": "PASS",
+    "seconds": 5.61,
+    "error": null,
+    "evidence": "22-task-topology/"
+  },
+  {
+    "round": "results-advanced-fixes",
+    "case": "23-native-deployment",
+    "status": "PASS",
+    "seconds": 4.52,
+    "error": null,
+    "evidence": "23-native-deployment/"
+  },
+  {
+    "round": "results-advanced",
+    "case": "24-job-restart",
+    "status": "PASS",
+    "seconds": 6.34,
+    "error": null,
+    "evidence": "24-job-restart/"
+  },
+  {
+    "round": "results-advanced",
+    "case": "25-task-dependency",
+    "status": "PASS",
+    "seconds": 9.26,
+    "error": null,
+    "evidence": "25-task-dependency/"
+  },
+  {
+    "round": "results-advanced",
+    "case": "26-cronjob",
+    "status": "PASS",
+    "seconds": 58.99,
+    "error": null,
+    "evidence": "26-cronjob/"
+  },
+  {
+    "round": "results-advanced",
+    "case": "27-jobflow",
+    "status": "PASS",
+    "seconds": 12.54,
+    "error": null,
+    "evidence": "27-jobflow/"
+  },
+  {
+    "round": "results-advanced",
+    "case": "28-drf-fairness",
+    "status": "PASS",
+    "seconds": 7.73,
+    "error": null,
+    "evidence": "28-drf-fairness/"
+  },
+  {
+    "round": "results-advanced",
+    "case": "29-metrics",
+    "status": "PASS",
+    "seconds": 0.75,
+    "error": null,
+    "evidence": "29-metrics/"
+  },
+  {
+    "round": "results-spread-final",
+    "case": "30-vgpu-spread-policy",
+    "status": "FAIL",
+    "seconds": 4.24,
+    "error": "Traceback (most recent call last):\n  File \"/home/jimyag/opt/volcano-lab/run-tests.py\", line 121, in case\n    fn()\n  File \"/home/jimyag/opt/volcano-lab/run-advanced.py\", line 131, in gpu_device_policy\n    assert len(t.running('node-spread'))==2\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+    "evidence": "30-vgpu-spread-policy/"
+  },
+  {
+    "round": "results-boundaries",
+    "case": "31-weighted-queues",
+    "status": "PASS",
+    "seconds": 9.2,
+    "error": null,
+    "evidence": "31-weighted-queues/"
+  },
+  {
+    "round": "results-boundaries",
+    "case": "32-namespace-quota",
+    "status": "PASS",
+    "seconds": 16.11,
+    "error": null,
+    "evidence": "32-namespace-quota/"
+  },
+  {
+    "round": "results-boundaries",
+    "case": "33-hierarchical-queue",
+    "status": "PASS",
+    "seconds": 17.01,
+    "error": null,
+    "evidence": "33-hierarchical-queue/"
+  },
+  {
+    "round": "results-boundaries",
+    "case": "34-resource-strategy-fit",
+    "status": "PASS",
+    "seconds": 8.65,
+    "error": null,
+    "evidence": "34-resource-strategy-fit/"
+  },
+  {
+    "round": "results-boundaries",
+    "case": "35-small-job-progress",
+    "status": "PASS",
+    "seconds": 14.09,
+    "error": null,
+    "evidence": "35-small-job-progress/"
+  },
+  {
+    "round": "results-boundaries",
+    "case": "36-invalid-job",
+    "status": "PASS",
+    "seconds": 0.73,
+    "error": null,
+    "evidence": "36-invalid-job/"
+  },
+  {
+    "round": "results-boundaries",
+    "case": "37-taint-toleration",
+    "status": "PASS",
+    "seconds": 11.93,
+    "error": null,
+    "evidence": "37-taint-toleration/"
+  },
+  {
+    "round": "results-boundaries",
+    "case": "38-nvml-observation",
+    "status": "PASS",
+    "seconds": 4.07,
+    "error": null,
+    "evidence": "38-nvml-observation/"
+  },
+  {
+    "round": "results-startup-probe",
+    "case": "39-restart-heartbeat-probe",
+    "status": "PASS",
+    "seconds": 92.28,
+    "error": null,
+    "evidence": "39-restart-heartbeat-probe/"
+  }
+]

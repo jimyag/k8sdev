@@ -1,0 +1,53 @@
+go: downloading github.com/AdaLogics/go-fuzz-headers v0.0.0-20240806141605-e8a1dd7889d6
+go: downloading github.com/agiledragon/gomonkey/v2 v2.11.0
+go: downloading golang.org/x/crypto v0.49.0
+go: downloading sigs.k8s.io/controller-runtime v0.23.3
+ok  	volcano.sh/volcano/pkg/scheduler/api	0.078s
+?   	volcano.sh/volcano/pkg/scheduler/api/devices	[no test files]
+ok  	volcano.sh/volcano/pkg/scheduler/api/devices/ascend/hami	0.010s
+?   	volcano.sh/volcano/pkg/scheduler/api/devices/ascend/mindcluster/ascend310p/vnpu	[no test files]
+ok  	volcano.sh/volcano/pkg/scheduler/api/devices/config	0.009s
+ok  	volcano.sh/volcano/pkg/scheduler/api/devices/nvidia/gpushare	0.008s
+ok  	volcano.sh/volcano/pkg/scheduler/api/devices/nvidia/vgpu	0.011s
+ok  	volcano.sh/volcano/pkg/scheduler/api/helpers	0.015s
+ok  	volcano.sh/volcano/pkg/controllers/apis	0.003s
+ok  	volcano.sh/volcano/pkg/controllers/cache	0.004s
+ok  	volcano.sh/volcano/pkg/controllers/colocationconfig	0.580s
+ok  	volcano.sh/volcano/pkg/controllers/cronjob	0.026s
+?   	volcano.sh/volcano/pkg/controllers/framework	[no test files]
+ok  	volcano.sh/volcano/pkg/controllers/garbagecollector	0.010s
+ok  	volcano.sh/volcano/pkg/controllers/hypernode	3.528s
+?   	volcano.sh/volcano/pkg/controllers/hypernode/api	[no test files]
+ok  	volcano.sh/volcano/pkg/controllers/hypernode/config	0.009s
+ok  	volcano.sh/volcano/pkg/controllers/hypernode/discovery	0.214s
+?   	volcano.sh/volcano/pkg/controllers/hypernode/discovery/fake	[no test files]
+ok  	volcano.sh/volcano/pkg/controllers/hypernode/discovery/label	2.020s
+ok  	volcano.sh/volcano/pkg/controllers/hypernode/discovery/ufm	0.013s
+?   	volcano.sh/volcano/pkg/controllers/hypernode/utils	[no test files]
+ok  	volcano.sh/volcano/pkg/controllers/job	0.153s
+ok  	volcano.sh/volcano/pkg/controllers/job/helpers	0.020s
+?   	volcano.sh/volcano/pkg/controllers/job/plugins	[no test files]
+ok  	volcano.sh/volcano/pkg/controllers/job/plugins/distributed-framework/hcclrank	0.016s
+ok  	volcano.sh/volcano/pkg/controllers/job/plugins/distributed-framework/mpi	0.016s
+ok  	volcano.sh/volcano/pkg/controllers/job/plugins/distributed-framework/pytorch	0.016s
+ok  	volcano.sh/volcano/pkg/controllers/job/plugins/distributed-framework/ray	0.019s
+ok  	volcano.sh/volcano/pkg/controllers/job/plugins/distributed-framework/tensorflow	0.016s
+?   	volcano.sh/volcano/pkg/controllers/job/plugins/env	[no test files]
+?   	volcano.sh/volcano/pkg/controllers/job/plugins/interface	[no test files]
+ok  	volcano.sh/volcano/pkg/controllers/job/plugins/ssh	0.017s
+?   	volcano.sh/volcano/pkg/controllers/job/plugins/svc	[no test files]
+?   	volcano.sh/volcano/pkg/controllers/job/state	[no test files]
+ok  	volcano.sh/volcano/pkg/controllers/jobflow	0.021s
+?   	volcano.sh/volcano/pkg/controllers/jobflow/state	[no test files]
+ok  	volcano.sh/volcano/pkg/controllers/jobtemplate	0.012s
+?   	volcano.sh/volcano/pkg/controllers/metrics	[no test files]
+ok  	volcano.sh/volcano/pkg/controllers/podgroup	0.227s
+ok  	volcano.sh/volcano/pkg/controllers/queue	0.018s
+?   	volcano.sh/volcano/pkg/controllers/queue/state	[no test files]
+ok  	volcano.sh/volcano/pkg/controllers/sharding	11.654s
+ok  	volcano.sh/volcano/pkg/controllers/sharding/policy	0.004s
+ok  	volcano.sh/volcano/pkg/controllers/sharding/policy/allocationrate	0.004s
+?   	volcano.sh/volcano/pkg/controllers/sharding/policy/builtin	[no test files]
+ok  	volcano.sh/volcano/pkg/controllers/sharding/policy/nodelimit	0.003s
+ok  	volcano.sh/volcano/pkg/controllers/sharding/policy/warmup	0.004s
+ok  	volcano.sh/volcano/pkg/controllers/util	0.013s

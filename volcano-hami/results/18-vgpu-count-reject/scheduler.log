@@ -1,0 +1,120 @@
+I0906 15:17:00.178072       1 allocate.go:757] There are <3> nodes for Job <volcano-tests/reject-1e715cbb-9e59-4292-97e5-af503b056b62>
+I0906 15:17:00.178105       1 predicate_helper.go:115] Predicates failed: task volcano-tests/reject-worker-0 on node volcano-lab-control-plane fit failed: Insufficient volcano.sh/vgpu-memory
+I0906 15:17:00.178133       1 predicate_helper.go:115] Predicates failed: task volcano-tests/reject-worker-0 on node volcano-lab-worker2 fit failed: node(s) didn't match Pod's node affinity/selector
+I0906 15:17:00.178138       1 util.go:238] counts= [{3 NVIDIA 30 101 25}]
+E0906 15:17:00.178150       1 device_info.go:289] "Failed to fitler node to vgpu task" err="no enough gpu cards on node volcano-lab-worker" pod="reject-worker-0"
+I0906 15:17:00.178155       1 predicate_helper.go:115] Predicates failed: task volcano-tests/reject-worker-0 on node volcano-lab-worker fit failed: hami-vgpuDeviceSharing error
+I0906 15:17:00.178162       1 statement.go:366] Discarding operations ...
+I0906 15:17:00.178193       1 predicate_helper.go:115] Predicates failed: task volcano-tests/reject-worker-0 on node volcano-lab-control-plane fit failed: node(s) didn't match Pod's node affinity/selector
+I0906 15:17:00.178218       1 util.go:238] counts= [{3 NVIDIA 30 101 25}]
+E0906 15:17:00.178233       1 device_info.go:289] "Failed to fitler node to vgpu task" err="no enough gpu cards on node volcano-lab-worker" pod="reject-worker-0"
+I0906 15:17:00.178344       1 preempt.go:350] Considering Task <volcano-tests/reject-worker-0> on Node <volcano-lab-worker>.
+I0906 15:17:00.178358       1 preempt.go:406] Preempted <cpu 0.00, memory 0.00> for Task <volcano-tests/reject-worker-0> requested <cpu 100.00, memory 33554432.00, pods 1.00, volcano.sh/vgpu-cores 25000.00, volcano.sh/vgpu-memory 30000.00, volcano.sh/vgpu-number 3000.00>.
+I0906 15:17:00.178385       1 statement.go:171] After pipelined Task <volcano-tests/reject-worker-0> to Node <volcano-lab-worker>: idle <cpu 11390.00, memory 27993174016.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 104.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>, used <cpu 610.00, memory 1159725056.00, pods 6.00>, releasing <cpu 0.00, memory 0.00>
+I0906 15:17:00.178433       1 util.go:238] counts= [{3 NVIDIA 30 101 25}]
+E0906 15:17:00.178446       1 device_info.go:308] "Failed to allocate vgpu task" err="no enough gpu cards on node volcano-lab-worker" pod="reject-worker-0"
+E0906 15:17:00.178454       1 predicates.go:244] AllocateToPod failed no enough gpu cards on node volcano-lab-worker
+E0906 15:17:00.178460       1 statement.go:187] Failed to exec allocate callback functions for task <volcano-tests/reject-worker-0> to node <volcano-lab-worker> when pipeline in Session <fa1a2e70-3275-4a6f-9c9c-d4c3f21c6aff>: no enough gpu cards on node volcano-lab-worker
+I0906 15:17:00.178482       1 statement.go:224] After unpipelined Task <volcano-tests/reject-worker-0> to Node <volcano-lab-worker>: idle <cpu 11390.00, memory 27993174016.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 104.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>, used <cpu 610.00, memory 1159725056.00, pods 6.00>, releasing <cpu 0.00, memory 0.00>
+E0906 15:17:00.178507       1 predicates.go:299] predicates, remove pod volcano-tests/reject-worker-0 from node [volcano-lab-worker] error: no corresponding pod reject-worker-0 in pods of node volcano-lab-worker
+E0906 15:17:00.178522       1 preempt.go:412] Failed to pipeline Task <volcano-tests/reject-worker-0> on Node <volcano-lab-worker>
+I0906 15:17:00.178527       1 statement.go:366] Discarding operations ...
+I0906 15:17:00.178557       1 preempt.go:191] No preemptor task in job <volcano-tests/reject-1e715cbb-9e59-4292-97e5-af503b056b62>.
+I0906 15:17:00.178563       1 statement.go:366] Discarding operations ...
+I0906 15:17:00.178598       1 util.go:238] counts= [{3 NVIDIA 30 101 25}]
+E0906 15:17:00.178610       1 device_info.go:289] "Failed to fitler node to vgpu task" err="no enough gpu cards on node volcano-lab-worker" pod="reject-worker-0"
+I0906 15:17:00.178686       1 preempt.go:350] Considering Task <volcano-tests/reject-worker-0> on Node <volcano-lab-worker>.
+I0906 15:17:00.178697       1 preempt.go:406] Preempted <cpu 0.00, memory 0.00> for Task <volcano-tests/reject-worker-0> requested <cpu 100.00, memory 33554432.00, pods 1.00, volcano.sh/vgpu-cores 25000.00, volcano.sh/vgpu-memory 30000.00, volcano.sh/vgpu-number 3000.00>.
+I0906 15:17:00.178718       1 statement.go:171] After pipelined Task <volcano-tests/reject-worker-0> to Node <volcano-lab-worker>: idle <cpu 11390.00, memory 27993174016.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 104.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>, used <cpu 610.00, memory 1159725056.00, pods 6.00>, releasing <cpu 0.00, memory 0.00>
+I0906 15:17:00.178739       1 util.go:238] counts= [{3 NVIDIA 30 101 25}]
+E0906 15:17:00.178750       1 device_info.go:308] "Failed to allocate vgpu task" err="no enough gpu cards on node volcano-lab-worker" pod="reject-worker-0"
+E0906 15:17:00.178757       1 predicates.go:244] AllocateToPod failed no enough gpu cards on node volcano-lab-worker
+E0906 15:17:00.178762       1 statement.go:187] Failed to exec allocate callback functions for task <volcano-tests/reject-worker-0> to node <volcano-lab-worker> when pipeline in Session <fa1a2e70-3275-4a6f-9c9c-d4c3f21c6aff>: no enough gpu cards on node volcano-lab-worker
+I0906 15:17:00.178778       1 statement.go:224] After unpipelined Task <volcano-tests/reject-worker-0> to Node <volcano-lab-worker>: idle <cpu 11390.00, memory 27993174016.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 104.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>, used <cpu 610.00, memory 1159725056.00, pods 6.00>, releasing <cpu 0.00, memory 0.00>
+E0906 15:17:00.178798       1 predicates.go:299] predicates, remove pod volcano-tests/reject-worker-0 from node [volcano-lab-worker] error: no corresponding pod reject-worker-0 in pods of node volcano-lab-worker
+E0906 15:17:00.178810       1 preempt.go:412] Failed to pipeline Task <volcano-tests/reject-worker-0> on Node <volcano-lab-worker>
+I0906 15:17:00.178815       1 statement.go:366] Discarding operations ...
+I0906 15:17:00.178836       1 statement.go:366] Discarding operations ...
+I0906 15:17:00.188573       1 cache.go:1101] Updating pod condition for volcano-tests/reject-worker-0 to (PodScheduled==False)
+I0906 15:17:00.196911       1 session.go:577] Close Session fa1a2e70-3275-4a6f-9c9c-d4c3f21c6aff
+I0906 15:17:01.197453       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:17:01.197492       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":1,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780001","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:17:01.197518       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":0,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780000","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:17:01.197535       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:17:01.197545       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":1,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780001","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:17:01.197556       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker" val={"ID":0,"Node":"volcano-lab-worker","UUID":"GPU-12345678-1234-1234-1234-123456780000","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+E0906 15:17:01.197579       1 device_info.go:189] pod volcano-device-plugin-2sg22 has no annotation volcano.sh/devices-to-allocate
+E0906 15:17:01.197590       1 device_info.go:189] pod kindnet-k2m7h has no annotation volcano.sh/devices-to-allocate
+E0906 15:17:01.197598       1 device_info.go:189] pod mock1-nvml-mock-9rgh9 has no annotation volcano.sh/devices-to-allocate
+E0906 15:17:01.197605       1 device_info.go:189] pod grafana-7c5659d458-xrbnn has no annotation volcano.sh/devices-to-allocate
+E0906 15:17:01.197614       1 device_info.go:189] pod volcano-scheduler-688d74cc46-cj9pg has no annotation volcano.sh/devices-to-allocate
+E0906 15:17:01.197623       1 device_info.go:189] pod kube-proxy-btcmr has no annotation volcano.sh/devices-to-allocate
+I0906 15:17:01.197688       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:17:01.197703       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":0,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780000","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:17:01.197719       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":1,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780001","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:17:01.197734       1 device_info.go:111] GPU sharing mode:  hami-core
+I0906 15:17:01.197752       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":0,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780000","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+I0906 15:17:01.197772       1 device_info.go:113] "Nvidia Device registered name" name="volcano-lab-worker2" val={"ID":1,"Node":"volcano-lab-worker2","UUID":"GPU-22345678-1234-1234-1234-123456780001","PodMap":{},"Memory":409,"Number":10,"Type":"NVIDIA-NVIDIA A100-SXM4-40GB","Health":true,"UsedNum":0,"UsedMem":0,"UsedCore":0,"MigTemplate":[],"MigUsage":{"Index":-1,"UsageList":null}}
+E0906 15:17:01.197797       1 device_info.go:189] pod volcano-device-plugin-jj26z has no annotation volcano.sh/devices-to-allocate
+E0906 15:17:01.197810       1 device_info.go:189] pod volcano-controllers-5b976c6d4b-rkqw6 has no annotation volcano.sh/devices-to-allocate
+E0906 15:17:01.197822       1 device_info.go:189] pod prometheus-deployment-7cb9b4545b-h2fz4 has no annotation volcano.sh/devices-to-allocate
+E0906 15:17:01.197831       1 device_info.go:189] pod kindnet-5whpw has no annotation volcano.sh/devices-to-allocate
+E0906 15:17:01.197838       1 device_info.go:189] pod kube-state-metrics-5ffcdf767c-gf9d5 has no annotation volcano.sh/devices-to-allocate
+E0906 15:17:01.197844       1 device_info.go:189] pod kube-proxy-gwssg has no annotation volcano.sh/devices-to-allocate
+E0906 15:17:01.197851       1 device_info.go:189] pod volcano-admission-5b979dc8f6-8rdzl has no annotation volcano.sh/devices-to-allocate
+E0906 15:17:01.197857       1 device_info.go:189] pod mock2-nvml-mock-mtnbp has no annotation volcano.sh/devices-to-allocate
+I0906 15:17:01.197940       1 cache.go:1581] "SnapShot for scheduling" jobNum=1 QueueNum=3 NodeNum=3
+I0906 15:17:01.197955       1 session.go:1036] Start adjusting jobs' network topology spec according to hyperNodeTierNameMap map[]
+I0906 15:17:01.197963       1 session.go:1079] Finish adjusting jobs' network topology spec according to hyperNodeTierNameMap map[]
+I0906 15:17:01.197973       1 session.go:279] Open Session 9fd5f21a-1ccc-4bd5-97e8-50a5fa09b139 with <1> Job and <3> Queues. HyperNodesReadyToSchedule: true
+I0906 15:17:01.198273       1 gpuexclusive.go:437] gpuexclusive: no rules configured, skipping GPU exclusivity wrapping
+I0906 15:17:01.198293       1 enqueue.go:79] Try to enqueue PodGroup to 0 Queues
+I0906 15:17:01.198300       1 reclaim.go:68] There are <1> Jobs and <3> Queues in total for scheduling.
+I0906 15:17:01.198314       1 reclaim.go:140] Considering reclaim for 1 tasks of job <volcano-tests/reject-1e715cbb-9e59-4292-97e5-af503b056b62>.
+I0906 15:17:01.198359       1 predicate_helper.go:115] Predicates failed: task volcano-tests/reject-worker-0 on node volcano-lab-control-plane fit failed: node(s) didn't match Pod's node affinity/selector
+I0906 15:17:01.198371       1 predicate_helper.go:115] Predicates failed: task volcano-tests/reject-worker-0 on node volcano-lab-worker2 fit failed: node(s) didn't match Pod's node affinity/selector
+I0906 15:17:01.198406       1 util.go:238] counts= [{3 NVIDIA 30 101 25}]
+E0906 15:17:01.198428       1 device_info.go:289] "Failed to fitler node to vgpu task" err="no enough gpu cards on node volcano-lab-worker" pod="reject-worker-0"
+I0906 15:17:01.198445       1 reclaim.go:185] Considering Task <volcano-tests/reject-worker-0> on Node <volcano-lab-worker>.
+I0906 15:17:01.198456       1 reclaim.go:135] No preemptor task in job <volcano-tests/reject-1e715cbb-9e59-4292-97e5-af503b056b62>.
+I0906 15:17:01.198462       1 statement.go:366] Discarding operations ...
+I0906 15:17:01.198481       1 allocate.go:138] Try to allocate resource to 1 Queues
+I0906 15:17:01.198497       1 allocate.go:328] "Try to allocate resource" queue="lab" job="volcano-tests/reject-1e715cbb-9e59-4292-97e5-af503b056b62" taskNum=1
+I0906 15:17:01.198512       1 allocate.go:757] There are <3> nodes for Job <volcano-tests/reject-1e715cbb-9e59-4292-97e5-af503b056b62>
+I0906 15:17:01.198544       1 predicate_helper.go:115] Predicates failed: task volcano-tests/reject-worker-0 on node volcano-lab-control-plane fit failed: Insufficient volcano.sh/vgpu-memory
+I0906 15:17:01.198569       1 predicate_helper.go:115] Predicates failed: task volcano-tests/reject-worker-0 on node volcano-lab-worker2 fit failed: node(s) didn't match Pod's node affinity/selector
+I0906 15:17:01.198575       1 util.go:238] counts= [{3 NVIDIA 30 101 25}]
+E0906 15:17:01.198591       1 device_info.go:289] "Failed to fitler node to vgpu task" err="no enough gpu cards on node volcano-lab-worker" pod="reject-worker-0"
+I0906 15:17:01.198597       1 predicate_helper.go:115] Predicates failed: task volcano-tests/reject-worker-0 on node volcano-lab-worker fit failed: hami-vgpuDeviceSharing error
+I0906 15:17:01.198608       1 statement.go:366] Discarding operations ...
+I0906 15:17:01.198643       1 predicate_helper.go:115] Predicates failed: task volcano-tests/reject-worker-0 on node volcano-lab-control-plane fit failed: node(s) didn't match Pod's node affinity/selector
+I0906 15:17:01.198657       1 util.go:238] counts= [{3 NVIDIA 30 101 25}]
+E0906 15:17:01.198668       1 device_info.go:289] "Failed to fitler node to vgpu task" err="no enough gpu cards on node volcano-lab-worker" pod="reject-worker-0"
+I0906 15:17:01.198746       1 preempt.go:350] Considering Task <volcano-tests/reject-worker-0> on Node <volcano-lab-worker>.
+I0906 15:17:01.198756       1 preempt.go:406] Preempted <cpu 0.00, memory 0.00> for Task <volcano-tests/reject-worker-0> requested <cpu 100.00, memory 33554432.00, pods 1.00, volcano.sh/vgpu-cores 25000.00, volcano.sh/vgpu-memory 30000.00, volcano.sh/vgpu-number 3000.00>.
+I0906 15:17:01.198775       1 statement.go:171] After pipelined Task <volcano-tests/reject-worker-0> to Node <volcano-lab-worker>: idle <cpu 11390.00, memory 27993174016.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 104.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>, used <cpu 610.00, memory 1159725056.00, pods 6.00>, releasing <cpu 0.00, memory 0.00>
+I0906 15:17:01.198814       1 util.go:238] counts= [{3 NVIDIA 30 101 25}]
+E0906 15:17:01.198828       1 device_info.go:308] "Failed to allocate vgpu task" err="no enough gpu cards on node volcano-lab-worker" pod="reject-worker-0"
+E0906 15:17:01.198834       1 predicates.go:244] AllocateToPod failed no enough gpu cards on node volcano-lab-worker
+E0906 15:17:01.198840       1 statement.go:187] Failed to exec allocate callback functions for task <volcano-tests/reject-worker-0> to node <volcano-lab-worker> when pipeline in Session <9fd5f21a-1ccc-4bd5-97e8-50a5fa09b139>: no enough gpu cards on node volcano-lab-worker
+I0906 15:17:01.198862       1 statement.go:224] After unpipelined Task <volcano-tests/reject-worker-0> to Node <volcano-lab-worker>: idle <cpu 11390.00, memory 27993174016.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 104.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>, used <cpu 610.00, memory 1159725056.00, pods 6.00>, releasing <cpu 0.00, memory 0.00>
+E0906 15:17:01.198882       1 predicates.go:299] predicates, remove pod volcano-tests/reject-worker-0 from node [volcano-lab-worker] error: no corresponding pod reject-worker-0 in pods of node volcano-lab-worker
+E0906 15:17:01.198894       1 preempt.go:412] Failed to pipeline Task <volcano-tests/reject-worker-0> on Node <volcano-lab-worker>
+I0906 15:17:01.198898       1 statement.go:366] Discarding operations ...
+I0906 15:17:01.198928       1 preempt.go:191] No preemptor task in job <volcano-tests/reject-1e715cbb-9e59-4292-97e5-af503b056b62>.
+I0906 15:17:01.198933       1 statement.go:366] Discarding operations ...
+I0906 15:17:01.198961       1 util.go:238] counts= [{3 NVIDIA 30 101 25}]
+E0906 15:17:01.198970       1 device_info.go:289] "Failed to fitler node to vgpu task" err="no enough gpu cards on node volcano-lab-worker" pod="reject-worker-0"
+I0906 15:17:01.199023       1 preempt.go:350] Considering Task <volcano-tests/reject-worker-0> on Node <volcano-lab-worker>.
+I0906 15:17:01.199030       1 preempt.go:406] Preempted <cpu 0.00, memory 0.00> for Task <volcano-tests/reject-worker-0> requested <cpu 100.00, memory 33554432.00, pods 1.00, volcano.sh/vgpu-cores 25000.00, volcano.sh/vgpu-memory 30000.00, volcano.sh/vgpu-number 3000.00>.
+I0906 15:17:01.199044       1 statement.go:171] After pipelined Task <volcano-tests/reject-worker-0> to Node <volcano-lab-worker>: idle <cpu 11390.00, memory 27993174016.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 104.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>, used <cpu 610.00, memory 1159725056.00, pods 6.00>, releasing <cpu 0.00, memory 0.00>
+I0906 15:17:01.199063       1 util.go:238] counts= [{3 NVIDIA 30 101 25}]
+E0906 15:17:01.199072       1 device_info.go:308] "Failed to allocate vgpu task" err="no enough gpu cards on node volcano-lab-worker" pod="reject-worker-0"
+E0906 15:17:01.199078       1 predicates.go:244] AllocateToPod failed no enough gpu cards on node volcano-lab-worker
+E0906 15:17:01.199084       1 statement.go:187] Failed to exec allocate callback functions for task <volcano-tests/reject-worker-0> to node <volcano-lab-worker> when pipeline in Session <9fd5f21a-1ccc-4bd5-97e8-50a5fa09b139>: no enough gpu cards on node volcano-lab-worker
+I0906 15:17:01.199100       1 statement.go:224] After unpipelined Task <volcano-tests/reject-worker-0> to Node <volcano-lab-worker>: idle <cpu 11390.00, memory 27993174016.00, ephemeral-storage 1005867986944000.00, hugepages-1Gi 0.00, hugepages-2Mi 0.00, pods 104.00, volcano.sh/vgpu-cores 200000.00, volcano.sh/vgpu-memory 818000.00, volcano.sh/vgpu-number 20000.00>, used <cpu 610.00, memory 1159725056.00, pods 6.00>, releasing <cpu 0.00, memory 0.00>
+E0906 15:17:01.199120       1 predicates.go:299] predicates, remove pod volcano-tests/reject-worker-0 from node [volcano-lab-worker] error: no corresponding pod reject-worker-0 in pods of node volcano-lab-worker
+E0906 15:17:01.199127       1 preempt.go:412] Failed to pipeline Task <volcano-tests/reject-worker-0> on Node <volcano-lab-worker>
+I0906 15:17:01.199130       1 statement.go:366] Discarding operations ...
+I0906 15:17:01.199151       1 statement.go:366] Discarding operations ...
+I0906 15:17:01.199253       1 session.go:577] Close Session 9fd5f21a-1ccc-4bd5-97e8-50a5fa09b139

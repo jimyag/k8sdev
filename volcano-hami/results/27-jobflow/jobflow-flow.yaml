@@ -1,0 +1,15 @@
+# 实际测试输入；已移除服务端生成的 metadata，便于复现。
+# CPU 为核；vgpu-memory 每单位代表 100 MiB；cores 为百分比。
+apiVersion: flow.volcano.sh/v1alpha1
+kind: JobFlow
+metadata:
+  name: flow
+  namespace: volcano-tests
+spec:
+  jobRetainPolicy: retain
+  flows:
+  - name: step-a
+  - name: step-b
+    dependsOn:
+      targets:
+      - step-a

@@ -1,0 +1,237 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:14:03Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "abort-eb7eab89-9a7b-4b43-a2d3-9306a2da8a24",
+        "namespace": "volcano-tests",
+        "resourceVersion": "2443",
+        "uid": "bd2ab778-8e67-4ff4-bdad-65b9926d7762"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:14:03Z",
+      "message": "0/0 tasks in gang unschedulable: pod group is not ready, 1 minAvailable",
+      "metadata": {
+        "name": "abort-eb7eab89-9a7b-4b43-a2d3-9306a2da8a24.18d2c41fd53bac69",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:14:04Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "abort-eb7eab89-9a7b-4b43-a2d3-9306a2da8a24",
+        "namespace": "volcano-tests",
+        "resourceVersion": "2451",
+        "uid": "bd2ab778-8e67-4ff4-bdad-65b9926d7762"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:14:04Z",
+      "message": "0/1 tasks in gang unschedulable: pod group is ready, 1 Binding, 1 minAvailable",
+      "metadata": {
+        "name": "abort-eb7eab89-9a7b-4b43-a2d3-9306a2da8a24.18d2c42011e40ad9",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Unschedulable",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:14:05Z",
+      "involvedObject": {
+        "apiVersion": "scheduling.volcano.sh/v1beta1",
+        "kind": "PodGroup",
+        "name": "abort-eb7eab89-9a7b-4b43-a2d3-9306a2da8a24",
+        "namespace": "volcano-tests",
+        "resourceVersion": "2462",
+        "uid": "bd2ab778-8e67-4ff4-bdad-65b9926d7762"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:14:05Z",
+      "message": "pod group is ready",
+      "metadata": {
+        "name": "abort-eb7eab89-9a7b-4b43-a2d3-9306a2da8a24.18d2c4204f1d4ccc",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:14:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "abort-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "2446",
+        "uid": "cdcf2b28-f37d-4364-8b9a-a01b98c39812"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:14:04Z",
+      "message": "Successfully assigned volcano-tests/abort-worker-0 to volcano-lab-worker",
+      "metadata": {
+        "name": "abort-worker-0.18d2c42012ce5155",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "volcano",
+      "reportingInstance": "",
+      "source": {
+        "component": "volcano"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:14:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "abort-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "2454",
+        "uid": "cdcf2b28-f37d-4364-8b9a-a01b98c39812"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:14:04Z",
+      "message": "Container image \"ubuntu:22.04\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "name": "abort-worker-0.18d2c4202d9d66cf",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:14:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "abort-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "2454",
+        "uid": "cdcf2b28-f37d-4364-8b9a-a01b98c39812"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:14:04Z",
+      "message": "Container created",
+      "metadata": {
+        "name": "abort-worker-0.18d2c4202ff4c8ba",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:14:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{work}",
+        "kind": "Pod",
+        "name": "abort-worker-0",
+        "namespace": "volcano-tests",
+        "resourceVersion": "2454",
+        "uid": "cdcf2b28-f37d-4364-8b9a-a01b98c39812"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:14:04Z",
+      "message": "Container started",
+      "metadata": {
+        "name": "abort-worker-0.18d2c42034883430",
+        "namespace": "volcano-tests"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "volcano-lab-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "volcano-lab-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-09-06T15:14:06Z",
+      "involvedObject": {
+        "apiVersion": "batch.volcano.sh/v1alpha1",
+        "kind": "Job",
+        "name": "abort",
+        "namespace": "volcano-tests",
+        "resourceVersion": "2447",
+        "uid": "eb7eab89-9a7b-4b43-a2d3-9306a2da8a24"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-09-06T15:14:06Z",
+      "message": "Start to execute action AbortJob ",
+      "metadata": {
+        "name": "abort.18d2c4209c143808",
+        "namespace": "volcano-tests"
+      },
+      "reason": "ExecuteAction",
+      "reportingComponent": "vc-controller-manager",
+      "reportingInstance": "",
+      "source": {
+        "component": "vc-controller-manager"
+      },
+      "type": "Normal"
+    }
+  ],
+  "kind": "List",
+  "metadata": {}
+}

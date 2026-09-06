@@ -1,0 +1,296 @@
+[
+  {
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": {
+      "annotations": {
+        "meta.helm.sh/release-name": "volcano",
+        "meta.helm.sh/release-namespace": "volcano-system",
+        "prometheus.io/port": "3000",
+        "prometheus.io/scrape": "true"
+      },
+      "creationTimestamp": "2026-09-06T15:09:06Z",
+      "labels": {
+        "app.kubernetes.io/managed-by": "Helm"
+      },
+      "name": "grafana",
+      "namespace": "volcano-system",
+      "resourceVersion": "819",
+      "uid": "62b8472d-6123-4512-9f4c-24946b398086"
+    },
+    "spec": {
+      "clusterIP": "10.96.24.178",
+      "clusterIPs": [
+        "10.96.24.178"
+      ],
+      "externalTrafficPolicy": "Cluster",
+      "internalTrafficPolicy": "Cluster",
+      "ipFamilies": [
+        "IPv4"
+      ],
+      "ipFamilyPolicy": "SingleStack",
+      "ports": [
+        {
+          "nodePort": 30004,
+          "port": 3000,
+          "protocol": "TCP",
+          "targetPort": 3000
+        }
+      ],
+      "selector": {
+        "app": "grafana"
+      },
+      "sessionAffinity": "None",
+      "type": "NodePort"
+    },
+    "status": {
+      "loadBalancer": {}
+    }
+  },
+  {
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": {
+      "annotations": {
+        "meta.helm.sh/release-name": "volcano",
+        "meta.helm.sh/release-namespace": "volcano-system",
+        "prometheus.io/path": "/metrics",
+        "prometheus.io/port": "8080",
+        "prometheus.io/scrape": "true"
+      },
+      "creationTimestamp": "2026-09-06T15:09:06Z",
+      "labels": {
+        "app.kubernetes.io/managed-by": "Helm",
+        "app.kubernetes.io/name": "kube-state-metrics"
+      },
+      "name": "kube-state-metrics",
+      "namespace": "volcano-system",
+      "resourceVersion": "828",
+      "uid": "a89852af-c486-4f34-93c7-d65f14db1ed0"
+    },
+    "spec": {
+      "clusterIP": "10.96.111.232",
+      "clusterIPs": [
+        "10.96.111.232"
+      ],
+      "internalTrafficPolicy": "Cluster",
+      "ipFamilies": [
+        "IPv4"
+      ],
+      "ipFamilyPolicy": "SingleStack",
+      "ports": [
+        {
+          "name": "http-metrics",
+          "port": 8080,
+          "protocol": "TCP",
+          "targetPort": "http-metrics"
+        },
+        {
+          "name": "telemetry",
+          "port": 8081,
+          "protocol": "TCP",
+          "targetPort": "telemetry"
+        }
+      ],
+      "selector": {
+        "k8s-app": "kube-state-metrics"
+      },
+      "sessionAffinity": "None",
+      "type": "ClusterIP"
+    },
+    "status": {
+      "loadBalancer": {}
+    }
+  },
+  {
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": {
+      "annotations": {
+        "meta.helm.sh/release-name": "volcano",
+        "meta.helm.sh/release-namespace": "volcano-system",
+        "prometheus.io/port": "9090",
+        "prometheus.io/scrape": "true"
+      },
+      "creationTimestamp": "2026-09-06T15:09:06Z",
+      "labels": {
+        "app.kubernetes.io/managed-by": "Helm"
+      },
+      "name": "prometheus-service",
+      "namespace": "volcano-system",
+      "resourceVersion": "837",
+      "uid": "d48d9761-7c13-4492-b8c7-a44a5899c262"
+    },
+    "spec": {
+      "clusterIP": "10.96.242.112",
+      "clusterIPs": [
+        "10.96.242.112"
+      ],
+      "externalTrafficPolicy": "Cluster",
+      "internalTrafficPolicy": "Cluster",
+      "ipFamilies": [
+        "IPv4"
+      ],
+      "ipFamilyPolicy": "SingleStack",
+      "ports": [
+        {
+          "nodePort": 30003,
+          "port": 8080,
+          "protocol": "TCP",
+          "targetPort": 9090
+        }
+      ],
+      "selector": {
+        "app": "prometheus-server"
+      },
+      "sessionAffinity": "None",
+      "type": "NodePort"
+    },
+    "status": {
+      "loadBalancer": {}
+    }
+  },
+  {
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": {
+      "annotations": {
+        "meta.helm.sh/release-name": "volcano",
+        "meta.helm.sh/release-namespace": "volcano-system"
+      },
+      "creationTimestamp": "2026-09-06T15:09:06Z",
+      "labels": {
+        "app": "volcano-admission",
+        "app.kubernetes.io/managed-by": "Helm"
+      },
+      "name": "volcano-admission-service",
+      "namespace": "volcano-system",
+      "resourceVersion": "817",
+      "uid": "1544fda3-c403-431b-aeab-5f3f06fa7ff4"
+    },
+    "spec": {
+      "clusterIP": "10.96.244.174",
+      "clusterIPs": [
+        "10.96.244.174"
+      ],
+      "internalTrafficPolicy": "Cluster",
+      "ipFamilies": [
+        "IPv4"
+      ],
+      "ipFamilyPolicy": "SingleStack",
+      "ports": [
+        {
+          "port": 443,
+          "protocol": "TCP",
+          "targetPort": 8443
+        }
+      ],
+      "selector": {
+        "app": "volcano-admission"
+      },
+      "sessionAffinity": "None",
+      "type": "ClusterIP"
+    },
+    "status": {
+      "loadBalancer": {}
+    }
+  },
+  {
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": {
+      "annotations": {
+        "meta.helm.sh/release-name": "volcano",
+        "meta.helm.sh/release-namespace": "volcano-system",
+        "prometheus.io/path": "/metrics",
+        "prometheus.io/port": "8081",
+        "prometheus.io/scrape": "true"
+      },
+      "creationTimestamp": "2026-09-06T15:09:06Z",
+      "labels": {
+        "app": "volcano-controller",
+        "app.kubernetes.io/managed-by": "Helm"
+      },
+      "name": "volcano-controllers-service",
+      "namespace": "volcano-system",
+      "resourceVersion": "810",
+      "uid": "d1477d2d-16de-4a4d-b59b-f9e10904107a"
+    },
+    "spec": {
+      "clusterIP": "10.96.60.216",
+      "clusterIPs": [
+        "10.96.60.216"
+      ],
+      "internalTrafficPolicy": "Cluster",
+      "ipFamilies": [
+        "IPv4"
+      ],
+      "ipFamilyPolicy": "SingleStack",
+      "ports": [
+        {
+          "name": "metrics",
+          "port": 8081,
+          "protocol": "TCP",
+          "targetPort": 8081
+        }
+      ],
+      "selector": {
+        "app": "volcano-controller"
+      },
+      "sessionAffinity": "None",
+      "type": "ClusterIP"
+    },
+    "status": {
+      "loadBalancer": {}
+    }
+  },
+  {
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": {
+      "annotations": {
+        "meta.helm.sh/release-name": "volcano",
+        "meta.helm.sh/release-namespace": "volcano-system",
+        "prometheus.io/path": "/metrics",
+        "prometheus.io/port": "8080",
+        "prometheus.io/scrape": "true"
+      },
+      "creationTimestamp": "2026-09-06T15:09:06Z",
+      "labels": {
+        "app": "volcano-scheduler",
+        "app.kubernetes.io/managed-by": "Helm"
+      },
+      "name": "volcano-scheduler-service",
+      "namespace": "volcano-system",
+      "resourceVersion": "821",
+      "uid": "f98ef19f-1460-4e5b-94c6-bc85fa906a05"
+    },
+    "spec": {
+      "clusterIP": "10.96.93.138",
+      "clusterIPs": [
+        "10.96.93.138"
+      ],
+      "internalTrafficPolicy": "Cluster",
+      "ipFamilies": [
+        "IPv4"
+      ],
+      "ipFamilyPolicy": "SingleStack",
+      "ports": [
+        {
+          "name": "metrics",
+          "port": 8080,
+          "protocol": "TCP",
+          "targetPort": 8080
+        }
+      ],
+      "selector": {
+        "app": "volcano-scheduler"
+      },
+      "sessionAffinity": "None",
+      "type": "ClusterIP"
+    },
+    "status": {
+      "loadBalancer": {}
+    }
+  }
+]

@@ -1,0 +1,13 @@
+# 实际测试输入；已移除服务端生成的 metadata，便于复现。
+# CPU 为核；vgpu-memory 每单位代表 100 MiB；cores 为百分比。
+apiVersion: topology.volcano.sh/v1alpha1
+kind: HyperNode
+metadata:
+  name: rack-b
+spec:
+  tier: 1
+  members:
+  - type: Node
+    selector:
+      exactMatch:
+        name: volcano-lab-worker2

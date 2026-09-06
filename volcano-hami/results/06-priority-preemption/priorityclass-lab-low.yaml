@@ -1,0 +1,8 @@
+# 实际测试输入；已移除服务端生成的 metadata，便于复现。
+# CPU 为核；vgpu-memory 每单位代表 100 MiB；cores 为百分比。
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: lab-low
+value: 10
+globalDefault: false

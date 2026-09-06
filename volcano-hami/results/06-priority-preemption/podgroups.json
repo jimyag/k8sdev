@@ -1,0 +1,124 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "scheduling.volcano.sh/v1beta1",
+            "kind": "PodGroup",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch.volcano.sh/v1alpha1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"name\":\"high\",\"namespace\":\"volcano-tests\"},\"spec\":{\"minAvailable\":1,\"priorityClassName\":\"lab-high\",\"queue\":\"lab\",\"schedulerName\":\"volcano\",\"tasks\":[{\"name\":\"worker\",\"replicas\":1,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sleep\",\"3600\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"requests\":{\"cpu\":\"5\",\"memory\":\"32Mi\"}}}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":0}}}]}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:13:32Z",
+                "generation": 5,
+                "name": "high-5b02751b-7354-464b-baf7-2cffdf7d1db6",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "high",
+                        "uid": "5b02751b-7354-464b-baf7-2cffdf7d1db6"
+                    }
+                ],
+                "resourceVersion": "1960",
+                "uid": "f672b74f-46d3-463d-bc60-7aed6908dfe1"
+            },
+            "spec": {
+                "minMember": 1,
+                "minResources": {
+                    "count/pods": "1",
+                    "cpu": "5",
+                    "memory": "32Mi",
+                    "pods": "1",
+                    "requests.cpu": "5",
+                    "requests.memory": "32Mi"
+                },
+                "minTaskMember": {
+                    "worker": 1
+                },
+                "priorityClassName": "lab-high",
+                "queue": "lab"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-09-06T15:13:33Z",
+                        "message": "1/1 tasks in gang unschedulable: pod group is not ready, 1 Pipelined, 1 minAvailable. Origin reason is high-worker-0: 0/3 nodes are unavailable: 1 node(s) had untolerated taint(s), 2 Insufficient cpu.",
+                        "reason": "NotEnoughResources",
+                        "status": "True",
+                        "transitionID": "491f7240-6185-4d77-b155-1620ba86ce3e",
+                        "type": "Unschedulable"
+                    },
+                    {
+                        "lastTransitionTime": "2026-09-06T15:13:36Z",
+                        "reason": "tasks in gang are ready to be scheduled",
+                        "status": "True",
+                        "transitionID": "67dc7eef-dd9e-4cf2-a62a-248eea71896d",
+                        "type": "Scheduled"
+                    }
+                ],
+                "phase": "Running"
+            }
+        },
+        {
+            "apiVersion": "scheduling.volcano.sh/v1beta1",
+            "kind": "PodGroup",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch.volcano.sh/v1alpha1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"name\":\"low\",\"namespace\":\"volcano-tests\"},\"spec\":{\"minAvailable\":1,\"priorityClassName\":\"lab-low\",\"queue\":\"lab\",\"schedulerName\":\"volcano\",\"tasks\":[{\"name\":\"worker\",\"replicas\":4,\"template\":{\"metadata\":{\"annotations\":{}},\"spec\":{\"containers\":[{\"command\":[\"sleep\",\"3600\"],\"image\":\"ubuntu:22.04\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"work\",\"resources\":{\"requests\":{\"cpu\":\"5\",\"memory\":\"32Mi\"}}}],\"restartPolicy\":\"Never\",\"terminationGracePeriodSeconds\":0}}}]}}\n"
+                },
+                "creationTimestamp": "2026-09-06T15:13:29Z",
+                "generation": 6,
+                "name": "low-2298be68-bd94-413f-a18c-b7c227873965",
+                "namespace": "volcano-tests",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch.volcano.sh/v1alpha1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Job",
+                        "name": "low",
+                        "uid": "2298be68-bd94-413f-a18c-b7c227873965"
+                    }
+                ],
+                "resourceVersion": "1930",
+                "uid": "fe4a17dc-0a44-4860-80aa-1be4d74a8d4d"
+            },
+            "spec": {
+                "minMember": 1,
+                "minResources": {
+                    "count/pods": "1",
+                    "cpu": "5",
+                    "memory": "32Mi",
+                    "pods": "1",
+                    "requests.cpu": "5",
+                    "requests.memory": "32Mi"
+                },
+                "minTaskMember": {
+                    "worker": 4
+                },
+                "priorityClassName": "lab-low",
+                "queue": "lab"
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2026-09-06T15:13:33Z",
+                        "reason": "tasks in gang are ready to be scheduled",
+                        "status": "True",
+                        "transitionID": "491f7240-6185-4d77-b155-1620ba86ce3e",
+                        "type": "Scheduled"
+                    }
+                ],
+                "phase": "Running",
+                "running": 3
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
