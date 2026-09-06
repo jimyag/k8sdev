@@ -1,0 +1,80 @@
+# 进阶采集：保留两种队列总量，并通过 Pod 服务发现逐个抓取 web，避免经 Service 随机采到一个副本。
+# 仅用于独立的 kind-hpa-lab 集群，资源统一放在 hpa-demo 命名空间。
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: prometheus
+  namespace: hpa-demo
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: prometheus
+  namespace: hpa-demo
+# 仅授予本命名空间 Pod 的读取与监听权限。
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+  - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: prometheus
+  namespace: hpa-demo
+subjects:
+- kind: ServiceAccount
+  name: prometheus
+  namespace: hpa-demo
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: prometheus
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus
+  namespace: hpa-demo
+data:
+  prometheus.yml: |
+    global:
+      # 缩短实验采样等待；抓取周期与 HPA 调谐周期相互独立。
+      scrape_interval: 5s
+    scrape_configs:
+      - job_name: queue
+        # 静态抓取单个队列 exporter，并用标签关联 Kubernetes 对象。
+        static_configs:
+          - targets: ['queue.hpa-demo.svc:8080']
+            labels: {namespace: hpa-demo, service: queue}
+      - job_name: broker
+        # 静态抓取单个队列 exporter，并用标签关联 Kubernetes 对象。
+        static_configs:
+          - targets: ['broker.hpa-demo.svc:8080']
+            labels: {namespace: hpa-demo, service: broker}
+      - job_name: web-pods
+        # 按 Pod 发现 web 的各个实例，所需权限由上面的命名空间 Role 提供。
+        kubernetes_sd_configs:
+          - role: pod
+            namespaces:
+              names: [hpa-demo]
+        # 只保留 web 的 http 端口和 Running Pod，并补上 namespace、pod 标签。
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_pod_label_app]
+            regex: web
+            action: keep
+          - source_labels: [__meta_kubernetes_pod_container_port_name]
+            regex: http
+            action: keep
+          - source_labels: [__meta_kubernetes_pod_phase]
+            regex: Running
+            action: keep
+          - source_labels: [__meta_kubernetes_namespace]
+            target_label: namespace
+          - source_labels: [__meta_kubernetes_pod_name]
+            target_label: pod

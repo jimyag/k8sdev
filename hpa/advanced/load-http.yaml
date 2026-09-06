@@ -1,0 +1,47 @@
+# HTTP 定速负载：向 web 发起每秒 35 个请求；实际成功速率以 Prometheus 查询为准。
+# 仅用于独立的 kind-hpa-lab 集群，资源统一放在 hpa-demo 命名空间。
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: http-load
+  namespace: hpa-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: http-load
+  template:
+    metadata:
+      labels:
+        app: http-load
+    spec:
+      # 给最长 60 秒的任务留出完成、ACK 和退出时间；到期仍未退出会被终止。
+      terminationGracePeriodSeconds: 100
+      containers:
+      - name: http-load
+        image: hpa-advanced:v1
+        imagePullPolicy: IfNotPresent
+        args:
+        - load
+        ports:
+        - containerPort: 8080
+          name: http
+        resources:
+          requests:
+            # 请求 0.1 个 CPU；CPU HPA 以目标容器的 request 作为利用率分母。
+            cpu: 100m
+            memory: 32Mi
+          limits:
+            # 把单容器 CPU 上限限制为 0.5 核，避免实验占满宿主机。
+            cpu: 500m
+            memory: 128Mi
+        # 探针通过才计入 Ready；进阶实验会额外注入 60 秒就绪延迟。
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          periodSeconds: 2
+        env:
+        # 设置发送目标速率；负载程序关闭 keepalive，让不同连接经 Service 分配。
+        - name: RPS
+          value: '35'

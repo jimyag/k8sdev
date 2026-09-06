@@ -1,0 +1,78 @@
+# 基础采集：每 5 秒抓取模拟队列；使用临时存储，不保留跨 Pod 重建的历史数据。
+# 仅用于独立的 kind-hpa-lab 集群，资源统一放在 hpa-demo 命名空间。
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus
+  namespace: hpa-demo
+data:
+  prometheus.yml: |
+    global:
+      # 缩短实验采样等待；抓取周期与 HPA 调谐周期相互独立。
+      scrape_interval: 5s
+    scrape_configs:
+      - job_name: queue
+        # 静态抓取单个队列 exporter，并用标签关联 Kubernetes 对象。
+        static_configs:
+          - targets: ['queue.hpa-demo.svc:8080']
+            labels:
+              namespace: hpa-demo
+              service: queue
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus
+  namespace: hpa-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - name: prometheus
+        image: prom/prometheus:v3.5.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            # 请求 0.1 个 CPU；CPU HPA 以目标容器的 request 作为利用率分母。
+            cpu: 100m
+            memory: 32Mi
+          limits:
+            # 把单容器 CPU 上限限制为 0.5 核，避免实验占满宿主机。
+            cpu: 500m
+            memory: 128Mi
+        args:
+        - --config.file=/etc/prometheus/prometheus.yml
+        - --storage.tsdb.path=/prometheus
+        volumeMounts:
+        - name: config
+          mountPath: /etc/prometheus
+        - name: data
+          mountPath: /prometheus
+      volumes:
+      - name: config
+        configMap:
+          name: prometheus
+      - name: data
+        # 随 Pod 删除而丢失的临时存储；不用于生产监控数据持久化。
+        emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus
+  namespace: hpa-demo
+spec:
+  selector:
+    app: prometheus
+  ports:
+  - port: 9090
+    targetPort: 9090

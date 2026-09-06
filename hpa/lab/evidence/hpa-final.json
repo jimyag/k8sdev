@@ -1,0 +1,117 @@
+{
+    "apiVersion": "autoscaling/v2",
+    "kind": "HorizontalPodAutoscaler",
+    "metadata": {
+        "annotations": {
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"autoscaling/v2\",\"kind\":\"HorizontalPodAutoscaler\",\"metadata\":{\"annotations\":{},\"name\":\"worker\",\"namespace\":\"hpa-demo\"},\"spec\":{\"behavior\":{\"scaleDown\":{\"stabilizationWindowSeconds\":30}},\"maxReplicas\":4,\"metrics\":[{\"object\":{\"describedObject\":{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"name\":\"queue\"},\"metric\":{\"name\":\"queue_depth\"},\"target\":{\"averageValue\":\"10\",\"type\":\"AverageValue\"}},\"type\":\"Object\"}],\"minReplicas\":1,\"scaleTargetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"worker\"}}}\n"
+        },
+        "creationTimestamp": "2026-09-06T13:58:44Z",
+        "name": "worker",
+        "namespace": "hpa-demo",
+        "resourceVersion": "1624",
+        "uid": "c7aead19-50f7-4d26-ab2b-ac2780578a33"
+    },
+    "spec": {
+        "behavior": {
+            "scaleDown": {
+                "policies": [
+                    {
+                        "periodSeconds": 15,
+                        "type": "Percent",
+                        "value": 100
+                    }
+                ],
+                "selectPolicy": "Max",
+                "stabilizationWindowSeconds": 30
+            },
+            "scaleUp": {
+                "policies": [
+                    {
+                        "periodSeconds": 15,
+                        "type": "Pods",
+                        "value": 4
+                    },
+                    {
+                        "periodSeconds": 15,
+                        "type": "Percent",
+                        "value": 100
+                    }
+                ],
+                "selectPolicy": "Max",
+                "stabilizationWindowSeconds": 0
+            }
+        },
+        "maxReplicas": 4,
+        "metrics": [
+            {
+                "object": {
+                    "describedObject": {
+                        "apiVersion": "v1",
+                        "kind": "Service",
+                        "name": "queue"
+                    },
+                    "metric": {
+                        "name": "queue_depth"
+                    },
+                    "target": {
+                        "averageValue": "10",
+                        "type": "AverageValue"
+                    }
+                },
+                "type": "Object"
+            }
+        ],
+        "minReplicas": 1,
+        "scaleTargetRef": {
+            "apiVersion": "apps/v1",
+            "kind": "Deployment",
+            "name": "worker"
+        }
+    },
+    "status": {
+        "conditions": [
+            {
+                "lastTransitionTime": "2026-09-06T13:58:59Z",
+                "message": "recommended size matches current size",
+                "reason": "ReadyForNewScale",
+                "status": "True",
+                "type": "AbleToScale"
+            },
+            {
+                "lastTransitionTime": "2026-09-06T14:05:29Z",
+                "message": "the HPA was able to successfully calculate a replica count from external metric queue_depth(nil)",
+                "reason": "ValidMetricFound",
+                "status": "True",
+                "type": "ScalingActive"
+            },
+            {
+                "lastTransitionTime": "2026-09-06T14:05:59Z",
+                "message": "the desired replica count is less than the minimum replica count",
+                "reason": "TooFewReplicas",
+                "status": "True",
+                "type": "ScalingLimited"
+            }
+        ],
+        "currentMetrics": [
+            {
+                "object": {
+                    "current": {
+                        "averageValue": "0"
+                    },
+                    "describedObject": {
+                        "apiVersion": "v1",
+                        "kind": "Service",
+                        "name": "queue"
+                    },
+                    "metric": {
+                        "name": "queue_depth"
+                    }
+                },
+                "type": "Object"
+            }
+        ],
+        "currentReplicas": 1,
+        "desiredReplicas": 1,
+        "lastScaleTime": "2026-09-06T14:05:59Z"
+    }
+}

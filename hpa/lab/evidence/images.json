@@ -1,0 +1,14 @@
+[
+  [
+    "docker.io/library/hpa-demo:v1",
+    "sha256:6576dd25fb1ed77116db2e31b1a5676f069a904919e12c7fe6e237e6c7820c0b"
+  ],
+  [
+    "docker.io/prom/prometheus:v3.5.0",
+    "docker.io/prom/prometheus@sha256:63805ebb8d2b3920190daf1cb14a60871b16fd38bed42b857a3182bc621f4996"
+  ],
+  [
+    "registry.k8s.io/prometheus-adapter/prometheus-adapter:v0.12.0",
+    "registry.k8s.io/prometheus-adapter/prometheus-adapter@sha256:932eae60e2bcf9c4660d6442da066ef1a79b4ea7cc232c61c7303069216ca006"
+  ]
+]

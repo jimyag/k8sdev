@@ -1,0 +1,29 @@
+# CPU HPA：按目标容器 CPU request 的利用率，在 1～4 个 worker 之间扩缩容。
+# 仅用于独立的 kind-hpa-lab 集群，资源统一放在 hpa-demo 命名空间。
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: worker
+  namespace: hpa-demo
+spec:
+  # 真正被调整副本数的对象；它可以与指标关联的 Service 不同。
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: worker
+  # 保留至少一个副本，本实验不验证缩到零。
+  minReplicas: 1
+  # 限制实验资源占用；达到上限不等于业务负载已满足目标。
+  maxReplicas: 4
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        # 目标是 CPU request 的 50%，不是节点 CPU 或容器 limit 的 50%。
+        averageUtilization: 50
+  behavior:
+    scaleDown:
+      # 缩容时参考最近 30 秒的副本建议，过滤短暂低负载。
+      stabilizationWindowSeconds: 30

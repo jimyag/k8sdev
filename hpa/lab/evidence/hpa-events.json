@@ -1,0 +1,288 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-09-06T13:58:59Z",
+            "involvedObject": {
+                "apiVersion": "autoscaling/v2",
+                "kind": "HorizontalPodAutoscaler",
+                "name": "worker",
+                "namespace": "hpa-demo",
+                "resourceVersion": "644",
+                "uid": "c7aead19-50f7-4d26-ab2b-ac2780578a33"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-09-06T13:58:59Z",
+            "message": "failed to get cpu utilization: unable to get metrics for resource cpu: unable to fetch metrics from resource metrics API: the server is currently unable to handle the request (get pods.metrics.k8s.io)",
+            "metadata": {
+                "creationTimestamp": "2026-09-06T13:58:59Z",
+                "name": "worker.18d2c0073cb9b0c5",
+                "namespace": "hpa-demo",
+                "resourceVersion": "703",
+                "uid": "44b67fe2-e4b2-49c1-a155-aba19700b333"
+            },
+            "reason": "FailedGetResourceMetric",
+            "reportingComponent": "horizontal-pod-autoscaler",
+            "reportingInstance": "",
+            "source": {
+                "component": "horizontal-pod-autoscaler"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-09-06T13:58:59Z",
+            "involvedObject": {
+                "apiVersion": "autoscaling/v2",
+                "kind": "HorizontalPodAutoscaler",
+                "name": "worker",
+                "namespace": "hpa-demo",
+                "resourceVersion": "644",
+                "uid": "c7aead19-50f7-4d26-ab2b-ac2780578a33"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-09-06T13:58:59Z",
+            "message": "invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: unable to get metrics for resource cpu: unable to fetch metrics from resource metrics API: the server is currently unable to handle the request (get pods.metrics.k8s.io)",
+            "metadata": {
+                "creationTimestamp": "2026-09-06T13:58:59Z",
+                "name": "worker.18d2c0073d1c0824",
+                "namespace": "hpa-demo",
+                "resourceVersion": "705",
+                "uid": "4846dbef-9b31-458e-9c4e-fba35971a554"
+            },
+            "reason": "FailedComputeMetricsReplicas",
+            "reportingComponent": "horizontal-pod-autoscaler",
+            "reportingInstance": "",
+            "source": {
+                "component": "horizontal-pod-autoscaler"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-09-06T13:59:14Z",
+            "involvedObject": {
+                "apiVersion": "autoscaling/v2",
+                "kind": "HorizontalPodAutoscaler",
+                "name": "worker",
+                "namespace": "hpa-demo",
+                "resourceVersion": "704",
+                "uid": "c7aead19-50f7-4d26-ab2b-ac2780578a33"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-09-06T13:59:14Z",
+            "message": "failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)",
+            "metadata": {
+                "creationTimestamp": "2026-09-06T13:59:14Z",
+                "name": "worker.18d2c00abbd3a0d0",
+                "namespace": "hpa-demo",
+                "resourceVersion": "780",
+                "uid": "a3bdeeb0-959d-4826-86e6-819feed916d1"
+            },
+            "reason": "FailedGetResourceMetric",
+            "reportingComponent": "horizontal-pod-autoscaler",
+            "reportingInstance": "",
+            "source": {
+                "component": "horizontal-pod-autoscaler"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-09-06T13:59:14Z",
+            "involvedObject": {
+                "apiVersion": "autoscaling/v2",
+                "kind": "HorizontalPodAutoscaler",
+                "name": "worker",
+                "namespace": "hpa-demo",
+                "resourceVersion": "704",
+                "uid": "c7aead19-50f7-4d26-ab2b-ac2780578a33"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-09-06T13:59:14Z",
+            "message": "invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: did not receive metrics for targeted pods (pods might be unready)",
+            "metadata": {
+                "creationTimestamp": "2026-09-06T13:59:14Z",
+                "name": "worker.18d2c00abc70b237",
+                "namespace": "hpa-demo",
+                "resourceVersion": "781",
+                "uid": "27f042a6-5fbe-4ed8-97f7-9e491a0cb9ed"
+            },
+            "reason": "FailedComputeMetricsReplicas",
+            "reportingComponent": "horizontal-pod-autoscaler",
+            "reportingInstance": "",
+            "source": {
+                "component": "horizontal-pod-autoscaler"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-09-06T14:00:14Z",
+            "involvedObject": {
+                "apiVersion": "autoscaling/v2",
+                "kind": "HorizontalPodAutoscaler",
+                "name": "worker",
+                "namespace": "hpa-demo",
+                "resourceVersion": "811",
+                "uid": "c7aead19-50f7-4d26-ab2b-ac2780578a33"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-09-06T14:00:14Z",
+            "message": "New size: 4; reason: cpu resource utilization (percentage of request) above target",
+            "metadata": {
+                "creationTimestamp": "2026-09-06T14:00:14Z",
+                "name": "worker.18d2c018b8e5fc56",
+                "namespace": "hpa-demo",
+                "resourceVersion": "897",
+                "uid": "8c708a4a-1175-4fac-a030-8e83c71598d8"
+            },
+            "reason": "SuccessfulRescale",
+            "reportingComponent": "horizontal-pod-autoscaler",
+            "reportingInstance": "",
+            "source": {
+                "component": "horizontal-pod-autoscaler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 2,
+            "eventTime": null,
+            "firstTimestamp": "2026-09-06T14:02:29Z",
+            "involvedObject": {
+                "apiVersion": "autoscaling/v2",
+                "kind": "HorizontalPodAutoscaler",
+                "name": "worker",
+                "namespace": "hpa-demo",
+                "resourceVersion": "1118",
+                "uid": "c7aead19-50f7-4d26-ab2b-ac2780578a33"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-09-06T14:05:59Z",
+            "message": "New size: 1; reason: All metrics below target",
+            "metadata": {
+                "creationTimestamp": "2026-09-06T14:02:29Z",
+                "name": "worker.18d2c0383089710a",
+                "namespace": "hpa-demo",
+                "resourceVersion": "1568",
+                "uid": "822c4eee-0848-44af-bd28-eebd3e3f7a11"
+            },
+            "reason": "SuccessfulRescale",
+            "reportingComponent": "horizontal-pod-autoscaler",
+            "reportingInstance": "",
+            "source": {
+                "component": "horizontal-pod-autoscaler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 1,
+            "eventTime": null,
+            "firstTimestamp": "2026-09-06T14:03:14Z",
+            "involvedObject": {
+                "apiVersion": "autoscaling/v2",
+                "kind": "HorizontalPodAutoscaler",
+                "name": "worker",
+                "namespace": "hpa-demo",
+                "resourceVersion": "1227",
+                "uid": "c7aead19-50f7-4d26-ab2b-ac2780578a33"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-09-06T14:03:14Z",
+            "message": "New size: 4; reason: external metric queue_depth(nil) above target",
+            "metadata": {
+                "creationTimestamp": "2026-09-06T14:03:14Z",
+                "name": "worker.18d2c042ae7ff72c",
+                "namespace": "hpa-demo",
+                "resourceVersion": "1242",
+                "uid": "7f90a515-eaf6-4260-8d3e-89e9b50a52cf"
+            },
+            "reason": "SuccessfulRescale",
+            "reportingComponent": "horizontal-pod-autoscaler",
+            "reportingInstance": "",
+            "source": {
+                "component": "horizontal-pod-autoscaler"
+            },
+            "type": "Normal"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 4,
+            "eventTime": null,
+            "firstTimestamp": "2026-09-06T14:04:29Z",
+            "involvedObject": {
+                "apiVersion": "autoscaling/v2",
+                "kind": "HorizontalPodAutoscaler",
+                "name": "worker",
+                "namespace": "hpa-demo",
+                "resourceVersion": "1311",
+                "uid": "c7aead19-50f7-4d26-ab2b-ac2780578a33"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-09-06T14:05:14Z",
+            "message": "unable to get metric queue_depth: Service on hpa-demo queue/unable to fetch metrics from custom metrics API: no known available metric versions found",
+            "metadata": {
+                "creationTimestamp": "2026-09-06T14:04:29Z",
+                "name": "worker.18d2c0542ac2904b",
+                "namespace": "hpa-demo",
+                "resourceVersion": "1497",
+                "uid": "2a68f5bf-9b67-423f-adfc-0d1203cd238a"
+            },
+            "reason": "FailedGetObjectMetric",
+            "reportingComponent": "horizontal-pod-autoscaler",
+            "reportingInstance": "",
+            "source": {
+                "component": "horizontal-pod-autoscaler"
+            },
+            "type": "Warning"
+        },
+        {
+            "apiVersion": "v1",
+            "count": 4,
+            "eventTime": null,
+            "firstTimestamp": "2026-09-06T14:04:29Z",
+            "involvedObject": {
+                "apiVersion": "autoscaling/v2",
+                "kind": "HorizontalPodAutoscaler",
+                "name": "worker",
+                "namespace": "hpa-demo",
+                "resourceVersion": "1311",
+                "uid": "c7aead19-50f7-4d26-ab2b-ac2780578a33"
+            },
+            "kind": "Event",
+            "lastTimestamp": "2026-09-06T14:05:14Z",
+            "message": "invalid metrics (1 invalid out of 1), first error is: failed to get object metric value: failed to get queue_depth object metric: unable to get metric queue_depth: Service on hpa-demo queue/unable to fetch metrics from custom metrics API: no known available metric versions found",
+            "metadata": {
+                "creationTimestamp": "2026-09-06T14:04:29Z",
+                "name": "worker.18d2c0542b1c4f87",
+                "namespace": "hpa-demo",
+                "resourceVersion": "1498",
+                "uid": "c14dd4c9-edb8-4d83-82e5-1f66ff9fa0f2"
+            },
+            "reason": "FailedComputeMetricsReplicas",
+            "reportingComponent": "horizontal-pod-autoscaler",
+            "reportingInstance": "",
+            "source": {
+                "component": "horizontal-pod-autoscaler"
+            },
+            "type": "Warning"
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

@@ -1,0 +1,33 @@
+# CPU 压力源：8 个并发循环访问 worker 的 /work；删除此 Deployment 即停止施压。
+# 仅用于独立的 kind-hpa-lab 集群，资源统一放在 hpa-demo 命名空间。
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: load
+  namespace: hpa-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: load
+  template:
+    metadata:
+      labels:
+        app: load
+    spec:
+      containers:
+      - name: load
+        image: hpa-demo:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            # 请求 0.1 个 CPU；CPU HPA 以目标容器的 request 作为利用率分母。
+            cpu: 100m
+            memory: 32Mi
+          limits:
+            cpu: '1'
+            memory: 128Mi
+        args:
+        - load

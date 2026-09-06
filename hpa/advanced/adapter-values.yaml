@@ -1,0 +1,56 @@
+# 进阶 Adapter 配置：同时暴露模拟队列、真实 pending 任务数和每 Pod 请求速率。
+# 仅用于独立的 kind-hpa-lab 集群，资源统一放在 hpa-demo 命名空间。
+image:
+  repository: registry.k8s.io/prometheus-adapter/prometheus-adapter
+  tag: v0.12.0
+prometheus:
+  url: http://prometheus.hpa-demo.svc
+  port: 9090
+# 每 15 秒刷新指标发现结果；这不是 Prometheus 抓取周期。
+metricsRelistInterval: 15s
+rules:
+  # 禁用 chart 的默认指标规则，只暴露本实验明确配置的指标。
+  default: false
+  custom:
+  # 先发现带有所需资源标签的序列，避免指标无法关联 Kubernetes 对象。
+  - seriesQuery: demo_queue_depth{namespace!="",service!=""}
+    resources:
+      # 将 Prometheus 标签名映射到 Kubernetes 资源类型。
+      overrides:
+        namespace:
+          resource: namespace
+        service:
+          resource: service
+    name:
+      matches: ^demo_queue_depth$
+      as: queue_depth
+    # 读取全局 gauge；使用 max，避免重复导出同一总量时被累加。
+    metricsQuery: max(<<.Series>>{<<.LabelMatchers>>}) by (<<.GroupBy>>)
+  # 先发现带有所需资源标签的序列，避免指标无法关联 Kubernetes 对象。
+  - seriesQuery: task_queue_depth{namespace!="",service!=""}
+    resources:
+      # 将 Prometheus 标签名映射到 Kubernetes 资源类型。
+      overrides:
+        namespace:
+          resource: namespace
+        service:
+          resource: service
+    name:
+      matches: ^task_queue_depth$
+      as: task_queue_depth
+    # 读取全局 gauge；使用 max，避免重复导出同一总量时被累加。
+    metricsQuery: max(<<.Series>>{<<.LabelMatchers>>}) by (<<.GroupBy>>)
+  # 先发现带有所需资源标签的序列，避免指标无法关联 Kubernetes 对象。
+  - seriesQuery: demo_http_requests_total{namespace!="",pod!=""}
+    resources:
+      # 将 Prometheus 标签名映射到 Kubernetes 资源类型。
+      overrides:
+        namespace:
+          resource: namespace
+        pod:
+          resource: pod
+    name:
+      matches: ^demo_http_requests_total$
+      as: http_requests_per_second
+    # 对 counter 先计算 30 秒 rate，再按 Pod 聚合。
+    metricsQuery: sum(rate(<<.Series>>{<<.LabelMatchers>>}[30s])) by (<<.GroupBy>>)

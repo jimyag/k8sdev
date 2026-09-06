@@ -1,0 +1,104 @@
+{
+    "apiVersion": "autoscaling/v2",
+    "kind": "HorizontalPodAutoscaler",
+    "metadata": {
+        "annotations": {
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"autoscaling/v2\",\"kind\":\"HorizontalPodAutoscaler\",\"metadata\":{\"annotations\":{},\"name\":\"worker\",\"namespace\":\"hpa-demo\"},\"spec\":{\"behavior\":{\"scaleDown\":{\"stabilizationWindowSeconds\":30}},\"maxReplicas\":4,\"metrics\":[{\"object\":{\"describedObject\":{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"name\":\"queue\"},\"metric\":{\"name\":\"queue_depth\"},\"target\":{\"averageValue\":\"10\",\"type\":\"AverageValue\"}},\"type\":\"Object\"}],\"minReplicas\":1,\"scaleTargetRef\":{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"name\":\"worker\"}}}\n"
+        },
+        "creationTimestamp": "2026-09-06T13:58:44Z",
+        "name": "worker",
+        "namespace": "hpa-demo",
+        "resourceVersion": "1412",
+        "uid": "c7aead19-50f7-4d26-ab2b-ac2780578a33"
+    },
+    "spec": {
+        "behavior": {
+            "scaleDown": {
+                "policies": [
+                    {
+                        "periodSeconds": 15,
+                        "type": "Percent",
+                        "value": 100
+                    }
+                ],
+                "selectPolicy": "Max",
+                "stabilizationWindowSeconds": 30
+            },
+            "scaleUp": {
+                "policies": [
+                    {
+                        "periodSeconds": 15,
+                        "type": "Pods",
+                        "value": 4
+                    },
+                    {
+                        "periodSeconds": 15,
+                        "type": "Percent",
+                        "value": 100
+                    }
+                ],
+                "selectPolicy": "Max",
+                "stabilizationWindowSeconds": 0
+            }
+        },
+        "maxReplicas": 4,
+        "metrics": [
+            {
+                "object": {
+                    "describedObject": {
+                        "apiVersion": "v1",
+                        "kind": "Service",
+                        "name": "queue"
+                    },
+                    "metric": {
+                        "name": "queue_depth"
+                    },
+                    "target": {
+                        "averageValue": "10",
+                        "type": "AverageValue"
+                    }
+                },
+                "type": "Object"
+            }
+        ],
+        "minReplicas": 1,
+        "scaleTargetRef": {
+            "apiVersion": "apps/v1",
+            "kind": "Deployment",
+            "name": "worker"
+        }
+    },
+    "status": {
+        "conditions": [
+            {
+                "lastTransitionTime": "2026-09-06T13:58:59Z",
+                "message": "the HPA controller was able to get the target's current scale",
+                "reason": "SucceededGetScale",
+                "status": "True",
+                "type": "AbleToScale"
+            },
+            {
+                "lastTransitionTime": "2026-09-06T14:04:29Z",
+                "message": "the HPA was unable to compute the replica count: unable to get metric queue_depth: Service on hpa-demo queue/unable to fetch metrics from custom metrics API: no known available metric versions found",
+                "reason": "FailedGetObjectMetric",
+                "status": "False",
+                "type": "ScalingActive"
+            },
+            {
+                "lastTransitionTime": "2026-09-06T14:02:14Z",
+                "message": "the desired count is within the acceptable range",
+                "reason": "DesiredWithinRange",
+                "status": "False",
+                "type": "ScalingLimited"
+            }
+        ],
+        "currentMetrics": [
+            {
+                "type": ""
+            }
+        ],
+        "currentReplicas": 4,
+        "desiredReplicas": 4,
+        "lastScaleTime": "2026-09-06T14:03:14Z"
+    }
+}

@@ -1,0 +1,1 @@
+{"kind":"MetricValueList","apiVersion":"custom.metrics.k8s.io/v1beta1","metadata":{},"items":[{"describedObject":{"kind":"Service","namespace":"hpa-demo","name":"queue","apiVersion":"/v1"},"metricName":"queue_depth","timestamp":"2026-09-06T14:04:27Z","value":"35","selector":null}]}

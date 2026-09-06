@@ -1,0 +1,14 @@
+[
+  [
+    "docker.io/library/hpa-advanced:v1",
+    "sha256:0edab76239cd2eb4d6fe04cf55a05f60cea6cf021a4916b079c4b9f26b798cf5"
+  ],
+  [
+    "docker.io/library/hpa-demo:v1",
+    "sha256:09c54c174ced67a39fc20760abf1c5d2cd8dc77375c99ed7111da7f8bf6ef0e8"
+  ],
+  [
+    "docker.io/prom/prometheus:v3.5.0",
+    "docker.io/prom/prometheus@sha256:63805ebb8d2b3920190daf1cb14a60871b16fd38bed42b857a3182bc621f4996"
+  ]
+]

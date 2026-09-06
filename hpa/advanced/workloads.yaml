@@ -1,0 +1,151 @@
+# 进阶工作负载：broker 保存内存任务队列，consumer 消费任务，web 导出每 Pod 请求计数。
+# 仅用于独立的 kind-hpa-lab 集群，资源统一放在 hpa-demo 命名空间。
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: broker
+  namespace: hpa-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: broker
+  template:
+    metadata:
+      labels:
+        app: broker
+    spec:
+      # 给最长 60 秒的任务留出完成、ACK 和退出时间；到期仍未退出会被终止。
+      terminationGracePeriodSeconds: 100
+      containers:
+      - name: broker
+        image: hpa-advanced:v1
+        imagePullPolicy: IfNotPresent
+        args:
+        - broker
+        ports:
+        - containerPort: 8080
+          name: http
+        resources:
+          requests:
+            # 请求 0.1 个 CPU；CPU HPA 以目标容器的 request 作为利用率分母。
+            cpu: 100m
+            memory: 32Mi
+          limits:
+            # 把单容器 CPU 上限限制为 0.5 核，避免实验占满宿主机。
+            cpu: 500m
+            memory: 128Mi
+        # 探针通过才计入 Ready；进阶实验会额外注入 60 秒就绪延迟。
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          periodSeconds: 2
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: broker
+  namespace: hpa-demo
+spec:
+  selector:
+    app: broker
+  ports:
+  - port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumer
+  namespace: hpa-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consumer
+  template:
+    metadata:
+      labels:
+        app: consumer
+    spec:
+      # 给最长 60 秒的任务留出完成、ACK 和退出时间；到期仍未退出会被终止。
+      terminationGracePeriodSeconds: 100
+      containers:
+      - name: consumer
+        image: hpa-advanced:v1
+        imagePullPolicy: IfNotPresent
+        args:
+        - consumer
+        ports:
+        - containerPort: 8080
+          name: http
+        resources:
+          requests:
+            # 请求 0.1 个 CPU；CPU HPA 以目标容器的 request 作为利用率分母。
+            cpu: 100m
+            memory: 32Mi
+          limits:
+            # 把单容器 CPU 上限限制为 0.5 核，避免实验占满宿主机。
+            cpu: 500m
+            memory: 128Mi
+        # 探针通过才计入 Ready；进阶实验会额外注入 60 秒就绪延迟。
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          periodSeconds: 2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  namespace: hpa-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      # 给最长 60 秒的任务留出完成、ACK 和退出时间；到期仍未退出会被终止。
+      terminationGracePeriodSeconds: 100
+      containers:
+      - name: web
+        image: hpa-advanced:v1
+        imagePullPolicy: IfNotPresent
+        args:
+        - http
+        ports:
+        - containerPort: 8080
+          name: http
+        resources:
+          requests:
+            # 请求 0.1 个 CPU；CPU HPA 以目标容器的 request 作为利用率分母。
+            cpu: 100m
+            memory: 32Mi
+          limits:
+            # 把单容器 CPU 上限限制为 0.5 核，避免实验占满宿主机。
+            cpu: 500m
+            memory: 128Mi
+        # 探针通过才计入 Ready；进阶实验会额外注入 60 秒就绪延迟。
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          periodSeconds: 2
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  namespace: hpa-demo
+spec:
+  selector:
+    app: web
+  ports:
+  - port: 8080
+    targetPort: 8080

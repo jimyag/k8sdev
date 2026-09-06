@@ -1,0 +1,35 @@
+# Object HPA：读取 queue Service 上的全局队列长度，调整 worker Deployment。
+# 仅用于独立的 kind-hpa-lab 集群，资源统一放在 hpa-demo 命名空间。
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: worker
+  namespace: hpa-demo
+spec:
+  # 真正被调整副本数的对象；它可以与指标关联的 Service 不同。
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: worker
+  # 保留至少一个副本，本实验不验证缩到零。
+  minReplicas: 1
+  # 限制实验资源占用；达到上限不等于业务负载已满足目标。
+  maxReplicas: 4
+  metrics:
+  - type: Object
+    object:
+      # 从这个 Kubernetes 对象读取指标，不会扩缩 Service 本身。
+      describedObject:
+        apiVersion: v1
+        kind: Service
+        name: queue
+      metric:
+        name: queue_depth
+      target:
+        type: AverageValue
+        # 用总量除以每副本目标并向上取整；真实队列目标为 5，模拟队列目标为 10。
+        averageValue: '10'
+  behavior:
+    scaleDown:
+      # 缩容时参考最近 30 秒的副本建议，过滤短暂低负载。
+      stabilizationWindowSeconds: 30
