@@ -1,0 +1,53 @@
+{
+  "k8s-test-infra": "874ab0319732981bc79cbc9b01c22c8fd00656e6",
+  "HAMi": "4707fb02c91c545bc7343ce26dba4c32919f9a3e",
+  "HAMi/libvgpu": "b216ba1be1b8e21488d1c7370ed3357b3049aad1",
+  "images": [
+    {
+      "Id": "sha256:b65f9fa6fe9cf6d07e7507b4e478896f82b934f308037dc38eedd8c210799b78",
+      "RepoTags": [
+        "hami-test/nvml-mock:main"
+      ],
+      "RepoDigests": [],
+      "Created": "2026-09-06T21:52:36.743430209+08:00"
+    },
+    {
+      "Id": "sha256:a776f5645ab2d8a187add074b48cf62ff720cccc443b56f6909f8042c981779a",
+      "RepoTags": [
+        "hami-test/kind-nvidia:local"
+      ],
+      "RepoDigests": [],
+      "Created": "2026-09-06T21:51:10.7830037+08:00"
+    },
+    {
+      "Id": "sha256:efbd0c90a1a70b677c0696bf730bfb40094ce35f0414cf99d6945ff721cf4a18",
+      "RepoTags": [
+        "projecthami/hami:v2.10.0"
+      ],
+      "RepoDigests": [
+        "projecthami/hami@sha256:8c45cd84d8df3e6a8fe8c95e0141684973b5015692a0ef87588da05284f34447"
+      ],
+      "Created": "2026-08-21T06:44:18.149276183Z"
+    },
+    {
+      "Id": "sha256:16f6bb89e9d89e918e9a6efb617f5f3d116404040c1ad6692c14fbe1de17f097",
+      "RepoTags": [
+        "nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda12.5.0"
+      ],
+      "RepoDigests": [
+        "nvcr.io/nvidia/k8s/cuda-sample@sha256:7c7540bdf1f942d4fb6db97069fd6c289471b54ac29e3c7fcdf914cf77af7d41"
+      ],
+      "Created": "2024-06-27T07:43:59.855641969Z"
+    },
+    {
+      "Id": "sha256:4d0600e5088ac5da5119401c70292ea3a9d9dc71f76a234ad5390c1f6a8e5669",
+      "RepoTags": [
+        "ubuntu:22.04"
+      ],
+      "RepoDigests": [
+        "ubuntu@sha256:2edbbc5dc405e9612ba3584ce95480277e3eb374407b5505fe26f17df77c7dbc"
+      ],
+      "Created": "2026-08-10T17:38:12.40741989Z"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+# 最小 GPU 工作负载：检查配额环境变量、设备节点与可见 GPU UUID。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: smoke
+  # setup.sh 会建立此 namespace，测试资源集中放在这里。
+  namespace: hami-tests
+spec:
+  # schedulerName 和 runtimeClassName 由 HAMi webhook 自动填写。
+  volumes:
+  - name: mock-cuda
+    hostPath:
+      # mock CDI 未注入此库，需补充 HAMi-core preload 的动态链接依赖。
+      # 路径位于 kind 节点内，只适用于本实验。
+      path: /var/lib/nvml-mock/driver/usr/lib64/libcuda.so.1
+      type: File
+  containers:
+  - name: gpu
+    # 使用带 glibc 的镜像加载 HAMi-core 和 mock 动态库。
+    image: ubuntu:22.04
+    # 输出运行时配置后保持运行，不执行真实 CUDA 计算。
+    command: [bash, -c, 'env | sort; ls -l /dev/nvidia*; nvidia-smi -L; sleep 3600']
+    volumeMounts:
+    - name: mock-cuda
+      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so.1
+      readOnly: true
+    resources:
+      limits:
+        # 请求一张物理卡上的资源，并非独占整卡。
+        nvidia.com/gpu: 1
+        # 每张请求的卡分配 4096 MiB 显存。
+        nvidia.com/gpumem: 4096
+        # 申请 25/100 的算力配额，不表示固定分配 25 个 CUDA core。
+        nvidia.com/gpucores: 25

@@ -1,0 +1,300 @@
+[
+  {
+    "case": "01-device-registration",
+    "status": "PASS",
+    "detail": "2 nodes x 2 unique A100 40960 MiB; each node advertises 20 shares",
+    "seconds": 0.0,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "02-runtime-query-corrected",
+    "status": "PASS",
+    "detail": "/usr/local/vgpu/libvgpu.so\n4096m 25\nGPU-12345678-1234-1234-1234-123456780001, 40960 MiB\n",
+    "seconds": 2.8,
+    "evidence": "evidence/extra/results.json"
+  },
+  {
+    "case": "03-share-one-gpu",
+    "status": "PASS",
+    "detail": "3 Running pods share one physical UUID",
+    "seconds": 6.5,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "04-multi-gpu",
+    "status": "PASS",
+    "detail": [
+      [
+        "GPU-12345678-1234-1234-1234-123456780001",
+        "NVIDIA",
+        "4096",
+        "25"
+      ],
+      [
+        "GPU-12345678-1234-1234-1234-123456780000",
+        "NVIDIA",
+        "4096",
+        "25"
+      ]
+    ],
+    "seconds": 1.6,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "05-memory-percentage",
+    "status": "PASS",
+    "detail": [
+      "GPU-12345678-1234-1234-1234-123456780001",
+      "NVIDIA",
+      "10240",
+      "25"
+    ],
+    "seconds": 2.5,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "06-reject-memory",
+    "status": "PASS",
+    "detail": "FailedScheduling; nodeName absent",
+    "seconds": 3.5,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "07-core-clamp-corrected",
+    "status": "PASS",
+    "detail": "gpucores=101 is clamped to 100 by HAMi, matching device.go Fit implementation",
+    "seconds": 1.6,
+    "evidence": "evidence/extra/results.json"
+  },
+  {
+    "case": "08-reject-cards",
+    "status": "PASS",
+    "detail": "FailedScheduling; nodeName absent",
+    "seconds": 3.5,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "09-memory-budget-reclaim",
+    "status": "PASS",
+    "detail": "Blocked while budget exhausted; scheduled automatically after holder deletion: [['GPU-12345678-1234-1234-1234-123456780000', 'NVIDIA', '12000', '10']]",
+    "seconds": 8.2,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "10-core-budget-reclaim",
+    "status": "PASS",
+    "detail": "Blocked while budget exhausted; scheduled automatically after holder deletion: [['GPU-12345678-1234-1234-1234-123456780000', 'NVIDIA', '1024', '50']]",
+    "seconds": 8.2,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "11-exclusive",
+    "status": "PASS",
+    "detail": "100% memory and cores exclude a second request on same UUID",
+    "seconds": 5.0,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "12-type-allow",
+    "status": "PASS",
+    "detail": [
+      "GPU-12345678-1234-1234-1234-123456780001"
+    ],
+    "seconds": 2.5,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "13-type-mismatch",
+    "status": "PASS",
+    "detail": "rejected with FailedScheduling",
+    "seconds": 3.5,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "14-type-deny",
+    "status": "PASS",
+    "detail": "rejected with FailedScheduling",
+    "seconds": 3.5,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "15-uuid-allow",
+    "status": "PASS",
+    "detail": [
+      "GPU-12345678-1234-1234-1234-123456780001"
+    ],
+    "seconds": 2.5,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "16-uuid-deny",
+    "status": "PASS",
+    "detail": [
+      "GPU-12345678-1234-1234-1234-123456780001"
+    ],
+    "seconds": 1.5,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "17-gpu-binpack",
+    "status": "PASS",
+    "detail": [
+      "GPU-12345678-1234-1234-1234-123456780001",
+      "GPU-12345678-1234-1234-1234-123456780001"
+    ],
+    "seconds": 5.1,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "18-gpu-spread",
+    "status": "PASS",
+    "detail": [
+      "GPU-12345678-1234-1234-1234-123456780001",
+      "GPU-12345678-1234-1234-1234-123456780000"
+    ],
+    "seconds": 5.1,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "19-node-binpack",
+    "status": "PASS",
+    "detail": [
+      "hami-test-worker2",
+      "hami-test-worker2"
+    ],
+    "seconds": 4.1,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "20-node-spread",
+    "status": "PASS",
+    "detail": [
+      "hami-test-worker2",
+      "hami-test-worker"
+    ],
+    "seconds": 4.0,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "21-multi-container",
+    "status": "PASS",
+    "detail": [
+      [
+        "GPU-12345678-1234-1234-1234-123456780001",
+        "NVIDIA",
+        "4096",
+        "25"
+      ],
+      [
+        "GPU-12345678-1234-1234-1234-123456780000",
+        "NVIDIA",
+        "4096",
+        "25"
+      ]
+    ],
+    "seconds": 3.7,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "22-share-count-reclaim",
+    "status": "PASS",
+    "detail": "10 shares accepted, 11th blocked, deletion releases share",
+    "seconds": 27.9,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "23-restart-recovery",
+    "status": "PASS",
+    "detail": "Existing Pod allocation survives; new Pod schedules after scheduler and plugin restart",
+    "seconds": 22.9,
+    "evidence": "evidence/matrix/results.json"
+  },
+  {
+    "case": "24-cpu-only-webhook",
+    "status": "PASS",
+    "detail": "CPU-only Pod remains on default-scheduler",
+    "seconds": 2.5,
+    "evidence": "evidence/extra/results.json"
+  },
+  {
+    "case": "25-node-selection",
+    "status": "PASS",
+    "detail": [
+      [
+        "GPU-22345678-1234-1234-1234-123456780001",
+        "NVIDIA",
+        "4096",
+        "25"
+      ]
+    ],
+    "seconds": 2.5,
+    "evidence": "evidence/extra/results.json"
+  },
+  {
+    "case": "26-monitoring-final",
+    "status": "PASS",
+    "detail": "Observed exact 4 GiB allocation, monitor GPU metrics, and zero after deletion; waited for metrics cache refresh",
+    "seconds": 25.4,
+    "evidence": "evidence/advanced/results.json"
+  },
+  {
+    "case": "27a-nvml-index0",
+    "status": "PASS",
+    "detail": "0, GPU-12345678-1234-1234-1234-123456780000, 4096 MiB\n",
+    "seconds": 2.6,
+    "evidence": "evidence/final/results.json"
+  },
+  {
+    "case": "27b-nvml-index1",
+    "status": "FAIL",
+    "detail": "1, GPU-12345678-1234-1234-1234-123456780001, 40960 MiB\n",
+    "seconds": 2.6,
+    "evidence": "evidence/final/results.json"
+  },
+  {
+    "case": "28-namespace-quota",
+    "status": "PASS",
+    "detail": "Namespace request quota rejects second GPU Pod",
+    "seconds": 1.8,
+    "evidence": "evidence/final/results.json"
+  },
+  {
+    "case": "29-cuda-vectoradd",
+    "status": "UNSUPPORTED",
+    "detail": "[HAMI-core ERROR (pid:1 thread=131264895971328 hook.c:405)]: Hijack failed: cuGetProcAddress_v2 is NULL\n",
+    "seconds": 3.6,
+    "evidence": "evidence/final/results.json",
+    "classification": "Original assertion failed; mock lacks cuGetProcAddress_v2. Control without HAMi hook also fails."
+  },
+  {
+    "case": "30-implicit-gpu",
+    "status": "PASS",
+    "detail": "Webhook adds gpu=1 when only gpumem/gpucores are requested",
+    "seconds": 1.5,
+    "evidence": "evidence/advanced/results.json"
+  },
+  {
+    "case": "31-default-full-memory",
+    "status": "PASS",
+    "detail": {
+      "allocation": [
+        [
+          "GPU-12345678-1234-1234-1234-123456780001",
+          "NVIDIA",
+          "40960",
+          "100"
+        ]
+      ],
+      "meaning": "GPU count alone receives full device memory"
+    },
+    "seconds": 2.5,
+    "evidence": "evidence/advanced/results.json"
+  },
+  {
+    "case": "32-memory-oversubscription",
+    "status": "PASS",
+    "detail": "2x scaling advertises 81920 MiB and admits 61440 MiB on physical 40960 MiB; scheduling only, no real memory allocation",
+    "seconds": 50.1,
+    "evidence": "evidence/advanced/results.json"
+  }
+]

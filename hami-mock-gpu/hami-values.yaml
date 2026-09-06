@@ -1,0 +1,24 @@
+# HAMi v2.10.0 的实验配置，配合 NVIDIA mock 和 kind 节点镜像使用。
+scheduler:
+  kubeScheduler:
+    image:
+      # 与实验集群的 Kubernetes 版本保持一致。
+      registry: registry.k8s.io
+      repository: kube-scheduler
+      tag: v1.35.0
+  service:
+    # 通过 Kubernetes API 的 service proxy 读取指标，不开放 NodePort。
+    type: ClusterIP
+devicePlugin:
+  # 每张物理卡提供 10 个共享名额；每节点 2 张卡，共 20 个名额。
+  deviceSplitCount: 10
+  # 假设备由 NVIDIA runtime 的 CDI 配置注入，插件不额外传递 DeviceSpec。
+  passDeviceSpecsEnabled: false
+  # 为插件和 GPU 工作负载选择节点镜像中已配置的 NVIDIA runtime。
+  runtimeClassName: nvidia
+  createRuntimeClass: true
+  # mock 在 kind 节点内提供的驱动目录。
+  nvidiaDriverRoot: /run/nvidia/driver
+  service:
+    # 设备监控服务仅在集群内暴露。
+    type: ClusterIP

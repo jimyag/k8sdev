@@ -1,0 +1,16 @@
+# 第二个工作节点的 mock 配置。
+# setup.sh 通过 --set-file gpu.customConfig=worker2-a100.yaml 传入独立 UUID。
+gpu:
+  # 模拟两张 A100，每张 40960 MiB；硬件属性与第一个节点相同。
+  profile: a100
+  count: 2
+image:
+  # 两个节点使用同一份本地构建镜像，设备差异由 profile 决定。
+  repository: hami-test/nvml-mock
+  tag: main
+  # 镜像由 kind load 导入，不从远端仓库拉取。
+  pullPolicy: Never
+nodeSelector:
+  # 只部署到第二个 GPU 节点，UUID 使用 GPU-22345678 前缀。
+  gpu: 'on'
+  kubernetes.io/hostname: hami-test-worker2
