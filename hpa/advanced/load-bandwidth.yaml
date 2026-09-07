@@ -1,4 +1,4 @@
-# HTTP 定速负载：向 web 发起每秒 35 个请求；实际成功速率以 Prometheus 查询为准。
+# 上传负载：每秒发送 35 个 1 MiB 请求体，目标为 35 MiB/s，实际速率由服务端核对。
 # 仅用于独立的 kind-hpa-lab 集群，资源统一放在 hpa-demo 命名空间。
 apiVersion: apps/v1
 kind: Deployment
@@ -39,3 +39,8 @@ spec:
         # 设置发送目标速率；负载程序关闭 keepalive，让不同连接经 Service 分配。
         - name: RPS
           value: '35'
+        # 发送至程序内部的上传 API，实际读取后才累计处理字节。
+        - name: TARGET
+          value: http://web:8080/upload
+        - name: PAYLOAD_BYTES
+          value: '1048576'

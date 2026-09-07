@@ -12,6 +12,7 @@ import subprocess
 import time
 import urllib.error
 import urllib.request
+import urllib.parse
 
 ROOT = pathlib.Path(__file__).resolve().parent
 K = ["kubectl", "--context", "kind-hpa-lab", "-n", "hpa-demo"]
@@ -676,6 +677,110 @@ def pods():
     steady(1, "web")
 
 
+# 查询每 Pod RPS 与 B/s，记录原始 Prometheus 响应及自定义指标 API。
+def throughput_metrics(metric_name):
+    queries = {}
+    for name, counter in [
+        ("rps", "demo_http_requests_total"),
+        ("bytes", "demo_processed_bytes_total"),
+    ]:
+        query = "sum(rate(" + counter + '{namespace="hpa-demo",pod=~"web-.*"}[30s]))'
+        result = http(
+            19090, "/api/v1/query?" + urllib.parse.urlencode({"query": query})
+        )
+        assert result["status"] == "success" and len(result["data"]["result"]) == 1, (
+            result
+        )
+        queries[name] = result
+    api = raw(
+        "/apis/custom.metrics.k8s.io/v1beta1/namespaces/hpa-demo/pods/*/"
+        + metric_name
+        + "?labelSelector=app%3Dweb"
+    )
+    emit({"throughput": queries, "customAPI": api})
+    assert len(api.get("items", [])) > 0, api
+    return {
+        name: float(result["data"]["result"][0]["value"][1])
+        for name, result in queries.items()
+    }
+
+
+# 按高、低、停止三阶段验证应用内部指标；两类 HPA 顺序替换，不同时控制 web。
+def application_throughput(bandwidth=False):
+    metric_name = (
+        "processed_bytes_per_second" if bandwidth else "http_requests_per_second"
+    )
+    hpa = "hpa-bandwidth.yaml" if bandwidth else "hpa-pods.yaml"
+    load = "load-bandwidth.yaml" if bandwidth else "load-http.yaml"
+    label = "bandwidth" if bandwidth else "requests"
+    stage(label + "-reset")
+    k("delete", "deployment", "http-load", "--ignore-not-found")
+    apply(hpa)
+    steady(1, "web")
+    try:
+        steps = (
+            [(35, 1048576, 4), (35, 524288, 2)]
+            if bandwidth
+            else [(35, 0, 4), (15, 0, 2)]
+        )
+        for index, (rate, payload, replicas) in enumerate(steps):
+            stage(label + "-rate-" + str(rate) + "-payload-" + str(payload))
+            if index == 0:
+                apply(load)
+            else:
+                k(
+                    "set",
+                    "env",
+                    "deployment/http-load",
+                    "RPS=" + str(rate),
+                    "PAYLOAD_BYTES=" + str(payload),
+                )
+            k("rollout", "status", "deployment/http-load", "--timeout=120s")
+            steady(replicas, "web")
+            # 等待新 Pod 的 rate 窗口完整，并确认至少 45 秒持续处于目标副本数。
+            rows = hold(45, "web")
+            # 主机休眠会让单调时钟与实际时间脱节；拒绝把采样断档当成持续稳定。
+            times = [datetime.datetime.fromisoformat(row["time"]) for row in rows]
+            assert all(
+                (b - a).total_seconds() < 15 for a, b in zip(times, times[1:])
+            ), "sampling interrupted"
+            assert all(
+                row["requested"] == replicas
+                and row["deployment"].get("readyReplicas") == replicas
+                for row in rows
+            )
+            values = throughput_metrics(metric_name)
+            assert rate * 0.90 < values["rps"] < rate * 1.10, values
+            if bandwidth:
+                # 带宽场景保持 RPS 不变，只改变请求体大小，证明它按字节速率缩容。
+                assert abs(values["bytes"] / values["rps"] - payload) < 1, values
+            else:
+                assert values["bytes"] == 0, values
+            emit(
+                {
+                    "verifiedReplicas": replicas,
+                    "targetRPS": rate,
+                    "payloadBytes": payload,
+                    "measured": values,
+                }
+            )
+    finally:
+        k("delete", "deployment", "http-load", "--ignore-not-found")
+    stage(label + "-stopped")
+    steady(1, "web")
+    values = throughput_metrics(metric_name)
+    assert values["rps"] < 0.1 and values["bytes"] < 1, values
+    emit({"verifiedReplicas": 1, "targetRPS": 0, "measured": values})
+
+
+def requests():
+    application_throughput()
+
+
+def bandwidth():
+    application_throughput(True)
+
+
 # 命令行一次只执行一个场景；全部断言满足才记录 PASS，失败保留证据并非零退出。
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -689,6 +794,8 @@ if __name__ == "__main__":
             "failures",
             "scheduling",
             "pods",
+            "requests",
+            "bandwidth",
         ],
     )
     parser.add_argument("--output", type=pathlib.Path, default=ROOT / "evidence")

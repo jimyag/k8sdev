@@ -1,0 +1,124 @@
+{
+  "time": "2026-09-07T00:27:56.300755+00:00",
+  "kubernetes": {
+    "clientVersion": {
+      "major": "1",
+      "minor": "36",
+      "gitVersion": "v1.36.2",
+      "gitCommit": "24e2b02af5543d7910c2bb074c7264df5a8f0467",
+      "gitTreeState": "clean",
+      "buildDate": "2026-06-11T18:12:06Z",
+      "goVersion": "go1.26.4",
+      "compiler": "gc",
+      "platform": "darwin/arm64"
+    },
+    "kustomizeVersion": "v5.8.1",
+    "serverVersion": {
+      "major": "1",
+      "minor": "35",
+      "emulationMajor": "1",
+      "emulationMinor": "35",
+      "minCompatibilityMajor": "1",
+      "minCompatibilityMinor": "34",
+      "gitVersion": "v1.35.0",
+      "gitCommit": "66452049f3d692768c39c797b21b793dce80314e",
+      "gitTreeState": "clean",
+      "buildDate": "2025-12-17T12:32:07Z",
+      "goVersion": "go1.25.5",
+      "compiler": "gc",
+      "platform": "linux/arm64"
+    }
+  },
+  "images": [
+    {
+      "pod": "adapter-prometheus-adapter-7ff7d95788-bwtff",
+      "containers": [
+        {
+          "name": "prometheus-adapter",
+          "image": "registry.k8s.io/prometheus-adapter/prometheus-adapter:v0.12.0",
+          "imageID": "registry.k8s.io/prometheus-adapter/prometheus-adapter@sha256:932eae60e2bcf9c4660d6442da066ef1a79b4ea7cc232c61c7303069216ca006"
+        }
+      ]
+    },
+    {
+      "pod": "broker-6cb4b9cfbb-mlcgj",
+      "containers": [
+        {
+          "name": "broker",
+          "image": "docker.io/library/hpa-advanced:v1",
+          "imageID": "sha256:5de43e018deb3df2c9d9be447a33ff14429f60669b2ada273c7d27f484ef1ec8"
+        }
+      ]
+    },
+    {
+      "pod": "consumer-79fcfd46f5-5x4zm",
+      "containers": [
+        {
+          "name": "consumer",
+          "image": "docker.io/library/hpa-advanced:v1",
+          "imageID": "sha256:5de43e018deb3df2c9d9be447a33ff14429f60669b2ada273c7d27f484ef1ec8"
+        }
+      ]
+    },
+    {
+      "pod": "http-load-5695b5f68c-zhlsm",
+      "containers": [
+        {
+          "name": "http-load",
+          "image": "docker.io/library/hpa-advanced:v1",
+          "imageID": "sha256:5de43e018deb3df2c9d9be447a33ff14429f60669b2ada273c7d27f484ef1ec8"
+        }
+      ]
+    },
+    {
+      "pod": "prometheus-6f96d6777c-tsx8l",
+      "containers": [
+        {
+          "name": "prometheus",
+          "image": "docker.io/prom/prometheus:v3.5.0",
+          "imageID": "docker.io/prom/prometheus@sha256:63805ebb8d2b3920190daf1cb14a60871b16fd38bed42b857a3182bc621f4996"
+        }
+      ]
+    },
+    {
+      "pod": "queue-75b5d66c4f-p68j9",
+      "containers": [
+        {
+          "name": "queue",
+          "image": "docker.io/library/hpa-demo:v1",
+          "imageID": "sha256:51d9185ebacb64be6d702e3051222ffb225fdcef6d497c615ddf8e0b53a4d2a0"
+        }
+      ]
+    },
+    {
+      "pod": "web-5778b4dc45-kjcbv",
+      "containers": [
+        {
+          "name": "web",
+          "image": "docker.io/library/hpa-advanced:v1",
+          "imageID": "sha256:5de43e018deb3df2c9d9be447a33ff14429f60669b2ada273c7d27f484ef1ec8"
+        }
+      ]
+    },
+    {
+      "pod": "web-5778b4dc45-ph2tt",
+      "containers": [
+        {
+          "name": "web",
+          "image": "docker.io/library/hpa-advanced:v1",
+          "imageID": "sha256:5de43e018deb3df2c9d9be447a33ff14429f60669b2ada273c7d27f484ef1ec8"
+        }
+      ]
+    },
+    {
+      "pod": "worker-75559cc65f-wfmzd",
+      "containers": [
+        {
+          "name": "worker",
+          "image": "docker.io/library/hpa-demo:v1",
+          "imageID": "sha256:51d9185ebacb64be6d702e3051222ffb225fdcef6d497c615ddf8e0b53a4d2a0"
+        }
+      ]
+    }
+  ]
+}

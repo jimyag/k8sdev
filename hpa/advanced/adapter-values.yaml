@@ -54,3 +54,14 @@ rules:
       as: http_requests_per_second
     # 对 counter 先计算 30 秒 rate，再按 Pod 聚合。
     metricsQuery: sum(rate(<<.Series>>{<<.LabelMatchers>>}[30s])) by (<<.GroupBy>>)
+  # 实际请求体处理字节数：保留 Pod 维度，先求每秒速率再聚合。
+  - seriesQuery: demo_processed_bytes_total{namespace!="",pod!=""}
+    resources:
+      overrides:
+        namespace: {resource: namespace}
+        pod: {resource: pod}
+    name:
+      matches: ^demo_processed_bytes_total$
+      as: processed_bytes_per_second
+    # 单位为 B/s，不是 bit/s；不包含 HTTP 头、TCP 重传等开销。
+    metricsQuery: sum(rate(<<.Series>>{<<.LabelMatchers>>}[30s])) by (<<.GroupBy>>)

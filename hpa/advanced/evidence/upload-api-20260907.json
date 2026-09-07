@@ -1,0 +1,27 @@
+{
+  "time": "2026-09-07T00:26:29.976511+00:00",
+  "checks": [
+    {
+      "case": "method",
+      "status": 405,
+      "response": "POST required\n"
+    },
+    {
+      "case": "one_mib",
+      "status": 200,
+      "response": "processed_bytes=1048576\n"
+    },
+    {
+      "case": "half_mib",
+      "status": 200,
+      "response": "processed_bytes=524288\n"
+    },
+    {
+      "case": "oversized",
+      "status": 400,
+      "response": "incomplete or oversized body\n"
+    }
+  ],
+  "metrics": "# TYPE demo_http_requests_total counter\ndemo_http_requests_total 2\n# TYPE demo_processed_bytes_total counter\ndemo_processed_bytes_total 1572864\n",
+  "result": "PASS"
+}

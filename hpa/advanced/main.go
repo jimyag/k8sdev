@@ -2,6 +2,7 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -40,6 +41,9 @@ var mu sync.Mutex
 var tasks []*Task
 var events []Event
 var requests atomic.Int64
+
+// 只累计 /upload 完整读取的请求体字节，不包含 HTTP 头和网络协议开销。
+var processedBytes atomic.Int64
 var draining atomic.Bool
 var born = time.Now()
 var client = &http.Client{Timeout: 5 * time.Second}
@@ -150,11 +154,23 @@ func main() {
 		if target == "" {
 			target = "http://web:8080/request"
 		}
+		// 带宽实验发送真实请求体；零字节保持原 GET 请求模式。
+		payloadSize := envInt("PAYLOAD_BYTES", 0)
+		if rate <= 0 || rate > 1000 || payloadSize < 0 || payloadSize > 8*1024*1024 {
+			log.Fatal("RPS must be 1..1000; PAYLOAD_BYTES must be 0..8388608")
+		}
+		payload := make([]byte, payloadSize)
 		ticker := time.NewTicker(time.Second / time.Duration(rate))
 		defer ticker.Stop()
 		for range ticker.C {
 			go func() {
-				r, e := c.Get(target)
+				var r *http.Response
+				var e error
+				if payloadSize > 0 {
+					r, e = c.Post(target, "application/octet-stream", bytes.NewReader(payload))
+				} else {
+					r, e = c.Get(target)
+				}
 				if e == nil {
 					io.Copy(io.Discard, r.Body)
 					r.Body.Close()
@@ -177,6 +193,22 @@ func main() {
 	})
 	// 累计每个 Pod 成功处理的请求数，Prometheus 再通过 rate() 转成速率。
 	mux.HandleFunc("/request", func(w http.ResponseWriter, r *http.Request) { requests.Add(1); fmt.Fprintln(w, "ok") })
+	// 读取真实上传数据；失败请求不计入完成数，限制单次请求体最多 8 MiB。
+	mux.HandleFunc("/upload", func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodPost {
+			http.Error(w, "POST required", http.StatusMethodNotAllowed)
+			return
+		}
+		r.Body = http.MaxBytesReader(w, r.Body, 8*1024*1024)
+		n, err := io.Copy(io.Discard, r.Body)
+		if err != nil {
+			http.Error(w, "incomplete or oversized body", http.StatusBadRequest)
+			return
+		}
+		processedBytes.Add(n)
+		requests.Add(1)
+		fmt.Fprintf(w, "processed_bytes=%d\n", n)
+	})
 	// 保留 CPU 压力接口，方便区分资源指标与业务指标的作用。
 	mux.HandleFunc("/work", func(w http.ResponseWriter, r *http.Request) {
 		requests.Add(1)
@@ -189,6 +221,7 @@ func main() {
 	mux.HandleFunc("/metrics", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/plain; version=0.0.4")
 		fmt.Fprintf(w, "# TYPE demo_http_requests_total counter\ndemo_http_requests_total %d\n", requests.Load())
+		fmt.Fprintf(w, "# TYPE demo_processed_bytes_total counter\ndemo_processed_bytes_total %d\n", processedBytes.Load())
 		if mode == "broker" {
 			mu.Lock()
 			defer mu.Unlock()
