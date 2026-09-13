@@ -2,7 +2,7 @@
 set -euo pipefail
 
 cluster_name="${KIND_CLUSTER_NAME:-extended-resource-lab}"
-node_image="${KIND_NODE_IMAGE:-kindest/node:v1.37.0}"
+node_image="${KIND_NODE_IMAGE:-kindest/node:v1.35.0}"
 image="extended-resource-device-plugin:dev"
 script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 repo_dir=$(cd -- "${script_dir}/.." && pwd)
