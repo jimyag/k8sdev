@@ -1,0 +1,39 @@
+# 控制器使用这个 ServiceAccount 访问 WebApp 及其产生的 Deployment、Service。
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: webapp-controller
+  namespace: custom-resource-demo
+---
+# WebApp 是集群级 API 类型，控制器需要跨命名空间观察实例。
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: webapp-controller
+rules:
+  - apiGroups: ["apps.demo.example.com"]
+    resources: ["webapps"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["apps.demo.example.com"]
+    resources: ["webapps/status"]
+    verbs: ["get", "update", "patch"]
+  - apiGroups: ["apps"]
+    resources: ["deployments"]
+    verbs: ["get", "list", "watch", "create", "update", "patch"]
+  - apiGroups: [""]
+    resources: ["services"]
+    verbs: ["get", "list", "watch", "create", "update", "patch"]
+---
+# 将集群级权限绑定到实验命名空间中的控制器身份。
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: webapp-controller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: webapp-controller
+subjects:
+  - kind: ServiceAccount
+    name: webapp-controller
+    namespace: custom-resource-demo

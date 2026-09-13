@@ -1,0 +1,5 @@
+# 为本次实验创建独立命名空间，避免与其他 kind 实验互相影响。
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: custom-resource-demo
