@@ -1,0 +1,32 @@
+# 每个节点运行一个 Device Plugin，向该节点注册 example.com/fpga=2。
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fpga-device-plugin
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: fpga-device-plugin
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: fpga-device-plugin
+    spec:
+      # Device Plugin 需要访问每个节点的 kubelet device-plugin socket 目录。
+      tolerations:
+        - operator: Exists
+      containers:
+        - name: device-plugin
+          image: extended-resource-device-plugin:dev
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            runAsUser: 0
+          volumeMounts:
+            - name: device-plugin
+              mountPath: /var/lib/kubelet/device-plugins
+      volumes:
+        - name: device-plugin
+          hostPath:
+            path: /var/lib/kubelet/device-plugins
+            type: Directory

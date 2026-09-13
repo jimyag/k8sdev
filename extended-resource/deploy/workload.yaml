@@ -1,0 +1,16 @@
+# Pod 申请一个自定义 extended resource；调度器只能把它放到有余量的节点。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fpga-consumer
+  namespace: default
+spec:
+  containers:
+    - name: consumer
+      image: busybox:1.36
+      command: ["sh", "-c", "echo DEMO_DEVICE_IDS=$DEMO_DEVICE_IDS; sleep 3600"]
+      resources:
+        requests:
+          example.com/fpga: "1"
+        limits:
+          example.com/fpga: "1"

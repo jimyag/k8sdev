@@ -1,0 +1,16 @@
+# 第二个 Pod 再申请一个设备，用来验证节点容量 2 可以被两个 Pod 消耗。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fpga-consumer-second
+  namespace: default
+spec:
+  containers:
+    - name: consumer
+      image: busybox:1.36
+      command: ["sh", "-c", "echo DEMO_DEVICE_IDS=$DEMO_DEVICE_IDS; sleep 3600"]
+      resources:
+        requests:
+          example.com/fpga: "1"
+        limits:
+          example.com/fpga: "1"
