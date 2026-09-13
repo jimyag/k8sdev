@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" rx="14" fill="#171717"/>
+  <rect width="1280" height="42" rx="14" fill="#2a2a2a"/>
+  <circle cx="24" cy="21" r="7" fill="#ff5f57"/>
+  <circle cx="48" cy="21" r="7" fill="#febc2e"/>
+  <circle cx="72" cy="21" r="7" fill="#28c840"/>
+  <text x="640" y="27" text-anchor="middle" fill="#b8b8b8" font-family="SFMono-Regular, Menlo, monospace" font-size="15">ssh m6 — extended-resource-lab</text>
+  <g fill="#e8e8e8" font-family="SFMono-Regular, Menlo, monospace" font-size="17">
+    <text x="28" y="80" fill="#7ee787">$ kubectl get nodes -o custom-columns=NAME:.metadata.name,FPGA:.status.allocatable.example\\.com/fpga</text>
+    <text x="28" y="110">NAME                                  FPGA</text>
+    <text x="28" y="137">extended-resource-lab-control-plane   2</text>
+    <text x="28" y="185" fill="#7ee787">$ kubectl get pods -o wide</text>
+    <text x="28" y="215">NAME                   READY   STATUS    NODE</text>
+    <text x="28" y="242">fpga-consumer          1/1     Running   extended-resource-lab-control-plane</text>
+    <text x="28" y="269">fpga-consumer-second   1/1     Running   extended-resource-lab-control-plane</text>
+    <text x="28" y="317" fill="#7ee787">$ kubectl logs pod/fpga-consumer pod/fpga-consumer-second</text>
+    <text x="28" y="347" fill="#79c0ff">DEMO_DEVICE_IDS=fpga-0</text>
+    <text x="28" y="374" fill="#79c0ff">DEMO_DEVICE_IDS=fpga-1</text>
+    <text x="28" y="422" fill="#7ee787">$ kubectl get pod fpga-over-capacity</text>
+    <text x="28" y="452">NAME                 READY   STATUS    NODE</text>
+    <text x="28" y="479" fill="#ff7b72">fpga-over-capacity   0/1     Pending   &lt;none&gt;</text>
+    <text x="28" y="527" fill="#ffa657">Warning  FailedScheduling  0/1 nodes are available:</text>
+    <text x="28" y="554" fill="#ffa657">1 Insufficient example.com/fpga</text>
+    <text x="28" y="610" fill="#7ee787">$ kubectl logs -n kube-system daemonset/fpga-device-plugin</text>
+    <text x="28" y="640" fill="#79c0ff">registered example.com/fpga with 2 devices</text>
+  </g>
+</svg>

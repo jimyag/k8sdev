@@ -1,0 +1,33 @@
+# Source and environment
+source_commit: b23486a2d97312c20ae5c41abef225e907bb3685
+host: m6 (x86_64)
+kind: v0.31.0
+node_image: kindest/node:v1.35.0
+cluster: extended-resource-lab
+
+# Device Plugin registration
+2026/09/13 16:22:27 registered example.com/fpga with 2 devices
+
+# Node resource and successful allocations
+NAME                                  STATUS   ROLES           VERSION   INTERNAL-IP
+extended-resource-lab-control-plane   Ready    control-plane   v1.35.0   172.30.0.3
+
+NAME                                  FPGA
+extended-resource-lab-control-plane   2
+
+NAME                   READY   STATUS    NODE
+fpga-consumer          1/1     Running   extended-resource-lab-control-plane
+fpga-consumer-second   1/1     Running   extended-resource-lab-control-plane
+
+Allocatable:
+  example.com/fpga:   2
+
+DEMO_DEVICE_IDS=fpga-0
+DEMO_DEVICE_IDS=fpga-1
+
+# Capacity boundary
+NAME                 READY   STATUS    NODE
+fpga-over-capacity   0/1     Pending   <none>
+
+LAST SEEN   TYPE     REASON            OBJECT               MESSAGE
+3s          Warning  FailedScheduling  fpga-over-capacity   0/1 nodes are available: 1 Insufficient example.com/fpga. no new claims to deallocate, preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.
