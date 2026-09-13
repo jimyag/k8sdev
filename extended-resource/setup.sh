@@ -17,6 +17,7 @@ kind create cluster --name "${cluster_name}" --image "${node_image}"
 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -o "${plugin_binary}" "${script_dir}"
 docker build -t "${image}" -f "${script_dir}/Dockerfile" "${script_dir}"
 kind load docker-image "${image}" --name "${cluster_name}"
+kind load docker-image alpine:3.22 --name "${cluster_name}"
 kubectl apply -f "${script_dir}/deploy/daemonset.yaml"
 kubectl -n kube-system rollout status daemonset/fpga-device-plugin --timeout=120s
 
