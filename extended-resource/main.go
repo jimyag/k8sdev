@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 	"slices"
 	"strings"
+	"sync"
 	"syscall"
 	"time"
 
@@ -28,6 +29,9 @@ const (
 type devicePlugin struct {
 	resourceName string
 	devices      []*pluginapi.Device
+	// Kubelet selects device IDs. This lock only serializes plugin-side
+	// preparation that may be added to Allocate later.
+	allocateMu sync.Mutex
 }
 
 func main() {
@@ -149,16 +153,24 @@ func (p *devicePlugin) GetPreferredAllocation(_ context.Context, request *plugin
 }
 
 func (p *devicePlugin) Allocate(_ context.Context, request *pluginapi.AllocateRequest) (*pluginapi.AllocateResponse, error) {
+	p.allocateMu.Lock()
+	defer p.allocateMu.Unlock()
+
 	known := make(map[string]struct{}, len(p.devices))
 	for _, device := range p.devices {
 		known[device.ID] = struct{}{}
 	}
+	requested := make(map[string]int)
 	response := &pluginapi.AllocateResponse{ContainerResponses: make([]*pluginapi.ContainerAllocateResponse, 0, len(request.ContainerRequests))}
-	for _, containerRequest := range request.ContainerRequests {
+	for containerIndex, containerRequest := range request.ContainerRequests {
 		for _, deviceID := range containerRequest.DevicesIDs {
 			if _, ok := known[deviceID]; !ok {
 				return nil, fmt.Errorf("unknown device ID %q", deviceID)
 			}
+			if previousContainer, ok := requested[deviceID]; ok {
+				return nil, fmt.Errorf("device ID %q requested by containers %d and %d", deviceID, previousContainer, containerIndex)
+			}
+			requested[deviceID] = containerIndex
 		}
 		response.ContainerResponses = append(response.ContainerResponses, &pluginapi.ContainerAllocateResponse{
 			Envs: map[string]string{"DEMO_DEVICE_IDS": strings.Join(containerRequest.DevicesIDs, ",")},
