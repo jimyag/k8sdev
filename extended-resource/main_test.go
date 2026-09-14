@@ -3,20 +3,62 @@ package main
 import (
 	"context"
 	"fmt"
+	"slices"
 	"sync"
 	"testing"
+	"time"
 
 	pluginapi "k8s.io/kubelet/pkg/apis/deviceplugin/v1beta1"
 )
 
 func TestNewDevicePluginAdvertisesHealthyDevices(t *testing.T) {
 	plugin := newDevicePlugin("example.com/fpga", 2)
-	if len(plugin.devices) != 2 {
-		t.Fatalf("device count = %d, want 2", len(plugin.devices))
+	devices := plugin.manager.Devices()
+	if len(devices) != 2 {
+		t.Fatalf("device count = %d, want 2", len(devices))
 	}
-	for i, device := range plugin.devices {
+	for i, device := range devices {
 		if device.ID != fmt.Sprintf("fpga-%d", i) || device.Health != pluginapi.Healthy {
 			t.Fatalf("device[%d] = %#v, want healthy fpga device", i, device)
+		}
+	}
+}
+
+func TestPreferredAllocationHonorsMustIncludeDevices(t *testing.T) {
+	plugin := newDevicePlugin("example.com/fpga", 3)
+	response, err := plugin.GetPreferredAllocation(context.Background(), &pluginapi.PreferredAllocationRequest{
+		ContainerRequests: []*pluginapi.ContainerPreferredAllocationRequest{
+			{
+				AvailableDeviceIDs:   []string{"fpga-0", "fpga-1", "fpga-2"},
+				MustIncludeDeviceIDs: []string{"fpga-2"},
+				AllocationSize:       2,
+			},
+		},
+	})
+	if err != nil {
+		t.Fatalf("GetPreferredAllocation() error = %v", err)
+	}
+	got := response.ContainerResponses[0].DeviceIDs
+	want := []string{"fpga-2", "fpga-0"}
+	if !slices.Equal(got, want) {
+		t.Fatalf("preferred devices = %v, want %v", got, want)
+	}
+}
+
+func TestUpdateHealthNotifiesListAndWatch(t *testing.T) {
+	plugin := newDevicePlugin("example.com/fpga", 2)
+	if err := plugin.manager.UpdateHealth("fpga-1", pluginapi.Unhealthy); err != nil {
+		t.Fatalf("UpdateHealth() error = %v", err)
+	}
+	select {
+	case <-plugin.manager.HealthUpdates():
+	case <-time.After(time.Second):
+		t.Fatal("UpdateHealth() did not notify ListAndWatch")
+	}
+
+	for _, device := range plugin.manager.Devices() {
+		if device.ID == "fpga-1" && device.Health != pluginapi.Unhealthy {
+			t.Fatalf("device health = %q, want %q", device.Health, pluginapi.Unhealthy)
 		}
 	}
 }

@@ -10,12 +10,12 @@ import (
 	"os"
 	"os/signal"
 	"path/filepath"
-	"slices"
 	"strings"
 	"sync"
 	"syscall"
 	"time"
 
+	"github.com/fsnotify/fsnotify"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	pluginapi "k8s.io/kubelet/pkg/apis/deviceplugin/v1beta1"
@@ -26,9 +26,12 @@ const (
 	kubeletSocket = pluginDir + "/kubelet.sock"
 )
 
+var errKubeletRestart = errors.New("kubelet socket was removed")
+
 type devicePlugin struct {
 	resourceName string
-	devices      []*pluginapi.Device
+	socket       string
+	manager      resourceManager
 	// Kubelet selects device IDs. This lock only serializes plugin-side
 	// preparation that may be added to Allocate later.
 	allocateMu sync.Mutex
@@ -53,24 +56,43 @@ func main() {
 }
 
 func newDevicePlugin(resourceName string, deviceCount int) *devicePlugin {
-	devices := make([]*pluginapi.Device, 0, deviceCount)
-	for i := range deviceCount {
-		devices = append(devices, &pluginapi.Device{
-			ID:     fmt.Sprintf("fpga-%d", i),
-			Health: pluginapi.Healthy,
-		})
+	return &devicePlugin{
+		resourceName: resourceName,
+		socket:       pluginSocket(resourceName),
+		manager:      newFakeResourceManager(deviceCount),
 	}
-	return &devicePlugin{resourceName: resourceName, devices: devices}
 }
 
 func (p *devicePlugin) run(ctx context.Context) error {
-	socket := filepath.Join(pluginDir, "fpga.sock")
-	if err := removeSocket(socket); err != nil {
+	for {
+		err := p.serve(ctx)
+		if ctx.Err() != nil {
+			return nil
+		}
+		if errors.Is(err, errKubeletRestart) {
+			log.Printf("kubelet socket removed, re-registering %s", p.resourceName)
+			continue
+		}
 		return err
 	}
-	listener, err := net.Listen("unix", socket)
+}
+
+func (p *devicePlugin) serve(ctx context.Context) error {
+	if err := removeSocket(p.socket); err != nil {
+		return err
+	}
+	watcher, err := fsnotify.NewWatcher()
 	if err != nil {
-		return fmt.Errorf("listen on %s: %w", socket, err)
+		return fmt.Errorf("create device plugin watcher: %w", err)
+	}
+	defer watcher.Close()
+	if err := watcher.Add(pluginDir); err != nil {
+		return fmt.Errorf("watch device plugin directory: %w", err)
+	}
+
+	listener, err := net.Listen("unix", p.socket)
+	if err != nil {
+		return fmt.Errorf("listen on %s: %w", p.socket, err)
 	}
 	defer listener.Close()
 
@@ -79,18 +101,36 @@ func (p *devicePlugin) run(ctx context.Context) error {
 	serveErr := make(chan error, 1)
 	go func() { serveErr <- server.Serve(listener) }()
 
-	if err := register(ctx, socket, p.resourceName); err != nil {
+	if err := registerWithRetry(ctx, p.socket, p.resourceName); err != nil {
 		server.Stop()
 		return err
 	}
-	log.Printf("registered %s with %d devices", p.resourceName, len(p.devices))
+	log.Printf("registered %s with %d devices", p.resourceName, len(p.manager.Devices()))
 
-	select {
-	case <-ctx.Done():
-		server.GracefulStop()
-		return nil
-	case err := <-serveErr:
-		return fmt.Errorf("device plugin server: %w", err)
+	for {
+		select {
+		case <-ctx.Done():
+			server.GracefulStop()
+			return nil
+		case err := <-serveErr:
+			if err != nil {
+				return fmt.Errorf("device plugin server: %w", err)
+			}
+			return nil
+		case event, ok := <-watcher.Events:
+			if !ok {
+				return errors.New("device plugin watcher events closed")
+			}
+			if event.Name == p.socket && event.Op&(fsnotify.Remove|fsnotify.Rename) != 0 {
+				server.Stop()
+				return errKubeletRestart
+			}
+		case err, ok := <-watcher.Errors:
+			if !ok {
+				return errors.New("device plugin watcher errors closed")
+			}
+			return fmt.Errorf("device plugin watcher: %w", err)
+		}
 	}
 }
 
@@ -100,6 +140,23 @@ func removeSocket(path string) error {
 		return fmt.Errorf("remove old socket: %w", err)
 	}
 	return nil
+}
+
+func registerWithRetry(ctx context.Context, socket, resourceName string) error {
+	for {
+		err := register(ctx, socket, resourceName)
+		if err == nil {
+			return nil
+		}
+		log.Printf("register %s failed: %v; retrying", resourceName, err)
+		timer := time.NewTimer(time.Second)
+		select {
+		case <-ctx.Done():
+			timer.Stop()
+			return ctx.Err()
+		case <-timer.C:
+		}
+	}
 }
 
 func register(ctx context.Context, socket, resourceName string) error {
@@ -128,25 +185,34 @@ func register(ctx context.Context, socket, resourceName string) error {
 }
 
 func (p *devicePlugin) GetDevicePluginOptions(context.Context, *pluginapi.Empty) (*pluginapi.DevicePluginOptions, error) {
-	return &pluginapi.DevicePluginOptions{}, nil
+	return &pluginapi.DevicePluginOptions{GetPreferredAllocationAvailable: true}, nil
 }
 
 func (p *devicePlugin) ListAndWatch(_ *pluginapi.Empty, stream pluginapi.DevicePlugin_ListAndWatchServer) error {
-	if err := stream.Send(&pluginapi.ListAndWatchResponse{Devices: p.devices}); err != nil {
+	if err := stream.Send(&pluginapi.ListAndWatchResponse{Devices: p.manager.Devices()}); err != nil {
 		return err
 	}
-	<-stream.Context().Done()
-	return nil
+	for {
+		select {
+		case <-p.manager.HealthUpdates():
+			if err := stream.Send(&pluginapi.ListAndWatchResponse{Devices: p.manager.Devices()}); err != nil {
+				return err
+			}
+		case <-stream.Context().Done():
+			return nil
+		}
+	}
 }
 
 func (p *devicePlugin) GetPreferredAllocation(_ context.Context, request *pluginapi.PreferredAllocationRequest) (*pluginapi.PreferredAllocationResponse, error) {
 	response := &pluginapi.PreferredAllocationResponse{ContainerResponses: make([]*pluginapi.ContainerPreferredAllocationResponse, 0, len(request.ContainerRequests))}
 	for _, containerRequest := range request.ContainerRequests {
-		if int(containerRequest.AllocationSize) > len(containerRequest.AvailableDeviceIDs) {
-			return nil, fmt.Errorf("requested %d devices, only %d are available", containerRequest.AllocationSize, len(containerRequest.AvailableDeviceIDs))
+		deviceIDs, err := p.manager.PreferredAllocation(containerRequest)
+		if err != nil {
+			return nil, err
 		}
 		response.ContainerResponses = append(response.ContainerResponses, &pluginapi.ContainerPreferredAllocationResponse{
-			DeviceIDs: slices.Clone(containerRequest.AvailableDeviceIDs[:containerRequest.AllocationSize]),
+			DeviceIDs: deviceIDs,
 		})
 	}
 	return response, nil
@@ -156,22 +222,11 @@ func (p *devicePlugin) Allocate(_ context.Context, request *pluginapi.AllocateRe
 	p.allocateMu.Lock()
 	defer p.allocateMu.Unlock()
 
-	known := make(map[string]struct{}, len(p.devices))
-	for _, device := range p.devices {
-		known[device.ID] = struct{}{}
+	if err := p.manager.ValidateAllocation(request); err != nil {
+		return nil, err
 	}
-	requested := make(map[string]int)
 	response := &pluginapi.AllocateResponse{ContainerResponses: make([]*pluginapi.ContainerAllocateResponse, 0, len(request.ContainerRequests))}
-	for containerIndex, containerRequest := range request.ContainerRequests {
-		for _, deviceID := range containerRequest.DevicesIDs {
-			if _, ok := known[deviceID]; !ok {
-				return nil, fmt.Errorf("unknown device ID %q", deviceID)
-			}
-			if previousContainer, ok := requested[deviceID]; ok {
-				return nil, fmt.Errorf("device ID %q requested by containers %d and %d", deviceID, previousContainer, containerIndex)
-			}
-			requested[deviceID] = containerIndex
-		}
+	for _, containerRequest := range request.ContainerRequests {
 		response.ContainerResponses = append(response.ContainerResponses, &pluginapi.ContainerAllocateResponse{
 			Envs: map[string]string{"DEMO_DEVICE_IDS": strings.Join(containerRequest.DevicesIDs, ",")},
 		})
@@ -181,4 +236,8 @@ func (p *devicePlugin) Allocate(_ context.Context, request *pluginapi.AllocateRe
 
 func (p *devicePlugin) PreStartContainer(context.Context, *pluginapi.PreStartContainerRequest) (*pluginapi.PreStartContainerResponse, error) {
 	return &pluginapi.PreStartContainerResponse{}, nil
+}
+
+func pluginSocket(resourceName string) string {
+	return filepath.Join(pluginDir, strings.ReplaceAll(resourceName, "/", "-")+".sock")
 }
