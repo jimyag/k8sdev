@@ -1,12 +1,16 @@
 # Source and environment
-source_commit: 4d4017fd2c297b5bcab251f75121f8b68cacd9b7
+source_commit: 7c5c0759d0506b75ab2bc5930c643cfd09ef3ba9
 host: m6 (x86_64)
 kind: v0.31.0
 node_image: kindest/node:v1.35.0
 cluster: extended-resource-lab
 
 # Device Plugin registration
-2026/09/14 02:46:31 registered example.com/fpga with 2 devices
+2026/09/14 02:58:33 registered example.com/fpga with 2 devices
+
+# Kubelet socket deletion and re-registration
+2026/09/14 02:58:36 kubelet socket removed, re-registering example.com/fpga
+2026/09/14 02:58:36 registered example.com/fpga with 2 devices
 
 # Node resource and successful allocations
 NAME                                  STATUS   ROLES           VERSION   INTERNAL-IP
