@@ -1,0 +1,83 @@
+# 这个 Pod 验证 Native Sidecar 的正常停止顺序和 Pod 级终止宽限期。
+apiVersion: v1 # Pod API 版本。
+kind: Pod # 直接创建 Pod 便于观察容器终止时间。
+metadata:
+  name: native-sidecar-stop-order # 用于验证正常停止顺序的 Pod 名称。
+  labels:
+    app: native-sidecar-stop-order # 便于使用 kubectl 按标签观察。
+spec:
+  restartPolicy: Never # 只在删除 Pod 时观察一次终止流程。
+  terminationGracePeriodSeconds: 15 # 整个 Pod 共享的终止宽限期，不是每个容器一份。
+  initContainers:
+    - name: first-sidecar # 先声明的 sidecar，正常情况下最后停止。
+      image: busybox:1.36.1 # 提供 shell、date 和 sleep。
+      restartPolicy: Always # 将 init container 声明为 Native Sidecar。
+      command:
+        - sh # 使用 BusyBox shell 运行信号处理脚本。
+        - -c # 将下一项作为 shell 脚本执行。
+        - |
+          echo "first-sidecar: started $(date -u +%s)" # 记录 sidecar 启动时间。
+          trap 'echo "first-sidecar: SIGTERM $(date -u +%s)"; sleep 1; echo "first-sidecar: exited $(date -u +%s)"; exit 0' TERM # 收到 TERM 后延迟退出，便于观察顺序。
+          while true; do sleep 1; done # 保持 sidecar 运行，等待 Pod 被删除。
+    - name: second-sidecar # 后声明的 sidecar，正常情况下先停止。
+      image: busybox:1.36.1 # 提供 shell、date 和 sleep。
+      restartPolicy: Always # 将 init container 声明为 Native Sidecar。
+      command:
+        - sh # 使用 BusyBox shell 运行信号处理脚本。
+        - -c # 将下一项作为 shell 脚本执行。
+        - |
+          echo "second-sidecar: started $(date -u +%s)" # 记录 sidecar 启动时间。
+          trap 'echo "second-sidecar: SIGTERM $(date -u +%s)"; sleep 1; echo "second-sidecar: exited $(date -u +%s)"; exit 0' TERM # 收到 TERM 后延迟退出，便于观察顺序。
+          while true; do sleep 1; done # 保持 sidecar 运行，等待 Pod 被删除。
+  containers:
+    - name: app # 需要先退出的普通应用容器。
+      image: busybox:1.36.1 # 提供 shell、date 和 sleep。
+      command:
+        - sh # 使用 BusyBox shell 运行信号处理脚本。
+        - -c # 将下一项作为 shell 脚本执行。
+        - |
+          echo "app: started $(date -u +%s)" # 记录应用启动时间。
+          trap 'echo "app: SIGTERM $(date -u +%s)"; sleep 2; echo "app: exited $(date -u +%s)"; exit 0' TERM # 应用收到 TERM 后延迟退出。
+          while true; do sleep 1; done # 保持应用运行，等待 Pod 被删除。
+---
+# 这个 Pod 验证终止宽限期耗尽后，仍未退出的 sidecar 会被强制终止。
+apiVersion: v1 # Pod API 版本。
+kind: Pod # 直接创建 Pod 便于观察强制终止状态。
+metadata:
+  name: native-sidecar-grace-expiry # 用于验证宽限期耗尽的 Pod 名称。
+  labels:
+    app: native-sidecar-grace-expiry # 便于使用 kubectl 按标签观察。
+spec:
+  restartPolicy: Never # 只在删除 Pod 时观察一次终止流程。
+  terminationGracePeriodSeconds: 5 # 故意设置较短的 Pod 总宽限期。
+  initContainers:
+    - name: first-sidecar # 先声明的 sidecar，等待后声明的 sidecar 完成。
+      image: busybox:1.36.1 # 提供 shell、date 和 sleep。
+      restartPolicy: Always # 将 init container 声明为 Native Sidecar。
+      command:
+        - sh # 使用 BusyBox shell 运行信号处理脚本。
+        - -c # 将下一项作为 shell 脚本执行。
+        - |
+          echo "first-sidecar: started $(date -u +%s)" # 记录 sidecar 启动时间。
+          trap 'echo "first-sidecar: SIGTERM $(date -u +%s)"; sleep 10; echo "first-sidecar: exited $(date -u +%s)"; exit 0' TERM # 清理时间超过剩余宽限期，预期会被强制终止。
+          while true; do sleep 1; done # 保持 sidecar 运行，等待 Pod 被删除。
+    - name: second-sidecar # 后声明的 sidecar，应用退出后先收到 TERM。
+      image: busybox:1.36.1 # 提供 shell、date 和 sleep。
+      restartPolicy: Always # 将 init container 声明为 Native Sidecar。
+      command:
+        - sh # 使用 BusyBox shell 运行信号处理脚本。
+        - -c # 将下一项作为 shell 脚本执行。
+        - |
+          echo "second-sidecar: started $(date -u +%s)" # 记录 sidecar 启动时间。
+          trap 'echo "second-sidecar: SIGTERM $(date -u +%s)"; sleep 10; echo "second-sidecar: exited $(date -u +%s)"; exit 0' TERM # 清理时间超过剩余宽限期，预期会被强制终止。
+          while true; do sleep 1; done # 保持 sidecar 运行，等待 Pod 被删除。
+  containers:
+    - name: app # 普通应用容器，先收到 TERM 并尝试优雅退出。
+      image: busybox:1.36.1 # 提供 shell、date 和 sleep。
+      command:
+        - sh # 使用 BusyBox shell 运行信号处理脚本。
+        - -c # 将下一项作为 shell 脚本执行。
+        - |
+          echo "app: started $(date -u +%s)" # 记录应用启动时间。
+          trap 'echo "app: SIGTERM $(date -u +%s)"; sleep 2; echo "app: exited $(date -u +%s)"; exit 0' TERM # 应用退出会消耗一部分 Pod 总宽限期。
+          while true; do sleep 1; done # 保持应用运行，等待 Pod 被删除。
