@@ -1,0 +1,21 @@
+# 这个 Pod 是 Ephemeral Container 的调试目标。
+apiVersion: v1 # Pod API 版本。
+kind: Pod # 直接创建一个长期运行的调试目标 Pod。
+metadata:
+  name: ephemeral-debug-target # Pod 名称。
+  labels:
+    app: ephemeral-debug-target # 便于观察和清理。
+spec:
+  shareProcessNamespace: true # 允许调试容器查看其他容器的进程。
+  containers:
+    - name: app # 模拟缺少调试工具的应用容器。
+      image: busybox:1.36.1 # 仅用于 kind 实验，生产应用可以是 distroless 镜像。
+      command:
+        - sh # 使用 BusyBox shell 启动模拟应用。
+        - -c # 将下一行作为 shell 命令执行。
+        - |
+          echo app-started # 输出应用启动信息。
+          while true; do # 保持 Pod 运行，方便稍后注入调试容器。
+            date # 模拟应用持续产生状态变化。
+            sleep 5 # 降低循环频率。
+          done

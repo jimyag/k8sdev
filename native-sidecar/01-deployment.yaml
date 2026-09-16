@@ -1,0 +1,65 @@
+# 这个 Deployment 演示原生 sidecar 的启动顺序、共享 volume 和探针。
+apiVersion: apps/v1 # Deployment API 版本。
+kind: Deployment # 让 Pod 由 Deployment 维持。
+metadata:
+  name: native-sidecar-demo # Deployment 名称。
+  labels:
+    app: native-sidecar-demo # 用于 selector 和观察 Pod。
+spec:
+  replicas: 1 # 只创建一个 Pod，便于观察容器状态。
+  selector:
+    matchLabels:
+      app: native-sidecar-demo # 必须匹配 Pod 模板标签。
+  template:
+    metadata:
+      labels:
+        app: native-sidecar-demo # Deployment 管理的 Pod 标签。
+    spec:
+      terminationGracePeriodSeconds: 10 # 给应用和 sidecar 留出停止时间。
+      volumes:
+        - name: shared-log # 应用和 sidecar 共享的日志卷。
+          emptyDir: {} # Pod 删除后数据一起删除。
+      initContainers:
+        - name: log-reader # 通过容器级 Always restartPolicy 声明原生 sidecar。
+          image: busybox:1.36.1 # 同时提供 touch、grep 和 tail。
+          restartPolicy: Always # 让该 init container 在应用运行期间持续存在。
+          command:
+            - sh # 使用 BusyBox shell 执行启动脚本。
+            - -c # 将下一行作为 shell 命令执行。
+            - |
+              touch /logs/app.log # 先创建日志文件，保证 tail 可以启动。
+              echo sidecar-started > /logs/sidecar.status # 留下 sidecar 启动证据。
+              exec tail -f /logs/app.log # 持续读取应用写入的日志。
+          startupProbe: # 启动探针通过后，kubelet 才继续初始化序列。
+            exec:
+              command: ["sh", "-c", "test -f /logs/sidecar.status"] # 检查 sidecar 已完成本地准备。
+            periodSeconds: 1 # 每秒检查一次。
+            failureThreshold: 30 # 最多允许 30 次失败。
+          readinessProbe: # sidecar 的 readiness 会参与 Pod Ready 判断。
+            exec:
+              command: ["sh", "-c", "grep -q 'app-ready' /logs/app.log"] # 应用写入标记后才算 ready。
+            periodSeconds: 1 # 每秒检查一次。
+          livenessProbe: # sidecar 进程失去日志文件时由 kubelet 重启。
+            exec:
+              command: ["sh", "-c", "test -f /logs/sidecar.status"] # 检查 sidecar 工作目录仍然存在。
+            periodSeconds: 5 # 每 5 秒检查一次。
+          volumeMounts:
+            - name: shared-log # 挂载与应用容器相同的日志卷。
+              mountPath: /logs # sidecar 读取应用日志的目录。
+      containers:
+        - name: app # 与 sidecar 共享网络和日志 volume 的应用容器。
+          image: busybox:1.36.1 # 使用小镜像模拟持续运行的应用。
+          command:
+            - sh # 使用 BusyBox shell。
+            - -c # 将下一行作为 shell 命令执行。
+            - |
+              echo app-started >> /logs/app.log # 记录应用启动时间点。
+              sleep 2 # 模拟应用启动准备。
+              echo app-ready >> /logs/app.log # 触发 sidecar readiness 成功。
+              while true; do # 保持应用持续运行。
+                echo app-heartbeat >> /logs/app.log # 让 sidecar 持续有日志可读取。
+                sleep 3 # 控制日志写入频率。
+              done
+          volumeMounts:
+            - name: shared-log # 挂载共享日志卷。
+              mountPath: /logs # 应用写入日志的目录。

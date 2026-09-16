@@ -1,0 +1,42 @@
+# 这个 Job 演示原生 sidecar 不会阻止 Job 在主容器完成后结束。
+apiVersion: batch/v1 # Job API 版本。
+kind: Job # 运行一次性的批处理任务。
+metadata:
+  name: native-sidecar-job # Job 名称。
+spec:
+  backoffLimit: 0 # 主任务失败时不额外创建重试 Pod。
+  template:
+    metadata:
+      labels:
+        app: native-sidecar-job # 便于按标签观察 Pod。
+    spec:
+      restartPolicy: Never # Job Pod 完成后不在原 Pod 中重启主容器。
+      volumes:
+        - name: job-log # 主任务和 sidecar 共享的日志卷。
+          emptyDir: {} # Job Pod 删除后日志一起删除。
+      initContainers:
+        - name: log-sidecar # 定义一个持续运行的原生 sidecar。
+          image: busybox:1.36.1 # 提供 tail 命令。
+          restartPolicy: Always # 主容器完成后由 kubelet 最后停止它。
+          command:
+            - sh # 使用 BusyBox shell。
+            - -c # 将下一行作为 shell 命令执行。
+            - |
+              touch /logs/job.log # 先创建日志文件。
+              exec tail -f /logs/job.log # 持续读取主任务日志。
+          volumeMounts:
+            - name: job-log # 挂载共享日志卷。
+              mountPath: /logs # sidecar 读取日志的目录。
+      containers:
+        - name: job # Job 的主任务容器。
+          image: busybox:1.36.1 # 使用小镜像模拟批处理任务。
+          command:
+            - sh # 使用 BusyBox shell。
+            - -c # 将下一行作为 shell 命令执行。
+            - |
+              echo job-started >> /logs/job.log # 记录任务开始。
+              sleep 3 # 模拟任务执行时间。
+              echo job-finished >> /logs/job.log # 记录任务成功完成。
+          volumeMounts:
+            - name: job-log # 挂载共享日志卷。
+              mountPath: /logs # 主任务写入日志的目录。
