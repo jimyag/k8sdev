@@ -1,0 +1,60 @@
+# 使用 emptyDir 在 init container 与应用容器之间传递初始化结果。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: init-container-demo
+  labels:
+    app: init-container-demo # 便于 kubectl 按标签查询实验 Pod。
+spec:
+  # init container 与应用容器共享这个 Pod 级别的临时卷。
+  volumes:
+    - name: web-content
+      emptyDir: {} # Pod 被删除后内容也会删除。
+  initContainers:
+    - name: generate-index
+      image: busybox:1.36.1 # 只提供生成文件所需的 shell 和 printf。
+      imagePullPolicy: IfNotPresent
+      command:
+        - sh
+        - -c
+        - |
+          set -eu
+          # 生成文件后以退出码 0 结束，kubelet 才会启动 nginx。
+          printf '<h1>init container completed</h1>\n<p>pod=%s</p>\n' "$POD_NAME" > /work/index.html
+          printf 'ready\n' > /work/ready
+      env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name # 用 Downward API 读取当前 Pod 名称。
+      resources:
+        requests:
+          cpu: 10m
+          memory: 16Mi
+      volumeMounts:
+        - name: web-content
+          mountPath: /work # 与 nginx 的文档根目录指向同一个 emptyDir。
+  containers:
+    - name: nginx
+      image: nginx:1.27-alpine # 初始化完成后才会启动的应用容器。
+      imagePullPolicy: IfNotPresent
+      ports:
+        - name: http
+          containerPort: 80
+      readinessProbe:
+        httpGet:
+          path: /index.html
+          port: http
+        periodSeconds: 2 # 只有应用容器的 readinessProbe 会影响 Pod Ready。
+      livenessProbe:
+        httpGet:
+          path: /index.html
+          port: http
+        periodSeconds: 10
+      resources:
+        requests:
+          cpu: 10m
+          memory: 32Mi
+      volumeMounts:
+        - name: web-content
+          mountPath: /usr/share/nginx/html # nginx 从 init container 生成的目录提供页面。

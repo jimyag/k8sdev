@@ -1,0 +1,27 @@
+# 对比 02：restartPolicy=Never 时，普通 init container 失败会使 Pod 进入 Failed。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: init-container-failure-never
+spec:
+  restartPolicy: Never # 不重试失败的 init container。
+  initContainers:
+    - name: fail-on-purpose
+      image: busybox:1.36.1
+      command:
+        - sh
+        - -c
+        - |
+          echo "initialization failed permanently"
+          exit 42 # 非 0 退出码会保留在 initContainerStatuses 中。
+      resources:
+        requests:
+          cpu: 10m
+          memory: 8Mi
+  containers:
+    - name: app
+      image: busybox:1.36.1
+      command:
+        - sh
+        - -c
+        - sleep 3600 # 该容器不会被启动。

@@ -1,0 +1,12 @@
+# 为 04-wait-for-service.yaml 提供一个可解析的 Service 名称。
+apiVersion: v1
+kind: Service
+metadata:
+  name: init-container-dependency
+spec:
+  selector:
+    app: init-container-dependency # 本实验只验证 DNS 名称，不依赖后端 Endpoint。
+  ports:
+    - name: http
+      port: 80 # Service 必须有端口，才能作为合法的 Service 对象创建。
+      targetPort: 80
