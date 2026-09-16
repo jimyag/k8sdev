@@ -1,0 +1,72 @@
+[
+  {
+    "stage": "baseline",
+    "pod": "cuda-vectoradd",
+    "phase": "Failed",
+    "termination": [
+      {
+        "containerID": "containerd://37c2be1e2cd9383912c7450d2372a265f171d8d516662d25b68234a94726338c",
+        "exitCode": 139,
+        "finishedAt": "2026-09-06T15:00:34Z",
+        "reason": "Error",
+        "startedAt": "2026-09-06T15:00:33Z"
+      }
+    ]
+  },
+  {
+    "stage": "cuda-version-only",
+    "pod": "cuda-probe-off",
+    "phase": "Failed",
+    "termination": [
+      {
+        "containerID": "containerd://0ec746604fea55b568ec340ab0681ffa3d90ed9d50beb1c0a9e314107d14763e",
+        "exitCode": 1,
+        "finishedAt": "2026-09-06T15:03:23Z",
+        "reason": "Error",
+        "startedAt": "2026-09-06T15:03:23Z"
+      }
+    ]
+  },
+  {
+    "stage": "cuda-version-only",
+    "pod": "cuda-probe-on",
+    "phase": "Failed",
+    "termination": [
+      {
+        "containerID": "containerd://8cdc863d2740345080efcac0a8c1a6e37937b8e7bc40ae8d9f6b64b6f30d3f87",
+        "exitCode": 139,
+        "finishedAt": "2026-09-06T15:03:17Z",
+        "reason": "Error",
+        "startedAt": "2026-09-06T15:03:17Z"
+      }
+    ]
+  },
+  {
+    "stage": "cuda-entrypoints",
+    "pod": "cuda-probe-off",
+    "phase": "Failed",
+    "termination": [
+      {
+        "containerID": "containerd://b10253a559af780606d969e69ccbfd65950a54889285a9678baa247a9f864c2f",
+        "exitCode": 1,
+        "finishedAt": "2026-09-06T15:04:37Z",
+        "reason": "Error",
+        "startedAt": "2026-09-06T15:04:37Z"
+      }
+    ]
+  },
+  {
+    "stage": "cuda-entrypoints",
+    "pod": "cuda-probe-on",
+    "phase": "Failed",
+    "termination": [
+      {
+        "containerID": "containerd://40bcbf0ca4f9c21c3e86484a8453ae5742d6bb2ef321580699e9924203e20998",
+        "exitCode": 139,
+        "finishedAt": "2026-09-06T15:04:31Z",
+        "reason": "Error",
+        "startedAt": "2026-09-06T15:04:31Z"
+      }
+    ]
+  }
+]

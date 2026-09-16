@@ -1,0 +1,8 @@
+--- FAIL: TestStageDMI_StandsInForUnreadableProductName (0.00s)
+    stage_test.go:307: 
+        	Error Trace:	/src/internal/agent/pcibus/stage_test.go:307
+        	Error:      	Should be empty, but was [78 86 73 68 73 65 32 68 71 88 32 65 49 48 48 10]
+        	Test:       	TestStageDMI_StandsInForUnreadableProductName
+FAIL
+FAIL	github.com/NVIDIA/k8s-test-infra/internal/agent/pcibus	0.007s
+FAIL

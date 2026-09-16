@@ -1,0 +1,51 @@
+diff --git a/pkg/gpu/mockcuda/bridge/entrypoints.c b/pkg/gpu/mockcuda/bridge/entrypoints.c
+new file mode 100644
+index 0000000..a1f123d
+--- /dev/null
++++ b/pkg/gpu/mockcuda/bridge/entrypoints.c
+@@ -0,0 +1,45 @@
++// Copyright (c) 2026, NVIDIA CORPORATION. All rights reserved.
++// SPDX-License-Identifier: Apache-2.0
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include "cuda_types.h"
++
++extern CUresult cuInit(unsigned int flags);
++extern CUresult cuDriverGetVersion(int *version);
++CUresult cuGetProcAddress(const char *, void **, int, unsigned long long);
++CUresult cuGetProcAddress_v2(const char *, void **, int, unsigned long long, int *);
++
++// Resolve only implemented Driver APIs; Runtime API names have different ABIs.
++static int lookup(const char *symbol, void **pfn, int version) {
++    int minimum = 0;
++    *pfn = NULL;
++    if (!strcmp(symbol, "cuInit")) { minimum = 2000; *pfn = cuInit; }
++    else if (!strcmp(symbol, "cuDriverGetVersion")) { minimum = 2020; *pfn = cuDriverGetVersion; }
++    else if (!strcmp(symbol, "cuGetProcAddress")) {
++        minimum = 11030;
++        *pfn = version >= 12000 ? (void *)cuGetProcAddress_v2 : (void *)cuGetProcAddress;
++    }
++    if (!*pfn) return 1; // CU_GET_PROC_ADDRESS_SYMBOL_NOT_FOUND
++    if (version < minimum) { *pfn = NULL; return 2; }
++    return 0;
++}
++
++CUresult cuGetProcAddress_v2(const char *symbol, void **pfn, int version,
++                            unsigned long long flags, int *status) {
++    if (!symbol || !pfn || flags > 2) return (CUresult)1;
++    int result = lookup(symbol, pfn, version);
++    if (status) *status = result;
++    if (getenv("MOCK_CUDA_DEBUG"))
++        fprintf(stderr, "[CUDA] cuGetProcAddress_v2(%s, %d, %llu): status=%d\n", symbol, version, flags, result);
++    // CUDA 12+ reports missing symbols through NULL and the query status.
++    return (CUresult)0;
++}
++
++CUresult cuGetProcAddress(const char *symbol, void **pfn, int version,
++                         unsigned long long flags) {
++    int status;
++    CUresult ret = cuGetProcAddress_v2(symbol, pfn, version, flags, &status);
++    if (ret) return ret;
++    return status == 0 ? (CUresult)0 : (CUresult)500;
++}

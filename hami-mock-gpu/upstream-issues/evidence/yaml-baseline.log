@@ -1,0 +1,4 @@
+count=1
+enumerated=0 returned_index=1 minor=1
+roundtrip_ret=2 same_handle=0
+FAIL: returned index does not resolve to the same device

@@ -1,0 +1,20 @@
+[
+  {
+    "case": "index0",
+    "status": "PASS",
+    "detail": "0, GPU-12345678-1234-1234-1234-123456780000, 4096 MiB\n",
+    "seconds": 1.6
+  },
+  {
+    "case": "index1",
+    "status": "FAIL",
+    "detail": "1, GPU-12345678-1234-1234-1234-123456780001, 40960 MiB\n",
+    "seconds": 2.6
+  },
+  {
+    "case": "cuda-vectoradd",
+    "status": "FAIL",
+    "detail": "[HAMI-core ERROR (pid:1 thread=134180624609280 hook.c:405)]: Hijack failed: cuGetProcAddress_v2 is NULL\n",
+    "seconds": 3.7
+  }
+]

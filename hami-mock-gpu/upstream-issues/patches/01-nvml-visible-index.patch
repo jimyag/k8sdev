@@ -1,0 +1,118 @@
+diff --git a/pkg/gpu/mocknvml/engine/device.go b/pkg/gpu/mocknvml/engine/device.go
+index d763da7..da8cd7a 100644
+--- a/pkg/gpu/mocknvml/engine/device.go
++++ b/pkg/gpu/mocknvml/engine/device.go
+@@ -46,6 +46,7 @@ type ConfigurableDevice struct {
+ 	*dgxa100.Device
+ 	fabric      *NodeFabric
+ 	index       int
++	nvmlIndex   atomic.Int64
+ 	minorNumber int
+ 
+ 	// baseConfig is the pristine, merged (defaults+per-device) YAML config.
+@@ -100,6 +101,8 @@ func NewConfigurableDevice(index int, baseDevice *mockserver.Device, config *Dev
+ 		baseConfig:  config,
+ 	}
+ 
++	dev.nvmlIndex.Store(int64(index))
++
+ 	// Override base device properties from config
+ 	applyDeviceBaseOverrides(dev, config)
+ 
+@@ -430,8 +433,9 @@ func (d *ConfigurableDevice) GetIndex() (int, nvml.Return) {
+ 	if ret := d.handleLookupReturn(); ret != nvml.SUCCESS {
+ 		return 0, ret
+ 	}
+-	debugLog("[NVML] nvmlDeviceGetIndex -> %d\n", d.index)
+-	return d.index, nvml.SUCCESS
++	index := int(d.nvmlIndex.Load())
++	debugLog("[NVML] nvmlDeviceGetIndex -> %d\n", index)
++	return index, nvml.SUCCESS
+ }
+ 
+ // GetUUID returns the device UUID. Overrides the embedded dgxa100.Device
+@@ -2501,3 +2505,19 @@ func (s *MockServer) isDeviceVisible(deviceIndex int) bool {
+ 	}
+ 	return slices.Contains(s.visibleDevices, deviceIndex)
+ }
++
++// setVisibleDevices keeps enumeration indices consistent without changing physical
++// device identity (minor number, PCI address, or topology index).
++func (s *MockServer) setVisibleDevices(visible []int) {
++	s.visibleDevices = visible
++	for physical, d := range s.configurableDevices {
++		if d == nil {
++			continue
++		}
++		index := physical
++		if visible != nil {
++			index = slices.Index(visible, physical)
++		}
++		d.nvmlIndex.Store(int64(index))
++	}
++}
+diff --git a/pkg/gpu/mocknvml/engine/engine.go b/pkg/gpu/mocknvml/engine/engine.go
+index 9099298..d908043 100644
+--- a/pkg/gpu/mocknvml/engine/engine.go
++++ b/pkg/gpu/mocknvml/engine/engine.go
+@@ -98,7 +98,7 @@ func (e *Engine) Init() nvml.Return {
+ 	// only the allocated GPUs (e.g. /dev/nvidia0 but not /dev/nvidia1-7),
+ 	// filter the visible device set to match. This mimics real NVML behavior
+ 	// where cgroup device permissions limit GPU visibility per container.
+-	server.visibleDevices = detectVisibleDevices(e.config.NumDevices)
++	server.setVisibleDevices(detectVisibleDevices(e.config.NumDevices))
+ 
+ 	e.server = server
+ 	e.initCount = 1
+@@ -629,7 +629,7 @@ func (e *Engine) AnyDeviceLost() bool {
+ // engine's server. Pass nil to disable filtering. Only use in tests.
+ func (e *Engine) SetVisibleDevicesForTesting(visible []int) {
+ 	if e.server != nil {
+-		e.server.visibleDevices = visible
++		e.server.setVisibleDevices(visible)
+ 	}
+ }
+ 
+diff --git a/pkg/gpu/mocknvml/engine/engine_test.go b/pkg/gpu/mocknvml/engine/engine_test.go
+index 612fb17..dd5f3a6 100644
+--- a/pkg/gpu/mocknvml/engine/engine_test.go
++++ b/pkg/gpu/mocknvml/engine/engine_test.go
+@@ -662,3 +662,38 @@ func pciInfoBusIdString(pci nvml.PciInfo) string {
+ 	s += sSb553.String()
+ 	return s
+ }
++
++// TestVisibility_IndexRoundTrip checks enumeration independently of physical identity.
++func TestVisibility_IndexRoundTrip(t *testing.T) {
++	for _, visible := range [][]int{nil, {0}, {1}, {1, 3}, {2, 3}} {
++		e := NewEngine(&Config{NumDevices: 4, DriverVersion: "550.54.15"})
++		require.Equal(t, nvml.SUCCESS, e.Init())
++		e.SetVisibleDevicesForTesting(visible)
++		count, ret := e.DeviceGetCount()
++		require.Equal(t, nvml.SUCCESS, ret)
++		for i := 0; i < count; i++ {
++			h, ret := e.DeviceGetHandleByIndex(i)
++			require.Equal(t, nvml.SUCCESS, ret)
++			d := e.LookupDevice(h)
++			index, ret := d.GetIndex()
++			require.Equal(t, nvml.SUCCESS, ret)
++			require.Equal(t, i, index, "visible=%v", visible)
++			roundTrip, ret := e.DeviceGetHandleByIndex(index)
++			require.Equal(t, nvml.SUCCESS, ret)
++			require.Equal(t, h, roundTrip)
++			physical := i
++			if visible != nil {
++				physical = visible[i]
++			}
++			minor, ret := d.GetMinorNumber()
++			require.Equal(t, nvml.SUCCESS, ret)
++			require.Equal(t, physical, minor)
++			uuid, ret := d.GetUUID()
++			require.Equal(t, nvml.SUCCESS, ret)
++			byUUID, ret := e.DeviceGetHandleByUUID(uuid)
++			require.Equal(t, nvml.SUCCESS, ret)
++			require.Equal(t, h, byUUID)
++		}
++		require.Equal(t, nvml.SUCCESS, e.Shutdown())
++	}
++}

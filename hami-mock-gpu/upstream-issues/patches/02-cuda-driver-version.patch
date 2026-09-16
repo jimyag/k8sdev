@@ -1,0 +1,13 @@
+diff --git a/pkg/gpu/mockcuda/bridge/cuda.go b/pkg/gpu/mockcuda/bridge/cuda.go
+index 6915774..384ceb7 100644
+--- a/pkg/gpu/mockcuda/bridge/cuda.go
++++ b/pkg/gpu/mockcuda/bridge/cuda.go
+@@ -197,3 +197,8 @@ func cudaRuntimeGetVersion(runtimeVersion *C.int) C.cudaError_t {
+ 	*runtimeVersion = C.int(ver)
+ 	return C.cudaSuccess
+ }
++
++//export cuDriverGetVersion
++func cuDriverGetVersion(driverVersion *C.int) C.CUresult {
++	return cudaDriverGetVersion(driverVersion)
++}

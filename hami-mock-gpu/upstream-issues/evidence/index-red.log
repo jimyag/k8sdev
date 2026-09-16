@@ -1,0 +1,11 @@
+--- FAIL: TestVisibility_IndexRoundTrip (0.00s)
+    engine_test.go:680: 
+        	Error Trace:	/work/pkg/gpu/mocknvml/engine/engine_test.go:680
+        	Error:      	Not equal: 
+        	            	expected: 0
+        	            	actual  : 1
+        	Test:       	TestVisibility_IndexRoundTrip
+        	Messages:   	visible=[1]
+FAIL
+FAIL	github.com/NVIDIA/k8s-test-infra/pkg/gpu/mocknvml/engine	0.005s
+FAIL

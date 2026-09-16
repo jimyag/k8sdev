@@ -1,0 +1,4 @@
+[CUDA] cudaDriverGetVersion -> 12080
+[CUDA] cuInit(0) -> SUCCESS
+Failed to allocate device vector A (error code API call is not supported in the installed CUDA driver)!
+[Vector addition of 50000 elements]

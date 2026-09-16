@@ -1,0 +1,86 @@
+# Requires a node with the mock NVML library already installed.
+# Adjust nodeSelector and hostPath for your cluster.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nvml-index-repro
+  namespace: hami-tests
+data:
+  nvidia1: ""
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nvml-index-repro
+  namespace: hami-tests
+spec:
+  restartPolicy: Never
+  nodeSelector:
+    kubernetes.io/hostname: hami-test-worker
+  containers:
+    - name: probe
+      image: python:3.12-slim-bookworm
+      env:
+        - name: MOCK_NVML_NUM_DEVICES
+          value: "2"
+      command: [python3, -u, -c]
+      args:
+        - |
+          import ctypes as C
+          import sys
+
+          lib = C.CDLL("/opt/mock/libnvidia-ml.so.1")
+          def function(name, *args):
+              fn = getattr(lib, name)
+              fn.argtypes = list(args)
+              fn.restype = C.c_int
+              return fn
+
+          uintp, handlep = C.POINTER(C.c_uint), C.POINTER(C.c_void_p)
+          init = function("nvmlInit_v2")
+          shutdown = function("nvmlShutdown")
+          count = function("nvmlDeviceGetCount_v2", uintp)
+          get = function("nvmlDeviceGetHandleByIndex_v2", C.c_uint, handlep)
+          index = function("nvmlDeviceGetIndex", C.c_void_p, uintp)
+          minor = function("nvmlDeviceGetMinorNumber", C.c_void_p, uintp)
+          def check(ret):
+              if ret != 0:
+                  raise RuntimeError(f"NVML call failed: {ret}")
+
+          check(init())
+          try:
+              n = C.c_uint()
+              check(count(C.byref(n)))
+              print(f"count={n.value}")
+              if n.value != 1:
+                  raise RuntimeError("Expected one visible device; check the mock configuration")
+              h, back = C.c_void_p(), C.c_void_p()
+              idx, physical_minor = C.c_uint(), C.c_uint()
+              check(get(0, C.byref(h)))
+              check(index(h, C.byref(idx)))
+              check(minor(h, C.byref(physical_minor)))
+              ret = get(idx.value, C.byref(back))
+              same = ret == 0 and h.value == back.value
+              print(f"enumerated=0 returned_index={idx.value} minor={physical_minor.value}")
+              print(f"roundtrip_ret={ret} same_handle={int(same)}")
+              passed = same and physical_minor.value == 1
+              print("PASS" if passed else "FAIL: returned index does not resolve to the same device")
+              sys.exit(0 if passed else 1)
+          finally:
+              check(shutdown())
+      volumeMounts:
+        - name: mock-library
+          mountPath: /opt/mock/libnvidia-ml.so.1
+          readOnly: true
+        - name: visible-device
+          mountPath: /dev/nvidia1
+          subPath: nvidia1
+          readOnly: true
+  volumes:
+    - name: mock-library
+      hostPath:
+        path: /var/lib/nvml-mock/driver/usr/lib64/libnvidia-ml.so.1
+        type: File
+    - name: visible-device
+      configMap:
+        name: nvml-index-repro

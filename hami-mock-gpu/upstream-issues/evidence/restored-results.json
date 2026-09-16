@@ -1,0 +1,20 @@
+[
+  {
+    "case": "index1",
+    "status": "FAIL",
+    "detail": "1, GPU-12345678-1234-1234-1234-123456780001, 40960 MiB\n",
+    "seconds": 2.7
+  },
+  {
+    "case": "discovery",
+    "status": "PASS",
+    "detail": "2 nodes x 2 unique A100 40960 MiB; each node advertises 20 shares",
+    "seconds": 0.0
+  },
+  {
+    "case": "basic",
+    "status": "PASS",
+    "detail": "/usr/local/vgpu/libvgpu.so\n4096m 25\nGPU-22345678-1234-1234-1234-123456780001, 40960 MiB\n",
+    "seconds": 2.9
+  }
+]
