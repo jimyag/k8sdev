@@ -1,0 +1,36 @@
+# 实验资源放在独立命名空间，并让该命名空间使用专用 Kube-OVN Subnet。
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rwo-rwx-test
+  annotations:
+    # Kube-OVN 会为该命名空间内的 Pod 选择这个逻辑交换机。
+    ovn.kubernetes.io/logical_switch: rwo-rwx-subnet
+---
+# 为虚拟机网络创建独立 VPC。
+apiVersion: kubeovn.io/v1
+kind: Vpc
+metadata:
+  name: rwo-rwx-vpc
+spec:
+  # 只允许实验命名空间使用该 VPC。
+  namespaces:
+  - rwo-rwx-test
+---
+# 为虚拟机和验证 Pod 创建 IPv4 Subnet。
+apiVersion: kubeovn.io/v1
+kind: Subnet
+metadata:
+  name: rwo-rwx-subnet
+spec:
+  protocol: IPv4
+  provider: ovn
+  vpc: rwo-rwx-vpc
+  namespaces:
+  - rwo-rwx-test
+  cidrBlock: 10.251.0.0/24
+  gateway: 10.251.0.1
+  # 避免网关和保留地址被自动分配给实验 Pod。
+  excludeIps:
+  - 10.251.0.1..10.251.0.10
+  natOutgoing: true

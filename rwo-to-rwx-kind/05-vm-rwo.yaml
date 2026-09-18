@@ -1,0 +1,53 @@
+# 转换前的 VM 直接引用 RWO PVC，用于证明普通热迁移会被拒绝。
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: rwo-rwx-vm
+  namespace: rwo-rwx-test
+spec:
+  runStrategy: Always
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: rwo-rwx-vm
+      annotations:
+        # Kube-OVN 允许 bridge Pod 网络在迁移时切换端口。
+        kubevirt.io/allow-pod-bridge-network-live-migration: "true"
+    spec:
+      evictionStrategy: LiveMigrate
+      domain:
+        resources:
+          requests:
+            memory: 256Mi
+        devices:
+          interfaces:
+          - name: default
+            bridge: {}
+          disks:
+          - name: containerdisk
+            disk:
+              bus: virtio
+          - name: datadisk
+            disk:
+              bus: virtio
+          - name: cloudinitdisk
+            disk:
+              bus: virtio
+      networks:
+      - name: default
+        pod: {}
+      volumes:
+      - name: containerdisk
+        containerDisk:
+          image: quay.io/kubevirt/cirros-container-disk-demo:latest
+      - name: datadisk
+        persistentVolumeClaim:
+          claimName: rwo-rwx-disk
+      - name: cloudinitdisk
+        cloudInitNoCloud:
+          # 只用于实验登录，生产环境不要在 YAML 中放明文密码。
+          userData: |
+            #cloud-config
+            password: gocubsgo
+            chpasswd: { expire: false }
+            ssh_pwauth: true

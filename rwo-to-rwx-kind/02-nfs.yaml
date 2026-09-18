@@ -1,0 +1,58 @@
+# NFS 只用于 kind 中模拟“同一底层数据仍可被复用”的共享存储。
+# 它不能替代生产环境的 Ceph CSI/RBD 验证。
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rwo-rwx-nfs
+---
+# 在集群内运行一个临时 NFS 服务，数据随实验集群销毁。
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nfs-server
+  namespace: rwo-rwx-nfs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nfs-server
+  template:
+    metadata:
+      labels:
+        app: nfs-server
+    spec:
+      containers:
+      - name: nfs-server
+        image: itsthenetwork/nfs-server-alpine:12
+        # NFS server 需要在容器内操作内核文件系统接口。
+        securityContext:
+          privileged: true
+        env:
+        - name: SHARED_DIRECTORY
+          # 该目录是本实验唯一的共享数据根目录。
+          value: /exports
+        ports:
+        - name: nfs
+          containerPort: 2049
+        volumeMounts:
+        - name: exports
+          mountPath: /exports
+      volumes:
+      # emptyDir 只提供实验生命周期内的临时后端。
+      - name: exports
+        emptyDir: {}
+---
+# 用固定 ClusterIP 让 kind 节点挂载 NFS 时不依赖集群 DNS。
+apiVersion: v1
+kind: Service
+metadata:
+  name: nfs-server
+  namespace: rwo-rwx-nfs
+spec:
+  clusterIP: 10.96.201.201
+  selector:
+    app: nfs-server
+  ports:
+  - name: nfs
+    port: 2049
+    targetPort: 2049

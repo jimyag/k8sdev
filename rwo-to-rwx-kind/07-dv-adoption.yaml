@@ -1,0 +1,23 @@
+# 新 DataVolume 在创建时接管已经存在的 RWX PVC。
+# Claim Adoption 只恢复 DataVolume -> PVC 的管理关系，不复制或格式化已有数据。
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: rwo-rwx-disk
+  namespace: rwo-rwx-test
+  annotations:
+    # 目标 PVC 已先创建，因此 annotation 必须出现在创建 DV 的请求中。
+    cdi.kubevirt.io/allowClaimAdoption: "true"
+spec:
+  # blank 只描述 DV 的常规源类型；已有 PVC 被接管后不应启动导入流程。
+  source:
+    blank: {}
+  pvc:
+    accessModes:
+    - ReadWriteMany
+    volumeMode: Filesystem
+    storageClassName: ""
+    volumeName: rwo-rwx-disk-pv
+    resources:
+      requests:
+        storage: 1Gi

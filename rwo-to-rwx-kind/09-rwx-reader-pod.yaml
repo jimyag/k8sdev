@@ -1,0 +1,28 @@
+# 在 PVC 重建后从另一个 worker 读取哨兵文件，证明数据仍来自同一个后端路径。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: check-rwx-disk
+  namespace: rwo-rwx-test
+spec:
+  restartPolicy: Never
+  # 让校验尽量落到与原 RWO seed Pod 不同的 worker。
+  nodeSelector:
+    kubernetes.io/hostname: rwo-rwx-lab-worker2
+  containers:
+  - name: check
+    image: docker.io/library/busybox:1.36
+    imagePullPolicy: IfNotPresent
+    command:
+    - /bin/sh
+    - -ec
+    - |
+      cat /data/sentinel.txt
+      sha256sum /data/sentinel.txt
+    volumeMounts:
+    - name: disk
+      mountPath: /data
+  volumes:
+  - name: disk
+    persistentVolumeClaim:
+      claimName: rwo-rwx-disk

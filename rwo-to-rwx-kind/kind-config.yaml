@@ -1,0 +1,30 @@
+# 创建一个 control-plane 和两个 worker，保证 KubeVirt 有跨节点迁移的目标。
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: rwo-rwx-lab
+networking:
+  # 由 Kube-OVN 接管 CNI，避免同时运行 kindnet 和 Kube-OVN。
+  disableDefaultCNI: true
+  # 为 Kube-OVN 预留 Pod 网段。
+  podSubnet: 10.16.0.0/16
+  # 为 Kubernetes Service 预留网段。
+  serviceSubnet: 10.96.0.0/12
+nodes:
+- role: control-plane
+  image: kindest/node:v1.35.0
+  extraMounts:
+  # 将宿主机 KVM 设备传入 control-plane，便于检查 KubeVirt 环境。
+  - hostPath: /dev/kvm
+    containerPath: /dev/kvm
+- role: worker
+  image: kindest/node:v1.35.0
+  extraMounts:
+  # 将宿主机 KVM 设备传入第一个 worker。
+  - hostPath: /dev/kvm
+    containerPath: /dev/kvm
+- role: worker
+  image: kindest/node:v1.35.0
+  extraMounts:
+  # 将宿主机 KVM 设备传入第二个 worker。
+  - hostPath: /dev/kvm
+    containerPath: /dev/kvm

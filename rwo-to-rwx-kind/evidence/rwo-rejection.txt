@@ -1,0 +1,15 @@
+RWO 阶段 PVC：
+
+NAME                                 STATUS   VOLUME            CAPACITY   ACCESS MODES   STORAGECLASS     VOLUMEMODE
+persistentvolumeclaim/rwo-rwx-disk   Bound    rwo-rwx-disk-pv   1Gi        RWO            rwo-rwx-static   Filesystem
+
+RWO VMI 条件：
+
+Ready=True reason=
+LiveMigratable=False reason=DisksNotLiveMigratable message=cannot migrate VMI: PVC rwo-rwx-disk is not shared, live migration requires that all PVCs must be shared (using ReadWriteMany access mode)
+StorageLiveMigratable=True reason= message=
+
+迁移命令输出：
+
+Error migrating VirtualMachine Internal error occurred: admission webhook "migration-create-validator.kubevirt.io" denied the request: Cannot migrate VMI, Reason: DisksNotLiveMigratable, Message: cannot migrate VMI: PVC rwo-rwx-disk is not shared, live migration requires that all PVCs must be shared (using ReadWriteMany access mode)
+virtctl_rc=1

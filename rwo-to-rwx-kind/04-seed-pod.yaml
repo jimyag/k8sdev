@@ -1,0 +1,30 @@
+# 先把数据写入 RWO PVC，作为转换前后的不变量。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: seed-rwo-disk
+  namespace: rwo-rwx-test
+spec:
+  restartPolicy: Never
+  # 让 RWO 卷先明确挂载到第一个 worker。
+  nodeSelector:
+    kubernetes.io/hostname: rwo-rwx-lab-worker
+  containers:
+  - name: seed
+    # 使用完整引用，便于和 kind 节点预加载的镜像名称匹配。
+    image: docker.io/library/busybox:1.36
+    imagePullPolicy: IfNotPresent
+    command:
+    - /bin/sh
+    - -ec
+    - |
+      printf '%s\n' 'rwo-rwx-sentinel-20260919' > /data/sentinel.txt
+      sha256sum /data/sentinel.txt
+      sync
+    volumeMounts:
+    - name: disk
+      mountPath: /data
+  volumes:
+  - name: disk
+    persistentVolumeClaim:
+      claimName: rwo-rwx-disk

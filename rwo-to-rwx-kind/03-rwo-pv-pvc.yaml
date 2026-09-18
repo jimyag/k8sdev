@@ -1,0 +1,41 @@
+# 这个 PV 代表“历史 RWO 云盘”的 Kubernetes 元数据。
+# Retain 表示删除 PVC 后保留 PV 对象背后的数据资产；NFS 路径在本实验中充当 RBD volumeHandle。
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: rwo-rwx-disk-pv
+spec:
+  capacity:
+    # 转换前后保持容量不变。
+    storage: 1Gi
+  accessModes:
+  # 初始状态故意设置为 RWO。
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+  # 使用静态 PV，避免动态 provisioner 自动删除实验后端。
+  storageClassName: rwo-rwx-static
+  mountOptions:
+  # 使用 NFSv4 挂载固定 ClusterIP 暴露的 NFS 服务。
+  - vers=4
+  nfs:
+    server: 10.96.201.201
+    # NFS 服务将 /exports 作为 NFSv4 pseudo-root 导出。
+    path: /
+    readOnly: false
+---
+# 通过固定 volumeName 绑定上面的历史 RWO PV。
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: rwo-rwx-disk
+  namespace: rwo-rwx-test
+spec:
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: rwo-rwx-static
+  volumeName: rwo-rwx-disk-pv
+  resources:
+    requests:
+      storage: 1Gi
