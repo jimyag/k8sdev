@@ -1,5 +1,5 @@
 # 这个 PV 代表“历史 RWO 云盘”的 Kubernetes 元数据。
-# Retain 表示删除 PVC 后保留 PV 对象背后的数据资产；NFS 路径在本实验中充当 RBD volumeHandle。
+# Retain 禁止回收流程自动处理后端；静态 NFS PV 的数据实际位于 server/path，删除 PV 对象不会删除该路径。
 apiVersion: v1
 kind: PersistentVolume
 metadata:

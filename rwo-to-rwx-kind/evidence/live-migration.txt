@@ -1,31 +1,31 @@
 转换后的 VM：
 
 VMI phase=Running
-VMI node=rwo-rwx-lab-worker2（迁移前）
-VMI IP=10.251.0.14
+VMI node=rwo-rwx-lab-worker（迁移前）
+VMI IP=10.251.0.19
 VMI LiveMigratable=True
 PVC access mode=RWX
 DataVolume phase=Succeeded
 
 VMIM：
 
-name=kubevirt-migrate-vm-bvxtq
+name=kubevirt-migrate-vm-jcrtl
 phase=Succeeded
 completed=true
-sourceNode=rwo-rwx-lab-worker2
-targetNode=rwo-rwx-lab-worker
-startTimestamp=2026-09-18T16:42:56Z
-endTimestamp=2026-09-18T16:42:57Z
+sourceNode=rwo-rwx-lab-worker
+targetNode=rwo-rwx-lab-worker2
+startTimestamp=2026-09-19T02:10:13Z
+endTimestamp=2026-09-19T02:10:15Z
 phases=Pending,Scheduling,Scheduled,PreparingTarget,TargetReady,Running,Succeeded
 
 迁移后：
 
 VMI phase=Running
-VMI node=rwo-rwx-lab-worker
-VMI IP=10.251.0.14
+VMI node=rwo-rwx-lab-worker2
+VMI IP=10.251.0.19
 VMI LiveMigratable=True
-virt-launcher target Pod=virt-launcher-rwo-rwx-vm-98hlf
-Kube-OVN IP object：rwo-rwx-vm.rwo-rwx-test -> 10.251.0.14 -> rwo-rwx-lab-worker -> rwo-rwx-subnet
+virt-launcher target Pod=virt-launcher-rwo-rwx-vm-knslh
+Kube-OVN IP object：rwo-rwx-vm.rwo-rwx-test -> 10.251.0.19 -> rwo-rwx-lab-worker2 -> rwo-rwx-subnet
 
 迁移完成后再次从 RWX PVC 读取：
 

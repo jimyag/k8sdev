@@ -1,12 +1,9 @@
-实验主机：m6
 集群：kind-rwo-rwx-lab
 kind：v0.31.0
 Kubernetes：v1.35.0，1 个 control-plane、2 个 worker
 Kube-OVN：v1.14.3
 KubeVirt：v1.9.0
 CDI：v1.66.0
-宿主机内核：6.8.0-139-generic
-虚拟化设备：三个 kind 节点均挂载 /dev/kvm
 
 Kube-OVN 组件：ovs-ovn=3/3，kube-ovn-cni=3/3，kube-ovn-controller=Running。
 Kube-OVN Controller 参数包含 --enable-live-migration-optimize=true。

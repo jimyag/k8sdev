@@ -3,14 +3,20 @@ RWO seed Pod 写入：
 rwo-rwx-sentinel-20260919
 8aa6c4c3f25107038ce031ffcd90a83071388e315b2d3049666e900fcc975b70  /data/sentinel.txt
 
-删除 PVC 后 PV：
+转换前 PV/PVC：
 
-NAME              CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS     CLAIM                       STORAGECLASS     VOLUMEMODE
-rwo-rwx-disk-pv   1Gi        RWO            Retain           Released   rwo-rwx-test/rwo-rwx-disk   rwo-rwx-static   Filesystem
+PV: rwo-rwx-disk-pv   Bound   ReadWriteOnce   Retain   Filesystem   nfs=10.96.201.201:/
+PVC: rwo-rwx-disk      Bound   ReadWriteOnce   rwo-rwx-disk-pv     Filesystem
 
-PV/PVC 重建后：
+删除 PVC/PV：
 
-PV phase=Bound modes=ReadWriteMany claim=rwo-rwx-disk
+persistentvolumeclaim "rwo-rwx-disk" deleted from rwo-rwx-test
+persistentvolume "rwo-rwx-disk-pv" deleted
+没有输出（旧 PV 对象已删除）
+
+使用相同的 NFS server/path 重建 PV/PVC 后：
+
+PV phase=Bound modes=ReadWriteMany volumeMode=Filesystem server=10.96.201.201 path=/ claim=rwo-rwx-disk
 PVC phase=Bound modes=ReadWriteMany volume=rwo-rwx-disk-pv
 
 在第二个 worker 读取重建后的 PVC：

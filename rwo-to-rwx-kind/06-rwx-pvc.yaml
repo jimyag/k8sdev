@@ -1,4 +1,30 @@
-# 转换后重新创建同名 PVC，复用同一个静态 PV 和同一个 NFS 后端路径。
+# 转换后重新创建静态 PV，复用同一个 NFS 后端路径。
+# 旧 PV 对象已经删除；这里复用的是 NFS 中的数据，不是旧 PV 对象。
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: rwo-rwx-disk-pv
+spec:
+  capacity:
+    # 转换前后保持容量不变。
+    storage: 1Gi
+  accessModes:
+  # 新 PV 声明允许多个节点同时挂载。
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+  # 继续使用静态 PV，不让动态 provisioner 创建其他后端。
+  storageClassName: rwo-rwx-static
+  mountOptions:
+  # 使用 NFSv4 挂载固定 ClusterIP 暴露的 NFS 服务。
+  - vers=4
+  nfs:
+    server: 10.96.201.201
+    # 这里必须与旧 PV 完全一致，才能复用原有数据。
+    path: /
+    readOnly: false
+---
+# 通过固定 volumeName 绑定刚刚重建的 RWX PV。
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -6,7 +32,7 @@ metadata:
   namespace: rwo-rwx-test
 spec:
   accessModes:
-  # PVC 的访问模式不能原地修改，所以这里必须创建新对象。
+  # PVC 的访问模式不能原地修改，所以这里创建新对象。
   - ReadWriteMany
   volumeMode: Filesystem
   storageClassName: rwo-rwx-static
