@@ -1,0 +1,52 @@
+# 迁移目标 VM：只把数据盘从源 DataVolume 改为目标 DataVolume。
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: volume-migration-dv-vm
+  namespace: rwo-volume-migration-dv
+spec:
+  runStrategy: Always
+  updateVolumesStrategy: Migration
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: volume-migration-dv-vm
+      annotations:
+        kubevirt.io/allow-pod-bridge-network-live-migration: "true"
+    spec:
+      evictionStrategy: LiveMigrate
+      domain:
+        resources:
+          requests:
+            memory: 256Mi
+        devices:
+          interfaces:
+          - name: default
+            bridge: {}
+          disks:
+          - name: containerdisk
+            disk:
+              bus: virtio
+          - name: datadisk
+            disk:
+              bus: virtio
+          - name: cloudinitdisk
+            disk:
+              bus: virtio
+      networks:
+      - name: default
+        pod: {}
+      volumes:
+      - name: containerdisk
+        containerDisk:
+          image: quay.io/kubevirt/cirros-container-disk-demo:latest
+      - name: datadisk
+        dataVolume:
+          name: volume-migration-dv-target
+      - name: cloudinitdisk
+        cloudInitNoCloud:
+          userData: |
+            #cloud-config
+            password: gocubsgo
+            chpasswd: { expire: false }
+            ssh_pwauth: true

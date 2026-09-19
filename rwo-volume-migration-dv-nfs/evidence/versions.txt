@@ -1,0 +1,7 @@
+kind：v0.31.0
+Kubernetes：v1.35.0
+KubeVirt：v1.9.0
+CDI：v1.66.0
+Kube-OVN：v1.14.3
+
+边界：NFS 只模拟可跨节点访问的远端后端；PV/PVC 和 DataVolume 仍按 RWO 使用，不等价于具体 CSI 驱动验证。

@@ -1,0 +1,9 @@
+目标 DV：Succeeded
+目标 PVC：Bound、ReadWriteOnce、Filesystem
+VM runStrategy：Halted
+
+迁移完成后 VM 的 LiveMigratable 条件：False
+reason：DisksNotLiveMigratable
+message：PVC volume-migration-dv-target is not shared, live migration requires that all PVCs must be shared (using ReadWriteMany access mode)
+
+结论：DataVolume Claim Adoption 管理 PVC 的归属和就绪状态，KubeVirt 仍负责运行中的 VM 卷迁移；它不会把 RWO 目标卷变成 RWX。

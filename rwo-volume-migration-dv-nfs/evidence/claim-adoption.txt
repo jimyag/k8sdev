@@ -1,0 +1,10 @@
+源 PVC：Bound
+源 DV：Succeeded
+源 PVC OwnerReference：DataVolume/volume-migration-dv-source/controller=true
+
+目标 PVC：Bound
+目标 DV：Succeeded
+目标 PVC OwnerReference：DataVolume/volume-migration-dv-target/controller=true
+
+目标 DV 进入 Succeeded 后没有创建 CDI importer Pod。
+Claim Adoption 没有格式化或覆盖已有目标 PVC 数据。

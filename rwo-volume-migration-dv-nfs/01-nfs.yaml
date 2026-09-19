@@ -1,0 +1,68 @@
+# 独立命名空间，隔离 DV 版本实验资源。
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rwo-volume-migration-dv
+---
+# 用 NFS 模拟可以跨节点访问的远端后端；PV/PVC 仍声明为 RWO。
+# 这只验证 KubeVirt 和 CDI 的资源流程，不等价于具体 CSI 驱动验证。
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nfs-server
+  namespace: rwo-volume-migration-dv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nfs-server
+  template:
+    metadata:
+      labels:
+        app: nfs-server
+    spec:
+      initContainers:
+      # 为源、目标静态 PV 创建两个独立的后端路径。
+      - name: prepare-export
+        image: busybox:1.36
+        command:
+        - sh
+        - -c
+        - mkdir -p /exports/source /exports/target && chmod 0777 /exports/source /exports/target
+        volumeMounts:
+        - name: exports
+          mountPath: /exports
+      containers:
+      - name: nfs-server
+        image: itsthenetwork/nfs-server-alpine:12
+        # NFS 服务需要在容器内操作内核文件系统接口。
+        securityContext:
+          privileged: true
+        env:
+        - name: SHARED_DIRECTORY
+          value: /exports
+        ports:
+        - name: nfs
+          containerPort: 2049
+        volumeMounts:
+        - name: exports
+          mountPath: /exports
+      volumes:
+      # 实验集群销毁后后端数据也会删除，不模拟生产持久化。
+      - name: exports
+        emptyDir: {}
+---
+# 固定 ClusterIP，避免静态 PV 挂载依赖集群 DNS。
+apiVersion: v1
+kind: Service
+metadata:
+  name: nfs-server
+  namespace: rwo-volume-migration-dv
+spec:
+  clusterIP: 10.96.202.203
+  selector:
+    app: nfs-server
+  ports:
+  - name: nfs
+    port: 2049
+    targetPort: 2049

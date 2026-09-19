@@ -1,0 +1,96 @@
+# 静态 PV/PVC 先独立创建，后续由同名 DataVolume 通过 Claim Adoption 接管 PVC。
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: rwo-volume-migration-dv-static
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: Immediate
+reclaimPolicy: Retain
+---
+# 源 PV：声明为 RWO，并固定到源 worker。
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: volume-migration-dv-source-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+  storageClassName: rwo-volume-migration-dv-static
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - rwo-rwx-lab-worker
+  mountOptions:
+  - vers=4
+  nfs:
+    server: 10.96.202.203
+    path: /source
+    readOnly: false
+---
+# 目标 PV：同样声明为 RWO，但固定到目标 worker。
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: volume-migration-dv-target-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+  storageClassName: rwo-volume-migration-dv-static
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - rwo-rwx-lab-worker2
+  mountOptions:
+  - vers=4
+  nfs:
+    server: 10.96.202.203
+    path: /target
+    readOnly: false
+---
+# 源 PVC，后续由同名源 DV 接管。
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: volume-migration-dv-source
+  namespace: rwo-volume-migration-dv
+spec:
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: rwo-volume-migration-dv-static
+  volumeName: volume-migration-dv-source-pv
+  resources:
+    requests:
+      storage: 1Gi
+---
+# 目标 PVC，先绑定已有目标 PV，再由同名目标 DV 接管。
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: volume-migration-dv-target
+  namespace: rwo-volume-migration-dv
+spec:
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: rwo-volume-migration-dv-static
+  volumeName: volume-migration-dv-target-pv
+  resources:
+    requests:
+      storage: 1Gi

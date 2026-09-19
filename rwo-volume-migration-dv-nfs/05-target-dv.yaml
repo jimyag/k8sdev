@@ -1,0 +1,21 @@
+# 目标 DV 必须与目标 PVC 同 namespace、同 name，才能执行 Claim Adoption。
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: volume-migration-dv-target
+  namespace: rwo-volume-migration-dv
+  annotations:
+    # 允许 CDI 接管已经 Bound 的目标 PVC。
+    cdi.kubevirt.io/allowClaimAdoption: "true"
+spec:
+  source:
+    # Claim Adoption 会跳过 importer 和数据初始化，保留 PVC 中已有内容。
+    blank: {}
+  storage:
+    accessModes:
+    - ReadWriteOnce
+    volumeMode: Filesystem
+    storageClassName: rwo-volume-migration-dv-static
+    resources:
+      requests:
+        storage: 1Gi

@@ -1,0 +1,27 @@
+# VM 停止后检查目标 PVC 中由 KubeVirt 使用的磁盘镜像。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: check-target
+  namespace: rwo-volume-migration-dv
+spec:
+  restartPolicy: Never
+  nodeSelector:
+    kubernetes.io/hostname: rwo-rwx-lab-worker2
+  containers:
+  - name: check
+    image: busybox:1.36
+    command:
+    - sh
+    - -c
+    - |
+      set -eu
+      ls -lh /data/disk.img
+      sha256sum /data/disk.img
+    volumeMounts:
+    - name: target
+      mountPath: /data
+  volumes:
+  - name: target
+    persistentVolumeClaim:
+      claimName: volume-migration-dv-target

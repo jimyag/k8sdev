@@ -1,0 +1,21 @@
+# 源 DV 与源 PVC 同名，通过 Claim Adoption 建立资源管理关系。
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: volume-migration-dv-source
+  namespace: rwo-volume-migration-dv
+  annotations:
+    # 允许 CDI 接管已经 Bound 的同名 PVC，不创建 importer Pod。
+    cdi.kubevirt.io/allowClaimAdoption: "true"
+spec:
+  source:
+    # Blank DV 在 Claim Adoption 场景中不会格式化或覆盖已有 PVC 数据。
+    blank: {}
+  storage:
+    accessModes:
+    - ReadWriteOnce
+    volumeMode: Filesystem
+    storageClassName: rwo-volume-migration-dv-static
+    resources:
+      requests:
+        storage: 1Gi

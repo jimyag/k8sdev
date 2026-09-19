@@ -1,0 +1,12 @@
+VM：volume-migration-dv-vm
+VMIM：kubevirt-workload-update-dhwxk
+VMIM phase：Succeeded
+source PVC：volume-migration-dv-source
+destination PVC：volume-migration-dv-target
+source access mode：ReadWriteOnce
+destination access mode：ReadWriteOnce
+source volume mode：Filesystem
+destination volume mode：Filesystem
+
+迁移完成后 VM 的 dataVolume.name：volume-migration-dv-target
+VM.status.volumeUpdateState.volumeMigrationState.migratedVolumes 已记录源、目标 PVC 的切换。
