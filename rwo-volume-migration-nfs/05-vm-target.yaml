@@ -1,0 +1,53 @@
+# 迁移目标 VM 规格，只把数据盘从源 PVC 改为目标 PVC。
+# updateVolumesStrategy=Migration 要求这个变化通过 KubeVirt 的卷迁移处理。
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: volume-migration-vm
+  namespace: rwo-volume-migration
+spec:
+  runStrategy: Always
+  updateVolumesStrategy: Migration
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: volume-migration-vm
+      annotations:
+        kubevirt.io/allow-pod-bridge-network-live-migration: "true"
+    spec:
+      evictionStrategy: LiveMigrate
+      domain:
+        resources:
+          requests:
+            memory: 256Mi
+        devices:
+          interfaces:
+          - name: default
+            bridge: {}
+          disks:
+          - name: containerdisk
+            disk:
+              bus: virtio
+          - name: datadisk
+            disk:
+              bus: virtio
+          - name: cloudinitdisk
+            disk:
+              bus: virtio
+      networks:
+      - name: default
+        pod: {}
+      volumes:
+      - name: containerdisk
+        containerDisk:
+          image: quay.io/kubevirt/cirros-container-disk-demo:latest
+      - name: datadisk
+        persistentVolumeClaim:
+          claimName: volume-migration-target
+      - name: cloudinitdisk
+        cloudInitNoCloud:
+          userData: |
+            #cloud-config
+            password: gocubsgo
+            chpasswd: { expire: false }
+            ssh_pwauth: true

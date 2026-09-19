@@ -1,0 +1,18 @@
+VMIM：kubevirt-workload-update-xbp7h
+label：kubevirt.io/volume-update-migration=volume-migration-vm
+phase：Succeeded
+start：2026-09-19T03:33:12Z
+end：2026-09-19T03:33:14Z
+sourceNode：rwo-rwx-lab-worker
+targetNode：rwo-rwx-lab-worker2
+sourcePod：virt-launcher-volume-migration-vm-8jbrq
+targetPod：virt-launcher-volume-migration-vm-9gqlj
+
+VM.status.volumeUpdateState：
+  volumeName：datadisk
+  sourcePVC：volume-migration-source
+  destinationPVC：volume-migration-target
+  sourceAccessMode：ReadWriteOnce
+  destinationAccessMode：ReadWriteOnce
+  sourceVolumeMode：Filesystem
+  destinationVolumeMode：Filesystem

@@ -1,0 +1,55 @@
+# 迁移前的 VM，数据盘引用源 PVC。
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: volume-migration-vm
+  namespace: rwo-volume-migration
+spec:
+  runStrategy: Always
+  # 更新 volumes 时由 KubeVirt 创建 Volume Migration，而不是直接替换卷。
+  updateVolumesStrategy: Migration
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: volume-migration-vm
+      annotations:
+        # Kube-OVN bridge 网络允许迁移时切换节点端口。
+        kubevirt.io/allow-pod-bridge-network-live-migration: "true"
+    spec:
+      evictionStrategy: LiveMigrate
+      domain:
+        resources:
+          requests:
+            memory: 256Mi
+        devices:
+          interfaces:
+          - name: default
+            bridge: {}
+          disks:
+          - name: containerdisk
+            disk:
+              bus: virtio
+          - name: datadisk
+            disk:
+              bus: virtio
+          - name: cloudinitdisk
+            disk:
+              bus: virtio
+      networks:
+      - name: default
+        pod: {}
+      volumes:
+      - name: containerdisk
+        containerDisk:
+          image: quay.io/kubevirt/cirros-container-disk-demo:latest
+      - name: datadisk
+        persistentVolumeClaim:
+          claimName: volume-migration-source
+      - name: cloudinitdisk
+        cloudInitNoCloud:
+          # 仅用于实验登录，生产环境不要在 YAML 中放明文密码。
+          userData: |
+            #cloud-config
+            password: gocubsgo
+            chpasswd: { expire: false }
+            ssh_pwauth: true

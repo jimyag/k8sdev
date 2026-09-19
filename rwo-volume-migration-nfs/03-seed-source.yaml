@@ -1,0 +1,27 @@
+# 用一次性 Pod 验证源 PVC 可以被节点挂载和写入；最终通过 disk.img 哈希检查卷迁移结果。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: seed-source
+  namespace: rwo-volume-migration
+spec:
+  restartPolicy: Never
+  nodeSelector:
+    kubernetes.io/hostname: rwo-rwx-lab-worker
+  containers:
+  - name: seed
+    image: busybox:1.36
+    command:
+    - sh
+    - -c
+    - |
+      set -eu
+      printf '%s\n' 'rwo-volume-migration-nfs' > /data/sentinel.txt
+      sha256sum /data/sentinel.txt
+    volumeMounts:
+    - name: source
+      mountPath: /data
+  volumes:
+  - name: source
+    persistentVolumeClaim:
+      claimName: volume-migration-source

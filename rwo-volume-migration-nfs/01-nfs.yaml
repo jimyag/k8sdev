@@ -1,0 +1,68 @@
+# 独立命名空间，避免与其他实验的 NFS 资源互相影响。
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rwo-volume-migration
+---
+# 用 NFS 服务模拟可从多个节点访问、但在 Kubernetes 中声明为 RWO 的远端后端。
+# 这只验证 KubeVirt 的 Volume Migration 流程，不等价于 Ceph CSI/RBD 验证。
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nfs-server
+  namespace: rwo-volume-migration
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nfs-server
+  template:
+    metadata:
+      labels:
+        app: nfs-server
+    spec:
+      initContainers:
+      # 预先创建源、目标两个导出目录，分别对应两块静态 PV 的后端路径。
+      - name: prepare-export
+        image: busybox:1.36
+        command:
+        - sh
+        - -c
+        - mkdir -p /exports/source /exports/target && chmod 0777 /exports/source /exports/target
+        volumeMounts:
+        - name: exports
+          mountPath: /exports
+      containers:
+      - name: nfs-server
+        image: itsthenetwork/nfs-server-alpine:12
+        # NFS server 需要在容器内操作内核文件系统接口。
+        securityContext:
+          privileged: true
+        env:
+        - name: SHARED_DIRECTORY
+          value: /exports
+        ports:
+        - name: nfs
+          containerPort: 2049
+        volumeMounts:
+        - name: exports
+          mountPath: /exports
+      volumes:
+      # 实验集群销毁后，NFS 后端数据也会删除；这里不模拟生产数据持久化。
+      - name: exports
+        emptyDir: {}
+---
+# 固定 ClusterIP，避免 PV 挂载依赖集群 DNS。
+apiVersion: v1
+kind: Service
+metadata:
+  name: nfs-server
+  namespace: rwo-volume-migration
+spec:
+  clusterIP: 10.96.202.202
+  selector:
+    app: nfs-server
+  ports:
+  - name: nfs
+    port: 2049
+    targetPort: 2049

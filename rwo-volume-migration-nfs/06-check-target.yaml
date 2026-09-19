@@ -1,0 +1,27 @@
+# VM 停止后挂载目标 PVC，验证复制后的 VM 磁盘镜像可以被读取。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: check-target
+  namespace: rwo-volume-migration
+spec:
+  restartPolicy: Never
+  nodeSelector:
+    kubernetes.io/hostname: rwo-rwx-lab-worker2
+  containers:
+  - name: check
+    image: busybox:1.36
+    command:
+    - sh
+    - -c
+    - |
+      set -eu
+      ls -lh /data/disk.img
+      sha256sum /data/disk.img
+    volumeMounts:
+    - name: target
+      mountPath: /data
+  volumes:
+  - name: target
+    persistentVolumeClaim:
+      claimName: volume-migration-target

@@ -1,0 +1,8 @@
+Pod：check-target
+phase：Succeeded
+node：rwo-rwx-lab-worker2
+file：/data/disk.img
+size：1.0G
+sha256：49bc20df15e412a64472421e13fe86ff1c5165e18b2afccf160d4dc19fe68a14
+
+源端和目标端 disk.img 的 SHA-256 相同。

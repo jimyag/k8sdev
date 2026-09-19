@@ -1,0 +1,7 @@
+kind：v0.31.0
+Kubernetes：v1.35.0
+KubeVirt：v1.9.0
+CDI：v1.66.0
+Kube-OVN：v1.14.3
+
+边界：本实验使用 NFS 模拟可跨节点访问的远端后端，PV/PVC 仍声明为 ReadWriteOnce；这不是 Ceph CSI/RBD 验证。

@@ -1,0 +1,7 @@
+NAME                         STATUS   CLAIM                     ACCESS          MODE         RECLAIM
+volume-migration-source-pv   Bound    volume-migration-source   ReadWriteOnce   Filesystem   Retain
+volume-migration-target-pv   Bound    volume-migration-target   ReadWriteOnce   Filesystem   Retain
+
+NAME                      STATUS   ACCESS          MODE         VOLUME
+volume-migration-source   Bound    ReadWriteOnce   Filesystem   volume-migration-source-pv
+volume-migration-target   Bound    ReadWriteOnce   Filesystem   volume-migration-target-pv

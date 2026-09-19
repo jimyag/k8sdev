@@ -1,0 +1,8 @@
+VM runStrategy：Halted
+PV/PVC：source 和 target 均为 Bound、ReadWriteOnce、Filesystem，PV reclaimPolicy 为 Retain。
+
+迁移完成后 VM 的 LiveMigratable 条件：False
+reason：DisksNotLiveMigratable
+message：PVC volume-migration-target is not shared, live migration requires that all PVCs must be shared (using ReadWriteMany access mode)
+
+结论：Volume Migration 可以把运行中 VM 的数据从 RWO 源 PVC 迁移到 RWO 目标 PVC，但不会把目标 PVC 的访问模式改成 RWX；目标仍为 RWO 时，后续普通 Live Migration 仍受限。

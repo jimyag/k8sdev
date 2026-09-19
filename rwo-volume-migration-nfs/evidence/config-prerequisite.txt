@@ -1,0 +1,6 @@
+KubeVirt CR：
+  spec.configuration.vmRolloutStrategy: LiveUpdate
+  spec.workloadUpdateStrategy.workloadUpdateMethods: [LiveMigrate]
+
+第一次只更新 VM 的目标 PVC 时，观察到 VolumesChange=True，但没有生成 VMIM。
+补齐上述配置、把 VM 恢复到源 PVC 并等待 VolumesChangeCancellation 后，再更新到目标 PVC，才生成并完成 Volume Migration。
