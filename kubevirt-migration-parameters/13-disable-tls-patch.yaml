@@ -1,0 +1,5 @@
+# 仅用于隔离实验：关闭迁移通道 TLS，生产环境不建议这样配置。
+spec:
+  configuration:
+    migrations:
+      disableTLS: true

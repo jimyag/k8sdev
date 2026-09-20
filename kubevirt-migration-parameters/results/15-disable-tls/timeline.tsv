@@ -1,0 +1,13 @@
+timestamp	phase	mode	node	policy
+2026-09-20T22:13:07,652427029+08:00	Scheduling	PreCopy	kv-migration-params-worker	50-bandwidth-low
+2026-09-20T22:13:09,846681288+08:00	Scheduling	PreCopy	kv-migration-params-worker	50-bandwidth-low
+2026-09-20T22:13:12,040856230+08:00	Running	PreCopy	kv-migration-params-worker	51-bandwidth-high
+2026-09-20T22:13:14,237636129+08:00	Running	PreCopy	kv-migration-params-worker	51-bandwidth-high
+2026-09-20T22:13:16,441373569+08:00	Running	PreCopy	kv-migration-params-worker	51-bandwidth-high
+2026-09-20T22:13:18,643268432+08:00	Running	PreCopy	kv-migration-params-worker	51-bandwidth-high
+2026-09-20T22:13:20,840593751+08:00	Running	PreCopy	kv-migration-params-worker	51-bandwidth-high
+2026-09-20T22:13:23,042405290+08:00	Running	PreCopy	kv-migration-params-worker	51-bandwidth-high
+2026-09-20T22:13:25,246657551+08:00	Running	PreCopy	kv-migration-params-worker	51-bandwidth-high
+2026-09-20T22:13:27,457048928+08:00	Running	PreCopy	kv-migration-params-worker	51-bandwidth-high
+2026-09-20T22:13:29,652093749+08:00	Running	PreCopy	kv-migration-params-worker	51-bandwidth-high
+2026-09-20T22:13:31,844019134+08:00	Succeeded	PreCopy	kv-migration-params-worker2	51-bandwidth-high

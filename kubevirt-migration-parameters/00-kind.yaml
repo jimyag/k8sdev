@@ -1,0 +1,21 @@
+# 创建 1 个 control-plane 和 2 个 worker，用于验证跨节点 KubeVirt 迁移。
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: kv-migration-params
+nodes:
+- role: control-plane
+  image: kindest/node:v1.35.0
+  extraMounts:
+  # 把宿主机 KVM 设备挂进 Kind 节点，避免使用软件模拟。
+  - hostPath: /dev/kvm
+    containerPath: /dev/kvm
+- role: worker
+  image: kindest/node:v1.35.0
+  extraMounts:
+  - hostPath: /dev/kvm
+    containerPath: /dev/kvm
+- role: worker
+  image: kindest/node:v1.35.0
+  extraMounts:
+  - hostPath: /dev/kvm
+    containerPath: /dev/kvm

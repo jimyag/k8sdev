@@ -1,0 +1,12 @@
+vm=migration-main
+profile=bandwidth-high
+current_claim=main-source
+next_claim=main-target
+before_node=kv-migration-params-worker
+before_uid=e6035b93-852d-42ab-ac23-99389902dc9d
+start_epoch=1789913581
+vmim=kubevirt-workload-update-22vlk
+phase=Succeeded
+after_node=kv-migration-params-worker2
+end_epoch=1789913611
+duration_seconds=30

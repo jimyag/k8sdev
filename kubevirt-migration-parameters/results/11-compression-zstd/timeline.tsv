@@ -1,0 +1,8 @@
+timestamp	phase	mode	node	policy
+2026-09-20T22:08:29,200851835+08:00	Scheduling	PreCopy	kv-migration-params-worker2	60-specific-policy
+2026-09-20T22:08:31,393708108+08:00	Scheduling	PreCopy	kv-migration-params-worker2	60-specific-policy
+2026-09-20T22:08:33,591402452+08:00	Running	PreCopy	kv-migration-params-worker2	80-compression-zstd
+2026-09-20T22:08:35,781695562+08:00	Running	PreCopy	kv-migration-params-worker2	80-compression-zstd
+2026-09-20T22:08:37,969373146+08:00	Running	PreCopy	kv-migration-params-worker2	80-compression-zstd
+2026-09-20T22:08:40,177805285+08:00	Running	PreCopy	kv-migration-params-worker2	80-compression-zstd
+2026-09-20T22:08:42,380985512+08:00	Succeeded	PreCopy	kv-migration-params-worker	80-compression-zstd

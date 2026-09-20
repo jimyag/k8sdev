@@ -1,0 +1,6 @@
+# 作为 kubectl merge patch 使用：集群可并发三个迁移，但每个源节点只能迁出一个 VM。
+spec:
+  configuration:
+    migrations:
+      parallelMigrationsPerCluster: 3
+      parallelOutboundMigrationsPerNode: 1

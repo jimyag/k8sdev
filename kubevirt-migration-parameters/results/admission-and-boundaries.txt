@@ -1,0 +1,30 @@
+KubeVirt version: v1.9.0
+Kind node image: kindest/node:v1.35.0
+Host kernel: 6.8.0-139-generic
+Host vm.unprivileged_userfaultfd: 0
+Host SELinux tooling: unavailable
+
+Direct VMIM with an RWO PVC:
+admission webhook "migration-create-validator.kubevirt.io" denied the request:
+Cannot migrate VMI, Reason: DisksNotLiveMigratable, Message: cannot migrate VMI:
+PVC main-source is not shared, live migration requires that all PVCs must be shared
+(using ReadWriteMany access mode)
+
+User-supplied VMIM priority:
+The request is invalid: spec.migrationPriority: Migration priority queue,
+only virt-controller is allowed to set priority field
+
+maxDowntimeMs without MigrationStallDetection:
+maxDowntimeMs cannot be modified without enabling the MigrationStallDetection feature gate
+
+Post-copy failure:
+Postcopy is not supported: Userfaultfd not available: Operation not permitted
+
+Short completion window:
+aborting migration due to completion timeout: elapsedSec=81 acceptableCompletionSec=80
+
+Pause fallback:
+Pausing the guest to allow migration to complete
+
+Experimental stall detector failure in this RWO block-migration lab:
+aborting migration due to illegal state: value of ewmaBandwidthBps not set!

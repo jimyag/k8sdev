@@ -1,0 +1,256 @@
+# 本实验使用静态 local PV，明确把源、目标 RWO 卷固定到两个 worker。
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: migration-local
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: Immediate
+reclaimPolicy: Retain
+---
+# 主实验 VM 的源 PV，只能在第一个 worker 挂载。
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: migration-main-source
+spec:
+  capacity:
+    storage: 2Gi
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: migration-local
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /var/local/kubevirt-migration/main-source
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - kv-migration-params-worker
+---
+# 主实验 VM 的目标 PV，只能在第二个 worker 挂载。
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: migration-main-target
+spec:
+  capacity:
+    storage: 2Gi
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: migration-local
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /var/local/kubevirt-migration/main-target
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - kv-migration-params-worker2
+---
+# 第一组并发实验的源 PV。
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: migration-aux1-source
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: migration-local
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /var/local/kubevirt-migration/aux1-source
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - kv-migration-params-worker
+---
+# 第一组并发实验的目标 PV。
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: migration-aux1-target
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: migration-local
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /var/local/kubevirt-migration/aux1-target
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - kv-migration-params-worker2
+---
+# 第二组并发实验的源 PV。
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: migration-aux2-source
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: migration-local
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /var/local/kubevirt-migration/aux2-source
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - kv-migration-params-worker
+---
+# 第二组并发实验的目标 PV。
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: migration-aux2-target
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: migration-local
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /var/local/kubevirt-migration/aux2-target
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - kv-migration-params-worker2
+---
+# 实验资源使用独立命名空间，方便整体清理。
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: migration-parameters
+  labels:
+    migration-lab: "true"
+---
+# 主实验 VM 的源 RWO PVC。
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: main-source
+  namespace: migration-parameters
+spec:
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: migration-local
+  volumeName: migration-main-source
+  resources:
+    requests:
+      storage: 2Gi
+---
+# 主实验 VM 的目标 RWO PVC。
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: main-target
+  namespace: migration-parameters
+spec:
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: migration-local
+  volumeName: migration-main-target
+  resources:
+    requests:
+      storage: 2Gi
+---
+# 第一组并发实验的源 RWO PVC。
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: aux1-source
+  namespace: migration-parameters
+spec:
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: migration-local
+  volumeName: migration-aux1-source
+  resources:
+    requests:
+      storage: 1Gi
+---
+# 第一组并发实验的目标 RWO PVC。
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: aux1-target
+  namespace: migration-parameters
+spec:
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: migration-local
+  volumeName: migration-aux1-target
+  resources:
+    requests:
+      storage: 1Gi
+---
+# 第二组并发实验的源 RWO PVC。
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: aux2-source
+  namespace: migration-parameters
+spec:
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: migration-local
+  volumeName: migration-aux2-source
+  resources:
+    requests:
+      storage: 1Gi
+---
+# 第二组并发实验的目标 RWO PVC。
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: aux2-target
+  namespace: migration-parameters
+spec:
+  accessModes:
+  - ReadWriteOnce
+  volumeMode: Filesystem
+  storageClassName: migration-local
+  volumeName: migration-aux2-target
+  resources:
+    requests:
+      storage: 1Gi

@@ -1,0 +1,18 @@
+case	load	result	duration_seconds	observed
+standard	memory-dirty+disk-fsync	Succeeded	125	PreCopy; first run included target image pull
+auto-converge-short	memory-dirty+disk-fsync	Failed	81	acceptable completion 80s; dirty rate reached 889Mbps
+post-copy	memory-dirty+disk-fsync	Failed	12	userfaultfd unavailable because host vm.unprivileged_userfaultfd=0
+pause-stall-detector-alpha	memory-dirty+disk-fsync	Failed	NA	MigrationStallDetection reported ewmaBandwidthBps not set
+pause-short	memory-dirty+disk-fsync	Failed	16	entered Paused; pause window was insufficient
+pause-complete	memory-dirty+disk-fsync	Succeeded	43	entered Paused and completed
+auto-converge-long	memory-dirty+disk-fsync	Succeeded	127	PreCopy throughout; configuration enabled auto-converge
+bandwidth-4Mi	disk-fsync	Succeeded	124	PreCopy
+bandwidth-64Mi	disk-fsync	Succeeded	30	PreCopy
+policy-precedence	disk-fsync	Succeeded	62	60-specific-policy won over 70-broad-policy
+compression-zstd	disk-fsync	Succeeded	19	virt-launcher logged Migration compression enabled: method=zstd
+parallel-cluster-1	auxiliary VMs	Succeeded	NA	max_running=1 with per-node limit 3
+parallel-outbound-node-1	auxiliary VMs	Succeeded	NA	max_running=1 with cluster limit 3
+volume-migration-cancel	disk-fsync	Failed	NA	restored original volume set; VM remained on original claim and node
+disable-tls	disk-fsync	Succeeded	30	migration state recorded disableTLS=true; restored to false after test
+progress-timeout-control-and-data-drop	disk-fsync	Failed	31	libvirt client socket closed before an isolated progress-timeout reason was observed
+progress-timeout-data-only-drop	disk-fsync	Succeeded	NA	20s data-port drop did not trigger progressTimeout=5; timer behavior not isolated

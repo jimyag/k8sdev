@@ -1,0 +1,5 @@
+# 故障注入实验：连续 5 秒没有迁移进展即失败，实验后恢复为 150 秒。
+spec:
+  configuration:
+    migrations:
+      progressTimeout: 5

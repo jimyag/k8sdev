@@ -1,0 +1,6 @@
+# 作为 kubectl merge patch 使用：恢复本实验的并发基线。
+spec:
+  configuration:
+    migrations:
+      parallelMigrationsPerCluster: 3
+      parallelOutboundMigrationsPerNode: 3

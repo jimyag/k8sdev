@@ -1,0 +1,12 @@
+vm=migration-main
+profile=precedence
+current_claim=main-source
+next_claim=main-target
+before_node=kv-migration-params-worker
+before_uid=e6035b93-852d-42ab-ac23-99389902dc9d
+start_epoch=1789913224
+vmim=kubevirt-workload-update-mjqs9
+phase=Succeeded
+after_node=kv-migration-params-worker2
+end_epoch=1789913286
+duration_seconds=62

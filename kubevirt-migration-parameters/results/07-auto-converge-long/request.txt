@@ -1,0 +1,12 @@
+vm=migration-main
+profile=auto-converge-long
+current_claim=main-target
+next_claim=main-source
+before_node=kv-migration-params-worker2
+before_uid=e6035b93-852d-42ab-ac23-99389902dc9d
+start_epoch=1789912766
+vmim=kubevirt-workload-update-wnlm8
+phase=Succeeded
+after_node=kv-migration-params-worker
+end_epoch=1789912893
+duration_seconds=127

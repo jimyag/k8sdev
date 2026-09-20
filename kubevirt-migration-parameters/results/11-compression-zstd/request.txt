@@ -1,0 +1,12 @@
+vm=migration-main
+profile=compression-zstd
+current_claim=main-target
+next_claim=main-source
+before_node=kv-migration-params-worker2
+before_uid=e6035b93-852d-42ab-ac23-99389902dc9d
+start_epoch=1789913303
+vmim=kubevirt-workload-update-8qrdq
+phase=Succeeded
+after_node=kv-migration-params-worker
+end_epoch=1789913322
+duration_seconds=19

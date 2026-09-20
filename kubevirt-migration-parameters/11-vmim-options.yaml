@@ -1,0 +1,12 @@
+# 手工创建 VMIM 时可以附加目标节点选择器。
+# 注意：本实验的 RWO VM 必须走 VolumeMigration；直接应用本文件会因磁盘不可迁移而失败。
+apiVersion: kubevirt.io/v1
+kind: VirtualMachineInstanceMigration
+metadata:
+  name: migration-main-manual
+  namespace: migration-parameters
+spec:
+  vmiName: migration-main
+  # 目标节点必须同时满足 VMI 原有约束和这里追加的约束。
+  addedNodeSelector:
+    kubernetes.io/hostname: kv-migration-params-worker2

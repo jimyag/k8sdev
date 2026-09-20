@@ -1,0 +1,16 @@
+# maxDowntimeMs 只在 MigrationStallDetection gate 开启后通过 Admission。
+apiVersion: migrations.kubevirt.io/v1alpha1
+kind: MigrationPolicy
+metadata:
+  name: 80-stall-detection
+spec:
+  selectors:
+    virtualMachineInstanceSelector:
+      migration.kubevirt.io/profile: stall-detection
+  allowAutoConverge: false
+  allowPostCopy: false
+  allowWorkloadDisruption: false
+  bandwidthPerMigration: 8Mi
+  completionTimeoutPerGiB: 60
+  # 放宽最终切换可接受停顿，用于观察 stall detector 的决策。
+  maxDowntimeMs: 1200

@@ -1,0 +1,232 @@
+# 主 VM 的 cloud-init 超过 2048 字节，使用 Secret 保存完整负载脚本。
+apiVersion: v1
+kind: Secret
+metadata:
+  name: migration-main-cloud-init
+  namespace: migration-parameters
+type: Opaque
+stringData:
+  userData: |
+    #cloud-config
+    user: fedora
+    password: kubevirt
+    chpasswd: { expire: false }
+    ssh_pwauth: true
+    write_files:
+    - path: /usr/local/bin/migration-load.py
+      permissions: '0755'
+      content: |
+        #!/usr/bin/env python3
+        import http.server
+        import os
+        import threading
+        import time
+
+        DATA = "/mnt/migration-data"
+        os.makedirs(DATA, exist_ok=True)
+        dirty_enabled = threading.Event()
+        dirty_enabled.set()
+
+        def dirty_memory():
+            # 循环改写约 768 MiB 内存，持续制造高 dirty-rate。
+            block = bytearray(768 * 1024 * 1024)
+            value = 0
+            while True:
+                if not dirty_enabled.is_set():
+                    time.sleep(0.1)
+                    continue
+                value = (value + 1) % 256
+                for offset in range(0, len(block), 4096):
+                    block[offset] = value
+
+        def write_disk():
+            # 记录 Guest 可见心跳并执行 fsync，用于检查迁移期间的停顿和连续性。
+            sequence = 0
+            path = os.path.join(DATA, "heartbeat.csv")
+            while True:
+                sequence += 1
+                with open(path, "a", buffering=1) as output:
+                    output.write(f"{sequence},{time.time_ns()}\n")
+                    output.flush()
+                    os.fsync(output.fileno())
+                time.sleep(0.02)
+
+        class Handler(http.server.BaseHTTPRequestHandler):
+            def do_GET(self):
+                if self.path == "/dirty/on":
+                    dirty_enabled.set()
+                elif self.path == "/dirty/off":
+                    dirty_enabled.clear()
+                self.send_response(200)
+                self.end_headers()
+                state = "on" if dirty_enabled.is_set() else "off"
+                self.wfile.write(f"ok {time.time_ns()} dirty={state}\n".encode())
+
+            def log_message(self, _format, *_args):
+                return
+
+        threading.Thread(target=dirty_memory, daemon=True).start()
+        threading.Thread(target=write_disk, daemon=True).start()
+        http.server.ThreadingHTTPServer(("0.0.0.0", 8080), Handler).serve_forever()
+    runcmd:
+    # 首次启动时格式化 RWO 数据盘，后续迁移保留文件系统与探针记录。
+    - [bash, -lc, 'blkid /dev/vdb || mkfs.ext4 -F /dev/vdb']
+    - [bash, -lc, 'mkdir -p /mnt/migration-data && mount /dev/vdb /mnt/migration-data']
+    # 写入不可压缩数据，让带宽限制实验有足够的实际复制量。
+    - [bash, -lc, 'test -f /mnt/migration-data/payload.bin || dd if=/dev/urandom of=/mnt/migration-data/payload.bin bs=1M count=256 status=none']
+    - [bash, -lc, 'nohup /usr/local/bin/migration-load.py >/var/log/migration-load.log 2>&1 &']
+---
+# 主实验 VM：高 dirty-rate 与 RWO 磁盘写入负载都在这个 Guest 内运行。
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: migration-main
+  namespace: migration-parameters
+spec:
+  runStrategy: Always
+  # 修改 PVC 引用时执行 Volume Migration，不停止 VM。
+  updateVolumesStrategy: Migration
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: migration-main
+        migration.kubevirt.io/profile: standard
+        migration.kubevirt.io/tier: main
+    spec:
+      evictionStrategy: LiveMigrate
+      domain:
+        cpu:
+          cores: 2
+        resources:
+          requests:
+            memory: 1536Mi
+        devices:
+          disks:
+          - name: rootdisk
+            disk:
+              bus: virtio
+          - name: datadisk
+            disk:
+              bus: virtio
+          - name: cloudinitdisk
+            disk:
+              bus: virtio
+          interfaces:
+          - name: default
+            masquerade: {}
+      networks:
+      - name: default
+        pod: {}
+      volumes:
+      - name: rootdisk
+        containerDisk:
+          # 该镜像包含 Python 和常用测试工具，用于在 Guest 内制造可控负载。
+          image: quay.io/kubevirt/fedora-with-test-tooling-container-disk:v1.9.0
+      - name: datadisk
+        persistentVolumeClaim:
+          claimName: main-source
+      - name: cloudinitdisk
+        cloudInitNoCloud:
+          # 大于 2048 字节的 cloud-init 必须通过 Secret 引用。
+          secretRef:
+            name: migration-main-cloud-init
+---
+# 第一台轻量 VM，用于验证集群级和源节点级迁移并发上限。
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: migration-aux1
+  namespace: migration-parameters
+spec:
+  runStrategy: Always
+  updateVolumesStrategy: Migration
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: migration-aux1
+        migration.kubevirt.io/profile: bandwidth-low
+        migration.kubevirt.io/tier: auxiliary
+    spec:
+      evictionStrategy: LiveMigrate
+      domain:
+        resources:
+          requests:
+            memory: 384Mi
+        devices:
+          disks:
+          - name: rootdisk
+            disk:
+              bus: virtio
+          - name: datadisk
+            disk:
+              bus: virtio
+          interfaces:
+          - name: default
+            masquerade: {}
+      networks:
+      - name: default
+        pod: {}
+      volumes:
+      - name: rootdisk
+        containerDisk:
+          image: quay.io/kubevirt/cirros-container-disk-demo:latest
+      - name: datadisk
+        persistentVolumeClaim:
+          claimName: aux1-source
+---
+# 第二台轻量 VM，与 aux1 一起触发并发迁移。
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: migration-aux2
+  namespace: migration-parameters
+spec:
+  runStrategy: Always
+  updateVolumesStrategy: Migration
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: migration-aux2
+        migration.kubevirt.io/profile: bandwidth-low
+        migration.kubevirt.io/tier: auxiliary
+    spec:
+      evictionStrategy: LiveMigrate
+      domain:
+        resources:
+          requests:
+            memory: 384Mi
+        devices:
+          disks:
+          - name: rootdisk
+            disk:
+              bus: virtio
+          - name: datadisk
+            disk:
+              bus: virtio
+          interfaces:
+          - name: default
+            masquerade: {}
+      networks:
+      - name: default
+        pod: {}
+      volumes:
+      - name: rootdisk
+        containerDisk:
+          image: quay.io/kubevirt/cirros-container-disk-demo:latest
+      - name: datadisk
+        persistentVolumeClaim:
+          claimName: aux2-source
+---
+# 外部 HTTP 探针通过 Service 观察主 VM 在迁移切换期间的可达性。
+apiVersion: v1
+kind: Service
+metadata:
+  name: migration-main
+  namespace: migration-parameters
+spec:
+  selector:
+    kubevirt.io/domain: migration-main
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080

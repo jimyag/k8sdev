@@ -1,0 +1,18 @@
+# 作为 kubectl merge patch 使用：展示 MigrationPolicy 不能覆盖的集群级迁移参数。
+spec:
+  configuration:
+    migrations:
+      # 连续无进展的超时秒数。
+      progressTimeout: 150
+      # 等待容器磁盘等辅助卷准备完成的超时秒数。
+      utilityVolumesTimeout: 150
+      # 仅绕过 KubeVirt 的迁移安全检查，不会让不兼容设备真正支持迁移。
+      unsafeMigrationOverride: false
+      # false 表示保留源、目标 virt-handler 之间的 TLS。
+      disableTLS: false
+      # 使用默认 Pod 网络传输迁移数据；自定义值必须指向可用的 Multus NAD。
+      network: null
+      # 迁移时要求目标节点匹配源节点的 SELinux level。
+      matchSELinuxLevelOnMigration: false
+      # 节点维护时触发迁移所识别的 drain taint key。
+      nodeDrainTaintKey: kubevirt.io/drain

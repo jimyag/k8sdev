@@ -1,0 +1,6 @@
+vmim=kubevirt-workload-update-lzxh9
+phase=Succeeded
+source_node=kv-migration-params-worker2
+blocked_target_address=10.244.2.4
+blocked_seconds=20
+progress_timeout_seconds=5

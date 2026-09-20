@@ -1,0 +1,168 @@
+# 标准 Pre-copy：不自动收敛，不允许 Post-copy 或暂停 Guest。
+apiVersion: migrations.kubevirt.io/v1alpha1
+kind: MigrationPolicy
+metadata:
+  name: 10-standard
+spec:
+  selectors:
+    virtualMachineInstanceSelector:
+      migration.kubevirt.io/profile: standard
+  allowAutoConverge: false
+  allowPostCopy: false
+  allowWorkloadDisruption: false
+  bandwidthPerMigration: 0Mi
+  completionTimeoutPerGiB: 150
+---
+# Auto-converge：保留 Pre-copy，但允许 QEMU 在难以收敛时限制 Guest CPU。
+apiVersion: migrations.kubevirt.io/v1alpha1
+kind: MigrationPolicy
+metadata:
+  name: 20-auto-converge
+spec:
+  selectors:
+    virtualMachineInstanceSelector:
+      migration.kubevirt.io/profile: auto-converge
+  allowAutoConverge: true
+  allowPostCopy: false
+  allowWorkloadDisruption: false
+  # 较低带宽与较短超时用于放大高 dirty-rate 下的策略差异。
+  bandwidthPerMigration: 16Mi
+  completionTimeoutPerGiB: 20
+---
+# Auto-converge 长窗口：验证 CPU throttling 有足够时间时能否完成迁移。
+apiVersion: migrations.kubevirt.io/v1alpha1
+kind: MigrationPolicy
+metadata:
+  name: 21-auto-converge-long
+spec:
+  selectors:
+    virtualMachineInstanceSelector:
+      migration.kubevirt.io/profile: auto-converge-long
+  allowAutoConverge: true
+  allowPostCopy: false
+  allowWorkloadDisruption: false
+  bandwidthPerMigration: 64Mi
+  completionTimeoutPerGiB: 120
+---
+# Post-copy 回退：先执行 Pre-copy，超过可接受完成时间后允许切换到 Post-copy。
+apiVersion: migrations.kubevirt.io/v1alpha1
+kind: MigrationPolicy
+metadata:
+  name: 30-post-copy
+spec:
+  selectors:
+    virtualMachineInstanceSelector:
+      migration.kubevirt.io/profile: post-copy
+  allowAutoConverge: false
+  allowPostCopy: true
+  allowWorkloadDisruption: true
+  bandwidthPerMigration: 8Mi
+  completionTimeoutPerGiB: 2
+---
+# Pause-and-copy 回退：超时后不使用 Post-copy，而是允许暂停 Guest 完成复制。
+apiVersion: migrations.kubevirt.io/v1alpha1
+kind: MigrationPolicy
+metadata:
+  name: 40-pause
+spec:
+  selectors:
+    virtualMachineInstanceSelector:
+      migration.kubevirt.io/profile: pause
+  allowAutoConverge: false
+  allowPostCopy: false
+  allowWorkloadDisruption: true
+  bandwidthPerMigration: 8Mi
+  completionTimeoutPerGiB: 2
+---
+# Pause-and-copy 可完成窗口：提高带宽并留出暂停后的复制时间。
+apiVersion: migrations.kubevirt.io/v1alpha1
+kind: MigrationPolicy
+metadata:
+  name: 41-pause-complete
+spec:
+  selectors:
+    virtualMachineInstanceSelector:
+      migration.kubevirt.io/profile: pause-complete
+  allowAutoConverge: false
+  allowPostCopy: false
+  allowWorkloadDisruption: true
+  bandwidthPerMigration: 64Mi
+  completionTimeoutPerGiB: 5
+---
+# 带宽限制策略：只修改单次迁移带宽，保持标准 Pre-copy。
+apiVersion: migrations.kubevirt.io/v1alpha1
+kind: MigrationPolicy
+metadata:
+  name: 50-bandwidth-low
+spec:
+  selectors:
+    virtualMachineInstanceSelector:
+      migration.kubevirt.io/profile: bandwidth-low
+  allowAutoConverge: false
+  allowPostCopy: false
+  allowWorkloadDisruption: false
+  bandwidthPerMigration: 4Mi
+  completionTimeoutPerGiB: 300
+---
+# 高带宽策略：与 4Mi 策略使用相同工作负载比较迁移持续时间。
+apiVersion: migrations.kubevirt.io/v1alpha1
+kind: MigrationPolicy
+metadata:
+  name: 51-bandwidth-high
+spec:
+  selectors:
+    virtualMachineInstanceSelector:
+      migration.kubevirt.io/profile: bandwidth-high
+  allowAutoConverge: false
+  allowPostCopy: false
+  allowWorkloadDisruption: false
+  bandwidthPerMigration: 64Mi
+  completionTimeoutPerGiB: 300
+---
+# 更具体的选择器用于验证 MigrationPolicy 优先级：标签匹配更多的策略优先。
+apiVersion: migrations.kubevirt.io/v1alpha1
+kind: MigrationPolicy
+metadata:
+  name: 60-specific-policy
+spec:
+  selectors:
+    namespaceSelector:
+      migration-lab: "true"
+    virtualMachineInstanceSelector:
+      migration.kubevirt.io/profile: precedence
+      migration.kubevirt.io/tier: main
+  allowAutoConverge: true
+  allowPostCopy: false
+  allowWorkloadDisruption: false
+  bandwidthPerMigration: 12Mi
+  completionTimeoutPerGiB: 30
+---
+# 较宽泛的策略与上一条同时匹配时，应被更具体的选择器覆盖。
+apiVersion: migrations.kubevirt.io/v1alpha1
+kind: MigrationPolicy
+metadata:
+  name: 70-broad-policy
+spec:
+  selectors:
+    virtualMachineInstanceSelector:
+      migration.kubevirt.io/profile: precedence
+  allowAutoConverge: false
+  bandwidthPerMigration: 2Mi
+  completionTimeoutPerGiB: 300
+---
+# Zstandard 压缩实验：只改变迁移数据压缩方式，其余保持标准 Pre-copy。
+apiVersion: migrations.kubevirt.io/v1alpha1
+kind: MigrationPolicy
+metadata:
+  name: 80-compression-zstd
+spec:
+  selectors:
+    virtualMachineInstanceSelector:
+      migration.kubevirt.io/profile: compression-zstd
+  allowAutoConverge: false
+  allowPostCopy: false
+  allowWorkloadDisruption: false
+  bandwidthPerMigration: 64Mi
+  completionTimeoutPerGiB: 300
+  experimental:
+    compression: zstd

@@ -1,0 +1,6 @@
+vmim=kubevirt-workload-update-gqmrm
+phase=Succeeded
+source_node=kv-migration-params-worker2
+paused_target_node=kv-migration-params-worker
+pause_seconds=12
+progress_timeout_seconds=5

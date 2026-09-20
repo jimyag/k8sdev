@@ -1,0 +1,10 @@
+# 负向用例：priority 字段由 virt-controller 内部设置，普通用户提交会被准入拒绝。
+# 预期错误包含：only virt-controller is allowed to set priority field。
+apiVersion: kubevirt.io/v1
+kind: VirtualMachineInstanceMigration
+metadata:
+  name: migration-main-priority-negative
+  namespace: migration-parameters
+spec:
+  vmiName: migration-main
+  priority: system-cluster-critical

@@ -1,0 +1,36 @@
+# 为 RWO Volume Migration 启用 LiveUpdate，并设置保守的迁移基线。
+apiVersion: kubevirt.io/v1
+kind: KubeVirt
+metadata:
+  name: kubevirt
+  namespace: kubevirt
+spec:
+  configuration:
+    developerConfiguration:
+      # 稳定参数矩阵不启用 Alpha gate；maxDowntimeMs 在独立实验中测试。
+      featureGates: []
+    # 允许运行中的 VM 应用卷引用更新。
+    vmRolloutStrategy: LiveUpdate
+    migrations:
+      # 基线允许集群同时运行 3 个迁移，后续并发实验会动态覆盖。
+      parallelMigrationsPerCluster: 3
+      # 基线允许同一源节点同时迁出 3 个 VM。
+      parallelOutboundMigrationsPerNode: 3
+      # 0Mi 表示不人为限制单次迁移带宽。
+      bandwidthPerMigration: 0Mi
+      # 连续 150 秒没有传输进展才判定卡住。
+      progressTimeout: 150
+      # 每 GiB 最多等待 150 秒，超时后的行为由策略决定。
+      completionTimeoutPerGiB: 150
+      # 标准模式不自动限制 Guest CPU。
+      allowAutoConverge: false
+      # 标准模式不允许切换到 Post-copy。
+      allowPostCopy: false
+      # 标准模式不允许通过暂停 Guest 等方式强制完成迁移。
+      allowWorkloadDisruption: false
+      # 保留迁移流量的 TLS 保护。
+      disableTLS: false
+  workloadUpdateStrategy:
+    # VM 卷引用变化由 Live Migration/Volume Migration 流程处理。
+    workloadUpdateMethods:
+    - LiveMigrate

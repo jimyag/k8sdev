@@ -1,0 +1,6 @@
+# 作为 kubectl merge patch 使用：集群级只允许一个迁移，同时保留较高的单节点上限。
+spec:
+  configuration:
+    migrations:
+      parallelMigrationsPerCluster: 1
+      parallelOutboundMigrationsPerNode: 3
