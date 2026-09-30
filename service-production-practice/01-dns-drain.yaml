@@ -1,0 +1,179 @@
+# 独立命名空间隔离 DNS、连接排空和故障注入实验。
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: service-ops
+---
+# 用 ConfigMap 提供可记录主机名、客户端地址和慢请求的 HTTP 服务。
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: echo-server
+  namespace: service-ops
+data:
+  server.py: |
+    import os
+    import time
+    from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+    from urllib.parse import parse_qs, urlparse
+
+    class Handler(BaseHTTPRequestHandler):
+        def do_GET(self):
+            parsed = urlparse(self.path)
+            if parsed.path == "/hostname":
+                body = os.environ["HOSTNAME"]
+            elif parsed.path == "/clientip":
+                body = f"{self.client_address[0]}:{self.client_address[1]}"
+            elif parsed.path == "/slow":
+                seconds = int(parse_qs(parsed.query).get("seconds", ["6"])[0])
+                print(f"slow-start pod={os.environ['HOSTNAME']} seconds={seconds}", flush=True)
+                time.sleep(seconds)
+                body = f"slow-finished pod={os.environ['HOSTNAME']} seconds={seconds}"
+                print(body, flush=True)
+            else:
+                body = "not-found"
+                self.send_response(404)
+                self.end_headers()
+                self.wfile.write(body.encode())
+                return
+
+            self.send_response(200)
+            self.send_header("Content-Type", "text/plain")
+            self.end_headers()
+            self.wfile.write(body.encode())
+
+        def log_message(self, format, *args):
+            print(f"client={self.client_address[0]} {format % args}", flush=True)
+
+    ThreadingHTTPServer(("0.0.0.0", 8080), Handler).serve_forever()
+---
+# 两副本 Deployment 模拟滚动发布和单 Pod 终止。
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-server
+  namespace: service-ops
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      # 排空实验期间至少保留一个可用后端。
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: echo-server
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: echo-server
+    spec:
+      # 给慢请求和 preStop 留出完成时间。
+      terminationGracePeriodSeconds: 20
+      topologySpreadConstraints:
+        # 尽量把两个副本分散到不同节点，模拟跨节点 Service。
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: echo-server
+      containers:
+        - name: server
+          image: python:3.13.7-alpine3.22
+          imagePullPolicy: IfNotPresent
+          command: ["python", "/opt/server/server.py"]
+          ports:
+            - name: http
+              containerPort: 8080
+          readinessProbe:
+            # 只有 HTTP 服务可响应时才进入 EndpointSlice。
+            httpGet:
+              path: /hostname
+              port: http
+            periodSeconds: 1
+          lifecycle:
+            preStop:
+              exec:
+                # Endpoint 先进入 terminating，再延迟发送 SIGTERM。
+                command: ["sh", "-c", "echo preStop-start; sleep 10"]
+          volumeMounts:
+            - name: server
+              mountPath: /opt/server
+              readOnly: true
+      volumes:
+        - name: server
+          configMap:
+            name: echo-server
+---
+# 普通 ClusterIP：DNS 返回稳定 VIP，客户端地址用于会话亲和实验。
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-server
+  namespace: service-ops
+spec:
+  selector:
+    app.kubernetes.io/name: echo-server
+  sessionAffinity: ClientIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+---
+# Headless Service：DNS 直接返回后端 Pod IP，不分配 ClusterIP。
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-headless
+  namespace: service-ops
+spec:
+  clusterIP: None
+  selector:
+    app.kubernetes.io/name: echo-server
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+---
+# 没有匹配后端的普通 Service：验证 DNS 成功不代表 Endpoint 存在。
+apiVersion: v1
+kind: Service
+metadata:
+  name: empty-service
+  namespace: service-ops
+spec:
+  selector:
+    app.kubernetes.io/name: does-not-exist
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+---
+# 故意配置错误 targetPort：Endpoint 存在，但连接会打到未监听端口。
+apiVersion: v1
+kind: Service
+metadata:
+  name: wrong-port
+  namespace: service-ops
+spec:
+  selector:
+    app.kubernetes.io/name: echo-server
+  ports:
+    - name: http
+      port: 80
+      targetPort: 18080
+---
+# 固定客户端 Pod 用于 DNS 查询、Service 请求和 ClientIP 会话亲和。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client
+  namespace: service-ops
+spec:
+  containers:
+    - name: client
+      image: python:3.13.7-alpine3.22
+      imagePullPolicy: IfNotPresent
+      command: ["sh", "-c", "sleep infinity"]

@@ -1,0 +1,84 @@
+Captured on m6 at 2026-09-21 (Asia/Taipei)
+
+Environment
+-----------
+kind: v0.31.0
+Kubernetes server: v1.35.0
+node image: kindest/node:v1.35.0
+nodes:
+  svc-iptables-control-plane  172.30.0.2
+  svc-iptables-worker         172.30.0.3
+  svc-iptables-worker2        172.30.0.4
+kube-proxy config: mode: iptables
+kube-proxy log: Using iptables Proxier
+Pod CIDR: 10.244.0.0/16
+Service CIDR observed: 10.96.0.0/12
+
+Pinned source trees on m6
+-------------------------
+Kubernetes v1.35.0  66452049f3d692768c39c797b21b793dce80314e
+Cilium v1.19.8      5791d208dda456da8d08e9389c3d22514dc2db77
+Calico v3.31.7      94bd1d5b0e04459d4d1c83653e0335a9201248b8
+
+Test topology
+-------------
+endpoint node: svc-iptables-worker (172.30.0.3)
+node without endpoint: svc-iptables-worker2 (172.30.0.4)
+client container: service-path-client (172.30.0.5)
+backend Pod: 10.244.1.3:8080
+Service: 10.96.123.219:80
+NodePort: 30080
+
+Observed client address
+-----------------------
+ClusterIP requests from Pods:
+  client-local-node   pod_ip=10.244.1.4 backend_observed=10.244.1.4:60658
+  client-remote-node  pod_ip=10.244.2.2 backend_observed=10.244.2.2:44834
+  backend self-request through Service:
+    pod_ip=10.244.1.3 self_via_service_observed=10.244.1.1:64745
+
+externalTrafficPolicy=Cluster
+request to endpoint node 172.30.0.3:30080:
+  10.244.1.1:28254
+request to other node 172.30.0.4:30080:
+  172.30.0.4:43745
+
+externalTrafficPolicy=Local
+request to endpoint node 172.30.0.3:30080:
+  172.30.0.5:58142
+request to other node 172.30.0.4:30080:
+  curl: (28) Connection timed out after 2001 milliseconds
+
+Focused iptables evidence
+-------------------------
+Cluster policy, both workers:
+  -A KUBE-EXT-HMXYGTJUZB5GQ45C -m comment --comment "masquerade traffic for service-path/source-ip:http external destinations" -j KUBE-MARK-MASQ
+  -A KUBE-NODEPORTS -p tcp -m comment --comment "service-path/source-ip:http" -m tcp --dport 30080 -j KUBE-EXT-HMXYGTJUZB5GQ45C
+  -A KUBE-SVC-HMXYGTJUZB5GQ45C -m comment --comment "service-path/source-ip:http -> 10.244.1.3:8080" -j KUBE-SEP-MGYZ72N52QLOHZGY
+  -A KUBE-SEP-MGYZ72N52QLOHZGY -p tcp -m comment --comment "service-path/source-ip:http" -m tcp -j DNAT --to-destination 10.244.1.3:8080
+  -A KUBE-POSTROUTING -m comment --comment "kubernetes service traffic requiring SNAT" -j MASQUERADE --random-fully
+
+Local policy, endpoint node:
+  -A KUBE-EXT-HMXYGTJUZB5GQ45C -j KUBE-SVL-HMXYGTJUZB5GQ45C
+  -A KUBE-SVL-HMXYGTJUZB5GQ45C -m comment --comment "service-path/source-ip:http -> 10.244.1.3:8080" -j KUBE-SEP-MGYZ72N52QLOHZGY
+
+Local policy, node without a local endpoint:
+  KUBE-NODEPORTS still jumps to KUBE-EXT-HMXYGTJUZB5GQ45C, but there is no
+  KUBE-SVL-HMXYGTJUZB5GQ45C chain or endpoint jump on this node.
+
+Backend application log
+-----------------------
+client=10.244.1.1 path=/clientip
+client=172.30.0.4 path=/clientip
+client=172.30.0.5 path=/clientip
+
+Initial failed run and correction
+---------------------------------
+The first manifest used registry.k8s.io/e2e-test-images/agnhost:2.57. The Pod
+stopped in ImagePullBackOff because m6 could not reach the redirected registry:
+
+  Head "https://europe-west3-docker.pkg.dev/.../agnhost/manifests/2.57":
+  dial tcp 108.177.125.82:443: i/o timeout
+
+The final manifest uses python:3.13.7-alpine3.22. The image was pulled on m6
+and loaded into all kind nodes before the Deployment was applied.

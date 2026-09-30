@@ -1,0 +1,107 @@
+apiVersion: v1 # 使用 core/v1 API 创建隔离实验命名空间。
+kind: Namespace # 避免不同数据面实验与其他资源混合。
+metadata:
+  name: service-dataplane
+---
+apiVersion: v1 # 使用 ConfigMap 保存回显服务源码。
+kind: ConfigMap # 各数据面使用完全相同的后端程序。
+metadata:
+  name: echo-server
+  namespace: service-dataplane
+data:
+  server.py: | # 返回后端主机名和 TCP 对端地址。
+    import os
+    from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+
+    class Handler(BaseHTTPRequestHandler):
+        def do_GET(self):
+            if self.path == "/hostname":
+                body = f"{os.uname().nodename}\n"
+            elif self.path == "/clientip":
+                body = f"{self.client_address[0]}:{self.client_address[1]}\n"
+            else:
+                body = "use /hostname or /clientip\n"
+            self.send_response(200)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.send_header("Content-Length", str(len(body.encode())))
+            self.end_headers()
+            self.wfile.write(body.encode())
+
+        def log_message(self, format, *args):
+            print(f"client={self.client_address[0]} path={self.path}", flush=True)
+
+    ThreadingHTTPServer(("0.0.0.0", 8080), Handler).serve_forever()
+---
+apiVersion: apps/v1 # DaemonSet 使用稳定的 apps/v1 API。
+kind: DaemonSet # 在两个已标记的 worker 上各运行一个后端。
+metadata:
+  name: echo-server
+  namespace: service-dataplane
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: echo-server # 必须与 Pod 标签一致。
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: echo-server # Service 使用该标签选择两个后端。
+    spec:
+      nodeSelector:
+        service-lab/backend: "true" # 只调度到采集脚本显式标记的 worker。
+      containers:
+        - name: server
+          image: python:3.13.7-alpine3.22 # 固定到已验证的 Python Alpine 版本。
+          imagePullPolicy: IfNotPresent # 使用预先载入 kind 节点的镜像。
+          command:
+            - python # 运行 Python 标准库 HTTP 服务。
+            - /opt/service/server.py # 读取 ConfigMap 挂载的源码。
+          ports:
+            - name: http
+              containerPort: 8080 # 后端监听端口。
+          readinessProbe:
+            httpGet:
+              path: /hostname # 能返回主机名后才加入 EndpointSlice。
+              port: http
+            periodSeconds: 2 # 缩短本地实验等待时间。
+          volumeMounts:
+            - name: source
+              mountPath: /opt/service # 挂载回显服务源码。
+              readOnly: true # 实验容器不修改 ConfigMap 内容。
+      volumes:
+        - name: source
+          configMap:
+            name: echo-server # 引用上面的源码 ConfigMap。
+---
+apiVersion: v1 # Service 使用 core/v1 API。
+kind: Service # 为两个后端建立统一 ClusterIP 和 NodePort。
+metadata:
+  name: echo-server
+  namespace: service-dataplane
+spec:
+  type: NodePort # 同时观察集群内与节点入口规则。
+  externalTrafficPolicy: Cluster # 允许任意节点转发到两个 worker 的后端。
+  selector:
+    app.kubernetes.io/name: echo-server # 选择 DaemonSet 创建的后端。
+  ports:
+    - name: http
+      protocol: TCP # 对比 TCP Service 的连接级后端选择。
+      port: 80 # ClusterIP 暴露端口。
+      targetPort: http # 转发到 Pod 的命名端口 8080。
+      nodePort: 30081 # 固定节点端口，便于跨实现复现。
+---
+apiVersion: v1 # 客户端 Pod 使用 core/v1 API。
+kind: Pod # 在每个集群内发起相同的 ClusterIP 请求。
+metadata:
+  name: client
+  namespace: service-dataplane
+spec:
+  restartPolicy: Never # 仅用于 kubectl exec，不需要重启策略。
+  nodeSelector:
+    service-lab/client: "true" # 固定到采集脚本标记的 worker。
+  containers:
+    - name: client
+      image: python:3.13.7-alpine3.22 # 与后端复用已载入节点的固定镜像。
+      imagePullPolicy: IfNotPresent # 避免实验中再次访问镜像仓库。
+      command:
+        - sleep # 保持容器存活，供采集脚本执行请求。
+        - "3600" # 覆盖完整观测窗口。

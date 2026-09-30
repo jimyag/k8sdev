@@ -1,0 +1,22 @@
+# 让 Calico eBPF 数据面接管 kind 集群的 Pod 网络和 Service 转发。
+apiVersion: operator.tigera.io/v1
+kind: Installation
+metadata:
+  # Tigera Operator 只识别名为 default 的集群级安装对象。
+  name: default
+spec:
+  calicoNetwork:
+    # 启用 Calico eBPF，而不是默认的 iptables 数据面。
+    linuxDataplane: BPF
+    # 由 Calico 在 kube-proxy 仍存在的引导阶段连接 Kubernetes API。
+    bpfNetworkBootstrap: Enabled
+    # 验证 eBPF 就绪后，由 Operator 管理并移除 kube-proxy。
+    kubeProxyManagement: Enabled
+    ipPools:
+      # 必须与 kind 通过 kubeadm 配置的 Pod CIDR 一致。
+      - name: default-ipv4-ippool
+        blockSize: 26
+        cidr: 10.244.0.0/16
+        encapsulation: VXLANCrossSubnet
+        natOutgoing: Enabled
+        nodeSelector: all()

@@ -1,0 +1,82 @@
+===== cluster=svc-cilium =====
+namespace/service-dataplane unchanged
+configmap/echo-server unchanged
+daemonset.apps/echo-server unchanged
+service/echo-server unchanged
+pod/client unchanged
+daemon set "echo-server" successfully rolled out
+pod/client condition met
+-- kube-proxy replacement status --
+Kubernetes:             Ok         1.35 (v1.35.0) [linux/amd64]
+KubeProxyReplacement:   True   [eth0    172.30.0.12 fc00:f853:ccd:e793::c fe80::78a5:94ff:fef5:614e (Direct Routing)]
+Attach Mode:            TCX
+Device Mode:            veth
+  Socket LB:            Enabled
+  Devices:              eth0    172.30.0.12 fc00:f853:ccd:e793::c fe80::78a5:94ff:fef5:614e (Direct Routing)
+  Mode:                 SNAT
+-- kube-proxy DaemonSet --
+Error from server (NotFound): daemonsets.apps "kube-proxy" not found
+-- service and endpoints --
+NAME          TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE   SELECTOR
+echo-server   NodePort   10.96.155.52   <none>        80:30081/TCP   48s   app.kubernetes.io/name=echo-server
+NAME                ADDRESSTYPE   PORTS   ENDPOINTS              AGE
+echo-server-ts4wg   IPv4          8080    10.0.1.216,10.0.0.77   48s
+-- twelve new ClusterIP connections --
+echo-server-lv9fh
+echo-server-lv9fh
+echo-server-hg5tb
+echo-server-lv9fh
+echo-server-lv9fh
+echo-server-lv9fh
+echo-server-hg5tb
+echo-server-hg5tb
+echo-server-hg5tb
+echo-server-hg5tb
+echo-server-lv9fh
+echo-server-lv9fh
+-- source IP observed by backend --
+client_ip=10.0.1.141 backend_observed=10.0.1.141:60184
+-- Cilium service table --
+ID   Frontend               Service Type   Backend                              
+1    10.96.194.84:443/TCP   ClusterIP      1 => 172.30.0.12:4244/TCP (active)   
+2    10.96.0.10:53/TCP      ClusterIP      1 => 10.0.0.76:53/TCP (active)       
+                                           2 => 10.0.0.81:53/TCP (active)       
+3    10.96.0.10:53/UDP      ClusterIP      1 => 10.0.0.76:53/UDP (active)       
+                                           2 => 10.0.0.81:53/UDP (active)       
+4    10.96.0.10:9153/TCP    ClusterIP      1 => 10.0.0.76:9153/TCP (active)     
+                                           2 => 10.0.0.81:9153/TCP (active)     
+5    10.96.0.1:443/TCP      ClusterIP      1 => 172.30.0.13:6443/TCP (active)   
+6    0.0.0.0:30081/TCP      NodePort       1 => 10.0.0.77:8080/TCP (active)     
+                                           2 => 10.0.1.216:8080/TCP (active)    
+8    10.96.155.52:80/TCP    ClusterIP      1 => 10.0.0.77:8080/TCP (active)     
+                                           2 => 10.0.1.216:8080/TCP (active)    
+-- Cilium BPF load-balancer map --
+SERVICE ADDRESS             BACKEND ADDRESS (REVNAT_ID) (SLOT)
+10.96.155.52:80/TCP (0)     0.0.0.0:0 (8) (0) [ClusterIP, non-routable]                   
+10.96.194.84:443/TCP (0)    0.0.0.0:0 (1) (0) [ClusterIP, InternalLocal, non-routable]    
+10.96.155.52:80/TCP (1)     10.0.0.77:8080/TCP (8) (1)                                    
+10.96.155.52:0/ANY (0)      0.0.0.0:0 (0) (0) [ClusterIP, non-routable]                   
+10.96.0.10:53/UDP (2)       10.0.0.81:53/UDP (3) (2)                                      
+10.96.0.1:443/TCP (1)       172.30.0.13:6443/TCP (5) (1)                                  
+10.96.0.10:53/UDP (1)       10.0.0.76:53/UDP (3) (1)                                      
+10.96.155.52:80/TCP (2)     10.0.1.216:8080/TCP (8) (2)                                   
+10.96.0.1:443/TCP (0)       0.0.0.0:0 (5) (0) [ClusterIP, non-routable]                   
+10.96.0.10:53/TCP (2)       10.0.0.81:53/TCP (2) (2)                                      
+10.96.0.10:53/TCP (0)       0.0.0.0:0 (2) (0) [ClusterIP, non-routable]                   
+10.96.0.1:0/ANY (0)         0.0.0.0:0 (0) (0) [ClusterIP, non-routable]                   
+0.0.0.0:30081/TCP (1)       10.0.0.77:8080/TCP (6) (1)                                    
+10.96.0.10:0/ANY (0)        0.0.0.0:0 (0) (0) [ClusterIP, non-routable]                   
+10.96.194.84:0/ANY (0)      0.0.0.0:0 (0) (0) [ClusterIP, non-routable]                   
+10.96.0.10:9153/TCP (0)     0.0.0.0:0 (4) (0) [ClusterIP, non-routable]                   
+0.0.0.0:30081/TCP (0)       0.0.0.0:0 (6) (0) [NodePort, non-routable]                    
+172.30.0.12:30081/TCP (2)   10.0.1.216:8080/TCP (7) (2)                                   
+10.96.0.10:9153/TCP (2)     10.0.0.81:9153/TCP (4) (2)                                    
+172.30.0.12:30081/TCP (0)   0.0.0.0:0 (7) (0) [NodePort]                                  
+10.96.194.84:443/TCP (1)    172.30.0.12:4244/TCP (1) (1)                                  
+0.0.0.0:30081/TCP (2)       10.0.1.216:8080/TCP (6) (2)                                   
+10.96.0.10:9153/TCP (1)     10.0.0.76:9153/TCP (4) (1)                                    
+10.96.0.10:53/UDP (0)       0.0.0.0:0 (3) (0) [ClusterIP, non-routable]                   
+10.96.0.10:53/TCP (1)       10.0.0.76:53/TCP (2) (1)                                      
+172.30.0.12:30081/TCP (1)   10.0.0.77:8080/TCP (7) (1)                                    
+-- legacy kube-proxy service chains on worker --
+no KUBE-SVC or KUBE-SEP chains

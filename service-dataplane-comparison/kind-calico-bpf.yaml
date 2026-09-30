@@ -1,0 +1,12 @@
+# 创建三节点 kind 集群，用来验证 Calico eBPF Service 数据面。
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+networking:
+  # 让 Calico 独占 CNI，避免 kindnetd 与 Calico 同时配置 Pod 网络。
+  disableDefaultCNI: true
+nodes:
+  # 单控制面节点承载 Kubernetes 控制面组件。
+  - role: control-plane
+  # 两个工作节点分别运行 Service 后端和客户端。
+  - role: worker
+  - role: worker

@@ -1,0 +1,78 @@
+namespace/service-ops unchanged
+configmap/echo-server unchanged
+deployment.apps/echo-server unchanged
+service/echo-server unchanged
+service/echo-headless unchanged
+service/empty-service unchanged
+service/wrong-port unchanged
+pod/client unchanged
+deployment "echo-server" successfully rolled out
+pod/client condition met
+===== DNS and discovery =====
+NAME                    TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE   SELECTOR
+service/echo-headless   ClusterIP   None            <none>        8080/TCP   90s   app.kubernetes.io/name=echo-server
+service/echo-server     ClusterIP   10.96.149.190   <none>        80/TCP     90s   app.kubernetes.io/name=echo-server
+service/empty-service   ClusterIP   10.96.79.176    <none>        80/TCP     90s   app.kubernetes.io/name=does-not-exist
+service/wrong-port      ClusterIP   10.96.176.33    <none>        80/TCP     90s   app.kubernetes.io/name=echo-server
+
+NAME                                                 ADDRESSTYPE   PORTS     ENDPOINTS               AGE
+endpointslice.discovery.k8s.io/echo-headless-whczt   IPv4          8080      10.244.1.5,10.244.2.5   90s
+endpointslice.discovery.k8s.io/echo-server-4v94r     IPv4          8080      10.244.1.5,10.244.2.5   90s
+endpointslice.discovery.k8s.io/empty-service-wbhnz   IPv4          <unset>   <unset>                 90s
+endpointslice.discovery.k8s.io/wrong-port-btdww      IPv4          18080     10.244.1.5,10.244.2.5   90s
+-- client resolv.conf --
+search service-ops.svc.cluster.local svc.cluster.local cluster.local tail98911.ts.net ip.jimyag.com
+nameserver 10.96.0.10
+options ndots:5
+-- resolver results --
+echo-server -> ['10.96.149.190']
+echo-server.service-ops.svc.cluster.local -> gaierror: [Errno -5] Name has no usable address
+echo-server.service-ops.svc.cluster.local. -> ['10.96.149.190']
+echo-headless -> ['10.244.1.5', '10.244.2.5']
+empty-service -> ['10.96.79.176']
+===== failure injection =====
+echo-server: success body=echo-server-64cf4cd6c8-7cvp9
+empty-service: URLError: <urlopen error [Errno 111] Connection refused>
+wrong-port: URLError: <urlopen error [Errno 111] Connection refused>
+===== terminating Endpoint and in-flight request =====
+session-affinity target=echo-server-64cf4cd6c8-7cvp9
+pod "echo-server-64cf4cd6c8-7cvp9" deleted from service-ops namespace
+pod=echo-server-64cf4cd6c8-7cvp9 ready=false serving=true terminating=true
+-- new connections while old Pod terminates --
+echo-server-64cf4cd6c8-lbblr
+echo-server-64cf4cd6c8-lbblr
+echo-server-64cf4cd6c8-lbblr
+echo-server-64cf4cd6c8-lbblr
+echo-server-64cf4cd6c8-lbblr
+echo-server-64cf4cd6c8-lbblr
+-- in-flight request result --
+slow-finished pod=echo-server-64cf4cd6c8-7cvp9 seconds=6
+-- terminating Pod application log --
+slow-start pod=echo-server-64cf4cd6c8-7cvp9 seconds=6
+slow-finished pod=echo-server-64cf4cd6c8-7cvp9 seconds=6
+client=10.244.2.4 "GET /slow?seconds=6 HTTP/1.1" 200 -
+-- replacement ready; old Pod may still be in grace period --
+deployment "echo-server" successfully rolled out
+NAME                               READY   STATUS        RESTARTS   AGE   IP           NODE                   NOMINATED NODE   READINESS GATES
+pod/client                         1/1     Running       0          97s   10.244.2.4   svc-iptables-worker2   <none>           <none>
+pod/echo-server-64cf4cd6c8-7cvp9   1/1     Terminating   0          97s   10.244.1.5   svc-iptables-worker    <none>           <none>
+pod/echo-server-64cf4cd6c8-b99rt   1/1     Running       0          5s    10.244.1.6   svc-iptables-worker    <none>           <none>
+pod/echo-server-64cf4cd6c8-lbblr   1/1     Running       0          38s   10.244.2.5   svc-iptables-worker2   <none>           <none>
+
+NAME                                                 ADDRESSTYPE   PORTS     ENDPOINTS                          AGE
+endpointslice.discovery.k8s.io/echo-headless-whczt   IPv4          8080      10.244.1.5,10.244.2.5,10.244.1.6   97s
+endpointslice.discovery.k8s.io/echo-server-4v94r     IPv4          8080      10.244.1.5,10.244.2.5,10.244.1.6   97s
+endpointslice.discovery.k8s.io/empty-service-wbhnz   IPv4          <unset>   <unset>                            97s
+endpointslice.discovery.k8s.io/wrong-port-btdww      IPv4          18080     10.244.1.5,10.244.2.5,10.244.1.6   97s
+-- old Pod deleted; final endpoints --
+pod/echo-server-64cf4cd6c8-7cvp9 condition met
+NAME                               READY   STATUS    RESTARTS   AGE    IP           NODE                   NOMINATED NODE   READINESS GATES
+pod/client                         1/1     Running   0          113s   10.244.2.4   svc-iptables-worker2   <none>           <none>
+pod/echo-server-64cf4cd6c8-b99rt   1/1     Running   0          21s    10.244.1.6   svc-iptables-worker    <none>           <none>
+pod/echo-server-64cf4cd6c8-lbblr   1/1     Running   0          54s    10.244.2.5   svc-iptables-worker2   <none>           <none>
+
+NAME                                                 ADDRESSTYPE   PORTS     ENDPOINTS               AGE
+endpointslice.discovery.k8s.io/echo-headless-whczt   IPv4          8080      10.244.2.5,10.244.1.6   113s
+endpointslice.discovery.k8s.io/echo-server-4v94r     IPv4          8080      10.244.2.5,10.244.1.6   113s
+endpointslice.discovery.k8s.io/empty-service-wbhnz   IPv4          <unset>   <unset>                 113s
+endpointslice.discovery.k8s.io/wrong-port-btdww      IPv4          18080     10.244.2.5,10.244.1.6   113s
