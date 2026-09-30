@@ -21,7 +21,7 @@ endpointslice.discovery.k8s.io/echo-server-4v94r     IPv4          8080      10.
 endpointslice.discovery.k8s.io/empty-service-wbhnz   IPv4          <unset>   <unset>                 90s
 endpointslice.discovery.k8s.io/wrong-port-btdww      IPv4          18080     10.244.1.5,10.244.2.5   90s
 -- client resolv.conf --
-search service-ops.svc.cluster.local svc.cluster.local cluster.local tail98911.ts.net ip.jimyag.com
+search service-ops.svc.cluster.local svc.cluster.local cluster.local
 nameserver 10.96.0.10
 options ndots:5
 -- resolver results --
