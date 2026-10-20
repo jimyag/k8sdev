@@ -1,6 +1,8 @@
 module github.com/jimyag/k8sdev
 
-go 1.23.6
+go 1.27
+
+toolchain go1.27.3
 
 require (
 	github.com/fsnotify/fsnotify v1.6.0
@@ -117,4 +119,18 @@ require (
 	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.3 // indirect
 	sigs.k8s.io/yaml v1.3.0 // indirect
+)
+
+// Kubernetes staging replacements are not inherited from dependency modules.
+replace (
+	k8s.io/cli-runtime v0.0.0 => k8s.io/cli-runtime v0.28.8
+	k8s.io/cluster-bootstrap v0.0.0 => k8s.io/cluster-bootstrap v0.28.8
+	k8s.io/endpointslice v0.0.0 => k8s.io/endpointslice v0.28.8
+	k8s.io/kube-aggregator v0.0.0 => k8s.io/kube-aggregator v0.28.8
+	k8s.io/kube-controller-manager v0.0.0 => k8s.io/kube-controller-manager v0.28.8
+	k8s.io/kube-proxy v0.0.0 => k8s.io/kube-proxy v0.28.8
+	k8s.io/kubectl v0.0.0 => k8s.io/kubectl v0.28.8
+	k8s.io/legacy-cloud-providers v0.0.0 => k8s.io/legacy-cloud-providers v0.28.8
+	k8s.io/pod-security-admission v0.0.0 => k8s.io/pod-security-admission v0.28.8
+	k8s.io/sample-apiserver v0.0.0 => k8s.io/sample-apiserver v0.28.8
 )
