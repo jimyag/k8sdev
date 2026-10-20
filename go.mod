@@ -6,10 +6,17 @@ toolchain go1.27.3
 
 require (
 	github.com/fsnotify/fsnotify v1.6.0
+	github.com/mattbaird/jsonpatch v0.0.0-20240118010651-0ba75a80ca38
+	google.golang.org/grpc v1.56.3
+	gopkg.in/yaml.v3 v3.0.1
 	k8s.io/api v0.28.8
 	k8s.io/apimachinery v0.28.8
+	k8s.io/apiserver v0.28.8
+	k8s.io/client-go v0.28.8
 	k8s.io/component-base v0.28.8
 	k8s.io/klog/v2 v2.100.1
+	k8s.io/kube-openapi v0.0.0-20230717233707-2695361300d9
+	k8s.io/kubelet v0.28.8
 	k8s.io/kubernetes v1.28.8
 	sigs.k8s.io/scheduler-plugins v0.28.9
 )
@@ -36,7 +43,7 @@ require (
 	github.com/go-openapi/jsonreference v0.20.2 // indirect
 	github.com/go-openapi/swag v0.22.3 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
-	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
+	github.com/golang/groupcache v0.0.0-20241129210726-2c02b8208cf8 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/cel-go v0.16.1 // indirect
 	github.com/google/gnostic-models v0.6.8 // indirect
@@ -50,7 +57,6 @@ require (
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
-	github.com/mattbaird/jsonpatch v0.0.0-20240118010651-0ba75a80ca38 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.4 // indirect
 	github.com/moby/sys/mountinfo v0.6.2 // indirect
 	github.com/moby/term v0.0.0-20221205130635-1aeaba878587 // indirect
@@ -95,24 +101,18 @@ require (
 	google.golang.org/genproto v0.0.0-20230526161137-0005af68ea54 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20230525234035-dd9d682886f9 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20230525234030-28d5490b6b19 // indirect
-	google.golang.org/grpc v1.56.3 // indirect
 	google.golang.org/protobuf v1.33.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	gopkg.in/yaml.v3 v3.0.1 // indirect
 	k8s.io/apiextensions-apiserver v0.28.8 // indirect
-	k8s.io/apiserver v0.28.8 // indirect
-	k8s.io/client-go v0.28.8 // indirect
 	k8s.io/cloud-provider v0.28.8 // indirect
 	k8s.io/component-helpers v0.28.8 // indirect
 	k8s.io/controller-manager v0.28.8 // indirect
 	k8s.io/csi-translation-lib v0.28.8 // indirect
 	k8s.io/dynamic-resource-allocation v0.28.8 // indirect
 	k8s.io/kms v0.28.8 // indirect
-	k8s.io/kube-openapi v0.0.0-20230717233707-2695361300d9 // indirect
 	k8s.io/kube-scheduler v0.28.8 // indirect
-	k8s.io/kubelet v0.28.8 // indirect
 	k8s.io/mount-utils v0.28.8 // indirect
 	k8s.io/utils v0.0.0-20230406110748-d93618cff8a2 // indirect
 	sigs.k8s.io/apiserver-network-proxy/konnectivity-client v0.1.2 // indirect
