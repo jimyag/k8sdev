@@ -3,6 +3,7 @@
   "extends": [
     "config:recommended"
   ],
+  "postUpdateOptions": ["gomodTidy"],
   "packageRules": [
     {
       "matchManagers": [
@@ -33,6 +34,40 @@
         "go"
       ],
       "enabled": true
+    },
+    {
+      "matchManagers": ["gomod"],
+      "matchPackageNames": ["go.opentelemetry.io/**", "google.golang.org/genproto", "google.golang.org/genproto/**", "google.golang.org/grpc", "github.com/grpc-ecosystem/grpc-gateway/v2"],
+      "groupName": "grpc and OpenTelemetry"
+    },
+    {
+      "description": "Kubernetes 1.28 uses the legacy CEL parser and ANTLR module path; update them with Kubernetes.",
+      "matchManagers": ["gomod"],
+      "matchPackageNames": ["github.com/antlr/antlr4/runtime/Go/antlr/v4", "github.com/google/cel-go"],
+      "enabled": false
+    },
+    {
+      "description": "Kubernetes 1.28 still calls the gRPC client interceptors removed in otelgrpc 0.60.",
+      "matchManagers": ["gomod"],
+      "matchPackageNames": ["go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"],
+      "allowedVersions": "<0.60.0"
+    },
+    {
+      "description": "Keep the HTTP tracing API used by Kubernetes 1.28.",
+      "matchManagers": ["gomod"],
+      "matchPackageNames": ["go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"],
+      "allowedVersions": "<0.70.0"
+    },
+    {
+      "description": "Newer gRPC/OTLP releases require instrumentation APIs incompatible with Kubernetes 1.28.",
+      "matchManagers": ["gomod"],
+      "matchPackageNames": ["google.golang.org/grpc"],
+      "allowedVersions": "<1.84.0"
+    },
+    {
+      "matchManagers": ["gomod"],
+      "matchPackageNames": ["go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"],
+      "allowedVersions": "<1.45.0"
     }
   ]
 }
