@@ -1,5 +1,5 @@
 # 用固定版本 Go 编译静态二进制，运行镜像不需要 Go 工具链。
-FROM golang:1.26.5-bookworm AS build
+FROM golang:1.27.3-bookworm AS build
 WORKDIR /src
 COPY main.go .
 # 禁用 CGO，避免运行阶段依赖动态链接库。
