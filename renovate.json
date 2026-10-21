@@ -68,6 +68,23 @@
       "matchManagers": ["gomod"],
       "matchPackageNames": ["go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"],
       "allowedVersions": "<1.45.0"
+    },
+    {
+      "description": "Newer OTLP protobuf and gateway modules pull in the incompatible tracing APIs even when the direct gRPC update is bounded.",
+      "matchManagers": ["gomod"],
+      "matchPackageNames": ["go.opentelemetry.io/proto/otlp"],
+      "allowedVersions": "<1.11.1"
+    },
+    {
+      "matchManagers": ["gomod"],
+      "matchPackageNames": ["github.com/grpc-ecosystem/grpc-gateway/v2"],
+      "allowedVersions": "<2.30.0"
+    },
+    {
+      "description": "The generated OpenAPI definitions and managed-fields types must use the revision selected by Kubernetes 1.28.",
+      "matchManagers": ["gomod"],
+      "matchPackageNames": ["k8s.io/kube-openapi"],
+      "enabled": false
     }
   ]
 }
