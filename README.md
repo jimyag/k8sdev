@@ -17,6 +17,8 @@ Kubernetes 自定义资源、调度和设备插件实验。
 
 Kubernetes 1.28 的 CEL 解析器依赖旧 ANTLR module 路径，不能直接升级到已经迁移路径的新运行时；CEL 和 ANTLR 随 Kubernetes 一起迁移。gRPC、genproto 和 OpenTelemetry 成组更新，并保留 Kubernetes 1.28 仍需的 gRPC interceptor、HTTP tracing API。对应兼容范围写在 `renovate.json`，升级 Kubernetes 后需要一起复核。
 
+OTLP protobuf 和 grpc-gateway 也受同一兼容范围约束，避免它们间接引入已移除上述 API 的版本。kube-openapi 使用 Kubernetes 1.28 选定的修订，不独立跟随主分支升级。
+
 `k8s.io/kubernetes` 依赖中的 staging 模块使用 `v0.0.0` 占位版本，依赖模块的 `replace` 不会被继承。根模块为未显式依赖的 staging 模块配置了对应 Kubernetes 1.28.8 的 `v0.28.8` 替换，避免 `go list -m all` 解析不存在的版本。
 
 ```bash
