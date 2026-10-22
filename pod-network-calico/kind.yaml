@@ -1,0 +1,12 @@
+# 隔离实验：Calico 独占 CNI，kube-proxy 保持 iptables 模式。
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+networking:
+  disableDefaultCNI: true # 禁用 kindnet，避免两个插件同时管理 Pod 网络。
+  podSubnet: 10.244.0.0/16 # 与 Calico 默认 IP 池一致。
+  serviceSubnet: 10.96.0.0/12 # Service 虚拟地址与 Pod 网段分离。
+  kubeProxyMode: iptables # 本实验不使用 eBPF 替代 kube-proxy。
+nodes:
+  - role: control-plane # 运行控制面，不承载业务 Pod。
+  - role: worker # 客户端和同节点后端。
+  - role: worker # 跨节点后端。

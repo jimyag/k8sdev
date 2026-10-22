@@ -1,0 +1,95 @@
+# 所有业务资源使用独立命名空间。
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pod-network
+---
+# 服务端返回 Pod 名称和对端 IP，便于观察 DNAT/SNAT。
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: echo-server
+  namespace: pod-network
+data:
+  server.py: |
+    import http.server, json, socket
+    class Handler(http.server.BaseHTTPRequestHandler):
+        def do_GET(self):
+            body = json.dumps({"server": socket.gethostname(), "peer": self.client_address[0]}).encode()
+            self.send_response(200)
+            self.end_headers()
+            self.wfile.write(body)
+    http.server.HTTPServer(("0.0.0.0", 8080), Handler).serve_forever()
+---
+# 客户端与 local 后端固定在第一个 worker。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client
+  namespace: pod-network
+  labels:
+    role: client # 后续用标签控制 NetworkPolicy 的允许条件。
+spec:
+  nodeName: pod-network-calico-worker
+  containers:
+    - name: client
+      image: python:3.12-alpine
+      command: [python, -c, "import time; time.sleep(86400)"] # 保留实验执行入口。
+---
+# 同节点服务端，用来验证不经过 VXLAN 的本地路由。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: local
+  namespace: pod-network
+  labels:
+    app: local
+spec:
+  nodeName: pod-network-calico-worker
+  containers:
+    - name: server
+      image: python:3.12-alpine
+      command: [python, /app/server.py]
+      readinessProbe:
+        httpGet: {path: /, port: 8080} # 端口可服务后才标记 Ready。
+      volumeMounts:
+        - {name: code, mountPath: /app, readOnly: true}
+  volumes:
+    - name: code
+      configMap: {name: echo-server} # 共用返回对端地址的服务代码。
+---
+# 跨节点后端；Service 只选择它，使抓包路径确定。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: remote
+  namespace: pod-network
+  labels:
+    app: remote
+spec:
+  nodeName: pod-network-calico-worker2
+  containers:
+    - name: server
+      image: python:3.12-alpine
+      command: [python, /app/server.py]
+      readinessProbe:
+        httpGet: {path: /, port: 8080} # EndpointSlice 使用此就绪状态。
+      volumeMounts:
+        - {name: code, mountPath: /app, readOnly: true}
+  volumes:
+    - name: code
+      configMap: {name: echo-server}
+---
+# 固定一个后端，排除随机选端点对路径观察的干扰。
+apiVersion: v1
+kind: Service
+metadata:
+  name: remote
+  namespace: pod-network
+spec:
+  type: NodePort
+  selector: {app: remote}
+  ports:
+    - port: 80 # ClusterIP 的服务端口。
+      targetPort: 8080 # 后端实际监听端口。
+      nodePort: 30080 # 外部实验容器通过节点地址访问此端口。

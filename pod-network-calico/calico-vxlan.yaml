@@ -1,0 +1,39 @@
+# 修改官方安装清单中的网络后端。
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: calico-config
+  namespace: kube-system
+data:
+  calico_backend: vxlan # 由 Felix 分发 VXLAN 路由，不启用 BIRD。
+---
+# 明确实验的地址池、封装方式与健康检查。
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: calico-node
+  namespace: kube-system
+spec:
+  template:
+    spec:
+      containers:
+        - name: calico-node
+          env:
+            - name: CALICO_IPV4POOL_CIDR
+              value: 10.244.0.0/16 # 与 kind 的 cluster CIDR 对齐。
+            - name: CALICO_IPV4POOL_IPIP
+              value: Never # 禁用 IP-in-IP，抓包只分析 VXLAN。
+            - name: CALICO_IPV4POOL_VXLAN
+              value: Always # 跨节点 Pod 流量使用 VXLAN 封装。
+            - name: FELIX_BPFENABLED
+              value: "false" # Service 转发仍由 kube-proxy 管理。
+            - name: FELIX_NFTABLESMODE
+              value: Disabled # Calico 策略使用 iptables 数据面。
+            - name: IP_AUTODETECTION_METHOD
+              value: interface=eth0 # kind 节点容器的互联接口。
+          livenessProbe:
+            exec:
+              command: [calico, component, node, health, --felix-live] # 不检查已禁用的 BIRD。
+          readinessProbe:
+            exec:
+              command: [calico, component, node, health, --felix-ready] # 等待 Felix 就绪。

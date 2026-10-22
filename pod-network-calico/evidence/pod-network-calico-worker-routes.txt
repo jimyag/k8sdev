@@ -1,0 +1,14 @@
+default via 172.31.0.1 dev eth0 
+blackhole 10.244.80.64/26 proto 80 
+10.244.80.65 dev cali747ff840379 scope link metric 1024 
+10.244.80.66 dev calid5f5981a8e0 scope link metric 1024 
+10.244.152.64/26 via 10.244.152.64 dev vxlan.calico onlink mtu 1450 
+10.244.158.64/26 via 10.244.158.64 dev vxlan.calico onlink mtu 1450 
+172.31.0.0/16 dev eth0 proto kernel scope link src 172.31.0.2 
+4: vxlan.calico: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/ether 66:ac:d7:1e:92:9a brd ff:ff:ff:ff:ff:ff promiscuity 0 allmulti 0 minmtu 68 maxmtu 65535 
+    vxlan id 4096 local 172.31.0.2 dev eth0 srcport 0 0 dstport 4789 ttl auto ageing 300 nolearning addrgenmode eui64 numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535 tso_max_size 524280 tso_max_segs 65535 gro_max_size 65536 gso_ipv4_max_size 65536 gro_ipv4_max_size 65536 
+66:b0:94:1d:fb:92 dst 172.31.0.3 self permanent
+66:22:a5:af:85:fd dst 172.31.0.4 self permanent
+10.244.152.64 lladdr 66:22:a5:af:85:fd PERMANENT 
+10.244.158.64 lladdr 66:b0:94:1d:fb:92 PERMANENT 

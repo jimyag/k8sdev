@@ -1,0 +1,7 @@
+Client Version: v1.35.1
+Kustomize Version: v5.7.1
+Server Version: v1.35.1
+6.12.74+deb13+1-amd64
+NAME          DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE   CONTAINERS    IMAGES                               SELECTOR
+calico-node   3         3         3       3            3           kubernetes.io/os=linux   11m   calico-node   quay.io/calico/node:v3.33.0          k8s-app=calico-node
+kube-proxy    3         3         3       3            3           kubernetes.io/os=linux   11m   kube-proxy    registry.k8s.io/kube-proxy:v1.35.1   k8s-app=kube-proxy

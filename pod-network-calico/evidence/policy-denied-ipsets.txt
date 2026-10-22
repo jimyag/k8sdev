@@ -1,0 +1,14 @@
+create cali40this-host hash:ip family inet hashsize 1024 maxelem 1048576
+add cali40this-host 172.31.0.3
+add cali40this-host 10.244.158.64
+add cali40this-host 127.0.0.1
+add cali40this-host 127.0.0.0
+create cali40network-ip-pools hash:net family inet hashsize 1024 maxelem 1048576 bucketsize 12 initval 0xab4f821d
+add cali40network-ip-pools 10.244.0.0/16
+create cali40masq-ipam-pools hash:net family inet hashsize 1024 maxelem 1048576 bucketsize 12 initval 0xb5de7072
+add cali40masq-ipam-pools 10.244.0.0/16
+create cali40all-vxlan-net hash:net family inet hashsize 1024 maxelem 1048576 bucketsize 12 initval 0xd9b3e35b
+add cali40all-vxlan-net 172.31.0.2
+add cali40all-vxlan-net 172.31.0.4
+create cali40dscp-src-net hash:net family inet hashsize 1024 maxelem 1048576 bucketsize 12 initval 0x6710dd31
+create cali40s:W4LpULbQulUApupbRTQMV2f hash:net family inet hashsize 1024 maxelem 1048576 bucketsize 12 initval 0x777eb0a9

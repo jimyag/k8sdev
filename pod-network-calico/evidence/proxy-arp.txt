@@ -1,0 +1,3 @@
+net.ipv4.conf.cali747ff840379.proxy_arp = 1
+net.ipv4.neigh.cali747ff840379.proxy_delay = 0
+net.ipv4.conf.cali747ff840379.forwarding = 1

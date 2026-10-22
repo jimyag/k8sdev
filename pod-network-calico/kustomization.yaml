@@ -1,0 +1,7 @@
+# 固定 Calico 发行版；补丁在首次安装前生效，避免先创建 IPIP 地址池。
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - https://raw.githubusercontent.com/projectcalico/calico/v3.33.0/manifests/calico.yaml
+patches:
+  - path: calico-vxlan.yaml # 标准 Linux 数据面，VXLAN Always，不启动 BGP。

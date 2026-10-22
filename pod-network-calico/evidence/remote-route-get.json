@@ -1,0 +1,14 @@
+{
+  "dst": "10.244.158.65",
+  "gateway": "10.244.158.64",
+  "dev": "vxlan.calico",
+  "prefsrc": "10.244.80.64",
+  "flags": [],
+  "uid": 0,
+  "cache": [],
+  "metrics": [
+    {
+      "mtu": 1450
+    }
+  ]
+}

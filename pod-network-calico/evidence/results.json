@@ -1,0 +1,53 @@
+{
+  "same_node": {
+    "server": "local",
+    "peer": "10.244.80.65"
+  },
+  "clusterip_before_dnat": {
+    "server": "remote",
+    "peer": "10.244.80.65"
+  },
+  "cross_node": {
+    "server": "remote",
+    "peer": "10.244.80.65"
+  },
+  "cluster_ip": {
+    "server": "remote",
+    "peer": "10.244.80.65"
+  },
+  "dns_service": {
+    "server": "remote",
+    "peer": "10.244.80.65"
+  },
+  "hairpin": {
+    "server": "remote",
+    "peer": "172.31.0.3"
+  },
+  "outgoing": {
+    "server": "c00c582f2588",
+    "peer": "172.31.0.2"
+  },
+  "nodeport_cluster": {
+    "server": "remote",
+    "peer": "10.244.80.64"
+  },
+  "external_ip": "172.31.0.5",
+  "policy_direct_denied": {
+    "result": "timed out"
+  },
+  "policy_service_denied": {
+    "result": "timed out"
+  },
+  "policy_local_control": {
+    "server": "local",
+    "peer": "10.244.80.65"
+  },
+  "policy_direct_allowed": {
+    "server": "remote",
+    "peer": "10.244.80.65"
+  },
+  "policy_service_allowed": {
+    "server": "remote",
+    "peer": "10.244.80.65"
+  }
+}

@@ -1,0 +1,16 @@
+# 仅保护 remote 后端；标签 allowed=true 的本命名空间 Pod 可访问 TCP 8080。
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: remote-ingress
+  namespace: pod-network
+spec:
+  podSelector:
+    matchLabels: {app: remote}
+  policyTypes: [Ingress] # 不限制客户端 egress，也不影响 DNS 查询。
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels: {allowed: "true"} # client 初始不匹配，随后通过改标签放行。
+      ports:
+        - {protocol: TCP, port: 8080} # 对后端端口生效，不是 Service 的 80。

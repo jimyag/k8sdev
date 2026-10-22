@@ -1,0 +1,17 @@
+17:10:51.719197 IP (tos 0x0, ttl 64, id 60510, offset 0, flags [DF], proto TCP (6), length 60)
+    10.244.80.65.45258 > 10.98.235.247.80: Flags [S], cksum 0x51bd (incorrect -> 0xac10), seq 1561465356, win 64860, options [mss 1410,sackOK,TS val 3758378232 ecr 0,nop,wscale 7], length 0
+17:10:51.719328 IP (tos 0x0, ttl 62, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    10.98.235.247.80 > 10.244.80.65.45258: Flags [S.], cksum 0x51bd (incorrect -> 0x628f), seq 3689756627, ack 1561465357, win 64308, options [mss 1410,sackOK,TS val 1295575710 ecr 3758378232,nop,wscale 7], length 0
+17:10:51.719334 IP (tos 0x0, ttl 64, id 60511, offset 0, flags [DF], proto TCP (6), length 52)
+    10.244.80.65.45258 > 10.98.235.247.80: Flags [.], cksum 0x51b5 (incorrect -> 0x8a63), seq 1, ack 1, win 507, options [nop,nop,TS val 3758378232 ecr 1295575710], length 0
+17:10:51.719389 IP (tos 0x0, ttl 64, id 60512, offset 0, flags [DF], proto TCP (6), length 169)
+    10.244.80.65.45258 > 10.98.235.247.80: Flags [P.], cksum 0x522a (incorrect -> 0x1ba6), seq 1:118, ack 1, win 507, options [nop,nop,TS val 3758378232 ecr 1295575710], length 117: HTTP, length: 117
+	GET / HTTP/1.1
+	Accept-Encoding: identity
+	Host: 10.98.235.247
+	User-Agent: Python-urllib/3.12
+	Connection: close
+	
+4 packets captured
+12 packets received by filter
+0 packets dropped by kernel

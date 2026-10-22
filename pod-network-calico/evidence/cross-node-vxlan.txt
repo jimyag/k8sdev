@@ -1,0 +1,25 @@
+17:10:52.161846 IP (tos 0x0, ttl 64, id 3562, offset 0, flags [none], proto UDP (17), length 110)
+    172.31.0.2.57689 > 172.31.0.3.4789: [bad udp cksum 0xe0a9 -> 0xe605!] VXLAN, flags [I] (0x08), vni 4096
+IP (tos 0x0, ttl 63, id 42934, offset 0, flags [DF], proto TCP (6), length 60)
+    10.244.80.65.58866 > 10.244.158.65.8080: Flags [S], cksum 0x0499 (incorrect -> 0x09f5), seq 2158759090, win 64860, options [mss 1410,sackOK,TS val 3608072837 ecr 0,nop,wscale 7], length 0
+17:10:52.161903 IP (tos 0x0, ttl 64, id 14638, offset 0, flags [none], proto UDP (17), length 110)
+    172.31.0.3.44777 > 172.31.0.2.4789: [bad udp cksum 0x131a -> 0x1655!] VXLAN, flags [I] (0x08), vni 4096
+IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    10.244.158.65.8080 > 10.244.80.65.58866: Flags [S.], cksum 0x0499 (incorrect -> 0x07d4), seq 2465216438, ack 2158759091, win 64308, options [mss 1410,sackOK,TS val 1295576152 ecr 3608072837,nop,wscale 7], length 0
+17:10:52.161922 IP (tos 0x0, ttl 64, id 3563, offset 0, flags [none], proto UDP (17), length 102)
+    172.31.0.2.57689 > 172.31.0.3.4789: [bad udp cksum 0xe0b1 -> 0x0bc8!] VXLAN, flags [I] (0x08), vni 4096
+IP (tos 0x0, ttl 63, id 42935, offset 0, flags [DF], proto TCP (6), length 52)
+    10.244.80.65.58866 > 10.244.158.65.8080: Flags [.], cksum 0x0491 (incorrect -> 0x2fa7), seq 1, ack 1, win 507, options [nop,nop,TS val 3608072838 ecr 1295576152], length 0
+17:10:52.161961 IP (tos 0x0, ttl 64, id 3564, offset 0, flags [none], proto UDP (17), length 224)
+    172.31.0.2.57689 > 172.31.0.3.4789: [bad udp cksum 0xe037 -> 0xffa7!] VXLAN, flags [I] (0x08), vni 4096
+IP (tos 0x0, ttl 63, id 42936, offset 0, flags [DF], proto TCP (6), length 174)
+    10.244.80.65.58866 > 10.244.158.65.8080: Flags [P.], cksum 0x050b (incorrect -> 0x247b), seq 1:123, ack 1, win 507, options [nop,nop,TS val 3608072838 ecr 1295576152], length 122: HTTP, length: 122
+	GET / HTTP/1.1
+	Accept-Encoding: identity
+	Host: 10.244.158.65:8080
+	User-Agent: Python-urllib/3.12
+	Connection: close
+	
+4 packets captured
+12 packets received by filter
+0 packets dropped by kernel

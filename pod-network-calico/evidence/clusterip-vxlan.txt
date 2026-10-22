@@ -1,0 +1,25 @@
+17:10:52.572677 IP (tos 0x0, ttl 64, id 3571, offset 0, flags [none], proto UDP (17), length 110)
+    172.31.0.2.50372 > 172.31.0.3.4789: [bad udp cksum 0xfd3e -> 0x22a9!] VXLAN, flags [I] (0x08), vni 4096
+IP (tos 0x0, ttl 63, id 37939, offset 0, flags [DF], proto TCP (6), length 60)
+    10.244.80.65.45266 > 10.244.158.65.8080: Flags [S], cksum 0x0499 (incorrect -> 0x2a03), seq 4065208676, win 64860, options [mss 1410,sackOK,TS val 3758379085 ecr 0,nop,wscale 7], length 0
+17:10:52.572738 IP (tos 0x0, ttl 64, id 14702, offset 0, flags [none], proto UDP (17), length 110)
+    172.31.0.3.34487 > 172.31.0.2.4789: [bad udp cksum 0x3b4c -> 0x7df6!] VXLAN, flags [I] (0x08), vni 4096
+IP (tos 0x0, ttl 63, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    10.244.158.65.8080 > 10.244.80.65.45266: Flags [S.], cksum 0x0499 (incorrect -> 0x4743), seq 1458131649, ack 4065208677, win 64308, options [mss 1410,sackOK,TS val 1295576563 ecr 3758379085,nop,wscale 7], length 0
+17:10:52.572761 IP (tos 0x0, ttl 64, id 3572, offset 0, flags [none], proto UDP (17), length 102)
+    172.31.0.2.50372 > 172.31.0.3.4789: [bad udp cksum 0xfd46 -> 0x67cd!] VXLAN, flags [I] (0x08), vni 4096
+IP (tos 0x0, ttl 63, id 37940, offset 0, flags [DF], proto TCP (6), length 52)
+    10.244.80.65.45266 > 10.244.158.65.8080: Flags [.], cksum 0x0491 (incorrect -> 0x6f17), seq 1, ack 1, win 507, options [nop,nop,TS val 3758379085 ecr 1295576563], length 0
+17:10:52.572803 IP (tos 0x0, ttl 64, id 3573, offset 0, flags [none], proto UDP (17), length 219)
+    172.31.0.2.50372 > 172.31.0.3.4789: [bad udp cksum 0xfcd1 -> 0xf825!] VXLAN, flags [I] (0x08), vni 4096
+IP (tos 0x0, ttl 63, id 37941, offset 0, flags [DF], proto TCP (6), length 169)
+    10.244.80.65.45266 > 10.244.158.65.8080: Flags [P.], cksum 0x0506 (incorrect -> 0x005a), seq 1:118, ack 1, win 507, options [nop,nop,TS val 3758379085 ecr 1295576563], length 117: HTTP, length: 117
+	GET / HTTP/1.1
+	Accept-Encoding: identity
+	Host: 10.98.235.247
+	User-Agent: Python-urllib/3.12
+	Connection: close
+	
+4 packets captured
+12 packets received by filter
+0 packets dropped by kernel
