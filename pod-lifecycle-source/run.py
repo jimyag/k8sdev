@@ -133,6 +133,7 @@ def collect_logs():
 
 
 def run():
+    (OUT / "result.json").unlink(missing_ok=True)
     kubectl("apply", "-f", str(ROOT / "pod-lifecycle-source/workload.yaml"))
     p = wait(active_pod)
     name, uid = p["metadata"]["name"], p["metadata"]["uid"]

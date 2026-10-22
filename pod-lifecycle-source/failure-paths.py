@@ -4,6 +4,7 @@ from run import ROOT, OUT, NODE, kubectl, get, save, wait, ready, cri, collect_l
 
 
 def run():
+    (OUT / "failure-paths-result.json").unlink(missing_ok=True)
     previous = json.loads((OUT / "timeline.json").read_text())
     uids = {row["uid"] for row in previous}
     # 容器与 sandbox 的回收由后台 GC 推进，不能在 API DELETE 返回时就断言完成。
