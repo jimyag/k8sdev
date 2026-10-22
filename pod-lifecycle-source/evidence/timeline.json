@@ -1,0 +1,163 @@
+[
+  {
+    "stage": "01-created",
+    "time": 1792683726.9653063,
+    "pod": "app-5ddcc7c6f4-4wvlx",
+    "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc",
+    "sandbox": "f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f",
+    "container": "17c28e0cf0c5cc70571e5fc6ef4c6ea84ab3300c22ebfbd77a8f5721593003ae",
+    "restartCount": 0,
+    "podIP": "10.244.1.6",
+    "pid": 8662,
+    "initContainers": [
+      {
+        "name": "prepare",
+        "containerID": "containerd://3e670cd71e6da35cc1fc8b5fb2af82eb309f0d47374ec6f4ca3c3d0d654db13d",
+        "restartCount": 0
+      },
+      {
+        "name": "sidecar",
+        "containerID": "containerd://6abf05eefa27d958ba10494073efc0da7fd5355099268b6d0e6f8c5912085038",
+        "restartCount": 0
+      }
+    ]
+  },
+  {
+    "stage": "02-unready",
+    "time": 1792683728.024804,
+    "pod": "app-5ddcc7c6f4-4wvlx",
+    "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc",
+    "sandbox": "f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f",
+    "container": "17c28e0cf0c5cc70571e5fc6ef4c6ea84ab3300c22ebfbd77a8f5721593003ae",
+    "restartCount": 0,
+    "podIP": "10.244.1.6",
+    "pid": 8662,
+    "initContainers": [
+      {
+        "name": "prepare",
+        "containerID": "containerd://3e670cd71e6da35cc1fc8b5fb2af82eb309f0d47374ec6f4ca3c3d0d654db13d",
+        "restartCount": 0
+      },
+      {
+        "name": "sidecar",
+        "containerID": "containerd://6abf05eefa27d958ba10494073efc0da7fd5355099268b6d0e6f8c5912085038",
+        "restartCount": 0
+      }
+    ]
+  },
+  {
+    "stage": "03-crash-restarted",
+    "time": 1792683734.0013273,
+    "pod": "app-5ddcc7c6f4-4wvlx",
+    "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc",
+    "sandbox": "f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f",
+    "container": "7a893854c92c61be35a3b121eeffc24aa70f5e60ef8828fcb4a1244a8a08fd66",
+    "restartCount": 1,
+    "podIP": "10.244.1.6",
+    "pid": 9079,
+    "initContainers": [
+      {
+        "name": "prepare",
+        "containerID": "containerd://3e670cd71e6da35cc1fc8b5fb2af82eb309f0d47374ec6f4ca3c3d0d654db13d",
+        "restartCount": 0
+      },
+      {
+        "name": "sidecar",
+        "containerID": "containerd://6abf05eefa27d958ba10494073efc0da7fd5355099268b6d0e6f8c5912085038",
+        "restartCount": 0
+      }
+    ]
+  },
+  {
+    "stage": "04-liveness-restarted",
+    "time": 1792683744.4971406,
+    "pod": "app-5ddcc7c6f4-4wvlx",
+    "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc",
+    "sandbox": "f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f",
+    "container": "65d149471cacb05e144f5c250ce24f69eb8298f9d6f29b4280b10e374758d9fb",
+    "restartCount": 2,
+    "podIP": "10.244.1.6",
+    "pid": 9589,
+    "initContainers": [
+      {
+        "name": "prepare",
+        "containerID": "containerd://3e670cd71e6da35cc1fc8b5fb2af82eb309f0d47374ec6f4ca3c3d0d654db13d",
+        "restartCount": 0
+      },
+      {
+        "name": "sidecar",
+        "containerID": "containerd://6abf05eefa27d958ba10494073efc0da7fd5355099268b6d0e6f8c5912085038",
+        "restartCount": 0
+      }
+    ]
+  },
+  {
+    "stage": "04b-all-containers-restarted",
+    "time": 1792683751.5850976,
+    "pod": "app-5ddcc7c6f4-4wvlx",
+    "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc",
+    "sandbox": "f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f",
+    "container": "e9214c79a4ea240f8bf65da4de549c8717702d29935f2bde5e24fd86cc471ad8",
+    "restartCount": 3,
+    "podIP": "10.244.1.6",
+    "pid": 10019,
+    "initContainers": [
+      {
+        "name": "prepare",
+        "containerID": "containerd://e3f07e2623ed6aacdac7d80249c607a8570e65e6e8264d6659262cfd8a0e86f8",
+        "restartCount": 1
+      },
+      {
+        "name": "sidecar",
+        "containerID": "containerd://379b99e9286cd13e3d05033feaa17d681b7fc6c6f25f10b67c7fc0dda6469237",
+        "restartCount": 1
+      }
+    ]
+  },
+  {
+    "stage": "05-sandbox-recreated",
+    "time": 1792683782.833712,
+    "pod": "app-5ddcc7c6f4-4wvlx",
+    "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc",
+    "sandbox": "4757b58f237bad6da86777fc52f45ce3e3d94da90299cc9dc0b108655db64f04",
+    "container": "b9073dcd8221b9a9ee9b4e4d6debf0f337d2f0da6086b996bf3782ef38d68740",
+    "restartCount": 4,
+    "podIP": "10.244.1.7",
+    "pid": 11504,
+    "initContainers": [
+      {
+        "name": "prepare",
+        "containerID": "containerd://815f12e1237b2d227ead0c4dfaa87376804a910df3859392727fb7798c54e6c0",
+        "restartCount": 2
+      },
+      {
+        "name": "sidecar",
+        "containerID": "containerd://00aa01fe01969a572cb57123586df96b8952262e5c6de2a87abb55739f4cf1da",
+        "restartCount": 2
+      }
+    ]
+  },
+  {
+    "stage": "07-controller-recreated",
+    "time": 1792683786.7050037,
+    "pod": "app-5ddcc7c6f4-2hjml",
+    "uid": "78c15fda-5c94-4410-9b6f-cefe5923b9d2",
+    "sandbox": "9a6f11eae5b9debf0d88215af27f642ac2baf4332838a57964d881b6c3562faf",
+    "container": "75a04f1a11d691b4b018ab75ec1394349123f2699789127b4f58b4e632534119",
+    "restartCount": 0,
+    "podIP": "10.244.1.8",
+    "pid": 12081,
+    "initContainers": [
+      {
+        "name": "prepare",
+        "containerID": "containerd://d55adb313331e5ab21ba6a3f686ec97d9784ad32602dff25e5f5dc9efdb9c9d0",
+        "restartCount": 0
+      },
+      {
+        "name": "sidecar",
+        "containerID": "containerd://523b7f3cb94519b0be8302fdb9b5cf6531d27bde6ef5162fb2fdf175eb4101a2",
+        "restartCount": 0
+      }
+    ]
+  }
+]

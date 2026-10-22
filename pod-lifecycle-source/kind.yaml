@@ -1,0 +1,14 @@
+# 使用专用集群，所有 Kubernetes 组件来自同一个插桩版本。
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+  - role: worker
+# 提高节点日志级别，保留卷管理和 Pod worker 的原生日志。
+kubeadmConfigPatches:
+  - |
+    kind: JoinConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        - name: v
+          value: "4"

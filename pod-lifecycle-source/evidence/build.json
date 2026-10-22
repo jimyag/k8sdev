@@ -1,0 +1,22 @@
+{
+  "sourceRelease": "v1.37.1",
+  "sourceCommit": "f78e722310e50bcaca9276be22276d9e91d91308",
+  "sourceModified": true,
+  "builder": "golang:1.27.1",
+  "kind": "v0.33.0",
+  "docker": "29.9.0",
+  "containerd": "2.3.4",
+  "runc": "1.4.3",
+  "kernel": "6.12.74+deb13+1-amd64",
+  "nodeImage": "kindest/node:pod-lifecycle-v1.37.1",
+  "nodeImageID": "sha256:62577cd30c449d1824c074feaadc0a04c02b4e78f958e6ce811bcb73c1d9706f",
+  "binarySHA256": {
+    "kube-apiserver": "d967d6c029425fae6308461ec21527ae92572d72d76b3d7a51773bc3172377a0",
+    "kube-controller-manager": "d99a024b527d377352e03e036a9833634121952565dcccd1684bbaa6091cd922",
+    "kube-proxy": "c815e7d3077125b1702b8d1802ccfeb89d5c8c55b19bd744d91c1025b9ddaa1d",
+    "kube-scheduler": "ed96c43fbf514d10d3db9af0c0c81cceca659b05c30495def17637a91e79a0c8",
+    "kubeadm": "bfbcc5d06920c6a73f3fe3a44b5a70ed7741aaea945f47113d4c7c57419d61df",
+    "kubectl": "2d00f6c3bfe2f75c52e22749fa60a78511db9fb75ee1cdedd8ca7ade9ad1154d",
+    "kubelet": "fb5e7c0fdc2e775a27b21afde81608f6b59df083fbb5f17006c269469e444c63"
+  }
+}

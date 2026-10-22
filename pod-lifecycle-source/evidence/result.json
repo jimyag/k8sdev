@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "stages": 7,
+  "oldUID": "c0b2e8f7-2069-49ef-99d9-13602e6683cc",
+  "newUID": "78c15fda-5c94-4410-9b6f-cefe5923b9d2",
+  "checks": [
+    "readiness does not restart",
+    "crash restart keeps sandbox",
+    "liveness restart keeps volumes",
+    "sandbox recreation keeps UID and emptyDir",
+    "controller replacement changes UID",
+    "replacement clears emptyDir and retains PVC data",
+    "finalizer holds API object after process exit",
+    "Pod directories removed",
+    "referenced objects survive Pod deletion"
+  ]
+}

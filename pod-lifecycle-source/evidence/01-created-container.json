@@ -1,0 +1,786 @@
+{
+  "info": {
+    "config": {
+      "annotations": {
+        "io.kubernetes.container.hash": "31fd9955",
+        "io.kubernetes.container.preStopHandler": "{\"exec\":{\"command\":[\"sh\",\"-c\",\"echo preStop \\u003e\\u003e /data/hooks; sleep 4\"]}}",
+        "io.kubernetes.container.restartCount": "0",
+        "io.kubernetes.container.terminationMessagePath": "/dev/termination-log",
+        "io.kubernetes.container.terminationMessagePolicy": "File",
+        "io.kubernetes.pod.terminationGracePeriod": "20"
+      },
+      "command": [
+        "python",
+        "-u",
+        "-c",
+        "import http.server, pathlib, signal, sys\nfor name in (\"live\", \"ready\", \"started\"):\n    pathlib.Path(\"/work\", name).touch()\nprint(\"app-start\", flush=True)\ndef stop(signum, frame):\n    print(\"app-term\", flush=True)\n    sys.exit(0)\nsignal.signal(signal.SIGTERM, stop)\nsignal.signal(signal.SIGUSR1, lambda signum, frame: sys.exit(42))\nhttp.server.HTTPServer((\"0.0.0.0\", 8000), http.server.SimpleHTTPRequestHandler).serve_forever()\n"
+      ],
+      "envs": [
+        {
+          "key": "KUBERNETES_SERVICE_HOST",
+          "value": "10.96.0.1"
+        },
+        {
+          "key": "KUBERNETES_PORT_443_TCP_ADDR",
+          "value": "10.96.0.1"
+        },
+        {
+          "key": "APP_PORT_80_TCP",
+          "value": "tcp://10.96.122.189:80"
+        },
+        {
+          "key": "APP_PORT_80_TCP_PORT",
+          "value": "80"
+        },
+        {
+          "key": "APP_PORT_80_TCP_ADDR",
+          "value": "10.96.122.189"
+        },
+        {
+          "key": "KUBERNETES_SERVICE_PORT_HTTPS",
+          "value": "443"
+        },
+        {
+          "key": "APP_SERVICE_PORT",
+          "value": "80"
+        },
+        {
+          "key": "KUBERNETES_PORT",
+          "value": "tcp://10.96.0.1:443"
+        },
+        {
+          "key": "KUBERNETES_PORT_443_TCP",
+          "value": "tcp://10.96.0.1:443"
+        },
+        {
+          "key": "KUBERNETES_PORT_443_TCP_PORT",
+          "value": "443"
+        },
+        {
+          "key": "APP_PORT_80_TCP_PROTO",
+          "value": "tcp"
+        },
+        {
+          "key": "KUBERNETES_SERVICE_PORT",
+          "value": "443"
+        },
+        {
+          "key": "KUBERNETES_PORT_443_TCP_PROTO",
+          "value": "tcp"
+        },
+        {
+          "key": "APP_SERVICE_HOST",
+          "value": "10.96.122.189"
+        },
+        {
+          "key": "APP_PORT",
+          "value": "tcp://10.96.122.189:80"
+        }
+      ],
+      "image": {
+        "image": "sha256:f4b7b8044a873fcc0f348549a19b9075cd77bd56ead7177192cfec38d85bce4a",
+        "user_specified_image": "python:3.12-alpine"
+      },
+      "labels": {
+        "io.kubernetes.container.name": "app",
+        "io.kubernetes.pod.name": "app-5ddcc7c6f4-4wvlx",
+        "io.kubernetes.pod.namespace": "lifecycle-lab",
+        "io.kubernetes.pod.uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "linux": {
+        "resources": {
+          "cpu_period": 100000,
+          "cpu_quota": 20000,
+          "cpu_shares": 51,
+          "hugepage_limits": [
+            {
+              "page_size": "2MB"
+            },
+            {
+              "page_size": "1GB"
+            }
+          ],
+          "memory_limit_in_bytes": 134217728,
+          "oom_score_adj": 999,
+          "unified": {
+            "memory.low": "0",
+            "memory.min": "0",
+            "memory.oom.group": "1",
+            "memory.swap.max": "0"
+          }
+        },
+        "security_context": {
+          "masked_paths": [
+            "/proc/asound",
+            "/proc/acpi",
+            "/proc/interrupts",
+            "/proc/kcore",
+            "/proc/keys",
+            "/proc/latency_stats",
+            "/proc/timer_list",
+            "/proc/timer_stats",
+            "/proc/sched_debug",
+            "/proc/scsi",
+            "/sys/firmware",
+            "/sys/devices/virtual/powercap",
+            "/sys/devices/system/cpu/cpu0/thermal_throttle",
+            "/sys/devices/system/cpu/cpu1/thermal_throttle",
+            "/sys/devices/system/cpu/cpu2/thermal_throttle",
+            "/sys/devices/system/cpu/cpu3/thermal_throttle",
+            "/sys/devices/system/cpu/cpu4/thermal_throttle",
+            "/sys/devices/system/cpu/cpu5/thermal_throttle",
+            "/sys/devices/system/cpu/cpu6/thermal_throttle",
+            "/sys/devices/system/cpu/cpu7/thermal_throttle",
+            "/sys/devices/system/cpu/cpu8/thermal_throttle",
+            "/sys/devices/system/cpu/cpu9/thermal_throttle",
+            "/sys/devices/system/cpu/cpu10/thermal_throttle",
+            "/sys/devices/system/cpu/cpu11/thermal_throttle"
+          ],
+          "namespace_options": {
+            "pid": 1,
+            "userns_options": {
+              "mode": 2
+            }
+          },
+          "readonly_paths": [
+            "/proc/bus",
+            "/proc/fs",
+            "/proc/irq",
+            "/proc/sys",
+            "/proc/sysrq-trigger"
+          ],
+          "run_as_user": {},
+          "seccomp": {
+            "profile_type": 1
+          }
+        }
+      },
+      "log_path": "app/0.log",
+      "metadata": {
+        "name": "app"
+      },
+      "mounts": [
+        {
+          "container_path": "/work",
+          "host_path": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~empty-dir/work"
+        },
+        {
+          "container_path": "/memory",
+          "host_path": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~empty-dir/memory"
+        },
+        {
+          "container_path": "/data",
+          "host_path": "/var/local-path-provisioner/pvc-1eb7e583-803a-460d-8035-c3d432ae9cdb_lifecycle-lab_data"
+        },
+        {
+          "container_path": "/settings",
+          "host_path": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~configmap/settings",
+          "readonly": true
+        },
+        {
+          "container_path": "/sample",
+          "host_path": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~secret/sample",
+          "readonly": true
+        },
+        {
+          "container_path": "/downward",
+          "host_path": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~downward-api/downward",
+          "readonly": true
+        },
+        {
+          "container_path": "/var/run/secrets/kubernetes.io/serviceaccount",
+          "host_path": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~projected/kube-api-access-ck5k4",
+          "readonly": true
+        },
+        {
+          "container_path": "/etc/hosts",
+          "host_path": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/etc-hosts"
+        },
+        {
+          "container_path": "/dev/termination-log",
+          "host_path": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/containers/app/7af884cc"
+        }
+      ]
+    },
+    "pid": 8662,
+    "removing": false,
+    "runtimeOptions": {
+      "systemd_cgroup": true
+    },
+    "runtimeSpec": {
+      "annotations": {
+        "io.kubernetes.cri.container-name": "app",
+        "io.kubernetes.cri.container-type": "container",
+        "io.kubernetes.cri.image-name": "python:3.12-alpine",
+        "io.kubernetes.cri.sandbox-id": "f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f",
+        "io.kubernetes.cri.sandbox-name": "app-5ddcc7c6f4-4wvlx",
+        "io.kubernetes.cri.sandbox-namespace": "lifecycle-lab",
+        "io.kubernetes.cri.sandbox-uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "hooks": {
+        "createContainer": [
+          {
+            "path": "/kind/bin/mount-product-files.sh"
+          }
+        ]
+      },
+      "linux": {
+        "cgroupsPath": "kubelet-kubepods-burstable-podc0b2e8f7_2069_49ef_99d9_13602e6683cc.slice:cri-containerd:17c28e0cf0c5cc70571e5fc6ef4c6ea84ab3300c22ebfbd77a8f5721593003ae",
+        "maskedPaths": [
+          "/proc/asound",
+          "/proc/acpi",
+          "/proc/interrupts",
+          "/proc/kcore",
+          "/proc/keys",
+          "/proc/latency_stats",
+          "/proc/timer_list",
+          "/proc/timer_stats",
+          "/proc/sched_debug",
+          "/proc/scsi",
+          "/sys/firmware",
+          "/sys/devices/virtual/powercap",
+          "/sys/devices/system/cpu/cpu0/thermal_throttle",
+          "/sys/devices/system/cpu/cpu1/thermal_throttle",
+          "/sys/devices/system/cpu/cpu2/thermal_throttle",
+          "/sys/devices/system/cpu/cpu3/thermal_throttle",
+          "/sys/devices/system/cpu/cpu4/thermal_throttle",
+          "/sys/devices/system/cpu/cpu5/thermal_throttle",
+          "/sys/devices/system/cpu/cpu6/thermal_throttle",
+          "/sys/devices/system/cpu/cpu7/thermal_throttle",
+          "/sys/devices/system/cpu/cpu8/thermal_throttle",
+          "/sys/devices/system/cpu/cpu9/thermal_throttle",
+          "/sys/devices/system/cpu/cpu10/thermal_throttle",
+          "/sys/devices/system/cpu/cpu11/thermal_throttle"
+        ],
+        "namespaces": [
+          {
+            "type": "pid"
+          },
+          {
+            "path": "/proc/8552/ns/ipc",
+            "type": "ipc"
+          },
+          {
+            "path": "/proc/8552/ns/uts",
+            "type": "uts"
+          },
+          {
+            "type": "mount"
+          },
+          {
+            "path": "/proc/8552/ns/net",
+            "type": "network"
+          },
+          {
+            "type": "cgroup"
+          }
+        ],
+        "readonlyPaths": [
+          "/proc/bus",
+          "/proc/fs",
+          "/proc/irq",
+          "/proc/sys",
+          "/proc/sysrq-trigger"
+        ],
+        "resources": {
+          "cpu": {
+            "period": 100000,
+            "quota": 20000,
+            "shares": 51
+          },
+          "devices": [
+            {
+              "access": "rwm",
+              "allow": false
+            }
+          ],
+          "memory": {
+            "limit": 134217728,
+            "swap": 134217728
+          },
+          "unified": {
+            "memory.low": "0",
+            "memory.min": "0",
+            "memory.oom.group": "1",
+            "memory.swap.max": "0"
+          }
+        }
+      },
+      "mounts": [
+        {
+          "destination": "/proc",
+          "options": [
+            "nosuid",
+            "noexec",
+            "nodev"
+          ],
+          "source": "proc",
+          "type": "proc"
+        },
+        {
+          "destination": "/dev",
+          "options": [
+            "nosuid",
+            "strictatime",
+            "mode=755",
+            "size=65536k"
+          ],
+          "source": "tmpfs",
+          "type": "tmpfs"
+        },
+        {
+          "destination": "/dev/pts",
+          "options": [
+            "nosuid",
+            "noexec",
+            "newinstance",
+            "ptmxmode=0666",
+            "mode=0620",
+            "gid=5"
+          ],
+          "source": "devpts",
+          "type": "devpts"
+        },
+        {
+          "destination": "/dev/mqueue",
+          "options": [
+            "nosuid",
+            "noexec",
+            "nodev"
+          ],
+          "source": "mqueue",
+          "type": "mqueue"
+        },
+        {
+          "destination": "/sys",
+          "options": [
+            "nosuid",
+            "noexec",
+            "nodev",
+            "ro"
+          ],
+          "source": "sysfs",
+          "type": "sysfs"
+        },
+        {
+          "destination": "/sys/fs/cgroup",
+          "options": [
+            "nosuid",
+            "noexec",
+            "nodev",
+            "relatime",
+            "ro"
+          ],
+          "source": "cgroup",
+          "type": "cgroup"
+        },
+        {
+          "destination": "/work",
+          "options": [
+            "rbind",
+            "rprivate",
+            "rw"
+          ],
+          "source": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~empty-dir/work",
+          "type": "bind"
+        },
+        {
+          "destination": "/memory",
+          "options": [
+            "rbind",
+            "rprivate",
+            "rw"
+          ],
+          "source": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~empty-dir/memory",
+          "type": "bind"
+        },
+        {
+          "destination": "/data",
+          "options": [
+            "rbind",
+            "rprivate",
+            "rw"
+          ],
+          "source": "/var/local-path-provisioner/pvc-1eb7e583-803a-460d-8035-c3d432ae9cdb_lifecycle-lab_data",
+          "type": "bind"
+        },
+        {
+          "destination": "/settings",
+          "options": [
+            "rbind",
+            "rprivate",
+            "ro"
+          ],
+          "source": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~configmap/settings",
+          "type": "bind"
+        },
+        {
+          "destination": "/sample",
+          "options": [
+            "rbind",
+            "rprivate",
+            "ro"
+          ],
+          "source": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~secret/sample",
+          "type": "bind"
+        },
+        {
+          "destination": "/downward",
+          "options": [
+            "rbind",
+            "rprivate",
+            "ro"
+          ],
+          "source": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~downward-api/downward",
+          "type": "bind"
+        },
+        {
+          "destination": "/etc/hosts",
+          "options": [
+            "rbind",
+            "rprivate",
+            "rw"
+          ],
+          "source": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/etc-hosts",
+          "type": "bind"
+        },
+        {
+          "destination": "/dev/termination-log",
+          "options": [
+            "rbind",
+            "rprivate",
+            "rw"
+          ],
+          "source": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/containers/app/7af884cc",
+          "type": "bind"
+        },
+        {
+          "destination": "/etc/hostname",
+          "options": [
+            "rbind",
+            "rprivate",
+            "rw"
+          ],
+          "source": "/var/lib/containerd/io.containerd.grpc.v1.cri/sandboxes/f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f/hostname",
+          "type": "bind"
+        },
+        {
+          "destination": "/etc/resolv.conf",
+          "options": [
+            "rbind",
+            "rprivate",
+            "rw"
+          ],
+          "source": "/var/lib/containerd/io.containerd.grpc.v1.cri/sandboxes/f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f/resolv.conf",
+          "type": "bind"
+        },
+        {
+          "destination": "/dev/shm",
+          "options": [
+            "rbind",
+            "rprivate",
+            "rw"
+          ],
+          "source": "/run/containerd/io.containerd.grpc.v1.cri/sandboxes/f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f/shm",
+          "type": "bind"
+        },
+        {
+          "destination": "/var/run/secrets/kubernetes.io/serviceaccount",
+          "options": [
+            "rbind",
+            "rprivate",
+            "ro"
+          ],
+          "source": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~projected/kube-api-access-ck5k4",
+          "type": "bind"
+        }
+      ],
+      "ociVersion": "1.3.0",
+      "process": {
+        "args": [
+          "python",
+          "-u",
+          "-c",
+          "import http.server, pathlib, signal, sys\nfor name in (\"live\", \"ready\", \"started\"):\n    pathlib.Path(\"/work\", name).touch()\nprint(\"app-start\", flush=True)\ndef stop(signum, frame):\n    print(\"app-term\", flush=True)\n    sys.exit(0)\nsignal.signal(signal.SIGTERM, stop)\nsignal.signal(signal.SIGUSR1, lambda signum, frame: sys.exit(42))\nhttp.server.HTTPServer((\"0.0.0.0\", 8000), http.server.SimpleHTTPRequestHandler).serve_forever()\n"
+        ],
+        "capabilities": {
+          "bounding": [
+            "CAP_CHOWN",
+            "CAP_DAC_OVERRIDE",
+            "CAP_FSETID",
+            "CAP_FOWNER",
+            "CAP_MKNOD",
+            "CAP_NET_RAW",
+            "CAP_SETGID",
+            "CAP_SETUID",
+            "CAP_SETFCAP",
+            "CAP_SETPCAP",
+            "CAP_NET_BIND_SERVICE",
+            "CAP_SYS_CHROOT",
+            "CAP_KILL",
+            "CAP_AUDIT_WRITE"
+          ],
+          "effective": [
+            "CAP_CHOWN",
+            "CAP_DAC_OVERRIDE",
+            "CAP_FSETID",
+            "CAP_FOWNER",
+            "CAP_MKNOD",
+            "CAP_NET_RAW",
+            "CAP_SETGID",
+            "CAP_SETUID",
+            "CAP_SETFCAP",
+            "CAP_SETPCAP",
+            "CAP_NET_BIND_SERVICE",
+            "CAP_SYS_CHROOT",
+            "CAP_KILL",
+            "CAP_AUDIT_WRITE"
+          ],
+          "permitted": [
+            "CAP_CHOWN",
+            "CAP_DAC_OVERRIDE",
+            "CAP_FSETID",
+            "CAP_FOWNER",
+            "CAP_MKNOD",
+            "CAP_NET_RAW",
+            "CAP_SETGID",
+            "CAP_SETUID",
+            "CAP_SETFCAP",
+            "CAP_SETPCAP",
+            "CAP_NET_BIND_SERVICE",
+            "CAP_SYS_CHROOT",
+            "CAP_KILL",
+            "CAP_AUDIT_WRITE"
+          ]
+        },
+        "cwd": "/",
+        "env": [
+          "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "HOSTNAME=app-5ddcc7c6f4-4wvlx",
+          "LANG=C.UTF-8",
+          "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+          "PYTHON_VERSION=3.12.15",
+          "PYTHON_SHA256=c2c4321961fab0fb999d66e0cecf521c2ab3994c7992873ea99e306c1094fd5a",
+          "KUBERNETES_SERVICE_HOST=10.96.0.1",
+          "KUBERNETES_PORT_443_TCP_ADDR=10.96.0.1",
+          "APP_PORT_80_TCP=tcp://10.96.122.189:80",
+          "APP_PORT_80_TCP_PORT=80",
+          "APP_PORT_80_TCP_ADDR=10.96.122.189",
+          "KUBERNETES_SERVICE_PORT_HTTPS=443",
+          "APP_SERVICE_PORT=80",
+          "KUBERNETES_PORT=tcp://10.96.0.1:443",
+          "KUBERNETES_PORT_443_TCP=tcp://10.96.0.1:443",
+          "KUBERNETES_PORT_443_TCP_PORT=443",
+          "APP_PORT_80_TCP_PROTO=tcp",
+          "KUBERNETES_SERVICE_PORT=443",
+          "KUBERNETES_PORT_443_TCP_PROTO=tcp",
+          "APP_SERVICE_HOST=10.96.122.189",
+          "APP_PORT=tcp://10.96.122.189:80"
+        ],
+        "oomScoreAdj": 999,
+        "user": {
+          "additionalGids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            6,
+            10,
+            11,
+            20,
+            26,
+            27
+          ],
+          "gid": 0,
+          "uid": 0
+        }
+      },
+      "root": {
+        "path": "rootfs"
+      }
+    },
+    "runtimeType": "io.containerd.runc.v2",
+    "sandboxID": "f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f",
+    "snapshotKey": "17c28e0cf0c5cc70571e5fc6ef4c6ea84ab3300c22ebfbd77a8f5721593003ae",
+    "snapshotter": "overlayfs"
+  },
+  "status": {
+    "annotations": {
+      "io.kubernetes.container.hash": "31fd9955",
+      "io.kubernetes.container.preStopHandler": "{\"exec\":{\"command\":[\"sh\",\"-c\",\"echo preStop \\u003e\\u003e /data/hooks; sleep 4\"]}}",
+      "io.kubernetes.container.restartCount": "0",
+      "io.kubernetes.container.terminationMessagePath": "/dev/termination-log",
+      "io.kubernetes.container.terminationMessagePolicy": "File",
+      "io.kubernetes.pod.terminationGracePeriod": "20"
+    },
+    "createdAt": "2026-10-22T15:42:03.614613125Z",
+    "exitCode": 0,
+    "finishedAt": "0001-01-01T00:00:00Z",
+    "id": "17c28e0cf0c5cc70571e5fc6ef4c6ea84ab3300c22ebfbd77a8f5721593003ae",
+    "image": {
+      "annotations": {},
+      "image": "docker.io/library/python:3.12-alpine",
+      "imageRef": "",
+      "runtimeHandler": "",
+      "userSpecifiedImage": ""
+    },
+    "imageId": "sha256:f4b7b8044a873fcc0f348549a19b9075cd77bd56ead7177192cfec38d85bce4a",
+    "imageRef": "docker.io/library/import-2026-10-22@sha256:60497b02e8bf38cf77d05bb40f9d8121b64902e28b0fd48ab214a160cacefc2c",
+    "labels": {
+      "io.kubernetes.container.name": "app",
+      "io.kubernetes.pod.name": "app-5ddcc7c6f4-4wvlx",
+      "io.kubernetes.pod.namespace": "lifecycle-lab",
+      "io.kubernetes.pod.uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+    },
+    "logPath": "/var/log/pods/lifecycle-lab_app-5ddcc7c6f4-4wvlx_c0b2e8f7-2069-49ef-99d9-13602e6683cc/app/0.log",
+    "message": "",
+    "metadata": {
+      "attempt": 0,
+      "name": "app"
+    },
+    "mounts": [
+      {
+        "containerPath": "/work",
+        "gidMappings": [],
+        "hostPath": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~empty-dir/work",
+        "imageSubPath": "",
+        "propagation": "PROPAGATION_PRIVATE",
+        "readonly": false,
+        "recursiveReadOnly": false,
+        "selinuxRelabel": false,
+        "uidMappings": []
+      },
+      {
+        "containerPath": "/memory",
+        "gidMappings": [],
+        "hostPath": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~empty-dir/memory",
+        "imageSubPath": "",
+        "propagation": "PROPAGATION_PRIVATE",
+        "readonly": false,
+        "recursiveReadOnly": false,
+        "selinuxRelabel": false,
+        "uidMappings": []
+      },
+      {
+        "containerPath": "/data",
+        "gidMappings": [],
+        "hostPath": "/var/local-path-provisioner/pvc-1eb7e583-803a-460d-8035-c3d432ae9cdb_lifecycle-lab_data",
+        "imageSubPath": "",
+        "propagation": "PROPAGATION_PRIVATE",
+        "readonly": false,
+        "recursiveReadOnly": false,
+        "selinuxRelabel": false,
+        "uidMappings": []
+      },
+      {
+        "containerPath": "/settings",
+        "gidMappings": [],
+        "hostPath": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~configmap/settings",
+        "imageSubPath": "",
+        "propagation": "PROPAGATION_PRIVATE",
+        "readonly": true,
+        "recursiveReadOnly": false,
+        "selinuxRelabel": false,
+        "uidMappings": []
+      },
+      {
+        "containerPath": "/sample",
+        "gidMappings": [],
+        "hostPath": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~secret/sample",
+        "imageSubPath": "",
+        "propagation": "PROPAGATION_PRIVATE",
+        "readonly": true,
+        "recursiveReadOnly": false,
+        "selinuxRelabel": false,
+        "uidMappings": []
+      },
+      {
+        "containerPath": "/downward",
+        "gidMappings": [],
+        "hostPath": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~downward-api/downward",
+        "imageSubPath": "",
+        "propagation": "PROPAGATION_PRIVATE",
+        "readonly": true,
+        "recursiveReadOnly": false,
+        "selinuxRelabel": false,
+        "uidMappings": []
+      },
+      {
+        "containerPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+        "gidMappings": [],
+        "hostPath": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~projected/kube-api-access-ck5k4",
+        "imageSubPath": "",
+        "propagation": "PROPAGATION_PRIVATE",
+        "readonly": true,
+        "recursiveReadOnly": false,
+        "selinuxRelabel": false,
+        "uidMappings": []
+      },
+      {
+        "containerPath": "/etc/hosts",
+        "gidMappings": [],
+        "hostPath": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/etc-hosts",
+        "imageSubPath": "",
+        "propagation": "PROPAGATION_PRIVATE",
+        "readonly": false,
+        "recursiveReadOnly": false,
+        "selinuxRelabel": false,
+        "uidMappings": []
+      },
+      {
+        "containerPath": "/dev/termination-log",
+        "gidMappings": [],
+        "hostPath": "/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/containers/app/7af884cc",
+        "imageSubPath": "",
+        "propagation": "PROPAGATION_PRIVATE",
+        "readonly": false,
+        "recursiveReadOnly": false,
+        "selinuxRelabel": false,
+        "uidMappings": []
+      }
+    ],
+    "reason": "",
+    "resources": {
+      "linux": {
+        "cpuPeriod": "100000",
+        "cpuQuota": "20000",
+        "cpuShares": "51",
+        "cpusetCpus": "",
+        "cpusetMems": "",
+        "hugepageLimits": [],
+        "memoryLimitInBytes": "134217728",
+        "memorySwapLimitInBytes": "134217728",
+        "oomScoreAdj": "999",
+        "unified": {
+          "memory.low": "0",
+          "memory.min": "0",
+          "memory.oom.group": "1",
+          "memory.swap.max": "0"
+        }
+      }
+    },
+    "startedAt": "2026-10-22T15:42:03.677744895Z",
+    "state": "CONTAINER_RUNNING",
+    "stopSignal": "SIGTERM",
+    "user": {
+      "linux": {
+        "gid": "0",
+        "supplementalGroups": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "6",
+          "10",
+          "11",
+          "20",
+          "26",
+          "27"
+        ],
+        "uid": "0"
+      }
+    }
+  }
+}

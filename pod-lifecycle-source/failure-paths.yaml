@@ -1,0 +1,65 @@
+# 调度失败：没有任何节点满足这个标签，不能创建节点运行时资源。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: unscheduled
+  namespace: lifecycle-lab
+spec:
+  nodeSelector:
+    lab.example.com/absent: "true"
+  containers:
+    - name: app
+      image: python:3.12-alpine
+      command: [sleep, "3600"]
+---
+# 卷挂载失败：Pod 已调度，但缺少 ConfigMap，尚不能创建 sandbox。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mount-blocked
+  namespace: lifecycle-lab
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: pod-lifecycle-worker
+  containers:
+    - name: app
+      image: python:3.12-alpine
+      command: [sleep, "3600"]
+      volumeMounts:
+        - {name: config, mountPath: /config, readOnly: true}
+  volumes:
+    - name: config
+      configMap: {name: supplied-later}
+---
+# 首次启动申请超过 cgroup 上限的内存；emptyDir 标记让重启后停止触发 OOM。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: memory-limit
+  namespace: lifecycle-lab
+spec:
+  restartPolicy: OnFailure
+  nodeSelector:
+    kubernetes.io/hostname: pod-lifecycle-worker
+  containers:
+    - name: app
+      image: python:3.12-alpine
+      command:
+        - python
+        - -u
+        - -c
+        - |
+          import pathlib, time
+          marker = pathlib.Path("/work/attempted")
+          if not marker.exists():
+              marker.touch()
+              allocation = bytearray(128 * 1024 * 1024)
+          time.sleep(3600)
+      resources:
+        requests: {memory: 16Mi}
+        limits: {memory: 32Mi}
+      volumeMounts:
+        - {name: work, mountPath: /work}
+  volumes:
+    - name: work
+      emptyDir: {}

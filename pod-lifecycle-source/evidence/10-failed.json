@@ -1,0 +1,216 @@
+{
+  "apiVersion": "v1",
+  "kind": "Pod",
+  "metadata": {
+    "annotations": {
+      "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"annotations\":{},\"name\":\"failed\",\"namespace\":\"lifecycle-lab\"},\"spec\":{\"containers\":[{\"command\":[\"sh\",\"-c\",\"exit 7\"],\"image\":\"python:3.12-alpine\",\"name\":\"task\"}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"pod-lifecycle-worker\"},\"restartPolicy\":\"Never\"}}\n"
+    },
+    "creationTimestamp": "2026-10-22T15:43:15Z",
+    "generation": 1,
+    "name": "failed",
+    "namespace": "lifecycle-lab",
+    "resourceVersion": "1473",
+    "uid": "392f4355-84e3-4574-8e4e-c5c1ea2049a1"
+  },
+  "spec": {
+    "containers": [
+      {
+        "command": [
+          "sh",
+          "-c",
+          "exit 7"
+        ],
+        "image": "python:3.12-alpine",
+        "imagePullPolicy": "IfNotPresent",
+        "name": "task",
+        "resources": {},
+        "terminationMessagePath": "/dev/termination-log",
+        "terminationMessagePolicy": "File",
+        "volumeMounts": [
+          {
+            "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+            "name": "kube-api-access-ptd7p",
+            "readOnly": true
+          }
+        ]
+      }
+    ],
+    "dnsPolicy": "ClusterFirst",
+    "enableServiceLinks": true,
+    "nodeName": "pod-lifecycle-worker",
+    "nodeSelector": {
+      "kubernetes.io/hostname": "pod-lifecycle-worker"
+    },
+    "preemptionPolicy": "PreemptLowerPriority",
+    "priority": 0,
+    "restartPolicy": "Never",
+    "schedulerName": "default-scheduler",
+    "securityContext": {},
+    "serviceAccount": "default",
+    "serviceAccountName": "default",
+    "terminationGracePeriodSeconds": 30,
+    "tolerations": [
+      {
+        "effect": "NoExecute",
+        "key": "node.kubernetes.io/not-ready",
+        "operator": "Exists",
+        "tolerationSeconds": 300
+      },
+      {
+        "effect": "NoExecute",
+        "key": "node.kubernetes.io/unreachable",
+        "operator": "Exists",
+        "tolerationSeconds": 300
+      }
+    ],
+    "volumes": [
+      {
+        "name": "kube-api-access-ptd7p",
+        "projected": {
+          "defaultMode": 420,
+          "sources": [
+            {
+              "serviceAccountToken": {
+                "expirationSeconds": 3607,
+                "path": "token"
+              }
+            },
+            {
+              "configMap": {
+                "items": [
+                  {
+                    "key": "ca.crt",
+                    "path": "ca.crt"
+                  }
+                ],
+                "name": "kube-root-ca.crt"
+              }
+            },
+            {
+              "downwardAPI": {
+                "items": [
+                  {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.namespace"
+                    },
+                    "path": "namespace"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "status": {
+    "conditions": [
+      {
+        "lastProbeTime": null,
+        "lastTransitionTime": "2026-10-22T15:43:17Z",
+        "message": "pod sandbox is not ready",
+        "observedGeneration": 1,
+        "reason": "PodSandboxNotReady",
+        "status": "False",
+        "type": "PodReadyToStartContainers"
+      },
+      {
+        "lastProbeTime": null,
+        "lastTransitionTime": "2026-10-22T15:43:15Z",
+        "observedGeneration": 1,
+        "status": "True",
+        "type": "Initialized"
+      },
+      {
+        "lastProbeTime": null,
+        "lastTransitionTime": "2026-10-22T15:43:16Z",
+        "observedGeneration": 1,
+        "reason": "PodFailed",
+        "status": "False",
+        "type": "Ready"
+      },
+      {
+        "lastProbeTime": null,
+        "lastTransitionTime": "2026-10-22T15:43:16Z",
+        "observedGeneration": 1,
+        "reason": "PodFailed",
+        "status": "False",
+        "type": "ContainersReady"
+      },
+      {
+        "lastProbeTime": null,
+        "lastTransitionTime": "2026-10-22T15:43:15Z",
+        "observedGeneration": 1,
+        "status": "True",
+        "type": "PodScheduled"
+      }
+    ],
+    "containerStatuses": [
+      {
+        "containerID": "containerd://e7b2608012a665a6954d7094e7a54ace3358b4ebc35ae65ded2810fec75f583b",
+        "image": "docker.io/library/python:3.12-alpine",
+        "imageID": "docker.io/library/import-2026-10-22@sha256:60497b02e8bf38cf77d05bb40f9d8121b64902e28b0fd48ab214a160cacefc2c",
+        "lastState": {},
+        "name": "task",
+        "ready": false,
+        "resources": {},
+        "restartCount": 0,
+        "started": false,
+        "state": {
+          "terminated": {
+            "containerID": "containerd://e7b2608012a665a6954d7094e7a54ace3358b4ebc35ae65ded2810fec75f583b",
+            "exitCode": 7,
+            "finishedAt": "2026-10-22T15:43:16Z",
+            "reason": "Error",
+            "startedAt": "2026-10-22T15:43:16Z"
+          }
+        },
+        "user": {
+          "linux": {
+            "gid": 0,
+            "supplementalGroups": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              6,
+              10,
+              11,
+              20,
+              26,
+              27
+            ],
+            "uid": 0
+          }
+        },
+        "volumeMounts": [
+          {
+            "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+            "name": "kube-api-access-ptd7p",
+            "readOnly": true,
+            "recursiveReadOnly": "Disabled"
+          }
+        ]
+      }
+    ],
+    "hostIP": "172.31.0.3",
+    "hostIPs": [
+      {
+        "ip": "172.31.0.3"
+      }
+    ],
+    "observedGeneration": 1,
+    "phase": "Failed",
+    "podIP": "10.244.1.10",
+    "podIPs": [
+      {
+        "ip": "10.244.1.10"
+      }
+    ],
+    "qosClass": "BestEffort",
+    "resources": {},
+    "startTime": "2026-10-22T15:43:15Z"
+  }
+}

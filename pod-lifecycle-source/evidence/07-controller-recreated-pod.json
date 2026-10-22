@@ -1,0 +1,578 @@
+{
+  "apiVersion": "v1",
+  "kind": "Pod",
+  "metadata": {
+    "creationTimestamp": "2026-10-22T15:43:02Z",
+    "generateName": "app-5ddcc7c6f4-",
+    "generation": 1,
+    "labels": {
+      "app": "lifecycle",
+      "pod-template-hash": "5ddcc7c6f4"
+    },
+    "name": "app-5ddcc7c6f4-2hjml",
+    "namespace": "lifecycle-lab",
+    "ownerReferences": [
+      {
+        "apiVersion": "apps/v1",
+        "blockOwnerDeletion": true,
+        "controller": true,
+        "kind": "ReplicaSet",
+        "name": "app-5ddcc7c6f4",
+        "uid": "b3843b80-1929-4b19-a73a-6b1796b41c29"
+      }
+    ],
+    "resourceVersion": "1402",
+    "uid": "78c15fda-5c94-4410-9b6f-cefe5923b9d2"
+  },
+  "spec": {
+    "containers": [
+      {
+        "command": [
+          "python",
+          "-u",
+          "-c",
+          "import http.server, pathlib, signal, sys\nfor name in (\"live\", \"ready\", \"started\"):\n    pathlib.Path(\"/work\", name).touch()\nprint(\"app-start\", flush=True)\ndef stop(signum, frame):\n    print(\"app-term\", flush=True)\n    sys.exit(0)\nsignal.signal(signal.SIGTERM, stop)\nsignal.signal(signal.SIGUSR1, lambda signum, frame: sys.exit(42))\nhttp.server.HTTPServer((\"0.0.0.0\", 8000), http.server.SimpleHTTPRequestHandler).serve_forever()\n"
+        ],
+        "image": "python:3.12-alpine",
+        "imagePullPolicy": "IfNotPresent",
+        "lifecycle": {
+          "preStop": {
+            "exec": {
+              "command": [
+                "sh",
+                "-c",
+                "echo preStop >> /data/hooks; sleep 4"
+              ]
+            }
+          }
+        },
+        "livenessProbe": {
+          "exec": {
+            "command": [
+              "test",
+              "-f",
+              "/work/live"
+            ]
+          },
+          "failureThreshold": 2,
+          "periodSeconds": 1,
+          "successThreshold": 1,
+          "timeoutSeconds": 1
+        },
+        "name": "app",
+        "readinessProbe": {
+          "exec": {
+            "command": [
+              "test",
+              "-f",
+              "/work/ready"
+            ]
+          },
+          "failureThreshold": 1,
+          "periodSeconds": 1,
+          "successThreshold": 1,
+          "timeoutSeconds": 1
+        },
+        "resources": {
+          "limits": {
+            "cpu": "200m",
+            "memory": "128Mi"
+          },
+          "requests": {
+            "cpu": "50m",
+            "memory": "32Mi"
+          }
+        },
+        "restartPolicy": "Always",
+        "restartPolicyRules": [
+          {
+            "action": "RestartAllContainers",
+            "exitCodes": {
+              "operator": "In",
+              "values": [
+                42
+              ]
+            }
+          }
+        ],
+        "startupProbe": {
+          "exec": {
+            "command": [
+              "test",
+              "-f",
+              "/work/started"
+            ]
+          },
+          "failureThreshold": 3,
+          "periodSeconds": 1,
+          "successThreshold": 1,
+          "timeoutSeconds": 1
+        },
+        "terminationMessagePath": "/dev/termination-log",
+        "terminationMessagePolicy": "File",
+        "volumeMounts": [
+          {
+            "mountPath": "/work",
+            "name": "work"
+          },
+          {
+            "mountPath": "/memory",
+            "name": "memory"
+          },
+          {
+            "mountPath": "/data",
+            "name": "data"
+          },
+          {
+            "mountPath": "/settings",
+            "name": "settings",
+            "readOnly": true
+          },
+          {
+            "mountPath": "/sample",
+            "name": "sample",
+            "readOnly": true
+          },
+          {
+            "mountPath": "/downward",
+            "name": "downward",
+            "readOnly": true
+          },
+          {
+            "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+            "name": "kube-api-access-x2zkl",
+            "readOnly": true
+          }
+        ]
+      }
+    ],
+    "dnsPolicy": "ClusterFirst",
+    "enableServiceLinks": true,
+    "initContainers": [
+      {
+        "command": [
+          "sh",
+          "-c",
+          "echo initialized > /work/init; echo persisted > /data/marker"
+        ],
+        "image": "python:3.12-alpine",
+        "imagePullPolicy": "IfNotPresent",
+        "name": "prepare",
+        "resources": {},
+        "terminationMessagePath": "/dev/termination-log",
+        "terminationMessagePolicy": "File",
+        "volumeMounts": [
+          {
+            "mountPath": "/work",
+            "name": "work"
+          },
+          {
+            "mountPath": "/data",
+            "name": "data"
+          },
+          {
+            "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+            "name": "kube-api-access-x2zkl",
+            "readOnly": true
+          }
+        ]
+      },
+      {
+        "command": [
+          "sh",
+          "-c",
+          "trap \"echo sidecar-term; exit 0\" TERM; while true; do sleep 1 & wait $!; done"
+        ],
+        "image": "python:3.12-alpine",
+        "imagePullPolicy": "IfNotPresent",
+        "name": "sidecar",
+        "resources": {},
+        "restartPolicy": "Always",
+        "terminationMessagePath": "/dev/termination-log",
+        "terminationMessagePolicy": "File",
+        "volumeMounts": [
+          {
+            "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+            "name": "kube-api-access-x2zkl",
+            "readOnly": true
+          }
+        ]
+      }
+    ],
+    "nodeName": "pod-lifecycle-worker",
+    "nodeSelector": {
+      "kubernetes.io/hostname": "pod-lifecycle-worker"
+    },
+    "preemptionPolicy": "PreemptLowerPriority",
+    "priority": 0,
+    "restartPolicy": "Always",
+    "schedulerName": "default-scheduler",
+    "securityContext": {},
+    "serviceAccount": "reader",
+    "serviceAccountName": "reader",
+    "terminationGracePeriodSeconds": 20,
+    "tolerations": [
+      {
+        "effect": "NoExecute",
+        "key": "node.kubernetes.io/not-ready",
+        "operator": "Exists",
+        "tolerationSeconds": 300
+      },
+      {
+        "effect": "NoExecute",
+        "key": "node.kubernetes.io/unreachable",
+        "operator": "Exists",
+        "tolerationSeconds": 300
+      }
+    ],
+    "volumes": [
+      {
+        "emptyDir": {},
+        "name": "work"
+      },
+      {
+        "emptyDir": {
+          "medium": "Memory",
+          "sizeLimit": "8Mi"
+        },
+        "name": "memory"
+      },
+      {
+        "name": "data",
+        "persistentVolumeClaim": {
+          "claimName": "data"
+        }
+      },
+      {
+        "configMap": {
+          "defaultMode": 420,
+          "name": "settings"
+        },
+        "name": "settings"
+      },
+      {
+        "name": "sample",
+        "secret": {
+          "defaultMode": 420,
+          "secretName": "sample"
+        }
+      },
+      {
+        "downwardAPI": {
+          "defaultMode": 420,
+          "items": [
+            {
+              "fieldRef": {
+                "apiVersion": "v1",
+                "fieldPath": "metadata.uid"
+              },
+              "path": "uid"
+            }
+          ]
+        },
+        "name": "downward"
+      },
+      {
+        "name": "kube-api-access-x2zkl",
+        "projected": {
+          "defaultMode": 420,
+          "sources": [
+            {
+              "serviceAccountToken": {
+                "expirationSeconds": 3607,
+                "path": "token"
+              }
+            },
+            {
+              "configMap": {
+                "items": [
+                  {
+                    "key": "ca.crt",
+                    "path": "ca.crt"
+                  }
+                ],
+                "name": "kube-root-ca.crt"
+              }
+            },
+            {
+              "downwardAPI": {
+                "items": [
+                  {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.namespace"
+                    },
+                    "path": "namespace"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "status": {
+    "allocatedResources": {
+      "cpu": "50m",
+      "memory": "32Mi"
+    },
+    "conditions": [
+      {
+        "lastProbeTime": null,
+        "lastTransitionTime": "2026-10-22T15:43:03Z",
+        "observedGeneration": 1,
+        "status": "True",
+        "type": "PodReadyToStartContainers"
+      },
+      {
+        "lastProbeTime": null,
+        "lastTransitionTime": "2026-10-22T15:43:03Z",
+        "observedGeneration": 1,
+        "status": "True",
+        "type": "Initialized"
+      },
+      {
+        "lastProbeTime": null,
+        "lastTransitionTime": "2026-10-22T15:43:06Z",
+        "observedGeneration": 1,
+        "status": "True",
+        "type": "Ready"
+      },
+      {
+        "lastProbeTime": null,
+        "lastTransitionTime": "2026-10-22T15:43:06Z",
+        "observedGeneration": 1,
+        "status": "True",
+        "type": "ContainersReady"
+      },
+      {
+        "lastProbeTime": null,
+        "lastTransitionTime": "2026-10-22T15:43:02Z",
+        "observedGeneration": 1,
+        "status": "True",
+        "type": "PodScheduled"
+      },
+      {
+        "lastProbeTime": null,
+        "lastTransitionTime": "2026-10-22T15:43:02Z",
+        "status": "False",
+        "type": "AllContainersRestarting"
+      }
+    ],
+    "containerStatuses": [
+      {
+        "allocatedResources": {
+          "cpu": "50m",
+          "memory": "32Mi"
+        },
+        "containerID": "containerd://75a04f1a11d691b4b018ab75ec1394349123f2699789127b4f58b4e632534119",
+        "image": "docker.io/library/python:3.12-alpine",
+        "imageID": "docker.io/library/import-2026-10-22@sha256:60497b02e8bf38cf77d05bb40f9d8121b64902e28b0fd48ab214a160cacefc2c",
+        "lastState": {},
+        "name": "app",
+        "ready": true,
+        "resources": {
+          "limits": {
+            "cpu": "200m",
+            "memory": "128Mi"
+          },
+          "requests": {
+            "cpu": "50m",
+            "memory": "32Mi"
+          }
+        },
+        "restartCount": 0,
+        "started": true,
+        "state": {
+          "running": {
+            "startedAt": "2026-10-22T15:43:03Z"
+          }
+        },
+        "user": {
+          "linux": {
+            "gid": 0,
+            "supplementalGroups": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              6,
+              10,
+              11,
+              20,
+              26,
+              27
+            ],
+            "uid": 0
+          }
+        },
+        "volumeMounts": [
+          {
+            "mountPath": "/work",
+            "name": "work"
+          },
+          {
+            "mountPath": "/memory",
+            "name": "memory"
+          },
+          {
+            "mountPath": "/data",
+            "name": "data"
+          },
+          {
+            "mountPath": "/settings",
+            "name": "settings",
+            "readOnly": true,
+            "recursiveReadOnly": "Disabled"
+          },
+          {
+            "mountPath": "/sample",
+            "name": "sample",
+            "readOnly": true,
+            "recursiveReadOnly": "Disabled"
+          },
+          {
+            "mountPath": "/downward",
+            "name": "downward",
+            "readOnly": true,
+            "recursiveReadOnly": "Disabled"
+          },
+          {
+            "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+            "name": "kube-api-access-x2zkl",
+            "readOnly": true,
+            "recursiveReadOnly": "Disabled"
+          }
+        ]
+      }
+    ],
+    "hostIP": "172.31.0.3",
+    "hostIPs": [
+      {
+        "ip": "172.31.0.3"
+      }
+    ],
+    "initContainerStatuses": [
+      {
+        "containerID": "containerd://d55adb313331e5ab21ba6a3f686ec97d9784ad32602dff25e5f5dc9efdb9c9d0",
+        "image": "docker.io/library/python:3.12-alpine",
+        "imageID": "docker.io/library/import-2026-10-22@sha256:60497b02e8bf38cf77d05bb40f9d8121b64902e28b0fd48ab214a160cacefc2c",
+        "lastState": {},
+        "name": "prepare",
+        "ready": true,
+        "resources": {},
+        "restartCount": 0,
+        "started": false,
+        "state": {
+          "terminated": {
+            "containerID": "containerd://d55adb313331e5ab21ba6a3f686ec97d9784ad32602dff25e5f5dc9efdb9c9d0",
+            "exitCode": 0,
+            "finishedAt": "2026-10-22T15:43:03Z",
+            "reason": "Completed",
+            "startedAt": "2026-10-22T15:43:03Z"
+          }
+        },
+        "user": {
+          "linux": {
+            "gid": 0,
+            "supplementalGroups": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              6,
+              10,
+              11,
+              20,
+              26,
+              27
+            ],
+            "uid": 0
+          }
+        },
+        "volumeMounts": [
+          {
+            "mountPath": "/work",
+            "name": "work"
+          },
+          {
+            "mountPath": "/data",
+            "name": "data"
+          },
+          {
+            "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+            "name": "kube-api-access-x2zkl",
+            "readOnly": true,
+            "recursiveReadOnly": "Disabled"
+          }
+        ]
+      },
+      {
+        "containerID": "containerd://523b7f3cb94519b0be8302fdb9b5cf6531d27bde6ef5162fb2fdf175eb4101a2",
+        "image": "docker.io/library/python:3.12-alpine",
+        "imageID": "docker.io/library/import-2026-10-22@sha256:60497b02e8bf38cf77d05bb40f9d8121b64902e28b0fd48ab214a160cacefc2c",
+        "lastState": {},
+        "name": "sidecar",
+        "ready": true,
+        "resources": {},
+        "restartCount": 0,
+        "started": true,
+        "state": {
+          "running": {
+            "startedAt": "2026-10-22T15:43:03Z"
+          }
+        },
+        "user": {
+          "linux": {
+            "gid": 0,
+            "supplementalGroups": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              6,
+              10,
+              11,
+              20,
+              26,
+              27
+            ],
+            "uid": 0
+          }
+        },
+        "volumeMounts": [
+          {
+            "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+            "name": "kube-api-access-x2zkl",
+            "readOnly": true,
+            "recursiveReadOnly": "Disabled"
+          }
+        ]
+      }
+    ],
+    "observedGeneration": 1,
+    "phase": "Running",
+    "podIP": "10.244.1.8",
+    "podIPs": [
+      {
+        "ip": "10.244.1.8"
+      }
+    ],
+    "qosClass": "Burstable",
+    "resources": {
+      "limits": {
+        "cpu": "200m",
+        "memory": "128Mi"
+      },
+      "requests": {
+        "cpu": "28m",
+        "memory": "32Mi"
+      }
+    },
+    "startTime": "2026-10-22T15:43:02Z"
+  }
+}

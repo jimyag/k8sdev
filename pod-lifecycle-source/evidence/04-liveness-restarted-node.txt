@@ -1,0 +1,94 @@
+namespaces
+total 0
+lrwxrwxrwx 1 root root 0 Oct 22 15:42 cgroup -> cgroup:[4026535235]
+lrwxrwxrwx 1 root root 0 Oct 22 15:42 ipc -> ipc:[4026535228]
+lrwxrwxrwx 1 root root 0 Oct 22 15:42 mnt -> mnt:[4026535233]
+lrwxrwxrwx 1 root root 0 Oct 22 15:42 net -> net:[4026535164]
+lrwxrwxrwx 1 root root 0 Oct 22 15:42 pid -> pid:[4026535234]
+lrwxrwxrwx 1 root root 0 Oct 22 15:42 pid_for_children -> pid:[4026535234]
+lrwxrwxrwx 1 root root 0 Oct 22 15:42 time -> time:[4026534907]
+lrwxrwxrwx 1 root root 0 Oct 22 15:42 time_for_children -> time:[4026534907]
+lrwxrwxrwx 1 root root 0 Oct 22 15:42 user -> user:[4026531837]
+lrwxrwxrwx 1 root root 0 Oct 22 15:42 uts -> uts:[4026535227]
+cgroup
+0::/kubelet.slice/kubelet-kubepods.slice/kubelet-kubepods-burstable.slice/kubelet-kubepods-burstable-podc0b2e8f7_2069_49ef_99d9_13602e6683cc.slice/cri-containerd-65d149471cacb05e144f5c250ce24f69eb8298f9d6f29b4280b10e374758d9fb.scope
+cpu.max=20000 100000
+cpu.weight=11
+memory.max=134217728
+pids.max=11526
+network
+[{"ifindex":1,"ifname":"lo","flags":["LOOPBACK","UP","LOWER_UP"],"mtu":65536,"qdisc":"noqueue","operstate":"UNKNOWN","group":"default","txqlen":1000,"link_type":"loopback","address":"00:00:00:00:00:00","broadcast":"00:00:00:00:00:00","addr_info":[{"family":"inet","local":"127.0.0.1","prefixlen":8,"scope":"host","label":"lo","valid_life_time":4294967295,"preferred_life_time":4294967295},{"family":"inet6","local":"::1","prefixlen":128,"scope":"host","protocol":"kernel_lo","valid_life_time":4294967295,"preferred_life_time":4294967295}]},{"ifindex":2,"link":null,"ifname":"tunl0","flags":["NOARP"],"mtu":1480,"qdisc":"noop","operstate":"DOWN","group":"default","txqlen":1000,"link_type":"ipip","address":"0.0.0.0","broadcast":"0.0.0.0","addr_info":[]},{"ifindex":3,"link_index":8,"ifname":"eth0","flags":["BROADCAST","MULTICAST","UP","LOWER_UP"],"mtu":1500,"qdisc":"noqueue","operstate":"UP","group":"default","txqlen":1000,"link_type":"ether","address":"f6:58:98:d6:9f:fa","broadcast":"ff:ff:ff:ff:ff:ff","link_netnsid":0,"addr_info":[{"family":"inet","local":"10.244.1.6","prefixlen":24,"broadcast":"10.244.1.255","scope":"global","label":"eth0","valid_life_time":4294967295,"preferred_life_time":4294967295},{"family":"inet6","local":"fe80::f458:98ff:fed6:9ffa","prefixlen":64,"scope":"link","protocol":"kernel_ll","valid_life_time":4294967295,"preferred_life_time":4294967295}]}]
+pod-directory
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~empty-dir
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~empty-dir/memory
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~empty-dir/work
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~secret
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~secret/sample
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~downward-api
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~downward-api/downward
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~configmap
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~configmap/settings
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~projected
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~projected/kube-api-access-ck5k4
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/plugins
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/plugins/kubernetes.io~empty-dir
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/plugins/kubernetes.io~empty-dir/memory
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/plugins/kubernetes.io~empty-dir/wrapped_kube-api-access-ck5k4
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/plugins/kubernetes.io~empty-dir/work
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/plugins/kubernetes.io~empty-dir/wrapped_downward
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/plugins/kubernetes.io~empty-dir/wrapped_settings
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/plugins/kubernetes.io~empty-dir/wrapped_sample
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/containers
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/containers/sidecar
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/containers/app
+/var/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/containers/prepare
+mounts
+3493 3400 0:506 / / rw,relatime - overlay overlay rw,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/15/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/14/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/13/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/12/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/46/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/46/work,uuid=on
+3495 3493 0:545 / /proc rw,nosuid,nodev,noexec,relatime - proc proc rw
+3496 3493 0:546 / /dev rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755,inode64
+3497 3496 0:547 / /dev/pts rw,nosuid,noexec,relatime - devpts devpts rw,gid=5,mode=620,ptmxmode=666
+3498 3496 0:519 / /dev/mqueue rw,nosuid,nodev,noexec,relatime - mqueue mqueue rw
+3499 3493 0:534 / /sys ro,nosuid,nodev,noexec,relatime - sysfs sysfs ro
+3500 3499 0:27 /kubelet.slice/kubelet-kubepods.slice/kubelet-kubepods-burstable.slice/kubelet-kubepods-burstable-podc0b2e8f7_2069_49ef_99d9_13602e6683cc.slice/cri-containerd-65d149471cacb05e144f5c250ce24f69eb8298f9d6f29b4280b10e374758d9fb.scope /sys/fs/cgroup ro,nosuid,nodev,noexec,relatime - cgroup2 cgroup rw
+3501 3493 8:2 /var/lib/docker/volumes/63eef43eccb55e4222643e728fd8b7c0b83749be2275b7552a1ae0947938c3f9/_data/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~empty-dir/work /work rw,relatime - ext4 /dev/sda2 rw,errors=remount-ro
+3502 3493 0:487 / /memory rw,relatime - tmpfs tmpfs rw,size=8192k,inode64,noswap
+3503 3493 8:2 /var/lib/docker/volumes/63eef43eccb55e4222643e728fd8b7c0b83749be2275b7552a1ae0947938c3f9/_data/local-path-provisioner/pvc-1eb7e583-803a-460d-8035-c3d432ae9cdb_lifecycle-lab_data /data rw,relatime - ext4 /dev/sda2 rw,errors=remount-ro
+3504 3493 8:2 /var/lib/docker/volumes/63eef43eccb55e4222643e728fd8b7c0b83749be2275b7552a1ae0947938c3f9/_data/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/volumes/kubernetes.io~configmap/settings /settings ro,relatime - ext4 /dev/sda2 rw,errors=remount-ro
+3505 3493 0:488 / /sample ro,relatime - tmpfs tmpfs rw,size=65720036k,inode64,noswap
+3506 3493 0:489 / /downward ro,relatime - tmpfs tmpfs rw,size=65720036k,inode64,noswap
+3507 3493 8:2 /var/lib/docker/volumes/63eef43eccb55e4222643e728fd8b7c0b83749be2275b7552a1ae0947938c3f9/_data/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/etc-hosts /etc/hosts rw,relatime - ext4 /dev/sda2 rw,errors=remount-ro
+3508 3496 8:2 /var/lib/docker/volumes/63eef43eccb55e4222643e728fd8b7c0b83749be2275b7552a1ae0947938c3f9/_data/lib/kubelet/pods/c0b2e8f7-2069-49ef-99d9-13602e6683cc/containers/app/aa932e44 /dev/termination-log rw,relatime - ext4 /dev/sda2 rw,errors=remount-ro
+3509 3493 8:2 /var/lib/docker/volumes/63eef43eccb55e4222643e728fd8b7c0b83749be2275b7552a1ae0947938c3f9/_data/lib/containerd/io.containerd.grpc.v1.cri/sandboxes/f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f/hostname /etc/hostname rw,relatime - ext4 /dev/sda2 rw,errors=remount-ro
+3510 3493 8:2 /var/lib/docker/volumes/63eef43eccb55e4222643e728fd8b7c0b83749be2275b7552a1ae0947938c3f9/_data/lib/containerd/io.containerd.grpc.v1.cri/sandboxes/f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f/resolv.conf /etc/resolv.conf rw,relatime - ext4 /dev/sda2 rw,errors=remount-ro
+3511 3496 0:491 / /dev/shm rw,relatime - tmpfs shm rw,size=65536k,inode64
+3512 3493 0:490 / /run/secrets/kubernetes.io/serviceaccount ro,relatime - tmpfs tmpfs rw,size=65720036k,inode64,noswap
+3513 3499 0:506 /product_name /sys/devices/virtual/dmi/id/product_name ro,relatime - overlay overlay rw,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/15/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/14/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/13/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/12/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/46/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/46/work,uuid=on
+3514 3499 0:506 /product_uuid /sys/devices/virtual/dmi/id/product_uuid ro,relatime - overlay overlay rw,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/15/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/14/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/13/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/12/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/46/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/46/work,uuid=on
+3515 3514 0:506 /product_uuid /sys/devices/virtual/dmi/id/product_uuid ro,relatime - overlay overlay rw,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/15/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/14/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/13/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/12/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/46/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/46/work,uuid=on
+3401 3495 0:545 /bus /proc/bus ro,nosuid,nodev,noexec,relatime - proc proc rw
+3402 3495 0:545 /fs /proc/fs ro,nosuid,nodev,noexec,relatime - proc proc rw
+3403 3495 0:545 /irq /proc/irq ro,nosuid,nodev,noexec,relatime - proc proc rw
+3404 3495 0:545 /sys /proc/sys ro,nosuid,nodev,noexec,relatime - proc proc rw
+3405 3495 0:545 /sysrq-trigger /proc/sysrq-trigger ro,nosuid,nodev,noexec,relatime - proc proc rw
+3406 3495 0:548 / /proc/asound ro,relatime - tmpfs tmpfs ro,size=4k,nr_inodes=1,inode64
+3407 3495 0:548 / /proc/acpi ro,relatime - tmpfs tmpfs ro,size=4k,nr_inodes=1,inode64
+3408 3495 0:546 /null /proc/interrupts rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755,inode64
+3409 3495 0:546 /null /proc/kcore rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755,inode64
+3410 3495 0:546 /null /proc/keys rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755,inode64
+3411 3495 0:546 /null /proc/timer_list rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755,inode64
+3413 3499 0:548 / /sys/firmware ro,relatime - tmpfs tmpfs ro,size=4k,nr_inodes=1,inode64
+3429 3499 0:548 / /sys/devices/virtual/powercap ro,relatime - tmpfs tmpfs ro,size=4k,nr_inodes=1,inode64
+3430 3499 0:548 / /sys/devices/system/cpu/cpu0/thermal_throttle ro,relatime - tmpfs tmpfs ro,size=4k,nr_inodes=1,inode64
+3431 3499 0:548 / /sys/devices/system/cpu/cpu1/thermal_throttle ro,relatime - tmpfs tmpfs ro,size=4k,nr_inodes=1,inode64
+3432 3499 0:548 / /sys/devices/system/cpu/cpu2/thermal_throttle ro,relatime - tmpfs tmpfs ro,size=4k,nr_inodes=1,inode64
+3433 3499 0:548 / /sys/devices/system/cpu/cpu3/thermal_throttle ro,relatime - tmpfs tmpfs ro,size=4k,nr_inodes=1,inode64
+3434 3499 0:548 / /sys/devices/system/cpu/cpu4/thermal_throttle ro,relatime - tmpfs tmpfs ro,size=4k,nr_inodes=1,inode64
+3435 3499 0:548 / /sys/devices/system/cpu/cpu5/thermal_throttle ro,relatime - tmpfs tmpfs ro,size=4k,nr_inodes=1,inode64
+3436 3499 0:548 / /sys/devices/system/cpu/cpu6/thermal_throttle ro,relatime - tmpfs tmpfs ro,size=4k,nr_inodes=1,inode64
+3437 3499 0:548 / /sys/devices/system/cpu/cpu7/thermal_throttle ro,relatime - tmpfs tmpfs ro,size=4k,nr_inodes=1,inode64
+3438 3499 0:548 / /sys/devices/system/cpu/cpu8/thermal_throttle ro,relatime - tmpfs tmpfs ro,size=4k,nr_inodes=1,inode64
+3439 3499 0:548 / /sys/devices/system/cpu/cpu9/thermal_throttle ro,relatime - tmpfs tmpfs ro,size=4k,nr_inodes=1,inode64
+3440 3499 0:548 / /sys/devices/system/cpu/cpu10/thermal_throttle ro,relatime - tmpfs tmpfs ro,size=4k,nr_inodes=1,inode64
+3441 3499 0:548 / /sys/devices/system/cpu/cpu11/thermal_throttle ro,relatime - tmpfs tmpfs ro,size=4k,nr_inodes=1,inode64

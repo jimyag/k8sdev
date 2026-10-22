@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "checks": [
+    "runtime GC",
+    "netns removal",
+    "Pod cgroup removal",
+    "unschedulable before node assignment",
+    "mount failure before sandbox creation",
+    "same UID recovers after ConfigMap creation",
+    "OOMKilled triggers OnFailure restart"
+  ]
+}

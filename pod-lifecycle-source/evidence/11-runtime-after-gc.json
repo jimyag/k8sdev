@@ -1,0 +1,232 @@
+{
+  "sandboxes": {
+    "items": [
+      {
+        "id": "9daa846fb49326df4c5e76d105cc781082c8bd282a6c9287a81641ea940ec713",
+        "metadata": {
+          "name": "failed",
+          "uid": "392f4355-84e3-4574-8e4e-c5c1ea2049a1",
+          "namespace": "lifecycle-lab",
+          "attempt": 0
+        },
+        "state": "SANDBOX_NOTREADY",
+        "createdAt": "1792683796209748849",
+        "labels": {
+          "io.kubernetes.pod.name": "failed",
+          "io.kubernetes.pod.namespace": "lifecycle-lab",
+          "io.kubernetes.pod.uid": "392f4355-84e3-4574-8e4e-c5c1ea2049a1"
+        },
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"annotations\":{},\"name\":\"failed\",\"namespace\":\"lifecycle-lab\"},\"spec\":{\"containers\":[{\"command\":[\"sh\",\"-c\",\"exit 7\"],\"image\":\"python:3.12-alpine\",\"name\":\"task\"}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"pod-lifecycle-worker\"},\"restartPolicy\":\"Never\"}}\n",
+          "kubernetes.io/config.seen": "2026-10-22T15:43:15.884444478Z",
+          "kubernetes.io/config.source": "api"
+        },
+        "runtimeHandler": ""
+      },
+      {
+        "id": "1c1c0101afa4ed7895d98e9b7334882e8ea6478efc8b10a4cd8d13d0b218b8a8",
+        "metadata": {
+          "name": "completed",
+          "uid": "bf97d2d7-d19c-46f5-9bab-4326f344842b",
+          "namespace": "lifecycle-lab",
+          "attempt": 0
+        },
+        "state": "SANDBOX_NOTREADY",
+        "createdAt": "1792683796204456896",
+        "labels": {
+          "io.kubernetes.pod.name": "completed",
+          "io.kubernetes.pod.namespace": "lifecycle-lab",
+          "io.kubernetes.pod.uid": "bf97d2d7-d19c-46f5-9bab-4326f344842b"
+        },
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"annotations\":{},\"name\":\"completed\",\"namespace\":\"lifecycle-lab\"},\"spec\":{\"containers\":[{\"command\":[\"sh\",\"-c\",\"exit 0\"],\"image\":\"python:3.12-alpine\",\"name\":\"task\"}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"pod-lifecycle-worker\"},\"restartPolicy\":\"Never\"}}\n",
+          "kubernetes.io/config.seen": "2026-10-22T15:43:15.879125616Z",
+          "kubernetes.io/config.source": "api"
+        },
+        "runtimeHandler": ""
+      },
+      {
+        "id": "c7b1a8ea6a545fc3386b67e7f4b505fa0753feb478a67d0b0efb9a705b38c4ad",
+        "metadata": {
+          "name": "kube-proxy-qs5l5",
+          "uid": "6faca1fe-ff55-4157-bf84-21856bcec587",
+          "namespace": "kube-system",
+          "attempt": 0
+        },
+        "state": "SANDBOX_READY",
+        "createdAt": "1792683477587487428",
+        "labels": {
+          "controller-revision-hash": "5b87cc9b64",
+          "io.kubernetes.pod.name": "kube-proxy-qs5l5",
+          "io.kubernetes.pod.namespace": "kube-system",
+          "io.kubernetes.pod.uid": "6faca1fe-ff55-4157-bf84-21856bcec587",
+          "k8s-app": "kube-proxy",
+          "pod-template-generation": "1"
+        },
+        "annotations": {
+          "kubernetes.io/config.seen": "2026-10-22T15:37:57.163564172Z",
+          "kubernetes.io/config.source": "api"
+        },
+        "runtimeHandler": ""
+      },
+      {
+        "id": "99bc80eb962e9edb1e091d674921680c7f0d25c74f2a2d8c053d547b854cc977",
+        "metadata": {
+          "name": "kindnet-xxqmv",
+          "uid": "bbe2f231-503c-4ede-abe4-fbc3b0002d55",
+          "namespace": "kube-system",
+          "attempt": 0
+        },
+        "state": "SANDBOX_READY",
+        "createdAt": "1792683477343216833",
+        "labels": {
+          "app": "kindnet",
+          "controller-revision-hash": "66c7bf9f77",
+          "io.kubernetes.pod.name": "kindnet-xxqmv",
+          "io.kubernetes.pod.namespace": "kube-system",
+          "io.kubernetes.pod.uid": "bbe2f231-503c-4ede-abe4-fbc3b0002d55",
+          "k8s-app": "kindnet",
+          "pod-template-generation": "1",
+          "tier": "node"
+        },
+        "annotations": {
+          "kubernetes.io/config.seen": "2026-10-22T15:37:57.163574360Z",
+          "kubernetes.io/config.source": "api"
+        },
+        "runtimeHandler": ""
+      }
+    ]
+  },
+  "containers": {
+    "containers": [
+      {
+        "id": "e7b2608012a665a6954d7094e7a54ace3358b4ebc35ae65ded2810fec75f583b",
+        "podSandboxId": "9daa846fb49326df4c5e76d105cc781082c8bd282a6c9287a81641ea940ec713",
+        "metadata": {
+          "name": "task",
+          "attempt": 0
+        },
+        "image": {
+          "image": "sha256:f4b7b8044a873fcc0f348549a19b9075cd77bd56ead7177192cfec38d85bce4a",
+          "annotations": {},
+          "userSpecifiedImage": "python:3.12-alpine",
+          "runtimeHandler": "",
+          "imageRef": ""
+        },
+        "imageRef": "sha256:f4b7b8044a873fcc0f348549a19b9075cd77bd56ead7177192cfec38d85bce4a",
+        "state": "CONTAINER_EXITED",
+        "createdAt": "1792683796316343351",
+        "labels": {
+          "io.kubernetes.container.name": "task",
+          "io.kubernetes.pod.name": "failed",
+          "io.kubernetes.pod.namespace": "lifecycle-lab",
+          "io.kubernetes.pod.uid": "392f4355-84e3-4574-8e4e-c5c1ea2049a1"
+        },
+        "annotations": {
+          "io.kubernetes.container.hash": "28c5df82",
+          "io.kubernetes.container.restartCount": "0",
+          "io.kubernetes.container.terminationMessagePath": "/dev/termination-log",
+          "io.kubernetes.container.terminationMessagePolicy": "File",
+          "io.kubernetes.pod.terminationGracePeriod": "30"
+        },
+        "imageId": "sha256:f4b7b8044a873fcc0f348549a19b9075cd77bd56ead7177192cfec38d85bce4a"
+      },
+      {
+        "id": "0a13dda6ac74c33514f881fa27e2097d002f11e705204b2aca362d6205f784ba",
+        "podSandboxId": "1c1c0101afa4ed7895d98e9b7334882e8ea6478efc8b10a4cd8d13d0b218b8a8",
+        "metadata": {
+          "name": "task",
+          "attempt": 0
+        },
+        "image": {
+          "image": "sha256:f4b7b8044a873fcc0f348549a19b9075cd77bd56ead7177192cfec38d85bce4a",
+          "annotations": {},
+          "userSpecifiedImage": "python:3.12-alpine",
+          "runtimeHandler": "",
+          "imageRef": ""
+        },
+        "imageRef": "sha256:f4b7b8044a873fcc0f348549a19b9075cd77bd56ead7177192cfec38d85bce4a",
+        "state": "CONTAINER_EXITED",
+        "createdAt": "1792683796310925665",
+        "labels": {
+          "io.kubernetes.container.name": "task",
+          "io.kubernetes.pod.name": "completed",
+          "io.kubernetes.pod.namespace": "lifecycle-lab",
+          "io.kubernetes.pod.uid": "bf97d2d7-d19c-46f5-9bab-4326f344842b"
+        },
+        "annotations": {
+          "io.kubernetes.container.hash": "28c5df82",
+          "io.kubernetes.container.restartCount": "0",
+          "io.kubernetes.container.terminationMessagePath": "/dev/termination-log",
+          "io.kubernetes.container.terminationMessagePolicy": "File",
+          "io.kubernetes.pod.terminationGracePeriod": "30"
+        },
+        "imageId": "sha256:f4b7b8044a873fcc0f348549a19b9075cd77bd56ead7177192cfec38d85bce4a"
+      },
+      {
+        "id": "22da1d6803bdf70e38693674d7c322592bd90c7e6aea9c507bc8c485d4dd8199",
+        "podSandboxId": "c7b1a8ea6a545fc3386b67e7f4b505fa0753feb478a67d0b0efb9a705b38c4ad",
+        "metadata": {
+          "name": "kube-proxy",
+          "attempt": 0
+        },
+        "image": {
+          "image": "sha256:a7852a3affcc06cfc530de60602aabd59adbb05b69621bf04d333718b927e9d2",
+          "annotations": {},
+          "userSpecifiedImage": "registry.k8s.io/kube-proxy:v1.37.1",
+          "runtimeHandler": "",
+          "imageRef": ""
+        },
+        "imageRef": "sha256:a7852a3affcc06cfc530de60602aabd59adbb05b69621bf04d333718b927e9d2",
+        "state": "CONTAINER_RUNNING",
+        "createdAt": "1792683478828165559",
+        "labels": {
+          "io.kubernetes.container.name": "kube-proxy",
+          "io.kubernetes.pod.name": "kube-proxy-qs5l5",
+          "io.kubernetes.pod.namespace": "kube-system",
+          "io.kubernetes.pod.uid": "6faca1fe-ff55-4157-bf84-21856bcec587"
+        },
+        "annotations": {
+          "io.kubernetes.container.hash": "656b44b6",
+          "io.kubernetes.container.restartCount": "0",
+          "io.kubernetes.container.terminationMessagePath": "/dev/termination-log",
+          "io.kubernetes.container.terminationMessagePolicy": "File",
+          "io.kubernetes.pod.terminationGracePeriod": "30"
+        },
+        "imageId": "sha256:a7852a3affcc06cfc530de60602aabd59adbb05b69621bf04d333718b927e9d2"
+      },
+      {
+        "id": "acd390694eca19e8ab36a81545951750e59a9b33b16e4fd714360ad9c484fb70",
+        "podSandboxId": "99bc80eb962e9edb1e091d674921680c7f0d25c74f2a2d8c053d547b854cc977",
+        "metadata": {
+          "name": "kindnet-cni",
+          "attempt": 0
+        },
+        "image": {
+          "image": "sha256:4626fe10df5b930638e6e1662143ee1c7a698de6174fdb61a8ce658e688be2cd",
+          "annotations": {},
+          "userSpecifiedImage": "docker.io/kindest/kindnetd:v20260820-69b56db7",
+          "runtimeHandler": "",
+          "imageRef": ""
+        },
+        "imageRef": "sha256:4626fe10df5b930638e6e1662143ee1c7a698de6174fdb61a8ce658e688be2cd",
+        "state": "CONTAINER_RUNNING",
+        "createdAt": "1792683477616287048",
+        "labels": {
+          "io.kubernetes.container.name": "kindnet-cni",
+          "io.kubernetes.pod.name": "kindnet-xxqmv",
+          "io.kubernetes.pod.namespace": "kube-system",
+          "io.kubernetes.pod.uid": "bbe2f231-503c-4ede-abe4-fbc3b0002d55"
+        },
+        "annotations": {
+          "io.kubernetes.container.hash": "b6357c87",
+          "io.kubernetes.container.restartCount": "0",
+          "io.kubernetes.container.terminationMessagePath": "/dev/termination-log",
+          "io.kubernetes.container.terminationMessagePolicy": "File",
+          "io.kubernetes.pod.terminationGracePeriod": "30"
+        },
+        "imageId": "sha256:4626fe10df5b930638e6e1662143ee1c7a698de6174fdb61a8ce658e688be2cd"
+      }
+    ]
+  }
+}

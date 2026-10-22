@@ -1,0 +1,1923 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-2hjml",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1366",
+        "uid": "78c15fda-5c94-4410-9b6f-cefe5923b9d2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:02Z",
+      "message": "Successfully assigned lifecycle-lab/app-5ddcc7c6f4-2hjml to pod-lifecycle-worker",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:02Z",
+        "name": "app-5ddcc7c6f4-2hjml.18e0e4670f3f6c6f",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1371",
+        "uid": "f2bebcd2-9e7f-48b0-87ef-1d8adb6f18e4"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:03Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.initContainers{prepare}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-2hjml",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1368",
+        "uid": "78c15fda-5c94-4410-9b6f-cefe5923b9d2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:03Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:03Z",
+        "name": "app-5ddcc7c6f4-2hjml.18e0e467279b4d7a",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1378",
+        "uid": "02bbb23a-6073-4903-addc-4da6ddb47bd4"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:03Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.initContainers{prepare}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-2hjml",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1368",
+        "uid": "78c15fda-5c94-4410-9b6f-cefe5923b9d2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:03Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:03Z",
+        "name": "app-5ddcc7c6f4-2hjml.18e0e467283e4929",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1380",
+        "uid": "5b983b39-e678-4d77-8de1-ecf1bc34096a"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:03Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.initContainers{prepare}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-2hjml",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1368",
+        "uid": "78c15fda-5c94-4410-9b6f-cefe5923b9d2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:03Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:03Z",
+        "name": "app-5ddcc7c6f4-2hjml.18e0e4672ca9ce47",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1381",
+        "uid": "017cc422-1762-48eb-817a-72b7354f563f"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:03Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.initContainers{sidecar}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-2hjml",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1368",
+        "uid": "78c15fda-5c94-4410-9b6f-cefe5923b9d2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:03Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:03Z",
+        "name": "app-5ddcc7c6f4-2hjml.18e0e4673615e512",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1386",
+        "uid": "14dcbbb4-c5c2-4206-bfc2-af465899417e"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:03Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.initContainers{sidecar}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-2hjml",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1368",
+        "uid": "78c15fda-5c94-4410-9b6f-cefe5923b9d2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:03Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:03Z",
+        "name": "app-5ddcc7c6f4-2hjml.18e0e467378e2f66",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1388",
+        "uid": "86e7d9d4-7188-45cb-858a-f2c172b3f852"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:03Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.initContainers{sidecar}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-2hjml",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1368",
+        "uid": "78c15fda-5c94-4410-9b6f-cefe5923b9d2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:03Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:03Z",
+        "name": "app-5ddcc7c6f4-2hjml.18e0e4673ba38de6",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1389",
+        "uid": "a54f6357-9722-4500-aa6b-839597bda14e"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:03Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-2hjml",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1368",
+        "uid": "78c15fda-5c94-4410-9b6f-cefe5923b9d2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:03Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:03Z",
+        "name": "app-5ddcc7c6f4-2hjml.18e0e4673bd4b9cd",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1390",
+        "uid": "e5423e53-8418-4d85-b801-d1ecab83d3b9"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:03Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-2hjml",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1368",
+        "uid": "78c15fda-5c94-4410-9b6f-cefe5923b9d2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:03Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:03Z",
+        "name": "app-5ddcc7c6f4-2hjml.18e0e4673c6aed23",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1392",
+        "uid": "990a5509-b435-4b08-905c-3eed51a103a2"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:03Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-2hjml",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1368",
+        "uid": "78c15fda-5c94-4410-9b6f-cefe5923b9d2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:03Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:03Z",
+        "name": "app-5ddcc7c6f4-2hjml.18e0e4673f48dfa6",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1393",
+        "uid": "17e73a4b-b975-4945-b9bc-a1d5f248a1ac"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-2hjml",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1368",
+        "uid": "78c15fda-5c94-4410-9b6f-cefe5923b9d2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:05Z",
+      "message": "Startup probe failed: ",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:04Z",
+        "name": "app-5ddcc7c6f4-2hjml.18e0e46762e79c9e",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1399",
+        "uid": "dcfaaeb2-c0e0-49a4-a403-8875f1b70caa"
+      },
+      "reason": "Unhealthy",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:09Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.initContainers{sidecar}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-2hjml",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1368",
+        "uid": "78c15fda-5c94-4410-9b6f-cefe5923b9d2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:09Z",
+      "message": "Stopping container sidecar",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:09Z",
+        "name": "app-5ddcc7c6f4-2hjml.18e0e4688e8db3eb",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1426",
+        "uid": "206fd8e5-c88b-45af-95dc-0a701081ab20"
+      },
+      "reason": "Killing",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:09Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-2hjml",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1368",
+        "uid": "78c15fda-5c94-4410-9b6f-cefe5923b9d2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:09Z",
+      "message": "Stopping container app",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:09Z",
+        "name": "app-5ddcc7c6f4-2hjml.18e0e4688e8df26f",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1428",
+        "uid": "a2e7e7b4-4fcc-4917-b29b-0a733d1a2e61"
+      },
+      "reason": "Killing",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:42:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1098",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:42:02Z",
+      "message": "Successfully assigned lifecycle-lab/app-5ddcc7c6f4-4wvlx to pod-lifecycle-worker",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:42:02Z",
+        "name": "app-5ddcc7c6f4-4wvlx.18e0e458fcf063af",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1135",
+        "uid": "4f100566-89f6-4a6c-ab06-059789bce571"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:42:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.initContainers{prepare}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1134",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:42:25Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:42:02Z",
+        "name": "app-5ddcc7c6f4-4wvlx.18e0e45915444805",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1263",
+        "uid": "bbfb54ec-5020-4825-8089-13e93c26e8f2"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:42:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.initContainers{prepare}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1134",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:42:25Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:42:02Z",
+        "name": "app-5ddcc7c6f4-4wvlx.18e0e45915f2c1e1",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1265",
+        "uid": "a217fc0a-630b-495f-b695-e1d40ba28e7f"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:42:03Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.initContainers{prepare}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1134",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:42:25Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:42:03Z",
+        "name": "app-5ddcc7c6f4-4wvlx.18e0e459180c4ad0",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1266",
+        "uid": "1fa8298c-6209-40cb-acaa-96d002796fbb"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:42:03Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.initContainers{sidecar}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1134",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:42:26Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:42:03Z",
+        "name": "app-5ddcc7c6f4-4wvlx.18e0e45936f56a94",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1269",
+        "uid": "3a0241ac-56ba-4489-bb7c-ee2fc581e791"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:42:03Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.initContainers{sidecar}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1134",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:42:26Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:42:03Z",
+        "name": "app-5ddcc7c6f4-4wvlx.18e0e45937a32a71",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1271",
+        "uid": "60ca14ed-12c1-4169-ab30-ed6bdbf1de64"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:42:03Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.initContainers{sidecar}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1134",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:42:26Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:42:03Z",
+        "name": "app-5ddcc7c6f4-4wvlx.18e0e4593c063d95",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1272",
+        "uid": "c267e899-8f55-43d2-8536-6b1999c56ba6"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 4,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:42:03Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1134",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:42:26Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:42:03Z",
+        "name": "app-5ddcc7c6f4-4wvlx.18e0e4593c26b455",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1273",
+        "uid": "c3147932-b236-46cd-800c-1928611bdb6f"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 3,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:42:03Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1134",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:42:19Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:42:03Z",
+        "name": "app-5ddcc7c6f4-4wvlx.18e0e4593cc8a622",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1216",
+        "uid": "3e3b2c22-9fd7-4da9-8c9b-cbfb150b6992"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 3,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:42:03Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1134",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:42:19Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:42:03Z",
+        "name": "app-5ddcc7c6f4-4wvlx.18e0e45940903f99",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1217",
+        "uid": "622b3e2d-859b-4499-8332-ba3521577061"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:42:03Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1134",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:42:04Z",
+      "message": "Startup probe failed: ",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:42:03Z",
+        "name": "app-5ddcc7c6f4-4wvlx.18e0e4595048b990",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1159",
+        "uid": "4ff79be4-e8cb-4d2a-9194-31f5204cc485"
+      },
+      "reason": "Unhealthy",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:42:07Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1134",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:42:07Z",
+      "message": "Readiness probe failed: ",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:42:07Z",
+        "name": "app-5ddcc7c6f4-4wvlx.18e0e45a267b7d05",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1168",
+        "uid": "2dae4be0-e291-4efd-8222-083dc811efce"
+      },
+      "reason": "Unhealthy",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:42:08Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1134",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:42:31Z",
+      "message": "Liveness probe errored and resulted in unknown state: rpc error: code = Unknown desc = failed to exec in container: container is in CONTAINER_EXITED state",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:42:08Z",
+        "name": "app-5ddcc7c6f4-4wvlx.18e0e45a74f99d36",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1289",
+        "uid": "7eb04472-7f83-499a-b34c-f08bbc62ac77"
+      },
+      "reason": "Unhealthy",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 4,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:42:14Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1134",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:42:23Z",
+      "message": "Liveness probe failed: ",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:42:14Z",
+        "name": "app-5ddcc7c6f4-4wvlx.18e0e45bdb2988b2",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1250",
+        "uid": "da2738a7-2db1-4e7a-bbb0-d71ac08f4a2d"
+      },
+      "reason": "Unhealthy",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:42:15Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1134",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:42:23Z",
+      "message": "Container app failed liveness probe, will be restarted",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:42:15Z",
+        "name": "app-5ddcc7c6f4-4wvlx.18e0e45c16c5afe2",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1251",
+        "uid": "a983106d-23ff-4bda-8b9d-0407747d919f"
+      },
+      "reason": "Killing",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:42:24Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1134",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:42:24Z",
+      "message": "PreStopHook failed",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:42:24Z",
+        "name": "app-5ddcc7c6f4-4wvlx.18e0e45e208b541b",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1253",
+        "uid": "eaa5bae7-7fe0-4515-a799-d8ce98a18403"
+      },
+      "reason": "FailedPreStopHook",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 3,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:42:24Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1134",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:42:34Z",
+      "message": "Back-off restarting failed container app in pod app-5ddcc7c6f4-4wvlx_lifecycle-lab(c0b2e8f7-2069-49ef-99d9-13602e6683cc)",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:42:24Z",
+        "name": "app-5ddcc7c6f4-4wvlx.18e0e45e221d737d",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1311",
+        "uid": "6baad3b7-3c4b-455b-8274-5be486c800c2"
+      },
+      "reason": "BackOff",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:42:24Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1134",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:42:31Z",
+      "message": "Readiness probe errored and resulted in unknown state: rpc error: code = Unknown desc = failed to exec in container: container is in CONTAINER_EXITED state",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:42:24Z",
+        "name": "app-5ddcc7c6f4-4wvlx.18e0e45e3601643c",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1290",
+        "uid": "f5746dc9-bf98-4f93-9a43-610481ba2762"
+      },
+      "reason": "Unhealthy",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:42:25Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.initContainers{sidecar}",
+        "kind": "Pod",
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1134",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:42:25Z",
+      "message": "killing",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:42:25Z",
+        "name": "app-5ddcc7c6f4-4wvlx.18e0e45e592b4a74",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1258",
+        "uid": "946b03f1-4dc7-4020-933d-869f90e0ca4e"
+      },
+      "reason": "Killing",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:41:58Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "ReplicaSet",
+        "name": "app-5ddcc7c6f4",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1095",
+        "uid": "b3843b80-1929-4b19-a73a-6b1796b41c29"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:41:58Z",
+      "message": "Created pod: app-5ddcc7c6f4-4wvlx",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:41:58Z",
+        "name": "app-5ddcc7c6f4.18e0e4580d40d35c",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1099",
+        "uid": "51f57f39-37f3-4e11-8d02-4ec02b06c3a0"
+      },
+      "reason": "SuccessfulCreate",
+      "reportingComponent": "replicaset-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "replicaset-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:02Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "ReplicaSet",
+        "name": "app-5ddcc7c6f4",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1354",
+        "uid": "b3843b80-1929-4b19-a73a-6b1796b41c29"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:02Z",
+      "message": "Created pod: app-5ddcc7c6f4-2hjml",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:02Z",
+        "name": "app-5ddcc7c6f4.18e0e4670ed3082c",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1369",
+        "uid": "2819634b-0a4a-4ca3-9c9e-faf367952ea9"
+      },
+      "reason": "SuccessfulCreate",
+      "reportingComponent": "replicaset-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "replicaset-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:09Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "ReplicaSet",
+        "name": "app-5ddcc7c6f4",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1419",
+        "uid": "b3843b80-1929-4b19-a73a-6b1796b41c29"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:09Z",
+      "message": "Deleted pod: app-5ddcc7c6f4-2hjml",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:09Z",
+        "name": "app-5ddcc7c6f4.18e0e4688e7bfa47",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1423",
+        "uid": "02d2e4af-6d4c-4ebf-a97b-ff3211f1d836"
+      },
+      "reason": "SuccessfulDelete",
+      "reportingComponent": "replicaset-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "replicaset-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:41:58Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "Deployment",
+        "name": "app",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1094",
+        "uid": "c56cb094-891e-4daf-973d-ddfedd553be0"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:41:58Z",
+      "message": "Scaled up replica set app-5ddcc7c6f4 from 0 to 1",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:41:58Z",
+        "name": "app.18e0e4580cc46092",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1096",
+        "uid": "1f0a52c5-3178-46bf-9290-f6ad8354a5bb"
+      },
+      "reason": "ScalingReplicaSet",
+      "reportingComponent": "deployment-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "deployment-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:09Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "Deployment",
+        "name": "app",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1418",
+        "uid": "c56cb094-891e-4daf-973d-ddfedd553be0"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:09Z",
+      "message": "Scaled down replica set app-5ddcc7c6f4 from 1 to 0",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:09Z",
+        "name": "app.18e0e4688e4b6df6",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1421",
+        "uid": "9aef6862-80e1-4c8d-986b-938636f46dec"
+      },
+      "reason": "ScalingReplicaSet",
+      "reportingComponent": "deployment-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "deployment-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:15Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "completed",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1451",
+        "uid": "bf97d2d7-d19c-46f5-9bab-4326f344842b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:15Z",
+      "message": "Successfully assigned lifecycle-lab/completed to pod-lifecycle-worker",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:15Z",
+        "name": "completed.18e0e46a0ff6f26e",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1453",
+        "uid": "1ea992b6-d23c-4040-966a-7954819b6ab7"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:16Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{task}",
+        "kind": "Pod",
+        "name": "completed",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1452",
+        "uid": "bf97d2d7-d19c-46f5-9bab-4326f344842b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:16Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:16Z",
+        "name": "completed.18e0e46a29130fce",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1460",
+        "uid": "321c8b66-4322-484b-81e9-1fce491bf07f"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:16Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{task}",
+        "kind": "Pod",
+        "name": "completed",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1452",
+        "uid": "bf97d2d7-d19c-46f5-9bab-4326f344842b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:16Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:16Z",
+        "name": "completed.18e0e46a29d39e49",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1464",
+        "uid": "369afa10-2860-4897-826f-eddaf82ce32f"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:16Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{task}",
+        "kind": "Pod",
+        "name": "completed",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1452",
+        "uid": "bf97d2d7-d19c-46f5-9bab-4326f344842b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:16Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:16Z",
+        "name": "completed.18e0e46a2beddbd8",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1466",
+        "uid": "53add3b4-5567-4fa3-97f2-8fdd141db71a"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:41:58Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "name": "data",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1088",
+        "uid": "1eb7e583-803a-460d-8035-c3d432ae9cdb"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:41:58Z",
+      "message": "waiting for first consumer to be created before binding",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:41:58Z",
+        "name": "data.18e0e4580bbc722c",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1089",
+        "uid": "c8aa0f4c-d0fe-488f-8483-1a9ed8a3a16f"
+      },
+      "reason": "WaitForFirstConsumer",
+      "reportingComponent": "persistentvolume-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "persistentvolume-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:41:58Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "name": "data",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1105",
+        "uid": "1eb7e583-803a-460d-8035-c3d432ae9cdb"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:41:58Z",
+      "message": "Waiting for a volume to be created either by the external provisioner 'rancher.io/local-path' or manually by the system administrator. If volume creation is delayed, please verify that the provisioner is running and correctly registered.",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:41:58Z",
+        "name": "data.18e0e4580e395356",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1107",
+        "uid": "2320ff52-7034-4a02-8818-843a718a2076"
+      },
+      "reason": "ExternalProvisioning",
+      "reportingComponent": "persistentvolume-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "persistentvolume-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:41:58Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "name": "data",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1105",
+        "uid": "1eb7e583-803a-460d-8035-c3d432ae9cdb"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:41:58Z",
+      "message": "External provisioner is provisioning volume for claim \"lifecycle-lab/data\"",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:41:58Z",
+        "name": "data.18e0e4580e4a46cb",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1109",
+        "uid": "f21e4aa0-6aa9-4aa1-b16a-4ab5c64f4ab3"
+      },
+      "reason": "Provisioning",
+      "reportingComponent": "rancher.io/local-path_local-path-provisioner-75f7fc7dc5-glckv_ceea8f0f-c517-4cf5-b6ee-12bd9911de4f",
+      "reportingInstance": "",
+      "source": {
+        "component": "rancher.io/local-path_local-path-provisioner-75f7fc7dc5-glckv_ceea8f0f-c517-4cf5-b6ee-12bd9911de4f"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:42:01Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "name": "data",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1105",
+        "uid": "1eb7e583-803a-460d-8035-c3d432ae9cdb"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:42:01Z",
+      "message": "Successfully provisioned volume pvc-1eb7e583-803a-460d-8035-c3d432ae9cdb",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:42:01Z",
+        "name": "data.18e0e458c20ae99e",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1125",
+        "uid": "b5182320-e0f7-4913-b8cb-272eae19c57a"
+      },
+      "reason": "ProvisioningSucceeded",
+      "reportingComponent": "rancher.io/local-path_local-path-provisioner-75f7fc7dc5-glckv_ceea8f0f-c517-4cf5-b6ee-12bd9911de4f",
+      "reportingInstance": "",
+      "source": {
+        "component": "rancher.io/local-path_local-path-provisioner-75f7fc7dc5-glckv_ceea8f0f-c517-4cf5-b6ee-12bd9911de4f"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:15Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "failed",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1454",
+        "uid": "392f4355-84e3-4574-8e4e-c5c1ea2049a1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:15Z",
+      "message": "Successfully assigned lifecycle-lab/failed to pod-lifecycle-worker",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:15Z",
+        "name": "failed.18e0e46a104a64af",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1457",
+        "uid": "0b92d55d-f1dd-40da-be01-ccbf2f96b124"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:16Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{task}",
+        "kind": "Pod",
+        "name": "failed",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1455",
+        "uid": "392f4355-84e3-4574-8e4e-c5c1ea2049a1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:16Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:16Z",
+        "name": "failed.18e0e46a2977514f",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1462",
+        "uid": "1abb962c-f8ab-4768-8caf-425cf49127d7"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:16Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{task}",
+        "kind": "Pod",
+        "name": "failed",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1455",
+        "uid": "392f4355-84e3-4574-8e4e-c5c1ea2049a1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:16Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:16Z",
+        "name": "failed.18e0e46a2a21e741",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1465",
+        "uid": "25bbd77e-2f3c-42ed-b55b-878558076566"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:43:16Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{task}",
+        "kind": "Pod",
+        "name": "failed",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1455",
+        "uid": "392f4355-84e3-4574-8e4e-c5c1ea2049a1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:43:16Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:43:16Z",
+        "name": "failed.18e0e46a2c42874f",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1468",
+        "uid": "714f900e-44d2-4d5f-8bf8-208c1a8c114c"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:45:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "memory-limit",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1639",
+        "uid": "0447d378-5b27-4866-ad5c-7f22f91ae67d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:45:02Z",
+      "message": "Successfully assigned lifecycle-lab/memory-limit to pod-lifecycle-worker",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:45:02Z",
+        "name": "memory-limit.18e0e482de4bbb1c",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1642",
+        "uid": "354c073a-dc1c-4ec6-98b2-bc1ba347478a"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:45:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "memory-limit",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1640",
+        "uid": "0447d378-5b27-4866-ad5c-7f22f91ae67d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:45:03Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:45:02Z",
+        "name": "memory-limit.18e0e482f7260822",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1653",
+        "uid": "c6e07fc8-c265-4414-8c38-0728c496de23"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:45:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "memory-limit",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1640",
+        "uid": "0447d378-5b27-4866-ad5c-7f22f91ae67d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:45:03Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:45:02Z",
+        "name": "memory-limit.18e0e482f7c4f0bf",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1655",
+        "uid": "b2360cef-74f5-48e0-acb2-3b5e38154840"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:45:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "memory-limit",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1640",
+        "uid": "0447d378-5b27-4866-ad5c-7f22f91ae67d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:45:03Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:45:02Z",
+        "name": "memory-limit.18e0e482f9ce06c0",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1656",
+        "uid": "ee424f4f-73f4-4d49-a758-031decb80543"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:45:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "mount-blocked",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1636",
+        "uid": "4a8d1030-49a6-4680-bfae-bf01328b420d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:45:02Z",
+      "message": "Successfully assigned lifecycle-lab/mount-blocked to pod-lifecycle-worker",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:45:02Z",
+        "name": "mount-blocked.18e0e482ddf0b494",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1638",
+        "uid": "408b5afe-4d96-4224-ae69-123085597568"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:45:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "mount-blocked",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1637",
+        "uid": "4a8d1030-49a6-4680-bfae-bf01328b420d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:45:03Z",
+      "message": "MountVolume.SetUp failed for volume \"config\" : configmap \"supplied-later\" not found",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:45:02Z",
+        "name": "mount-blocked.18e0e482ec899f4a",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1650",
+        "uid": "84fc7703-0ec1-4749-bc8d-83dac89caee2"
+      },
+      "reason": "FailedMount",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:45:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "mount-blocked",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1637",
+        "uid": "4a8d1030-49a6-4680-bfae-bf01328b420d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:45:04Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:45:04Z",
+        "name": "mount-blocked.18e0e4834ead3460",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1658",
+        "uid": "67ae1e9f-4383-4249-b2a1-b0a115837c70"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:45:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "mount-blocked",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1637",
+        "uid": "4a8d1030-49a6-4680-bfae-bf01328b420d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:45:04Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:45:04Z",
+        "name": "mount-blocked.18e0e4834f4c65fc",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1660",
+        "uid": "d055e004-3f77-46ac-91f1-41b3d08b20ad"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:45:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "mount-blocked",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1637",
+        "uid": "4a8d1030-49a6-4680-bfae-bf01328b420d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:45:04Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:45:04Z",
+        "name": "mount-blocked.18e0e4835149e1c5",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1661",
+        "uid": "b37eba22-558f-4659-8a18-388feac4091e"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "pod-lifecycle-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "pod-lifecycle-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T15:45:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "unscheduled",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1633",
+        "uid": "4a75a625-d9af-464a-85ee-7ca72d3bb7c2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T15:45:02Z",
+      "message": "0/2 nodes are available: 1 node(s) didn't match Pod's node affinity/selector, 1 node(s) had untolerated taint(s). preemption: 0/2 nodes are available: 2 Preemption is not helpful for scheduling.",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:45:02Z",
+        "name": "unscheduled.18e0e482dd7e2206",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1635",
+        "uid": "5b6050b3-cc18-4674-ac0f-61d61ded0cb0"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Warning"
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

@@ -1,0 +1,740 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/revision": "1",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"name\":\"app\",\"namespace\":\"lifecycle-lab\"},\"spec\":{\"replicas\":1,\"selector\":{\"matchLabels\":{\"app\":\"lifecycle\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"lifecycle\"}},\"spec\":{\"containers\":[{\"command\":[\"python\",\"-u\",\"-c\",\"import http.server, pathlib, signal, sys\\nfor name in (\\\"live\\\", \\\"ready\\\", \\\"started\\\"):\\n    pathlib.Path(\\\"/work\\\", name).touch()\\nprint(\\\"app-start\\\", flush=True)\\ndef stop(signum, frame):\\n    print(\\\"app-term\\\", flush=True)\\n    sys.exit(0)\\nsignal.signal(signal.SIGTERM, stop)\\nsignal.signal(signal.SIGUSR1, lambda signum, frame: sys.exit(42))\\nhttp.server.HTTPServer((\\\"0.0.0.0\\\", 8000), http.server.SimpleHTTPRequestHandler).serve_forever()\\n\"],\"image\":\"python:3.12-alpine\",\"lifecycle\":{\"preStop\":{\"exec\":{\"command\":[\"sh\",\"-c\",\"echo preStop \\u003e\\u003e /data/hooks; sleep 4\"]}}},\"livenessProbe\":{\"exec\":{\"command\":[\"test\",\"-f\",\"/work/live\"]},\"failureThreshold\":2,\"periodSeconds\":1},\"name\":\"app\",\"readinessProbe\":{\"exec\":{\"command\":[\"test\",\"-f\",\"/work/ready\"]},\"failureThreshold\":1,\"periodSeconds\":1},\"resources\":{\"limits\":{\"cpu\":\"200m\",\"memory\":\"128Mi\"},\"requests\":{\"cpu\":\"50m\",\"memory\":\"32Mi\"}},\"restartPolicy\":\"Always\",\"restartPolicyRules\":[{\"action\":\"RestartAllContainers\",\"exitCodes\":{\"operator\":\"In\",\"values\":[42]}}],\"startupProbe\":{\"exec\":{\"command\":[\"test\",\"-f\",\"/work/started\"]},\"periodSeconds\":1},\"volumeMounts\":[{\"mountPath\":\"/work\",\"name\":\"work\"},{\"mountPath\":\"/memory\",\"name\":\"memory\"},{\"mountPath\":\"/data\",\"name\":\"data\"},{\"mountPath\":\"/settings\",\"name\":\"settings\",\"readOnly\":true},{\"mountPath\":\"/sample\",\"name\":\"sample\",\"readOnly\":true},{\"mountPath\":\"/downward\",\"name\":\"downward\",\"readOnly\":true}]}],\"initContainers\":[{\"command\":[\"sh\",\"-c\",\"echo initialized \\u003e /work/init; echo persisted \\u003e /data/marker\"],\"image\":\"python:3.12-alpine\",\"name\":\"prepare\",\"volumeMounts\":[{\"mountPath\":\"/work\",\"name\":\"work\"},{\"mountPath\":\"/data\",\"name\":\"data\"}]},{\"command\":[\"sh\",\"-c\",\"trap \\\"echo sidecar-term; exit 0\\\" TERM; while true; do sleep 1 \\u0026 wait $!; done\"],\"image\":\"python:3.12-alpine\",\"name\":\"sidecar\",\"restartPolicy\":\"Always\"}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"pod-lifecycle-worker\"},\"serviceAccountName\":\"reader\",\"terminationGracePeriodSeconds\":20,\"volumes\":[{\"emptyDir\":{},\"name\":\"work\"},{\"emptyDir\":{\"medium\":\"Memory\",\"sizeLimit\":\"8Mi\"},\"name\":\"memory\"},{\"name\":\"data\",\"persistentVolumeClaim\":{\"claimName\":\"data\"}},{\"configMap\":{\"name\":\"settings\"},\"name\":\"settings\"},{\"name\":\"sample\",\"secret\":{\"secretName\":\"sample\"}},{\"downwardAPI\":{\"items\":[{\"fieldRef\":{\"fieldPath\":\"metadata.uid\"},\"path\":\"uid\"}]},\"name\":\"downward\"}]}}}}\n"
+        },
+        "creationTimestamp": "2026-10-22T15:41:58Z",
+        "generation": 2,
+        "name": "app",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1444",
+        "uid": "c56cb094-891e-4daf-973d-ddfedd553be0"
+      },
+      "spec": {
+        "progressDeadlineSeconds": 600,
+        "replicas": 0,
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "lifecycle"
+          }
+        },
+        "strategy": {
+          "rollingUpdate": {
+            "maxSurge": "25%",
+            "maxUnavailable": "25%"
+          },
+          "type": "RollingUpdate"
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "lifecycle"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "command": [
+                  "python",
+                  "-u",
+                  "-c",
+                  "import http.server, pathlib, signal, sys\nfor name in (\"live\", \"ready\", \"started\"):\n    pathlib.Path(\"/work\", name).touch()\nprint(\"app-start\", flush=True)\ndef stop(signum, frame):\n    print(\"app-term\", flush=True)\n    sys.exit(0)\nsignal.signal(signal.SIGTERM, stop)\nsignal.signal(signal.SIGUSR1, lambda signum, frame: sys.exit(42))\nhttp.server.HTTPServer((\"0.0.0.0\", 8000), http.server.SimpleHTTPRequestHandler).serve_forever()\n"
+                ],
+                "image": "python:3.12-alpine",
+                "imagePullPolicy": "IfNotPresent",
+                "lifecycle": {
+                  "preStop": {
+                    "exec": {
+                      "command": [
+                        "sh",
+                        "-c",
+                        "echo preStop >> /data/hooks; sleep 4"
+                      ]
+                    }
+                  }
+                },
+                "livenessProbe": {
+                  "exec": {
+                    "command": [
+                      "test",
+                      "-f",
+                      "/work/live"
+                    ]
+                  },
+                  "failureThreshold": 2,
+                  "periodSeconds": 1,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "name": "app",
+                "readinessProbe": {
+                  "exec": {
+                    "command": [
+                      "test",
+                      "-f",
+                      "/work/ready"
+                    ]
+                  },
+                  "failureThreshold": 1,
+                  "periodSeconds": 1,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "200m",
+                    "memory": "128Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "32Mi"
+                  }
+                },
+                "restartPolicy": "Always",
+                "restartPolicyRules": [
+                  {
+                    "action": "RestartAllContainers",
+                    "exitCodes": {
+                      "operator": "In",
+                      "values": [
+                        42
+                      ]
+                    }
+                  }
+                ],
+                "startupProbe": {
+                  "exec": {
+                    "command": [
+                      "test",
+                      "-f",
+                      "/work/started"
+                    ]
+                  },
+                  "failureThreshold": 3,
+                  "periodSeconds": 1,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/work",
+                    "name": "work"
+                  },
+                  {
+                    "mountPath": "/memory",
+                    "name": "memory"
+                  },
+                  {
+                    "mountPath": "/data",
+                    "name": "data"
+                  },
+                  {
+                    "mountPath": "/settings",
+                    "name": "settings",
+                    "readOnly": true
+                  },
+                  {
+                    "mountPath": "/sample",
+                    "name": "sample",
+                    "readOnly": true
+                  },
+                  {
+                    "mountPath": "/downward",
+                    "name": "downward",
+                    "readOnly": true
+                  }
+                ]
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "initContainers": [
+              {
+                "command": [
+                  "sh",
+                  "-c",
+                  "echo initialized > /work/init; echo persisted > /data/marker"
+                ],
+                "image": "python:3.12-alpine",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "prepare",
+                "resources": {},
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/work",
+                    "name": "work"
+                  },
+                  {
+                    "mountPath": "/data",
+                    "name": "data"
+                  }
+                ]
+              },
+              {
+                "command": [
+                  "sh",
+                  "-c",
+                  "trap \"echo sidecar-term; exit 0\" TERM; while true; do sleep 1 & wait $!; done"
+                ],
+                "image": "python:3.12-alpine",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "sidecar",
+                "resources": {},
+                "restartPolicy": "Always",
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "nodeSelector": {
+              "kubernetes.io/hostname": "pod-lifecycle-worker"
+            },
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "serviceAccount": "reader",
+            "serviceAccountName": "reader",
+            "terminationGracePeriodSeconds": 20,
+            "volumes": [
+              {
+                "emptyDir": {},
+                "name": "work"
+              },
+              {
+                "emptyDir": {
+                  "medium": "Memory",
+                  "sizeLimit": "8Mi"
+                },
+                "name": "memory"
+              },
+              {
+                "name": "data",
+                "persistentVolumeClaim": {
+                  "claimName": "data"
+                }
+              },
+              {
+                "configMap": {
+                  "defaultMode": 420,
+                  "name": "settings"
+                },
+                "name": "settings"
+              },
+              {
+                "name": "sample",
+                "secret": {
+                  "defaultMode": 420,
+                  "secretName": "sample"
+                }
+              },
+              {
+                "downwardAPI": {
+                  "defaultMode": 420,
+                  "items": [
+                    {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.uid"
+                      },
+                      "path": "uid"
+                    }
+                  ]
+                },
+                "name": "downward"
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-10-22T15:41:58Z",
+            "lastUpdateTime": "2026-10-22T15:42:06Z",
+            "message": "ReplicaSet \"app-5ddcc7c6f4\" has successfully progressed.",
+            "reason": "NewReplicaSetAvailable",
+            "status": "True",
+            "type": "Progressing"
+          },
+          {
+            "lastTransitionTime": "2026-10-22T15:43:06Z",
+            "lastUpdateTime": "2026-10-22T15:43:06Z",
+            "message": "Deployment has minimum availability.",
+            "reason": "MinimumReplicasAvailable",
+            "status": "True",
+            "type": "Available"
+          }
+        ],
+        "observedGeneration": 2,
+        "terminatingReplicas": 0
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "ReplicaSet",
+      "metadata": {
+        "annotations": {
+          "deployment.kubernetes.io/desired-replicas": "0",
+          "deployment.kubernetes.io/max-replicas": "0",
+          "deployment.kubernetes.io/revision": "1"
+        },
+        "creationTimestamp": "2026-10-22T15:41:58Z",
+        "generation": 2,
+        "labels": {
+          "app": "lifecycle",
+          "pod-template-hash": "5ddcc7c6f4"
+        },
+        "name": "app-5ddcc7c6f4",
+        "namespace": "lifecycle-lab",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Deployment",
+            "name": "app",
+            "uid": "c56cb094-891e-4daf-973d-ddfedd553be0"
+          }
+        ],
+        "resourceVersion": "1442",
+        "uid": "b3843b80-1929-4b19-a73a-6b1796b41c29"
+      },
+      "spec": {
+        "replicas": 0,
+        "selector": {
+          "matchLabels": {
+            "app": "lifecycle",
+            "pod-template-hash": "5ddcc7c6f4"
+          }
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "lifecycle",
+              "pod-template-hash": "5ddcc7c6f4"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "command": [
+                  "python",
+                  "-u",
+                  "-c",
+                  "import http.server, pathlib, signal, sys\nfor name in (\"live\", \"ready\", \"started\"):\n    pathlib.Path(\"/work\", name).touch()\nprint(\"app-start\", flush=True)\ndef stop(signum, frame):\n    print(\"app-term\", flush=True)\n    sys.exit(0)\nsignal.signal(signal.SIGTERM, stop)\nsignal.signal(signal.SIGUSR1, lambda signum, frame: sys.exit(42))\nhttp.server.HTTPServer((\"0.0.0.0\", 8000), http.server.SimpleHTTPRequestHandler).serve_forever()\n"
+                ],
+                "image": "python:3.12-alpine",
+                "imagePullPolicy": "IfNotPresent",
+                "lifecycle": {
+                  "preStop": {
+                    "exec": {
+                      "command": [
+                        "sh",
+                        "-c",
+                        "echo preStop >> /data/hooks; sleep 4"
+                      ]
+                    }
+                  }
+                },
+                "livenessProbe": {
+                  "exec": {
+                    "command": [
+                      "test",
+                      "-f",
+                      "/work/live"
+                    ]
+                  },
+                  "failureThreshold": 2,
+                  "periodSeconds": 1,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "name": "app",
+                "readinessProbe": {
+                  "exec": {
+                    "command": [
+                      "test",
+                      "-f",
+                      "/work/ready"
+                    ]
+                  },
+                  "failureThreshold": 1,
+                  "periodSeconds": 1,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "resources": {
+                  "limits": {
+                    "cpu": "200m",
+                    "memory": "128Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "32Mi"
+                  }
+                },
+                "restartPolicy": "Always",
+                "restartPolicyRules": [
+                  {
+                    "action": "RestartAllContainers",
+                    "exitCodes": {
+                      "operator": "In",
+                      "values": [
+                        42
+                      ]
+                    }
+                  }
+                ],
+                "startupProbe": {
+                  "exec": {
+                    "command": [
+                      "test",
+                      "-f",
+                      "/work/started"
+                    ]
+                  },
+                  "failureThreshold": 3,
+                  "periodSeconds": 1,
+                  "successThreshold": 1,
+                  "timeoutSeconds": 1
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/work",
+                    "name": "work"
+                  },
+                  {
+                    "mountPath": "/memory",
+                    "name": "memory"
+                  },
+                  {
+                    "mountPath": "/data",
+                    "name": "data"
+                  },
+                  {
+                    "mountPath": "/settings",
+                    "name": "settings",
+                    "readOnly": true
+                  },
+                  {
+                    "mountPath": "/sample",
+                    "name": "sample",
+                    "readOnly": true
+                  },
+                  {
+                    "mountPath": "/downward",
+                    "name": "downward",
+                    "readOnly": true
+                  }
+                ]
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "initContainers": [
+              {
+                "command": [
+                  "sh",
+                  "-c",
+                  "echo initialized > /work/init; echo persisted > /data/marker"
+                ],
+                "image": "python:3.12-alpine",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "prepare",
+                "resources": {},
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/work",
+                    "name": "work"
+                  },
+                  {
+                    "mountPath": "/data",
+                    "name": "data"
+                  }
+                ]
+              },
+              {
+                "command": [
+                  "sh",
+                  "-c",
+                  "trap \"echo sidecar-term; exit 0\" TERM; while true; do sleep 1 & wait $!; done"
+                ],
+                "image": "python:3.12-alpine",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "sidecar",
+                "resources": {},
+                "restartPolicy": "Always",
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "nodeSelector": {
+              "kubernetes.io/hostname": "pod-lifecycle-worker"
+            },
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {},
+            "serviceAccount": "reader",
+            "serviceAccountName": "reader",
+            "terminationGracePeriodSeconds": 20,
+            "volumes": [
+              {
+                "emptyDir": {},
+                "name": "work"
+              },
+              {
+                "emptyDir": {
+                  "medium": "Memory",
+                  "sizeLimit": "8Mi"
+                },
+                "name": "memory"
+              },
+              {
+                "name": "data",
+                "persistentVolumeClaim": {
+                  "claimName": "data"
+                }
+              },
+              {
+                "configMap": {
+                  "defaultMode": 420,
+                  "name": "settings"
+                },
+                "name": "settings"
+              },
+              {
+                "name": "sample",
+                "secret": {
+                  "defaultMode": 420,
+                  "secretName": "sample"
+                }
+              },
+              {
+                "downwardAPI": {
+                  "defaultMode": 420,
+                  "items": [
+                    {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.uid"
+                      },
+                      "path": "uid"
+                    }
+                  ]
+                },
+                "name": "downward"
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "observedGeneration": 2,
+        "replicas": 0,
+        "terminatingReplicas": 0
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"name\":\"app\",\"namespace\":\"lifecycle-lab\"},\"spec\":{\"ports\":[{\"port\":80,\"targetPort\":8000}],\"selector\":{\"app\":\"lifecycle\"}}}\n"
+        },
+        "creationTimestamp": "2026-10-22T15:41:58Z",
+        "name": "app",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1091",
+        "uid": "4dbc4fec-a47b-4a01-925a-4ce81d7b6f26"
+      },
+      "spec": {
+        "clusterIP": "10.96.122.189",
+        "clusterIPs": [
+          "10.96.122.189"
+        ],
+        "internalTrafficPolicy": "Cluster",
+        "ipFamilies": [
+          "IPv4"
+        ],
+        "ipFamilyPolicy": "SingleStack",
+        "ports": [
+          {
+            "port": 80,
+            "protocol": "TCP",
+            "targetPort": 8000
+          }
+        ],
+        "selector": {
+          "app": "lifecycle"
+        },
+        "sessionAffinity": "None",
+        "type": "ClusterIP"
+      },
+      "status": {
+        "loadBalancer": {}
+      }
+    },
+    {
+      "addressType": "IPv4",
+      "apiVersion": "discovery.k8s.io/v1",
+      "endpoints": null,
+      "kind": "EndpointSlice",
+      "metadata": {
+        "annotations": {
+          "endpoints.kubernetes.io/last-change-trigger-time": "2026-10-22T15:43:13Z"
+        },
+        "creationTimestamp": "2026-10-22T15:41:58Z",
+        "generateName": "app-",
+        "generation": 22,
+        "labels": {
+          "endpointslice.kubernetes.io/managed-by": "endpointslice-controller.k8s.io",
+          "kubernetes.io/service-name": "app"
+        },
+        "name": "app-44rqc",
+        "namespace": "lifecycle-lab",
+        "ownerReferences": [
+          {
+            "apiVersion": "v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "Service",
+            "name": "app",
+            "uid": "4dbc4fec-a47b-4a01-925a-4ce81d7b6f26"
+          }
+        ],
+        "resourceVersion": "1441",
+        "uid": "56881287-db6b-4b93-ab36-f018f2a256e3"
+      },
+      "ports": null
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "PersistentVolumeClaim",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"PersistentVolumeClaim\",\"metadata\":{\"annotations\":{},\"name\":\"data\",\"namespace\":\"lifecycle-lab\"},\"spec\":{\"accessModes\":[\"ReadWriteOnce\"],\"resources\":{\"requests\":{\"storage\":\"64Mi\"}}}}\n",
+          "pv.kubernetes.io/bind-completed": "yes",
+          "pv.kubernetes.io/bound-by-controller": "yes",
+          "volume.beta.kubernetes.io/storage-provisioner": "rancher.io/local-path",
+          "volume.kubernetes.io/selected-node": "pod-lifecycle-worker",
+          "volume.kubernetes.io/storage-provisioner": "rancher.io/local-path"
+        },
+        "creationTimestamp": "2026-10-22T15:41:58Z",
+        "finalizers": [
+          "kubernetes.io/pvc-protection"
+        ],
+        "name": "data",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1443",
+        "uid": "1eb7e583-803a-460d-8035-c3d432ae9cdb"
+      },
+      "spec": {
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "resources": {
+          "requests": {
+            "storage": "64Mi"
+          }
+        },
+        "storageClassName": "standard",
+        "volumeMode": "Filesystem",
+        "volumeName": "pvc-1eb7e583-803a-460d-8035-c3d432ae9cdb"
+      },
+      "status": {
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "capacity": {
+          "storage": "64Mi"
+        },
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T15:43:13Z",
+            "message": "No pods are currently referencing this PVC",
+            "reason": "NoPodsUsingPVC",
+            "status": "True",
+            "type": "Unused"
+          }
+        ],
+        "phase": "Bound"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "ca.crt": "-----BEGIN CERTIFICATE-----\nMIIDBTCCAe2gAwIBAgIIZmJA85cRWpswDQYJKoZIhvcNAQELBQAwFTETMBEGA1UE\nAxMKa3ViZXJuZXRlczAeFw0yNjEwMjIxNTMyMzZaFw0zNjEwMTkxNTM3MzZaMBUx\nEzARBgNVBAMTCmt1YmVybmV0ZXMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK\nAoIBAQC5JhiR7xYy06mqJGyRGywl1GmU28EncbuImjeCvpO77T92P+bbRgK8t5XR\nODMVH+pwyHgsPx4NCl6oxMpw7VV8s9Zq543HgWTgTT3X60Mb2283vFuYhbcvzJaW\nRDCWjfUFYcgh86aHyjXcZT97FTzAmGLAZs4TeLvlt8JzG+Enf/GRIGJchhkgreq0\njrzn89RikHlHXNd05kXgBa31EDU8qMXMq/xw0u8cftAoADu/AAPwc85Ih5l++9E5\nupKPWd95G7suulX7TDJq672arZM1XSRHzOFZAtIdldlZW2ePmOtlvLAGLJjHkqfQ\n1jm6IF9cTstuQkUEgSTL2LrAGBIRAgMBAAGjWTBXMA4GA1UdDwEB/wQEAwICpDAP\nBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBTpHm+Fa4AfxORZMNhU3Go8unfTSTAV\nBgNVHREEDjAMggprdWJlcm5ldGVzMA0GCSqGSIb3DQEBCwUAA4IBAQCJTZ+7vYob\nOxN/EWDri4+CMzQDaQsIB79iYVeql4ZLsGBsE6z1muOZMyoCDaAeyQ90njtmLBAm\nsiS7IwFlnKl4BQtCjxvXLa2jLVhNxzwhMp/HDUpHEkiiAjcIiLmr+bivNDtoXn4a\nGzfIrmsCzb8yyIcqWKYsqfvxxXMMle3NjNlhWz9X4StdyTSo8WFanYmRvtoSGzbW\na+COiZmwdabZ2Gcak8t0PhN665YfWWsw45PCv8G7tMSaZ4tjNNTeKQ8jv/uAnDuK\nkVm9Y59aMKw2uwGCAuGlLCRKguRhNWwCvgUd/8VKLC1NfqViovZpmx4/z4xbyGs2\ngLo91+SnE6eJ\n-----END CERTIFICATE-----\n"
+      },
+      "kind": "ConfigMap",
+      "metadata": {
+        "annotations": {
+          "kubernetes.io/description": "Contains a CA bundle that can be used to verify the kube-apiserver when using internal endpoints such as the internal service IP or kubernetes.default.svc. No other usage is guaranteed across distributions of Kubernetes clusters."
+        },
+        "creationTimestamp": "2026-10-22T15:41:58Z",
+        "name": "kube-root-ca.crt",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1084",
+        "uid": "a4b40a66-ed8b-44da-8af1-002fffbc965a"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "mode": "experiment"
+      },
+      "kind": "ConfigMap",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"data\":{\"mode\":\"experiment\"},\"kind\":\"ConfigMap\",\"metadata\":{\"annotations\":{},\"name\":\"settings\",\"namespace\":\"lifecycle-lab\"}}\n"
+        },
+        "creationTimestamp": "2026-10-22T15:41:58Z",
+        "name": "settings",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1086",
+        "uid": "72f3987c-de67-4380-a9e2-c26f03e429fa"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "ServiceAccount",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T15:41:58Z",
+        "name": "default",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1083",
+        "uid": "9e29da8c-5fc0-4f0b-a6f0-951ea4542d2f"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "ServiceAccount",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"ServiceAccount\",\"metadata\":{\"annotations\":{},\"name\":\"reader\",\"namespace\":\"lifecycle-lab\"}}\n"
+        },
+        "creationTimestamp": "2026-10-22T15:41:58Z",
+        "name": "reader",
+        "namespace": "lifecycle-lab",
+        "resourceVersion": "1085",
+        "uid": "1d00d58f-e7ca-49cf-bcad-67f065da4017"
+      }
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

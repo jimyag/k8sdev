@@ -1,0 +1,72 @@
+[
+  {
+    "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc",
+    "sandbox": "f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f",
+    "formerNetns": [
+      "/var/run/netns/cni-cce2233d-7ba0-fdc9-a263-fff4a7ab96dc"
+    ],
+    "formerCgroup": "kubelet-kubepods-burstable-podc0b2e8f7_2069_49ef_99d9_13602e6683cc.slice:cri-containerd:f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f",
+    "netnsRemoved": true,
+    "podCgroupRemoved": true
+  },
+  {
+    "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc",
+    "sandbox": "f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f",
+    "formerNetns": [
+      "/var/run/netns/cni-cce2233d-7ba0-fdc9-a263-fff4a7ab96dc"
+    ],
+    "formerCgroup": "kubelet-kubepods-burstable-podc0b2e8f7_2069_49ef_99d9_13602e6683cc.slice:cri-containerd:f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f",
+    "netnsRemoved": true,
+    "podCgroupRemoved": true
+  },
+  {
+    "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc",
+    "sandbox": "f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f",
+    "formerNetns": [
+      "/var/run/netns/cni-cce2233d-7ba0-fdc9-a263-fff4a7ab96dc"
+    ],
+    "formerCgroup": "kubelet-kubepods-burstable-podc0b2e8f7_2069_49ef_99d9_13602e6683cc.slice:cri-containerd:f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f",
+    "netnsRemoved": true,
+    "podCgroupRemoved": true
+  },
+  {
+    "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc",
+    "sandbox": "f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f",
+    "formerNetns": [
+      "/var/run/netns/cni-cce2233d-7ba0-fdc9-a263-fff4a7ab96dc"
+    ],
+    "formerCgroup": "kubelet-kubepods-burstable-podc0b2e8f7_2069_49ef_99d9_13602e6683cc.slice:cri-containerd:f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f",
+    "netnsRemoved": true,
+    "podCgroupRemoved": true
+  },
+  {
+    "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc",
+    "sandbox": "f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f",
+    "formerNetns": [
+      "/var/run/netns/cni-cce2233d-7ba0-fdc9-a263-fff4a7ab96dc"
+    ],
+    "formerCgroup": "kubelet-kubepods-burstable-podc0b2e8f7_2069_49ef_99d9_13602e6683cc.slice:cri-containerd:f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f",
+    "netnsRemoved": true,
+    "podCgroupRemoved": true
+  },
+  {
+    "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc",
+    "sandbox": "4757b58f237bad6da86777fc52f45ce3e3d94da90299cc9dc0b108655db64f04",
+    "formerNetns": [
+      "/var/run/netns/cni-c0f50d2d-ae39-9205-de3d-8b2873b51c65"
+    ],
+    "formerCgroup": "kubelet-kubepods-burstable-podc0b2e8f7_2069_49ef_99d9_13602e6683cc.slice:cri-containerd:4757b58f237bad6da86777fc52f45ce3e3d94da90299cc9dc0b108655db64f04",
+    "netnsRemoved": true,
+    "podCgroupRemoved": true
+  },
+  {
+    "uid": "78c15fda-5c94-4410-9b6f-cefe5923b9d2",
+    "sandbox": "9a6f11eae5b9debf0d88215af27f642ac2baf4332838a57964d881b6c3562faf",
+    "formerNetns": [
+      "/var/run/netns/cni-e8bcbf7d-8661-90c1-451d-5cd95d065824"
+    ],
+    "formerCgroup": "kubelet-kubepods-burstable-pod78c15fda_5c94_4410_9b6f_cefe5923b9d2.slice:cri-containerd:9a6f11eae5b9debf0d88215af27f642ac2baf4332838a57964d881b6c3562faf",
+    "netnsRemoved": true,
+    "podCgroupRemoved": true
+  }
+]

@@ -1,0 +1,70 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "kind": "PersistentVolume",
+      "metadata": {
+        "annotations": {
+          "local.path.provisioner/selected-node": "pod-lifecycle-worker",
+          "pv.kubernetes.io/provisioned-by": "rancher.io/local-path"
+        },
+        "creationTimestamp": "2026-10-22T15:42:01Z",
+        "finalizers": [
+          "kubernetes.io/pv-protection"
+        ],
+        "name": "pvc-1eb7e583-803a-460d-8035-c3d432ae9cdb",
+        "resourceVersion": "1124",
+        "uid": "2d726cfd-f79c-4068-91fc-7d5a26a4448d"
+      },
+      "spec": {
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "capacity": {
+          "storage": "64Mi"
+        },
+        "claimRef": {
+          "apiVersion": "v1",
+          "kind": "PersistentVolumeClaim",
+          "name": "data",
+          "namespace": "lifecycle-lab",
+          "resourceVersion": "1105",
+          "uid": "1eb7e583-803a-460d-8035-c3d432ae9cdb"
+        },
+        "hostPath": {
+          "path": "/var/local-path-provisioner/pvc-1eb7e583-803a-460d-8035-c3d432ae9cdb_lifecycle-lab_data",
+          "type": "DirectoryOrCreate"
+        },
+        "nodeAffinity": {
+          "required": {
+            "nodeSelectorTerms": [
+              {
+                "matchExpressions": [
+                  {
+                    "key": "kubernetes.io/hostname",
+                    "operator": "In",
+                    "values": [
+                      "pod-lifecycle-worker"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "persistentVolumeReclaimPolicy": "Delete",
+        "storageClassName": "standard",
+        "volumeMode": "Filesystem"
+      },
+      "status": {
+        "lastPhaseTransitionTime": "2026-10-22T15:42:01Z",
+        "phase": "Bound"
+      }
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

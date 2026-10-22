@@ -1,0 +1,157 @@
+# 所有插桩只记录此命名空间中的对象，避免采集其他业务。
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: lifecycle-lab
+---
+# ServiceAccount 独立于 Pod；删除 Pod 不会删除它。
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: reader
+  namespace: lifecycle-lab
+---
+# ConfigMap 和 Secret 仅使用实验数据；不采集任何真实凭据。
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: settings
+  namespace: lifecycle-lab
+data:
+  mode: experiment
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: sample
+  namespace: lifecycle-lab
+type: Opaque
+stringData:
+  example: not-a-real-password
+---
+# 使用 kind 的默认 local-path StorageClass，观察 PVC 跨 Pod UID 保留数据。
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data
+  namespace: lifecycle-lab
+spec:
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 64Mi
+---
+# Service 的生命周期独立于后端 Pod；EndpointSlice 由控制器更新。
+apiVersion: v1
+kind: Service
+metadata:
+  name: app
+  namespace: lifecycle-lab
+spec:
+  selector:
+    app: lifecycle
+  ports:
+    - port: 80
+      targetPort: 8000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  namespace: lifecycle-lab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lifecycle
+  template:
+    metadata:
+      labels:
+        app: lifecycle
+    spec:
+      serviceAccountName: reader
+      # 固定到实验 worker，使本地卷的节点约束明确；仍由 scheduler 绑定。
+      nodeSelector:
+        kubernetes.io/hostname: pod-lifecycle-worker
+      terminationGracePeriodSeconds: 20
+      initContainers:
+        - name: prepare
+          image: python:3.12-alpine
+          command: [sh, -c, 'echo initialized > /work/init; echo persisted > /data/marker']
+          volumeMounts:
+            - name: work
+              mountPath: /work
+            - name: data
+              mountPath: /data
+        # 原生 sidecar 在普通应用容器退出后停止。
+        - name: sidecar
+          image: python:3.12-alpine
+          restartPolicy: Always
+          command: [sh, -c, 'trap "echo sidecar-term; exit 0" TERM; while true; do sleep 1 & wait $!; done']
+      containers:
+        - name: app
+          image: python:3.12-alpine
+          # v1.37.1 默认启用此规则；退出 42 时原地重启全部容器。
+          restartPolicy: Always
+          restartPolicyRules:
+            - action: RestartAllContainers
+              exitCodes:
+                operator: In
+                values: [42]
+          command:
+            - python
+            - -u
+            - -c
+            - |
+              import http.server, pathlib, signal, sys
+              for name in ("live", "ready", "started"):
+                  pathlib.Path("/work", name).touch()
+              print("app-start", flush=True)
+              def stop(signum, frame):
+                  print("app-term", flush=True)
+                  sys.exit(0)
+              signal.signal(signal.SIGTERM, stop)
+              signal.signal(signal.SIGUSR1, lambda signum, frame: sys.exit(42))
+              http.server.HTTPServer(("0.0.0.0", 8000), http.server.SimpleHTTPRequestHandler).serve_forever()
+          # 设置不同的 request/limit，观察 Burstable cgroup 的实际配置。
+          resources:
+            requests: {cpu: 50m, memory: 32Mi}
+            limits: {cpu: 200m, memory: 128Mi}
+          startupProbe:
+            exec: {command: [test, -f, /work/started]}
+            periodSeconds: 1
+          readinessProbe:
+            exec: {command: [test, -f, /work/ready]}
+            periodSeconds: 1
+            failureThreshold: 1
+          livenessProbe:
+            exec: {command: [test, -f, /work/live]}
+            periodSeconds: 1
+            failureThreshold: 2
+          lifecycle:
+            preStop:
+              exec:
+                command: [sh, -c, 'echo preStop >> /data/hooks; sleep 4']
+          volumeMounts:
+            - {name: work, mountPath: /work}
+            - {name: memory, mountPath: /memory}
+            - {name: data, mountPath: /data}
+            - {name: settings, mountPath: /settings, readOnly: true}
+            - {name: sample, mountPath: /sample, readOnly: true}
+            - {name: downward, mountPath: /downward, readOnly: true}
+      volumes:
+        - name: work
+          emptyDir: {}
+        - name: memory
+          emptyDir: {medium: Memory, sizeLimit: 8Mi}
+        - name: data
+          persistentVolumeClaim: {claimName: data}
+        - name: settings
+          configMap: {name: settings}
+        - name: sample
+          secret: {secretName: sample}
+        - name: downward
+          downwardAPI:
+            items:
+              - path: uid
+                fieldRef: {fieldPath: metadata.uid}

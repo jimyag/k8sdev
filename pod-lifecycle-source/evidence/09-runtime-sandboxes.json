@@ -1,0 +1,123 @@
+{
+  "items": [
+    {
+      "id": "9a6f11eae5b9debf0d88215af27f642ac2baf4332838a57964d881b6c3562faf",
+      "metadata": {
+        "name": "app-5ddcc7c6f4-2hjml",
+        "uid": "78c15fda-5c94-4410-9b6f-cefe5923b9d2",
+        "namespace": "lifecycle-lab",
+        "attempt": 0
+      },
+      "state": "SANDBOX_NOTREADY",
+      "createdAt": "1792683783309826244",
+      "labels": {
+        "app": "lifecycle",
+        "io.kubernetes.pod.name": "app-5ddcc7c6f4-2hjml",
+        "io.kubernetes.pod.namespace": "lifecycle-lab",
+        "io.kubernetes.pod.uid": "78c15fda-5c94-4410-9b6f-cefe5923b9d2",
+        "pod-template-hash": "5ddcc7c6f4"
+      },
+      "annotations": {
+        "kubernetes.io/config.seen": "2026-10-22T15:43:02.981382099Z",
+        "kubernetes.io/config.source": "api"
+      },
+      "runtimeHandler": ""
+    },
+    {
+      "id": "4757b58f237bad6da86777fc52f45ce3e3d94da90299cc9dc0b108655db64f04",
+      "metadata": {
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc",
+        "namespace": "lifecycle-lab",
+        "attempt": 1
+      },
+      "state": "SANDBOX_NOTREADY",
+      "createdAt": "1792683752651983779",
+      "labels": {
+        "app": "lifecycle",
+        "io.kubernetes.pod.name": "app-5ddcc7c6f4-4wvlx",
+        "io.kubernetes.pod.namespace": "lifecycle-lab",
+        "io.kubernetes.pod.uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc",
+        "pod-template-hash": "5ddcc7c6f4"
+      },
+      "annotations": {
+        "kubernetes.io/config.seen": "2026-10-22T15:42:02.545640374Z",
+        "kubernetes.io/config.source": "api"
+      },
+      "runtimeHandler": ""
+    },
+    {
+      "id": "f858431b48efca72ea040fb7fb5e7b2c9e2faead5f206821db8d25a24c122c6f",
+      "metadata": {
+        "name": "app-5ddcc7c6f4-4wvlx",
+        "uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc",
+        "namespace": "lifecycle-lab",
+        "attempt": 0
+      },
+      "state": "SANDBOX_NOTREADY",
+      "createdAt": "1792683722871223093",
+      "labels": {
+        "app": "lifecycle",
+        "io.kubernetes.pod.name": "app-5ddcc7c6f4-4wvlx",
+        "io.kubernetes.pod.namespace": "lifecycle-lab",
+        "io.kubernetes.pod.uid": "c0b2e8f7-2069-49ef-99d9-13602e6683cc",
+        "pod-template-hash": "5ddcc7c6f4"
+      },
+      "annotations": {
+        "kubernetes.io/config.seen": "2026-10-22T15:42:02.545640374Z",
+        "kubernetes.io/config.source": "api"
+      },
+      "runtimeHandler": ""
+    },
+    {
+      "id": "c7b1a8ea6a545fc3386b67e7f4b505fa0753feb478a67d0b0efb9a705b38c4ad",
+      "metadata": {
+        "name": "kube-proxy-qs5l5",
+        "uid": "6faca1fe-ff55-4157-bf84-21856bcec587",
+        "namespace": "kube-system",
+        "attempt": 0
+      },
+      "state": "SANDBOX_READY",
+      "createdAt": "1792683477587487428",
+      "labels": {
+        "controller-revision-hash": "5b87cc9b64",
+        "io.kubernetes.pod.name": "kube-proxy-qs5l5",
+        "io.kubernetes.pod.namespace": "kube-system",
+        "io.kubernetes.pod.uid": "6faca1fe-ff55-4157-bf84-21856bcec587",
+        "k8s-app": "kube-proxy",
+        "pod-template-generation": "1"
+      },
+      "annotations": {
+        "kubernetes.io/config.seen": "2026-10-22T15:37:57.163564172Z",
+        "kubernetes.io/config.source": "api"
+      },
+      "runtimeHandler": ""
+    },
+    {
+      "id": "99bc80eb962e9edb1e091d674921680c7f0d25c74f2a2d8c053d547b854cc977",
+      "metadata": {
+        "name": "kindnet-xxqmv",
+        "uid": "bbe2f231-503c-4ede-abe4-fbc3b0002d55",
+        "namespace": "kube-system",
+        "attempt": 0
+      },
+      "state": "SANDBOX_READY",
+      "createdAt": "1792683477343216833",
+      "labels": {
+        "app": "kindnet",
+        "controller-revision-hash": "66c7bf9f77",
+        "io.kubernetes.pod.name": "kindnet-xxqmv",
+        "io.kubernetes.pod.namespace": "kube-system",
+        "io.kubernetes.pod.uid": "bbe2f231-503c-4ede-abe4-fbc3b0002d55",
+        "k8s-app": "kindnet",
+        "pod-template-generation": "1",
+        "tier": "node"
+      },
+      "annotations": {
+        "kubernetes.io/config.seen": "2026-10-22T15:37:57.163574360Z",
+        "kubernetes.io/config.source": "api"
+      },
+      "runtimeHandler": ""
+    }
+  ]
+}

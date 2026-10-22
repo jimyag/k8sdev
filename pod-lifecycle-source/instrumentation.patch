@@ -1,0 +1,80 @@
+diff --git a/pkg/controller/controller_utils.go b/pkg/controller/controller_utils.go
+index 8bdaa5cc..2623abd9 100644
+--- a/pkg/controller/controller_utils.go
++++ b/pkg/controller/controller_utils.go
+@@ -613,0 +614,3 @@ func (r RealPodControl) createPods(ctx context.Context, namespace string, pod *v
++	if namespace == "lifecycle-lab" {
++		logger.Info("LIFECYCLE controller.created_pod", "controller", accessor.GetName(), "controllerUID", accessor.GetUID(), "pod", klog.KObj(newPod), "uid", newPod.UID)
++	}
+diff --git a/pkg/kubelet/kubelet.go b/pkg/kubelet/kubelet.go
+index bf127f88..9ae11d85 100644
+--- a/pkg/kubelet/kubelet.go
++++ b/pkg/kubelet/kubelet.go
+@@ -2062,0 +2063,3 @@ func (kl *Kubelet) SyncPod(ctx context.Context, updateType kubetypes.SyncPodType
++	if pod.Namespace == "lifecycle-lab" {
++		logger.Info("LIFECYCLE kubelet.sync", "pod", klog.KObj(pod), "uid", pod.UID, "updateType", updateType.String())
++	}
+@@ -2243,0 +2247,3 @@ func (kl *Kubelet) SyncPod(ctx context.Context, updateType kubetypes.SyncPodType
++	if pod.Namespace == "lifecycle-lab" {
++		logger.Info("LIFECYCLE kubelet.volumes_ready", "pod", klog.KObj(pod), "uid", pod.UID)
++	}
+@@ -2345,0 +2352,3 @@ func (kl *Kubelet) SyncTerminatingPod(ctx context.Context, pod *v1.Pod, podStatu
++	if pod.Namespace == "lifecycle-lab" {
++		logger.Info("LIFECYCLE kubelet.terminating", "pod", klog.KObj(pod), "uid", pod.UID)
++	}
+@@ -2573,0 +2583,3 @@ func (kl *Kubelet) SyncTerminatedPod(ctx context.Context, pod *v1.Pod, podStatus
++	if pod.Namespace == "lifecycle-lab" {
++		logger.Info("LIFECYCLE kubelet.cleaned", "pod", klog.KObj(pod), "uid", pod.UID)
++	}
+diff --git a/pkg/kubelet/kuberuntime/kuberuntime_container.go b/pkg/kubelet/kuberuntime/kuberuntime_container.go
+index 09bc3b15..c8db82c9 100644
+--- a/pkg/kubelet/kuberuntime/kuberuntime_container.go
++++ b/pkg/kubelet/kuberuntime/kuberuntime_container.go
+@@ -277,0 +278,3 @@ func (m *kubeGenericRuntimeManager) startContainer(ctx context.Context, podSandb
++	if pod.Namespace == "lifecycle-lab" {
++		logger.Info("LIFECYCLE cri.CreateContainer", "pod", klog.KObj(pod), "uid", pod.UID, "sandboxID", podSandboxID, "container", container.Name, "containerID", containerID, "attempt", containerConfig.Metadata.Attempt, "err", err)
++	}
+@@ -292,0 +296,3 @@ func (m *kubeGenericRuntimeManager) startContainer(ctx context.Context, podSandb
++	if pod.Namespace == "lifecycle-lab" {
++		logger.Info("LIFECYCLE cri.StartContainer", "pod", klog.KObj(pod), "uid", pod.UID, "container", container.Name, "containerID", containerID, "err", err)
++	}
+@@ -915,0 +922,3 @@ func (m *kubeGenericRuntimeManager) killContainer(ctx context.Context, pod *v1.P
++	if pod != nil && pod.Namespace == "lifecycle-lab" {
++		logger.Info("LIFECYCLE cri.StopContainer", "pod", klog.KObj(pod), "uid", pod.UID, "container", containerName, "containerID", containerID.ID, "gracePeriod", gracePeriod, "err", err)
++	}
+diff --git a/pkg/kubelet/kuberuntime/kuberuntime_manager.go b/pkg/kubelet/kuberuntime/kuberuntime_manager.go
+index 215ede7c..850cbe7e 100644
+--- a/pkg/kubelet/kuberuntime/kuberuntime_manager.go
++++ b/pkg/kubelet/kuberuntime/kuberuntime_manager.go
+@@ -2133,0 +2134,3 @@ func (m *kubeGenericRuntimeManager) killPodWithSyncResult(ctx context.Context, p
++		if runningPod.Namespace == "lifecycle-lab" {
++			logger.Info("LIFECYCLE cri.StopPodSandbox_requested", "pod", runningPod.Name, "uid", runningPod.ID, "sandboxID", podSandbox.ID.ID)
++		}
+diff --git a/pkg/kubelet/kuberuntime/kuberuntime_sandbox.go b/pkg/kubelet/kuberuntime/kuberuntime_sandbox.go
+index 8f4e67f9..591a8ab0 100644
+--- a/pkg/kubelet/kuberuntime/kuberuntime_sandbox.go
++++ b/pkg/kubelet/kuberuntime/kuberuntime_sandbox.go
+@@ -71,0 +72,3 @@ func (m *kubeGenericRuntimeManager) createPodSandbox(ctx context.Context, pod *v
++	if pod.Namespace == "lifecycle-lab" {
++		logger.Info("LIFECYCLE cri.RunPodSandbox", "pod", klog.KObj(pod), "uid", pod.UID, "sandboxID", podSandBoxID, "attempt", attempt, "err", err)
++	}
+diff --git a/pkg/scheduler/framework/plugins/defaultbinder/default_binder.go b/pkg/scheduler/framework/plugins/defaultbinder/default_binder.go
+index ae812129..c4f5a160 100644
+--- a/pkg/scheduler/framework/plugins/defaultbinder/default_binder.go
++++ b/pkg/scheduler/framework/plugins/defaultbinder/default_binder.go
+@@ -53,0 +54,3 @@ func (b DefaultBinder) Bind(ctx context.Context, state fwk.CycleState, p *v1.Pod
++	if p.Namespace == "lifecycle-lab" {
++		logger.Info("LIFECYCLE scheduler.bind_requested", "pod", klog.KObj(p), "uid", p.UID, "node", nodeName)
++	}
+diff --git a/staging/src/k8s.io/apiserver/pkg/registry/generic/registry/store.go b/staging/src/k8s.io/apiserver/pkg/registry/generic/registry/store.go
+index 8cceb13e..1dcee6a3 100644
+--- a/staging/src/k8s.io/apiserver/pkg/registry/generic/registry/store.go
++++ b/staging/src/k8s.io/apiserver/pkg/registry/generic/registry/store.go
+@@ -613,0 +614,3 @@ func (e *Store) create(ctx context.Context, obj runtime.Object, createValidation
++	if accessor, err := meta.Accessor(out); err == nil && accessor.GetNamespace() == "lifecycle-lab" {
++		klog.InfoS("LIFECYCLE storage.created", "resource", qualifiedResource.Resource, "name", accessor.GetName(), "uid", accessor.GetUID(), "resourceVersion", accessor.GetResourceVersion(), "dryRun", dryrun.IsDryRun(options.DryRun))
++	}
+@@ -1237,0 +1241,3 @@ func (e *Store) Delete(ctx context.Context, name string, deleteValidation rest.V
++	if accessor.GetNamespace() == "lifecycle-lab" {
++		klog.InfoS("LIFECYCLE storage.delete_requested", "resource", qualifiedResource.Resource, "name", name, "uid", accessor.GetUID(), "graceful", graceful, "finalizers", accessor.GetFinalizers())
++	}
