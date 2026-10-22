@@ -1,0 +1,20 @@
+[
+  {
+    "created": true,
+    "name": "effect-c9af8c98-ab7e-4f0f-93e8-d41c7f225866",
+    "value": "two",
+    "crash_before_ack": true
+  },
+  {
+    "created": false,
+    "name": "effect-c9af8c98-ab7e-4f0f-93e8-d41c7f225866",
+    "value": "two",
+    "crash_before_ack": false
+  },
+  {
+    "created": false,
+    "name": "effect-c9af8c98-ab7e-4f0f-93e8-d41c7f225866",
+    "value": "two",
+    "crash_before_ack": false
+  }
+]

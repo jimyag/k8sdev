@@ -1,0 +1,216 @@
+{
+  "apiVersion": "v1",
+  "kind": "Pod",
+  "metadata": {
+    "annotations": {
+      "cni.projectcalico.org/containerID": "bbfc268f63616a3ada68ff23d05a2fa4cfc1c7aa5afaa08ce8710ea90265b7f9",
+      "cni.projectcalico.org/podIP": "192.168.176.141/32",
+      "cni.projectcalico.org/podIPs": "192.168.176.141/32",
+      "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"annotations\":{},\"finalizers\":[\"lab.example.com/cleanup\"],\"labels\":{\"app\":\"held\"},\"name\":\"held\",\"namespace\":\"dd-terminating\"},\"spec\":{\"containers\":[{\"command\":[\"python\",\"-u\",\"-c\",\"import time; time.sleep(3600)\"],\"image\":\"python:3.12-alpine\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"app\"}],\"terminationGracePeriodSeconds\":2}}\n"
+    },
+    "creationTimestamp": "2026-10-22T13:23:10Z",
+    "deletionGracePeriodSeconds": 0,
+    "deletionTimestamp": "2026-10-22T13:23:11Z",
+    "finalizers": [
+      "lab.example.com/cleanup"
+    ],
+    "generation": 2,
+    "labels": {
+      "app": "held"
+    },
+    "name": "held",
+    "namespace": "dd-terminating",
+    "resourceVersion": "3802",
+    "uid": "959f118f-72b9-44d0-a0f2-62a743758977"
+  },
+  "spec": {
+    "containers": [
+      {
+        "command": [
+          "python",
+          "-u",
+          "-c",
+          "import time; time.sleep(3600)"
+        ],
+        "image": "python:3.12-alpine",
+        "imagePullPolicy": "IfNotPresent",
+        "name": "app",
+        "resources": {},
+        "terminationMessagePath": "/dev/termination-log",
+        "terminationMessagePolicy": "File",
+        "volumeMounts": [
+          {
+            "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+            "name": "kube-api-access-mtjf9",
+            "readOnly": true
+          }
+        ]
+      }
+    ],
+    "dnsPolicy": "ClusterFirst",
+    "enableServiceLinks": true,
+    "nodeName": "deep-dive-worker2",
+    "preemptionPolicy": "PreemptLowerPriority",
+    "priority": 0,
+    "restartPolicy": "Always",
+    "schedulerName": "default-scheduler",
+    "securityContext": {},
+    "serviceAccount": "default",
+    "serviceAccountName": "default",
+    "terminationGracePeriodSeconds": 2,
+    "tolerations": [
+      {
+        "effect": "NoExecute",
+        "key": "node.kubernetes.io/not-ready",
+        "operator": "Exists",
+        "tolerationSeconds": 300
+      },
+      {
+        "effect": "NoExecute",
+        "key": "node.kubernetes.io/unreachable",
+        "operator": "Exists",
+        "tolerationSeconds": 300
+      }
+    ],
+    "volumes": [
+      {
+        "name": "kube-api-access-mtjf9",
+        "projected": {
+          "defaultMode": 420,
+          "sources": [
+            {
+              "serviceAccountToken": {
+                "expirationSeconds": 3607,
+                "path": "token"
+              }
+            },
+            {
+              "configMap": {
+                "items": [
+                  {
+                    "key": "ca.crt",
+                    "path": "ca.crt"
+                  }
+                ],
+                "name": "kube-root-ca.crt"
+              }
+            },
+            {
+              "downwardAPI": {
+                "items": [
+                  {
+                    "fieldRef": {
+                      "apiVersion": "v1",
+                      "fieldPath": "metadata.namespace"
+                    },
+                    "path": "namespace"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "status": {
+    "conditions": [
+      {
+        "lastProbeTime": null,
+        "lastTransitionTime": "2026-10-22T13:23:11Z",
+        "observedGeneration": 1,
+        "status": "True",
+        "type": "PodReadyToStartContainers"
+      },
+      {
+        "lastProbeTime": null,
+        "lastTransitionTime": "2026-10-22T13:23:10Z",
+        "observedGeneration": 1,
+        "status": "True",
+        "type": "Initialized"
+      },
+      {
+        "lastProbeTime": null,
+        "lastTransitionTime": "2026-10-22T13:23:11Z",
+        "observedGeneration": 1,
+        "status": "True",
+        "type": "Ready"
+      },
+      {
+        "lastProbeTime": null,
+        "lastTransitionTime": "2026-10-22T13:23:11Z",
+        "observedGeneration": 1,
+        "status": "True",
+        "type": "ContainersReady"
+      },
+      {
+        "lastProbeTime": null,
+        "lastTransitionTime": "2026-10-22T13:23:10Z",
+        "observedGeneration": 1,
+        "status": "True",
+        "type": "PodScheduled"
+      }
+    ],
+    "containerStatuses": [
+      {
+        "containerID": "containerd://d039f7465407e3aade8a993f0b6589a23baafbfb2c1217641c12891e5240438c",
+        "image": "docker.io/library/python:3.12-alpine",
+        "imageID": "sha256:f4b7b8044a873fcc0f348549a19b9075cd77bd56ead7177192cfec38d85bce4a",
+        "lastState": {},
+        "name": "app",
+        "ready": true,
+        "resources": {},
+        "restartCount": 0,
+        "started": true,
+        "state": {
+          "running": {
+            "startedAt": "2026-10-22T13:23:10Z"
+          }
+        },
+        "user": {
+          "linux": {
+            "gid": 0,
+            "supplementalGroups": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              6,
+              10,
+              11,
+              20,
+              26,
+              27
+            ],
+            "uid": 0
+          }
+        },
+        "volumeMounts": [
+          {
+            "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+            "name": "kube-api-access-mtjf9",
+            "readOnly": true,
+            "recursiveReadOnly": "Disabled"
+          }
+        ]
+      }
+    ],
+    "hostIP": "172.31.0.2",
+    "hostIPs": [
+      {
+        "ip": "172.31.0.2"
+      }
+    ],
+    "observedGeneration": 1,
+    "phase": "Running",
+    "podIP": "192.168.176.141",
+    "podIPs": [
+      {
+        "ip": "192.168.176.141"
+      }
+    ],
+    "qosClass": "BestEffort",
+    "startTime": "2026-10-22T13:23:10Z"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "attempts": 3,
+  "effects": 1,
+  "final_value": "two",
+  "note": "人工重复入队并模拟操作后未确认；不是 client-go 缓存延迟测量"
+}

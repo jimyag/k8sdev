@@ -1,0 +1,7 @@
+{
+  "default_open": true,
+  "default_deny_blocks": true,
+  "good_allowed": true,
+  "other_blocked": true,
+  "service_ip_allowed": true
+}

@@ -1,0 +1,484 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:25:21Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "app-75d8d84cb8-55j7l",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4656",
+        "uid": "37f0dd0a-414b-45a7-99ba-4523c722c6df"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:25:21Z",
+      "message": "Successfully assigned dd-node-failure/app-75d8d84cb8-55j7l to deep-dive-worker2",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:25:21Z",
+        "name": "app-75d8d84cb8-55j7l.18e0dce3a20220a2",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4660",
+        "uid": "ae29d35a-febe-481a-a0ab-6ff70e35ff88"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:25:22Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-75d8d84cb8-55j7l",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4657",
+        "uid": "37f0dd0a-414b-45a7-99ba-4523c722c6df"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:25:22Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:25:22Z",
+        "name": "app-75d8d84cb8-55j7l.18e0dce3bdab9a44",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4668",
+        "uid": "7a2542c8-48fe-45d1-8cba-ad117ddf5d3a"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:25:22Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-75d8d84cb8-55j7l",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4657",
+        "uid": "37f0dd0a-414b-45a7-99ba-4523c722c6df"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:25:22Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:25:22Z",
+        "name": "app-75d8d84cb8-55j7l.18e0dce3be477ec5",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4669",
+        "uid": "ec53f214-536f-46b8-866d-f4588e49b0dd"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:25:22Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-75d8d84cb8-55j7l",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4657",
+        "uid": "37f0dd0a-414b-45a7-99ba-4523c722c6df"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:25:22Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:25:22Z",
+        "name": "app-75d8d84cb8-55j7l.18e0dce3c065c675",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4670",
+        "uid": "10fa29d2-b381-4c69-8bff-d4d62fe82315"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:16Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "app-75d8d84cb8-wqqxx",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4425",
+        "uid": "d61dd17d-b20a-4347-9021-29a2a703eb3a"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:16Z",
+      "message": "Successfully assigned dd-node-failure/app-75d8d84cb8-wqqxx to deep-dive-worker",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:16Z",
+        "name": "app-75d8d84cb8-wqqxx.18e0dcd46856d7e0",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4429",
+        "uid": "ad5be425-a962-44d9-b50c-41f5ba4f34ba"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:16Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-75d8d84cb8-wqqxx",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4426",
+        "uid": "d61dd17d-b20a-4347-9021-29a2a703eb3a"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:16Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:16Z",
+        "name": "app-75d8d84cb8-wqqxx.18e0dcd48318d280",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4439",
+        "uid": "95016202-5bbc-4686-bbc7-939bf05072d0"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:16Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-75d8d84cb8-wqqxx",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4426",
+        "uid": "d61dd17d-b20a-4347-9021-29a2a703eb3a"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:16Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:16Z",
+        "name": "app-75d8d84cb8-wqqxx.18e0dcd483b35626",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4440",
+        "uid": "9be919dc-c684-4526-bdad-9ef261096c93"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:17Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-75d8d84cb8-wqqxx",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4426",
+        "uid": "d61dd17d-b20a-4347-9021-29a2a703eb3a"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:17Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:17Z",
+        "name": "app-75d8d84cb8-wqqxx.18e0dcd485c0893c",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4441",
+        "uid": "87beab0c-6739-493c-9437-2b401bdd404e"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:25:06Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "app-75d8d84cb8-wqqxx",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4442",
+        "uid": "d61dd17d-b20a-4347-9021-29a2a703eb3a"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:25:06Z",
+      "message": "Node is not ready",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:25:07Z",
+        "name": "app-75d8d84cb8-wqqxx.18e0dce01cc1af0f",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4618",
+        "uid": "ba328f69-d2cb-420c-a457-64f79065f2b3"
+      },
+      "reason": "NodeNotReady",
+      "reportingComponent": "node-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "node-controller"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:25:21Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "app-75d8d84cb8-wqqxx",
+        "namespace": "dd-node-failure"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:25:21Z",
+      "message": "Marking for deletion Pod dd-node-failure/app-75d8d84cb8-wqqxx",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:25:21Z",
+        "name": "app-75d8d84cb8-wqqxx.18e0dce3a0d7b1d9",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4653",
+        "uid": "d7fbc37c-1dd8-43ef-9dbf-bab677f14b74"
+      },
+      "reason": "TaintManagerEviction",
+      "reportingComponent": "taint-eviction-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "taint-eviction-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:25:25Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-75d8d84cb8-wqqxx",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4426",
+        "uid": "d61dd17d-b20a-4347-9021-29a2a703eb3a"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:25:25Z",
+      "message": "Stopping container app",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:25:25Z",
+        "name": "app-75d8d84cb8-wqqxx.18e0dce4857e6353",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4696",
+        "uid": "180ada5c-8fd2-4161-9970-3fd507fa0c8c"
+      },
+      "reason": "Killing",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:25:28Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "app-75d8d84cb8-wqqxx",
+        "namespace": "dd-node-failure"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:25:28Z",
+      "message": "Cancelling deletion of Pod dd-node-failure/app-75d8d84cb8-wqqxx",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:25:28Z",
+        "name": "app-75d8d84cb8-wqqxx.18e0dce53934f4b1",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4720",
+        "uid": "6d205226-9963-4a65-b8b4-48263f74f4d3"
+      },
+      "reason": "TaintManagerEviction",
+      "reportingComponent": "taint-eviction-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "taint-eviction-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:16Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "ReplicaSet",
+        "name": "app-75d8d84cb8",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4422",
+        "uid": "812e6e45-d3e0-43e6-9e62-37dd531e6742"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:16Z",
+      "message": "Created pod: app-75d8d84cb8-wqqxx",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:16Z",
+        "name": "app-75d8d84cb8.18e0dcd4682bb8e1",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4427",
+        "uid": "da6bee52-dc17-43b3-b6f6-b89def6d0ea3"
+      },
+      "reason": "SuccessfulCreate",
+      "reportingComponent": "replicaset-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "replicaset-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:25:21Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "ReplicaSet",
+        "name": "app-75d8d84cb8",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4610",
+        "uid": "812e6e45-d3e0-43e6-9e62-37dd531e6742"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:25:21Z",
+      "message": "Created pod: app-75d8d84cb8-55j7l",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:25:21Z",
+        "name": "app-75d8d84cb8.18e0dce3a1def3b9",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4658",
+        "uid": "37f7199c-b7db-4c8a-813e-e9308f2dcc18"
+      },
+      "reason": "SuccessfulCreate",
+      "reportingComponent": "replicaset-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "replicaset-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:16Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "Deployment",
+        "name": "app",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4421",
+        "uid": "16e1138d-1dbf-416e-93bc-90f4b6dcde6a"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:16Z",
+      "message": "Scaled up replica set app-75d8d84cb8 from 0 to 1",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:16Z",
+        "name": "app.18e0dcd467f3d817",
+        "namespace": "dd-node-failure",
+        "resourceVersion": "4423",
+        "uid": "9071632c-cc49-49aa-8910-326a6f57d7c6"
+      },
+      "reason": "ScalingReplicaSet",
+      "reportingComponent": "deployment-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "deployment-controller"
+      },
+      "type": "Normal"
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

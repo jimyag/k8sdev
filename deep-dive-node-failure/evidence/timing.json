@@ -1,0 +1,6 @@
+{
+  "unknown_seconds": 51.0,
+  "replacement_ready_seconds": 67.42,
+  "toleration_seconds": 15,
+  "injection": "docker pause worker (not host power failure)"
+}

@@ -1,0 +1,103 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:32Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "mount-blocked",
+        "namespace": "dd-pod-stages",
+        "resourceVersion": "2913",
+        "uid": "130b9f67-2a15-436e-982e-6a6146ede820"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:32Z",
+      "message": "Successfully assigned dd-pod-stages/mount-blocked to deep-dive-worker",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:32Z",
+        "name": "mount-blocked.18e0dc8440634a23",
+        "namespace": "dd-pod-stages",
+        "resourceVersion": "2915",
+        "uid": "6ddb6c6d-30b9-4109-9727-910a9d853750"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 3,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:32Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "mount-blocked",
+        "namespace": "dd-pod-stages",
+        "resourceVersion": "2914",
+        "uid": "130b9f67-2a15-436e-982e-6a6146ede820"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:33Z",
+      "message": "MountVolume.SetUp failed for volume \"config\" : configmap \"missing-config\" not found",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:32Z",
+        "name": "mount-blocked.18e0dc844bd592d4",
+        "namespace": "dd-pod-stages",
+        "resourceVersion": "2941",
+        "uid": "fc2afa79-d997-413b-82d2-3e745168e4d7"
+      },
+      "reason": "FailedMount",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:32Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "unscheduled",
+        "namespace": "dd-pod-stages",
+        "resourceVersion": "2910",
+        "uid": "f046526a-887c-4c75-b3a9-2021b0b63d04"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:32Z",
+      "message": "0/3 nodes are available: 1 node(s) had untolerated taint(s), 2 node(s) didn't match Pod's node affinity/selector. no new claims to deallocate, preemption: 0/3 nodes are available: 3 Preemption is not helpful for scheduling.",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:32Z",
+        "name": "unscheduled.18e0dc843745c5ba",
+        "namespace": "dd-pod-stages",
+        "resourceVersion": "2911",
+        "uid": "7286f109-d9a2-4b10-979d-dce0061e1d4a"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Warning"
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

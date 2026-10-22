@@ -1,0 +1,26 @@
+{
+  "apiVersion": "v1",
+  "kind": "Pod",
+  "metadata": {
+    "name": "target",
+    "labels": {
+      "app": "target"
+    }
+  },
+  "spec": {
+    "terminationGracePeriodSeconds": 2,
+    "containers": [
+      {
+        "name": "app",
+        "image": "python:3.12-alpine",
+        "imagePullPolicy": "IfNotPresent",
+        "command": [
+          "python",
+          "-u",
+          "-c",
+          "import pathlib,time; pathlib.Path('/application-only').write_text('app-private-root'); time.sleep(3600)"
+        ]
+      }
+    ]
+  }
+}

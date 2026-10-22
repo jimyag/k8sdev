@@ -1,0 +1,5 @@
+{
+  "eviction_blocked": true,
+  "direct_delete_completed": true,
+  "deployment_rollout_completed": true
+}

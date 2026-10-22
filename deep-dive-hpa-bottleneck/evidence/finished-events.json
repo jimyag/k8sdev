@@ -1,0 +1,1068 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:36Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "backend-9bd8f4d76-fh474",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "2981",
+        "uid": "3221bcf7-513a-4bb0-bc95-304306c47f1b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:36Z",
+      "message": "Successfully assigned dd-hpa-bottleneck/backend-9bd8f4d76-fh474 to deep-dive-worker",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:36Z",
+        "name": "backend-9bd8f4d76-fh474.18e0dc8527e70bd2",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "2986",
+        "uid": "0002942d-c6b5-4c48-8c9e-24e04fa2e555"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:36Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "backend-9bd8f4d76-fh474",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "2983",
+        "uid": "3221bcf7-513a-4bb0-bc95-304306c47f1b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:36Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:36Z",
+        "name": "backend-9bd8f4d76-fh474.18e0dc855669079e",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3004",
+        "uid": "a592ce1e-06df-460e-84ab-2a663930dc5e"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:37Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "backend-9bd8f4d76-fh474",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "2983",
+        "uid": "3221bcf7-513a-4bb0-bc95-304306c47f1b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:37Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:37Z",
+        "name": "backend-9bd8f4d76-fh474.18e0dc85783c4542",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3012",
+        "uid": "7cb7ef64-7a71-4290-8ad6-13919a7c921e"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:37Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "backend-9bd8f4d76-fh474",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "2983",
+        "uid": "3221bcf7-513a-4bb0-bc95-304306c47f1b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:37Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:37Z",
+        "name": "backend-9bd8f4d76-fh474.18e0dc858c6b29f6",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3015",
+        "uid": "582ff579-bfb7-4ae9-9ef8-cabe948a188f"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:36Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "ReplicaSet",
+        "name": "backend-9bd8f4d76",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "2978",
+        "uid": "a2a83330-dbed-498e-81e4-503f49492062"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:36Z",
+      "message": "Created pod: backend-9bd8f4d76-fh474",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:36Z",
+        "name": "backend-9bd8f4d76.18e0dc8527b7373b",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "2982",
+        "uid": "e17ab48d-a9c9-4dc8-aecb-dec6982d9678"
+      },
+      "reason": "SuccessfulCreate",
+      "reportingComponent": "replicaset-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "replicaset-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:36Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "Deployment",
+        "name": "backend",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "2977",
+        "uid": "4827da84-fe9d-4f52-81a8-9b4f194be17e"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:36Z",
+      "message": "Scaled up replica set backend-9bd8f4d76 from 0 to 1",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:36Z",
+        "name": "backend.18e0dc852781588f",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "2979",
+        "uid": "0450b5ea-ccad-4292-badb-9d0c63755231"
+      },
+      "reason": "ScalingReplicaSet",
+      "reportingComponent": "deployment-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "deployment-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:41Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "client",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3064",
+        "uid": "282797d8-4dd3-48a6-9600-e28b81c82534"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:41Z",
+      "message": "Successfully assigned dd-hpa-bottleneck/client to deep-dive-worker",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:41Z",
+        "name": "client.18e0dc8670cb3472",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3066",
+        "uid": "3881e576-e0d3-4b59-afaa-854a16875f41"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:42Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "client",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3065",
+        "uid": "282797d8-4dd3-48a6-9600-e28b81c82534"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:42Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:42Z",
+        "name": "client.18e0dc868d822e89",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3079",
+        "uid": "b2dd93c7-5f36-4297-98bc-5d08c0e0305f"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:42Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "client",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3065",
+        "uid": "282797d8-4dd3-48a6-9600-e28b81c82534"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:42Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:42Z",
+        "name": "client.18e0dc868e6d9a3d",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3081",
+        "uid": "b69b39db-b8f5-4750-a3d5-88e260c1a067"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:42Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "client",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3065",
+        "uid": "282797d8-4dd3-48a6-9600-e28b81c82534"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:42Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:42Z",
+        "name": "client.18e0dc86923e30f7",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3082",
+        "uid": "70f73506-1d09-44d7-bb6b-6d2d62b58081"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:19Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "frontend-f68787b95-54vg5",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3277",
+        "uid": "5782ecc3-fb96-47de-b3e7-cae024445f2a"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:19Z",
+      "message": "Successfully assigned dd-hpa-bottleneck/frontend-f68787b95-54vg5 to deep-dive-worker",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:19Z",
+        "name": "frontend-f68787b95-54vg5.18e0dc8f5069d78a",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3289",
+        "uid": "095f87fc-c766-409e-8e73-77abc736b10c"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:20Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "frontend-f68787b95-54vg5",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3283",
+        "uid": "5782ecc3-fb96-47de-b3e7-cae024445f2a"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:20Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:20Z",
+        "name": "frontend-f68787b95-54vg5.18e0dc8f6e6d8db5",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3302",
+        "uid": "859261c3-47b7-4c62-aac1-8f893b2d8c5a"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:20Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "frontend-f68787b95-54vg5",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3283",
+        "uid": "5782ecc3-fb96-47de-b3e7-cae024445f2a"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:20Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:20Z",
+        "name": "frontend-f68787b95-54vg5.18e0dc8f6f79fe9e",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3308",
+        "uid": "4f9e8f1e-2899-4441-9388-90dc4c963f00"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:20Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "frontend-f68787b95-54vg5",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3283",
+        "uid": "5782ecc3-fb96-47de-b3e7-cae024445f2a"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:20Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:20Z",
+        "name": "frontend-f68787b95-54vg5.18e0dc8f723fccf3",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3309",
+        "uid": "398b2593-8487-4f07-a0f6-00066f1f795c"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:19Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "frontend-f68787b95-dgrpw",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3278",
+        "uid": "27f9271f-f343-4043-941d-142f8efeffcb"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:19Z",
+      "message": "Successfully assigned dd-hpa-bottleneck/frontend-f68787b95-dgrpw to deep-dive-worker2",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:19Z",
+        "name": "frontend-f68787b95-dgrpw.18e0dc8f5069ba2c",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3287",
+        "uid": "eeacbfee-1eec-4a96-b7a2-9f5f2f9dc279"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:20Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "frontend-f68787b95-dgrpw",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3285",
+        "uid": "27f9271f-f343-4043-941d-142f8efeffcb"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:20Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:20Z",
+        "name": "frontend-f68787b95-dgrpw.18e0dc8f6e592ac8",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3301",
+        "uid": "5017b7be-c6bf-439d-88e3-c408dcd9a546"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:20Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "frontend-f68787b95-dgrpw",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3285",
+        "uid": "27f9271f-f343-4043-941d-142f8efeffcb"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:20Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:20Z",
+        "name": "frontend-f68787b95-dgrpw.18e0dc8f6f762b8f",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3307",
+        "uid": "d6dfb51b-7b07-487e-92f0-b1363fc2cf57"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:20Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "frontend-f68787b95-dgrpw",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3285",
+        "uid": "27f9271f-f343-4043-941d-142f8efeffcb"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:20Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:20Z",
+        "name": "frontend-f68787b95-dgrpw.18e0dc8f72793201",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3310",
+        "uid": "2fa8fbdc-a019-4364-b626-c22387891dd8"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:39Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "frontend-f68787b95-n78mj",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3028",
+        "uid": "085b262b-2ab1-487f-93c4-1cc01cdfd1fe"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:39Z",
+      "message": "Successfully assigned dd-hpa-bottleneck/frontend-f68787b95-n78mj to deep-dive-worker",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:39Z",
+        "name": "frontend-f68787b95-n78mj.18e0dc85eb142028",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3038",
+        "uid": "dde1ffa5-0bae-44ba-b979-e73011cb67da"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:40Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "frontend-f68787b95-n78mj",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3033",
+        "uid": "085b262b-2ab1-487f-93c4-1cc01cdfd1fe"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:40Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:40Z",
+        "name": "frontend-f68787b95-n78mj.18e0dc863c209cd0",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3054",
+        "uid": "fe3118b4-e339-4697-b479-a735abca1eef"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:41Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "frontend-f68787b95-n78mj",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3033",
+        "uid": "085b262b-2ab1-487f-93c4-1cc01cdfd1fe"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:41Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:41Z",
+        "name": "frontend-f68787b95-n78mj.18e0dc865fb33935",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3057",
+        "uid": "d805eefb-0e98-4d88-9d6d-610c0abf78ea"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:41Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "frontend-f68787b95-n78mj",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3033",
+        "uid": "085b262b-2ab1-487f-93c4-1cc01cdfd1fe"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:41Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:41Z",
+        "name": "frontend-f68787b95-n78mj.18e0dc8663df292b",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3058",
+        "uid": "d18f50e0-ed7d-4e9b-9ab1-dc21b086f0b1"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:19Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "frontend-f68787b95-vh76b",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3275",
+        "uid": "7b0c9baf-ace8-426d-ab89-dc0df451677f"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:19Z",
+      "message": "Successfully assigned dd-hpa-bottleneck/frontend-f68787b95-vh76b to deep-dive-worker2",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:19Z",
+        "name": "frontend-f68787b95-vh76b.18e0dc8f502a83ab",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3281",
+        "uid": "6d7cb848-c876-4403-978e-ca7a0019ada8"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:20Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "frontend-f68787b95-vh76b",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3279",
+        "uid": "7b0c9baf-ace8-426d-ab89-dc0df451677f"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:20Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:20Z",
+        "name": "frontend-f68787b95-vh76b.18e0dc8f74399052",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3311",
+        "uid": "d6a29268-b8e8-4414-b9f9-816480907192"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:20Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "frontend-f68787b95-vh76b",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3279",
+        "uid": "7b0c9baf-ace8-426d-ab89-dc0df451677f"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:20Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:20Z",
+        "name": "frontend-f68787b95-vh76b.18e0dc8f74ef9c5a",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3312",
+        "uid": "e2c68059-59af-4a0c-8f49-47b188e251b6"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:20Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "frontend-f68787b95-vh76b",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3279",
+        "uid": "7b0c9baf-ace8-426d-ab89-dc0df451677f"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:20Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:20Z",
+        "name": "frontend-f68787b95-vh76b.18e0dc8f789f6479",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3313",
+        "uid": "0914778b-5059-4082-be90-c1cbf3be4b18"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:39Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "ReplicaSet",
+        "name": "frontend-f68787b95",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3026",
+        "uid": "2803cdf8-9267-4b98-a599-60017d3150c6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:39Z",
+      "message": "Created pod: frontend-f68787b95-n78mj",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:39Z",
+        "name": "frontend-f68787b95.18e0dc85e5d69682",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3032",
+        "uid": "cfad5b9c-3999-4355-b54f-9b2e4c3fbf42"
+      },
+      "reason": "SuccessfulCreate",
+      "reportingComponent": "replicaset-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "replicaset-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:19Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "ReplicaSet",
+        "name": "frontend-f68787b95",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3272",
+        "uid": "2803cdf8-9267-4b98-a599-60017d3150c6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:19Z",
+      "message": "Created pod: frontend-f68787b95-vh76b",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:19Z",
+        "name": "frontend-f68787b95.18e0dc8f4ffd2134",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3276",
+        "uid": "c99a645c-53d1-4453-bd82-1305c6a10056"
+      },
+      "reason": "SuccessfulCreate",
+      "reportingComponent": "replicaset-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "replicaset-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:19Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "ReplicaSet",
+        "name": "frontend-f68787b95",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3272",
+        "uid": "2803cdf8-9267-4b98-a599-60017d3150c6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:19Z",
+      "message": "Created pod: frontend-f68787b95-dgrpw",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:19Z",
+        "name": "frontend-f68787b95.18e0dc8f502d1b16",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3282",
+        "uid": "5cd1390f-15f0-471b-baab-142c7f276371"
+      },
+      "reason": "SuccessfulCreate",
+      "reportingComponent": "replicaset-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "replicaset-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:19Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "ReplicaSet",
+        "name": "frontend-f68787b95",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3272",
+        "uid": "2803cdf8-9267-4b98-a599-60017d3150c6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:19Z",
+      "message": "Created pod: frontend-f68787b95-54vg5",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:19Z",
+        "name": "frontend-f68787b95.18e0dc8f503048ad",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3286",
+        "uid": "c775ebb3-a173-4313-9d17-12ec0b919509"
+      },
+      "reason": "SuccessfulCreate",
+      "reportingComponent": "replicaset-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "replicaset-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:39Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "Deployment",
+        "name": "frontend",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3025",
+        "uid": "80c5af08-76d9-4f3a-9ab7-f925da827194"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:39Z",
+      "message": "Scaled up replica set frontend-f68787b95 from 0 to 1",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:39Z",
+        "name": "frontend.18e0dc85dc58d0dc",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3027",
+        "uid": "31b7518f-b8d8-4a08-85fc-ca356dbd27e3"
+      },
+      "reason": "ScalingReplicaSet",
+      "reportingComponent": "deployment-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "deployment-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:19Z",
+      "involvedObject": {
+        "apiVersion": "autoscaling/v2",
+        "kind": "HorizontalPodAutoscaler",
+        "name": "frontend",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3234",
+        "uid": "2dbd37b0-8b1e-489c-a1bc-5019ced7fefa"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:19Z",
+      "message": "New size: 4; reason: cpu resource utilization (percentage of request) above target",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:19Z",
+        "name": "frontend.18e0dc8f4f9d8a42",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3270",
+        "uid": "33077dad-2e3e-4a5e-96e1-2202afd9cf5c"
+      },
+      "reason": "SuccessfulRescale",
+      "reportingComponent": "horizontal-pod-autoscaler",
+      "reportingInstance": "",
+      "source": {
+        "component": "horizontal-pod-autoscaler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:19Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "Deployment",
+        "name": "frontend",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3269",
+        "uid": "80c5af08-76d9-4f3a-9ab7-f925da827194"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:19Z",
+      "message": "Scaled up replica set frontend-f68787b95 from 1 to 4",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:19Z",
+        "name": "frontend.18e0dc8f4fca97d9",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3273",
+        "uid": "ec421232-c793-4861-b5fa-be58090e0885"
+      },
+      "reason": "ScalingReplicaSet",
+      "reportingComponent": "deployment-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "deployment-controller"
+      },
+      "type": "Normal"
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

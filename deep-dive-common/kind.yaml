@@ -1,0 +1,10 @@
+# 本轮实验专用集群；使用 Calico 执行 NetworkPolicy。
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+networking:
+  disableDefaultCNI: true # 避免把不执行网络策略的 kindnet 当作验证对象。
+  podSubnet: 192.168.0.0/16 # 与 Calico 默认地址池一致。
+nodes:
+  - role: control-plane
+  - role: worker # 节点失联实验只暂停这个节点容器。
+  - role: worker # 承接重新创建的 Pod。

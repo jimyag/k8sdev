@@ -1,0 +1,1422 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "annotations": {
+          "cni.projectcalico.org/containerID": "1469c4789c2fb9e2ad7774412c5bac35b5dea220f84f54c360458d05c77b0c35",
+          "cni.projectcalico.org/podIP": "192.168.190.74/32",
+          "cni.projectcalico.org/podIPs": "192.168.190.74/32"
+        },
+        "creationTimestamp": "2026-10-22T13:18:36Z",
+        "generateName": "backend-9bd8f4d76-",
+        "generation": 1,
+        "labels": {
+          "app": "backend",
+          "pod-template-hash": "9bd8f4d76"
+        },
+        "name": "backend-9bd8f4d76-fh474",
+        "namespace": "dd-hpa-bottleneck",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "ReplicaSet",
+            "name": "backend-9bd8f4d76",
+            "uid": "a2a83330-dbed-498e-81e4-503f49492062"
+          }
+        ],
+        "resourceVersion": "3020",
+        "uid": "3221bcf7-513a-4bb0-bc95-304306c47f1b"
+      },
+      "spec": {
+        "containers": [
+          {
+            "command": [
+              "python",
+              "-u",
+              "-c",
+              "import http.server, pathlib, time, os, urllib.request\nclass H(http.server.BaseHTTPRequestHandler):\n def do_GET(self):\n  status=200; body=b'ok'\n  if self.path == '/ready' and pathlib.Path('/state/not-ready').exists(): status=503\n  if self.path == '/live' and pathlib.Path('/state/not-live').exists(): status=503\n  if self.path == '/startup' and not pathlib.Path('/state/started').exists(): status=503\n  if self.path == '/work':\n   end=time.thread_time()+0.02\n   while time.thread_time()<end: pass\n  if self.path == '/slow': time.sleep(0.2)\n  if self.path == '/proxy':\n   with urllib.request.urlopen(os.environ['BACKEND']+'/slow',timeout=10) as r: body=r.read()\n  self.send_response(status); self.end_headers(); self.wfile.write(body)\n def log_message(self,*args): pass\nhttp.server.HTTPServer(('0.0.0.0',8080),H).serve_forever()\n"
+            ],
+            "image": "python:3.12-alpine",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "app",
+            "resources": {},
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "volumeMounts": [
+              {
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "name": "kube-api-access-58m5j",
+                "readOnly": true
+              }
+            ]
+          }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "nodeName": "deep-dive-worker",
+        "preemptionPolicy": "PreemptLowerPriority",
+        "priority": 0,
+        "restartPolicy": "Always",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 2,
+        "tolerations": [
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          }
+        ],
+        "volumes": [
+          {
+            "name": "kube-api-access-58m5j",
+            "projected": {
+              "defaultMode": 420,
+              "sources": [
+                {
+                  "serviceAccountToken": {
+                    "expirationSeconds": 3607,
+                    "path": "token"
+                  }
+                },
+                {
+                  "configMap": {
+                    "items": [
+                      {
+                        "key": "ca.crt",
+                        "path": "ca.crt"
+                      }
+                    ],
+                    "name": "kube-root-ca.crt"
+                  }
+                },
+                {
+                  "downwardAPI": {
+                    "items": [
+                      {
+                        "fieldRef": {
+                          "apiVersion": "v1",
+                          "fieldPath": "metadata.namespace"
+                        },
+                        "path": "namespace"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:18:38Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:18:36Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:18:38Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:18:38Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:18:36Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "containerID": "containerd://10b813446f3ecd0fb5304abb5d7c6b0d9c5b68f284b94c839d2d423fcb5ae7d3",
+            "image": "docker.io/library/python:3.12-alpine",
+            "imageID": "sha256:f4b7b8044a873fcc0f348549a19b9075cd77bd56ead7177192cfec38d85bce4a",
+            "lastState": {},
+            "name": "app",
+            "ready": true,
+            "resources": {},
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-22T13:18:37Z"
+              }
+            },
+            "user": {
+              "linux": {
+                "gid": 0,
+                "supplementalGroups": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  6,
+                  10,
+                  11,
+                  20,
+                  26,
+                  27
+                ],
+                "uid": 0
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "name": "kube-api-access-58m5j",
+                "readOnly": true,
+                "recursiveReadOnly": "Disabled"
+              }
+            ]
+          }
+        ],
+        "hostIP": "172.31.0.3",
+        "hostIPs": [
+          {
+            "ip": "172.31.0.3"
+          }
+        ],
+        "observedGeneration": 1,
+        "phase": "Running",
+        "podIP": "192.168.190.74",
+        "podIPs": [
+          {
+            "ip": "192.168.190.74"
+          }
+        ],
+        "qosClass": "BestEffort",
+        "startTime": "2026-10-22T13:18:36Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "annotations": {
+          "cni.projectcalico.org/containerID": "5e9312971280b64761e95aa96b660984135994fc8b4203e45e29b2b57a2e6581",
+          "cni.projectcalico.org/podIP": "192.168.190.76/32",
+          "cni.projectcalico.org/podIPs": "192.168.190.76/32",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"client\"},\"name\":\"client\",\"namespace\":\"dd-hpa-bottleneck\"},\"spec\":{\"containers\":[{\"command\":[\"python\",\"-u\",\"-c\",\"import time; time.sleep(3600)\"],\"image\":\"python:3.12-alpine\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"app\"}],\"terminationGracePeriodSeconds\":2}}\n"
+        },
+        "creationTimestamp": "2026-10-22T13:18:41Z",
+        "generation": 1,
+        "labels": {
+          "app": "client"
+        },
+        "name": "client",
+        "namespace": "dd-hpa-bottleneck",
+        "resourceVersion": "3094",
+        "uid": "282797d8-4dd3-48a6-9600-e28b81c82534"
+      },
+      "spec": {
+        "containers": [
+          {
+            "command": [
+              "python",
+              "-u",
+              "-c",
+              "import time; time.sleep(3600)"
+            ],
+            "image": "python:3.12-alpine",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "app",
+            "resources": {},
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "volumeMounts": [
+              {
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "name": "kube-api-access-92cht",
+                "readOnly": true
+              }
+            ]
+          }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "nodeName": "deep-dive-worker",
+        "preemptionPolicy": "PreemptLowerPriority",
+        "priority": 0,
+        "restartPolicy": "Always",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 2,
+        "tolerations": [
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          }
+        ],
+        "volumes": [
+          {
+            "name": "kube-api-access-92cht",
+            "projected": {
+              "defaultMode": 420,
+              "sources": [
+                {
+                  "serviceAccountToken": {
+                    "expirationSeconds": 3607,
+                    "path": "token"
+                  }
+                },
+                {
+                  "configMap": {
+                    "items": [
+                      {
+                        "key": "ca.crt",
+                        "path": "ca.crt"
+                      }
+                    ],
+                    "name": "kube-root-ca.crt"
+                  }
+                },
+                {
+                  "downwardAPI": {
+                    "items": [
+                      {
+                        "fieldRef": {
+                          "apiVersion": "v1",
+                          "fieldPath": "metadata.namespace"
+                        },
+                        "path": "namespace"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:18:42Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:18:41Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:18:42Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:18:42Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:18:41Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "containerID": "containerd://98b3f9aece87944a866612790ec9fd399867f9c0c9771a8bacee6b68c09cb840",
+            "image": "docker.io/library/python:3.12-alpine",
+            "imageID": "sha256:f4b7b8044a873fcc0f348549a19b9075cd77bd56ead7177192cfec38d85bce4a",
+            "lastState": {},
+            "name": "app",
+            "ready": true,
+            "resources": {},
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-22T13:18:42Z"
+              }
+            },
+            "user": {
+              "linux": {
+                "gid": 0,
+                "supplementalGroups": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  6,
+                  10,
+                  11,
+                  20,
+                  26,
+                  27
+                ],
+                "uid": 0
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "name": "kube-api-access-92cht",
+                "readOnly": true,
+                "recursiveReadOnly": "Disabled"
+              }
+            ]
+          }
+        ],
+        "hostIP": "172.31.0.3",
+        "hostIPs": [
+          {
+            "ip": "172.31.0.3"
+          }
+        ],
+        "observedGeneration": 1,
+        "phase": "Running",
+        "podIP": "192.168.190.76",
+        "podIPs": [
+          {
+            "ip": "192.168.190.76"
+          }
+        ],
+        "qosClass": "BestEffort",
+        "startTime": "2026-10-22T13:18:41Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "annotations": {
+          "cni.projectcalico.org/containerID": "419ee7129fe8b738f9611ee5549d8dbbfa42efa73dc6764b614840d282638186",
+          "cni.projectcalico.org/podIP": "192.168.190.79/32",
+          "cni.projectcalico.org/podIPs": "192.168.190.79/32"
+        },
+        "creationTimestamp": "2026-10-22T13:19:19Z",
+        "generateName": "frontend-f68787b95-",
+        "generation": 1,
+        "labels": {
+          "app": "frontend",
+          "pod-template-hash": "f68787b95"
+        },
+        "name": "frontend-f68787b95-54vg5",
+        "namespace": "dd-hpa-bottleneck",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "ReplicaSet",
+            "name": "frontend-f68787b95",
+            "uid": "2803cdf8-9267-4b98-a599-60017d3150c6"
+          }
+        ],
+        "resourceVersion": "3314",
+        "uid": "5782ecc3-fb96-47de-b3e7-cae024445f2a"
+      },
+      "spec": {
+        "containers": [
+          {
+            "command": [
+              "python",
+              "-u",
+              "-c",
+              "import http.server, pathlib, time, os, urllib.request\nclass H(http.server.BaseHTTPRequestHandler):\n def do_GET(self):\n  status=200; body=b'ok'\n  if self.path == '/ready' and pathlib.Path('/state/not-ready').exists(): status=503\n  if self.path == '/live' and pathlib.Path('/state/not-live').exists(): status=503\n  if self.path == '/startup' and not pathlib.Path('/state/started').exists(): status=503\n  if self.path == '/work':\n   end=time.thread_time()+0.02\n   while time.thread_time()<end: pass\n  if self.path == '/slow': time.sleep(0.2)\n  if self.path == '/proxy':\n   end=time.thread_time()+0.01\n   while time.thread_time()<end: pass\n   with urllib.request.urlopen(os.environ['BACKEND']+'/slow',timeout=10) as r: body=r.read()\n  self.send_response(status); self.end_headers(); self.wfile.write(body)\n def log_message(self,*args): pass\nhttp.server.ThreadingHTTPServer(('0.0.0.0',8080),H).serve_forever()\n"
+            ],
+            "env": [
+              {
+                "name": "BACKEND",
+                "value": "http://backend:8080"
+              }
+            ],
+            "image": "python:3.12-alpine",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "app",
+            "resources": {
+              "limits": {
+                "cpu": "500m"
+              },
+              "requests": {
+                "cpu": "5m"
+              }
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "volumeMounts": [
+              {
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "name": "kube-api-access-jrwsx",
+                "readOnly": true
+              }
+            ]
+          }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "nodeName": "deep-dive-worker",
+        "preemptionPolicy": "PreemptLowerPriority",
+        "priority": 0,
+        "restartPolicy": "Always",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 2,
+        "tolerations": [
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          }
+        ],
+        "volumes": [
+          {
+            "name": "kube-api-access-jrwsx",
+            "projected": {
+              "defaultMode": 420,
+              "sources": [
+                {
+                  "serviceAccountToken": {
+                    "expirationSeconds": 3607,
+                    "path": "token"
+                  }
+                },
+                {
+                  "configMap": {
+                    "items": [
+                      {
+                        "key": "ca.crt",
+                        "path": "ca.crt"
+                      }
+                    ],
+                    "name": "kube-root-ca.crt"
+                  }
+                },
+                {
+                  "downwardAPI": {
+                    "items": [
+                      {
+                        "fieldRef": {
+                          "apiVersion": "v1",
+                          "fieldPath": "metadata.namespace"
+                        },
+                        "path": "namespace"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:19:20Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:19:19Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:19:20Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:19:20Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:19:19Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "allocatedResources": {
+              "cpu": "5m"
+            },
+            "containerID": "containerd://763acad644662ff5a7efb09484a4af346110decdd8e350a5988d080c5b47746f",
+            "image": "docker.io/library/python:3.12-alpine",
+            "imageID": "sha256:f4b7b8044a873fcc0f348549a19b9075cd77bd56ead7177192cfec38d85bce4a",
+            "lastState": {},
+            "name": "app",
+            "ready": true,
+            "resources": {
+              "limits": {
+                "cpu": "500m"
+              },
+              "requests": {
+                "cpu": "5m"
+              }
+            },
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-22T13:19:20Z"
+              }
+            },
+            "user": {
+              "linux": {
+                "gid": 0,
+                "supplementalGroups": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  6,
+                  10,
+                  11,
+                  20,
+                  26,
+                  27
+                ],
+                "uid": 0
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "name": "kube-api-access-jrwsx",
+                "readOnly": true,
+                "recursiveReadOnly": "Disabled"
+              }
+            ]
+          }
+        ],
+        "hostIP": "172.31.0.3",
+        "hostIPs": [
+          {
+            "ip": "172.31.0.3"
+          }
+        ],
+        "observedGeneration": 1,
+        "phase": "Running",
+        "podIP": "192.168.190.79",
+        "podIPs": [
+          {
+            "ip": "192.168.190.79"
+          }
+        ],
+        "qosClass": "Burstable",
+        "startTime": "2026-10-22T13:19:19Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "annotations": {
+          "cni.projectcalico.org/containerID": "e67b06171815d5b08cce91517774ea56d3b33931c773bcbe2bea831a1c524859",
+          "cni.projectcalico.org/podIP": "192.168.176.139/32",
+          "cni.projectcalico.org/podIPs": "192.168.176.139/32"
+        },
+        "creationTimestamp": "2026-10-22T13:19:19Z",
+        "generateName": "frontend-f68787b95-",
+        "generation": 1,
+        "labels": {
+          "app": "frontend",
+          "pod-template-hash": "f68787b95"
+        },
+        "name": "frontend-f68787b95-dgrpw",
+        "namespace": "dd-hpa-bottleneck",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "ReplicaSet",
+            "name": "frontend-f68787b95",
+            "uid": "2803cdf8-9267-4b98-a599-60017d3150c6"
+          }
+        ],
+        "resourceVersion": "3319",
+        "uid": "27f9271f-f343-4043-941d-142f8efeffcb"
+      },
+      "spec": {
+        "containers": [
+          {
+            "command": [
+              "python",
+              "-u",
+              "-c",
+              "import http.server, pathlib, time, os, urllib.request\nclass H(http.server.BaseHTTPRequestHandler):\n def do_GET(self):\n  status=200; body=b'ok'\n  if self.path == '/ready' and pathlib.Path('/state/not-ready').exists(): status=503\n  if self.path == '/live' and pathlib.Path('/state/not-live').exists(): status=503\n  if self.path == '/startup' and not pathlib.Path('/state/started').exists(): status=503\n  if self.path == '/work':\n   end=time.thread_time()+0.02\n   while time.thread_time()<end: pass\n  if self.path == '/slow': time.sleep(0.2)\n  if self.path == '/proxy':\n   end=time.thread_time()+0.01\n   while time.thread_time()<end: pass\n   with urllib.request.urlopen(os.environ['BACKEND']+'/slow',timeout=10) as r: body=r.read()\n  self.send_response(status); self.end_headers(); self.wfile.write(body)\n def log_message(self,*args): pass\nhttp.server.ThreadingHTTPServer(('0.0.0.0',8080),H).serve_forever()\n"
+            ],
+            "env": [
+              {
+                "name": "BACKEND",
+                "value": "http://backend:8080"
+              }
+            ],
+            "image": "python:3.12-alpine",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "app",
+            "resources": {
+              "limits": {
+                "cpu": "500m"
+              },
+              "requests": {
+                "cpu": "5m"
+              }
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "volumeMounts": [
+              {
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "name": "kube-api-access-9p74m",
+                "readOnly": true
+              }
+            ]
+          }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "nodeName": "deep-dive-worker2",
+        "preemptionPolicy": "PreemptLowerPriority",
+        "priority": 0,
+        "restartPolicy": "Always",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 2,
+        "tolerations": [
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          }
+        ],
+        "volumes": [
+          {
+            "name": "kube-api-access-9p74m",
+            "projected": {
+              "defaultMode": 420,
+              "sources": [
+                {
+                  "serviceAccountToken": {
+                    "expirationSeconds": 3607,
+                    "path": "token"
+                  }
+                },
+                {
+                  "configMap": {
+                    "items": [
+                      {
+                        "key": "ca.crt",
+                        "path": "ca.crt"
+                      }
+                    ],
+                    "name": "kube-root-ca.crt"
+                  }
+                },
+                {
+                  "downwardAPI": {
+                    "items": [
+                      {
+                        "fieldRef": {
+                          "apiVersion": "v1",
+                          "fieldPath": "metadata.namespace"
+                        },
+                        "path": "namespace"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:19:20Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:19:19Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:19:20Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:19:20Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:19:19Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "allocatedResources": {
+              "cpu": "5m"
+            },
+            "containerID": "containerd://5b01390063e4a16aad2f02f978436aaf9a97c335271116ba3894b95870bfd0aa",
+            "image": "docker.io/library/python:3.12-alpine",
+            "imageID": "sha256:f4b7b8044a873fcc0f348549a19b9075cd77bd56ead7177192cfec38d85bce4a",
+            "lastState": {},
+            "name": "app",
+            "ready": true,
+            "resources": {
+              "limits": {
+                "cpu": "500m"
+              },
+              "requests": {
+                "cpu": "5m"
+              }
+            },
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-22T13:19:20Z"
+              }
+            },
+            "user": {
+              "linux": {
+                "gid": 0,
+                "supplementalGroups": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  6,
+                  10,
+                  11,
+                  20,
+                  26,
+                  27
+                ],
+                "uid": 0
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "name": "kube-api-access-9p74m",
+                "readOnly": true,
+                "recursiveReadOnly": "Disabled"
+              }
+            ]
+          }
+        ],
+        "hostIP": "172.31.0.2",
+        "hostIPs": [
+          {
+            "ip": "172.31.0.2"
+          }
+        ],
+        "observedGeneration": 1,
+        "phase": "Running",
+        "podIP": "192.168.176.139",
+        "podIPs": [
+          {
+            "ip": "192.168.176.139"
+          }
+        ],
+        "qosClass": "Burstable",
+        "startTime": "2026-10-22T13:19:19Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "annotations": {
+          "cni.projectcalico.org/containerID": "456be50c6e9735b20076c47347ba8cbeef8a0c626ea8f17a86526dbe7b36cc5f",
+          "cni.projectcalico.org/podIP": "192.168.190.75/32",
+          "cni.projectcalico.org/podIPs": "192.168.190.75/32"
+        },
+        "creationTimestamp": "2026-10-22T13:18:39Z",
+        "generateName": "frontend-f68787b95-",
+        "generation": 1,
+        "labels": {
+          "app": "frontend",
+          "pod-template-hash": "f68787b95"
+        },
+        "name": "frontend-f68787b95-n78mj",
+        "namespace": "dd-hpa-bottleneck",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "ReplicaSet",
+            "name": "frontend-f68787b95",
+            "uid": "2803cdf8-9267-4b98-a599-60017d3150c6"
+          }
+        ],
+        "resourceVersion": "3059",
+        "uid": "085b262b-2ab1-487f-93c4-1cc01cdfd1fe"
+      },
+      "spec": {
+        "containers": [
+          {
+            "command": [
+              "python",
+              "-u",
+              "-c",
+              "import http.server, pathlib, time, os, urllib.request\nclass H(http.server.BaseHTTPRequestHandler):\n def do_GET(self):\n  status=200; body=b'ok'\n  if self.path == '/ready' and pathlib.Path('/state/not-ready').exists(): status=503\n  if self.path == '/live' and pathlib.Path('/state/not-live').exists(): status=503\n  if self.path == '/startup' and not pathlib.Path('/state/started').exists(): status=503\n  if self.path == '/work':\n   end=time.thread_time()+0.02\n   while time.thread_time()<end: pass\n  if self.path == '/slow': time.sleep(0.2)\n  if self.path == '/proxy':\n   end=time.thread_time()+0.01\n   while time.thread_time()<end: pass\n   with urllib.request.urlopen(os.environ['BACKEND']+'/slow',timeout=10) as r: body=r.read()\n  self.send_response(status); self.end_headers(); self.wfile.write(body)\n def log_message(self,*args): pass\nhttp.server.ThreadingHTTPServer(('0.0.0.0',8080),H).serve_forever()\n"
+            ],
+            "env": [
+              {
+                "name": "BACKEND",
+                "value": "http://backend:8080"
+              }
+            ],
+            "image": "python:3.12-alpine",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "app",
+            "resources": {
+              "limits": {
+                "cpu": "500m"
+              },
+              "requests": {
+                "cpu": "5m"
+              }
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "volumeMounts": [
+              {
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "name": "kube-api-access-bdmtb",
+                "readOnly": true
+              }
+            ]
+          }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "nodeName": "deep-dive-worker",
+        "preemptionPolicy": "PreemptLowerPriority",
+        "priority": 0,
+        "restartPolicy": "Always",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 2,
+        "tolerations": [
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          }
+        ],
+        "volumes": [
+          {
+            "name": "kube-api-access-bdmtb",
+            "projected": {
+              "defaultMode": 420,
+              "sources": [
+                {
+                  "serviceAccountToken": {
+                    "expirationSeconds": 3607,
+                    "path": "token"
+                  }
+                },
+                {
+                  "configMap": {
+                    "items": [
+                      {
+                        "key": "ca.crt",
+                        "path": "ca.crt"
+                      }
+                    ],
+                    "name": "kube-root-ca.crt"
+                  }
+                },
+                {
+                  "downwardAPI": {
+                    "items": [
+                      {
+                        "fieldRef": {
+                          "apiVersion": "v1",
+                          "fieldPath": "metadata.namespace"
+                        },
+                        "path": "namespace"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:18:41Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:18:39Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:18:41Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:18:41Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:18:39Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "allocatedResources": {
+              "cpu": "5m"
+            },
+            "containerID": "containerd://59be8669f6f3e0cd3480fff5776cc5fe668821bf5d0c96d1903a24e23cde3bfc",
+            "image": "docker.io/library/python:3.12-alpine",
+            "imageID": "sha256:f4b7b8044a873fcc0f348549a19b9075cd77bd56ead7177192cfec38d85bce4a",
+            "lastState": {},
+            "name": "app",
+            "ready": true,
+            "resources": {
+              "limits": {
+                "cpu": "500m"
+              },
+              "requests": {
+                "cpu": "5m"
+              }
+            },
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-22T13:18:41Z"
+              }
+            },
+            "user": {
+              "linux": {
+                "gid": 0,
+                "supplementalGroups": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  6,
+                  10,
+                  11,
+                  20,
+                  26,
+                  27
+                ],
+                "uid": 0
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "name": "kube-api-access-bdmtb",
+                "readOnly": true,
+                "recursiveReadOnly": "Disabled"
+              }
+            ]
+          }
+        ],
+        "hostIP": "172.31.0.3",
+        "hostIPs": [
+          {
+            "ip": "172.31.0.3"
+          }
+        ],
+        "observedGeneration": 1,
+        "phase": "Running",
+        "podIP": "192.168.190.75",
+        "podIPs": [
+          {
+            "ip": "192.168.190.75"
+          }
+        ],
+        "qosClass": "Burstable",
+        "startTime": "2026-10-22T13:18:39Z"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Pod",
+      "metadata": {
+        "annotations": {
+          "cni.projectcalico.org/containerID": "d3c78c20a948b799e24b9c2d010b9e0b118988b15dd6d85100680bf016999ec1",
+          "cni.projectcalico.org/podIP": "192.168.176.140/32",
+          "cni.projectcalico.org/podIPs": "192.168.176.140/32"
+        },
+        "creationTimestamp": "2026-10-22T13:19:19Z",
+        "generateName": "frontend-f68787b95-",
+        "generation": 1,
+        "labels": {
+          "app": "frontend",
+          "pod-template-hash": "f68787b95"
+        },
+        "name": "frontend-f68787b95-vh76b",
+        "namespace": "dd-hpa-bottleneck",
+        "ownerReferences": [
+          {
+            "apiVersion": "apps/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "ReplicaSet",
+            "name": "frontend-f68787b95",
+            "uid": "2803cdf8-9267-4b98-a599-60017d3150c6"
+          }
+        ],
+        "resourceVersion": "3323",
+        "uid": "7b0c9baf-ace8-426d-ab89-dc0df451677f"
+      },
+      "spec": {
+        "containers": [
+          {
+            "command": [
+              "python",
+              "-u",
+              "-c",
+              "import http.server, pathlib, time, os, urllib.request\nclass H(http.server.BaseHTTPRequestHandler):\n def do_GET(self):\n  status=200; body=b'ok'\n  if self.path == '/ready' and pathlib.Path('/state/not-ready').exists(): status=503\n  if self.path == '/live' and pathlib.Path('/state/not-live').exists(): status=503\n  if self.path == '/startup' and not pathlib.Path('/state/started').exists(): status=503\n  if self.path == '/work':\n   end=time.thread_time()+0.02\n   while time.thread_time()<end: pass\n  if self.path == '/slow': time.sleep(0.2)\n  if self.path == '/proxy':\n   end=time.thread_time()+0.01\n   while time.thread_time()<end: pass\n   with urllib.request.urlopen(os.environ['BACKEND']+'/slow',timeout=10) as r: body=r.read()\n  self.send_response(status); self.end_headers(); self.wfile.write(body)\n def log_message(self,*args): pass\nhttp.server.ThreadingHTTPServer(('0.0.0.0',8080),H).serve_forever()\n"
+            ],
+            "env": [
+              {
+                "name": "BACKEND",
+                "value": "http://backend:8080"
+              }
+            ],
+            "image": "python:3.12-alpine",
+            "imagePullPolicy": "IfNotPresent",
+            "name": "app",
+            "resources": {
+              "limits": {
+                "cpu": "500m"
+              },
+              "requests": {
+                "cpu": "5m"
+              }
+            },
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "volumeMounts": [
+              {
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "name": "kube-api-access-hxp4b",
+                "readOnly": true
+              }
+            ]
+          }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "nodeName": "deep-dive-worker2",
+        "preemptionPolicy": "PreemptLowerPriority",
+        "priority": 0,
+        "restartPolicy": "Always",
+        "schedulerName": "default-scheduler",
+        "securityContext": {},
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 2,
+        "tolerations": [
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          },
+          {
+            "effect": "NoExecute",
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "tolerationSeconds": 300
+          }
+        ],
+        "volumes": [
+          {
+            "name": "kube-api-access-hxp4b",
+            "projected": {
+              "defaultMode": 420,
+              "sources": [
+                {
+                  "serviceAccountToken": {
+                    "expirationSeconds": 3607,
+                    "path": "token"
+                  }
+                },
+                {
+                  "configMap": {
+                    "items": [
+                      {
+                        "key": "ca.crt",
+                        "path": "ca.crt"
+                      }
+                    ],
+                    "name": "kube-root-ca.crt"
+                  }
+                },
+                {
+                  "downwardAPI": {
+                    "items": [
+                      {
+                        "fieldRef": {
+                          "apiVersion": "v1",
+                          "fieldPath": "metadata.namespace"
+                        },
+                        "path": "namespace"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:19:20Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodReadyToStartContainers"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:19:19Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Initialized"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:19:20Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "Ready"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:19:20Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "ContainersReady"
+          },
+          {
+            "lastProbeTime": null,
+            "lastTransitionTime": "2026-10-22T13:19:19Z",
+            "observedGeneration": 1,
+            "status": "True",
+            "type": "PodScheduled"
+          }
+        ],
+        "containerStatuses": [
+          {
+            "allocatedResources": {
+              "cpu": "5m"
+            },
+            "containerID": "containerd://e01885d23c12a5c64328dcc2a69162ad436858689c74c5c26448c806f128e4b8",
+            "image": "docker.io/library/python:3.12-alpine",
+            "imageID": "sha256:f4b7b8044a873fcc0f348549a19b9075cd77bd56ead7177192cfec38d85bce4a",
+            "lastState": {},
+            "name": "app",
+            "ready": true,
+            "resources": {
+              "limits": {
+                "cpu": "500m"
+              },
+              "requests": {
+                "cpu": "5m"
+              }
+            },
+            "restartCount": 0,
+            "started": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-10-22T13:19:20Z"
+              }
+            },
+            "user": {
+              "linux": {
+                "gid": 0,
+                "supplementalGroups": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  6,
+                  10,
+                  11,
+                  20,
+                  26,
+                  27
+                ],
+                "uid": 0
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                "name": "kube-api-access-hxp4b",
+                "readOnly": true,
+                "recursiveReadOnly": "Disabled"
+              }
+            ]
+          }
+        ],
+        "hostIP": "172.31.0.2",
+        "hostIPs": [
+          {
+            "ip": "172.31.0.2"
+          }
+        ],
+        "observedGeneration": 1,
+        "phase": "Running",
+        "podIP": "192.168.176.140",
+        "podIPs": [
+          {
+            "ip": "192.168.176.140"
+          }
+        ],
+        "qosClass": "Burstable",
+        "startTime": "2026-10-22T13:19:19Z"
+      }
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "apiVersion": "v1",
+  "kind": "Pod",
+  "metadata": {
+    "name": "too-large",
+    "labels": {
+      "app": "too-large"
+    }
+  },
+  "spec": {
+    "terminationGracePeriodSeconds": 2,
+    "containers": [
+      {
+        "name": "app",
+        "image": "python:3.12-alpine",
+        "imagePullPolicy": "IfNotPresent",
+        "command": [
+          "python",
+          "-u",
+          "-c",
+          "import time; time.sleep(3600)"
+        ],
+        "resources": {
+          "requests": {
+            "cpu": "1000"
+          }
+        }
+      }
+    ]
+  }
+}

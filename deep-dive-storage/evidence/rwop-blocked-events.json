@@ -1,0 +1,1028 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:35Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "name": "disk",
+        "namespace": "dd-storage",
+        "resourceVersion": "2954",
+        "uid": "642046e4-19dc-46ea-86ee-6a6416338199"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:35Z",
+      "message": "External provisioner is provisioning volume for claim \"dd-storage/disk\"",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:35Z",
+        "name": "disk.18e0dc84ebd9a47d",
+        "namespace": "dd-storage",
+        "resourceVersion": "2956",
+        "uid": "4d41af08-4cb5-4c3a-a287-eaca11f3247f"
+      },
+      "reason": "Provisioning",
+      "reportingComponent": "hostpath.csi.k8s.io_csi-hostpathplugin-0_2f1acf01-ae37-48a7-a08e-e768a13be5e5",
+      "reportingInstance": "",
+      "source": {
+        "component": "hostpath.csi.k8s.io_csi-hostpathplugin-0_2f1acf01-ae37-48a7-a08e-e768a13be5e5"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:35Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "name": "disk",
+        "namespace": "dd-storage",
+        "resourceVersion": "2954",
+        "uid": "642046e4-19dc-46ea-86ee-6a6416338199"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:35Z",
+      "message": "Waiting for a volume to be created either by the external provisioner 'hostpath.csi.k8s.io' or manually by the system administrator. If volume creation is delayed, please verify that the provisioner is running and correctly registered.",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:35Z",
+        "name": "disk.18e0dc84ebdb41d5",
+        "namespace": "dd-storage",
+        "resourceVersion": "2955",
+        "uid": "ba1eb786-309a-4061-beb4-dc4d10685166"
+      },
+      "reason": "ExternalProvisioning",
+      "reportingComponent": "persistentvolume-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "persistentvolume-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:35Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "name": "disk",
+        "namespace": "dd-storage",
+        "resourceVersion": "2954",
+        "uid": "642046e4-19dc-46ea-86ee-6a6416338199"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:35Z",
+      "message": "Successfully provisioned volume pvc-642046e4-19dc-46ea-86ee-6a6416338199",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:35Z",
+        "name": "disk.18e0dc84ec220ead",
+        "namespace": "dd-storage",
+        "resourceVersion": "2958",
+        "uid": "f30837c0-8fbf-4396-967a-ed278b8a044a"
+      },
+      "reason": "ProvisioningSucceeded",
+      "reportingComponent": "hostpath.csi.k8s.io_csi-hostpathplugin-0_2f1acf01-ae37-48a7-a08e-e768a13be5e5",
+      "reportingInstance": "",
+      "source": {
+        "component": "hostpath.csi.k8s.io_csi-hostpathplugin-0_2f1acf01-ae37-48a7-a08e-e768a13be5e5"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:59Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "exclusive-one",
+        "namespace": "dd-storage",
+        "resourceVersion": "3215",
+        "uid": "69a32400-abea-4b47-a939-df9e99a52da0"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:59Z",
+      "message": "Successfully assigned dd-storage/exclusive-one to deep-dive-worker2",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:59Z",
+        "name": "exclusive-one.18e0dc8ab545adf3",
+        "namespace": "dd-storage",
+        "resourceVersion": "3217",
+        "uid": "ad1da62d-068a-4107-8eb3-67b38b09127e"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:00Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "exclusive-one",
+        "namespace": "dd-storage",
+        "resourceVersion": "3216",
+        "uid": "69a32400-abea-4b47-a939-df9e99a52da0"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:00Z",
+      "message": "AttachVolume.Attach succeeded for volume \"pvc-1f816a99-467b-4819-be28-82a18ff6ec31\" ",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:00Z",
+        "name": "exclusive-one.18e0dc8ad4819f70",
+        "namespace": "dd-storage",
+        "resourceVersion": "3223",
+        "uid": "d69b8f9c-30a9-45c8-91eb-00c2e810608b"
+      },
+      "reason": "SuccessfulAttachVolume",
+      "reportingComponent": "attachdetach-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "attachdetach-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:09Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "exclusive-one",
+        "namespace": "dd-storage",
+        "resourceVersion": "3216",
+        "uid": "69a32400-abea-4b47-a939-df9e99a52da0"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:09Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:09Z",
+        "name": "exclusive-one.18e0dc8cd6ef7878",
+        "namespace": "dd-storage",
+        "resourceVersion": "3245",
+        "uid": "ef1e9cb6-bc8f-4736-a8df-e283c21ad5c7"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:09Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "exclusive-one",
+        "namespace": "dd-storage",
+        "resourceVersion": "3216",
+        "uid": "69a32400-abea-4b47-a939-df9e99a52da0"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:09Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:09Z",
+        "name": "exclusive-one.18e0dc8cd795ffbd",
+        "namespace": "dd-storage",
+        "resourceVersion": "3246",
+        "uid": "f68df28f-834e-42fb-b443-7d5b78794506"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:09Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "exclusive-one",
+        "namespace": "dd-storage",
+        "resourceVersion": "3216",
+        "uid": "69a32400-abea-4b47-a939-df9e99a52da0"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:09Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:09Z",
+        "name": "exclusive-one.18e0dc8cd9c7dd63",
+        "namespace": "dd-storage",
+        "resourceVersion": "3247",
+        "uid": "91e1c44d-13c7-4e91-b4e9-9038c2be5529"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:19:09Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "exclusive-two",
+        "namespace": "dd-storage",
+        "resourceVersion": "3249",
+        "uid": "120799a0-093b-4057-8aea-2589d9de8992"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:19:09Z",
+      "message": "0/3 nodes are available: 1 node(s) didn't match Pod's node affinity/selector, 1 node(s) had untolerated taint(s), 1 node(s) unavailable due to PersistentVolumeClaim with ReadWriteOncePod access mode already in-use by another pod. no new claims to deallocate, preemption: 0/3 nodes are available: 1 No preemption victims found for incoming pod, 2 Preemption is not helpful for scheduling.",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:19:09Z",
+        "name": "exclusive-two.18e0dc8d038b68f4",
+        "namespace": "dd-storage",
+        "resourceVersion": "3250",
+        "uid": "5a87a6e9-3275-4dd5-9f15-70708381f72a"
+      },
+      "reason": "FailedScheduling",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:59Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "name": "exclusive",
+        "namespace": "dd-storage",
+        "resourceVersion": "3207",
+        "uid": "1f816a99-467b-4819-be28-82a18ff6ec31"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:59Z",
+      "message": "External provisioner is provisioning volume for claim \"dd-storage/exclusive\"",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:59Z",
+        "name": "exclusive.18e0dc8ab0bc208a",
+        "namespace": "dd-storage",
+        "resourceVersion": "3208",
+        "uid": "09f68dde-a3da-4983-b76c-51c9cc61a152"
+      },
+      "reason": "Provisioning",
+      "reportingComponent": "hostpath.csi.k8s.io_csi-hostpathplugin-0_2f1acf01-ae37-48a7-a08e-e768a13be5e5",
+      "reportingInstance": "",
+      "source": {
+        "component": "hostpath.csi.k8s.io_csi-hostpathplugin-0_2f1acf01-ae37-48a7-a08e-e768a13be5e5"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:59Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "name": "exclusive",
+        "namespace": "dd-storage",
+        "resourceVersion": "3207",
+        "uid": "1f816a99-467b-4819-be28-82a18ff6ec31"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:59Z",
+      "message": "Waiting for a volume to be created either by the external provisioner 'hostpath.csi.k8s.io' or manually by the system administrator. If volume creation is delayed, please verify that the provisioner is running and correctly registered.",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:59Z",
+        "name": "exclusive.18e0dc8ab0bc79aa",
+        "namespace": "dd-storage",
+        "resourceVersion": "3209",
+        "uid": "62462800-6fca-4488-be9c-3afd3bd430db"
+      },
+      "reason": "ExternalProvisioning",
+      "reportingComponent": "persistentvolume-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "persistentvolume-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:59Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "name": "exclusive",
+        "namespace": "dd-storage",
+        "resourceVersion": "3207",
+        "uid": "1f816a99-467b-4819-be28-82a18ff6ec31"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:59Z",
+      "message": "Successfully provisioned volume pvc-1f816a99-467b-4819-be28-82a18ff6ec31",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:59Z",
+        "name": "exclusive.18e0dc8ab0f06c24",
+        "namespace": "dd-storage",
+        "resourceVersion": "3211",
+        "uid": "bd0bb8ba-1b95-4266-9f63-3b7a9a137e88"
+      },
+      "reason": "ProvisioningSucceeded",
+      "reportingComponent": "hostpath.csi.k8s.io_csi-hostpathplugin-0_2f1acf01-ae37-48a7-a08e-e768a13be5e5",
+      "reportingInstance": "",
+      "source": {
+        "component": "hostpath.csi.k8s.io_csi-hostpathplugin-0_2f1acf01-ae37-48a7-a08e-e768a13be5e5"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:35Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "first",
+        "namespace": "dd-storage",
+        "resourceVersion": "2962",
+        "uid": "24e22cdd-3be5-4b34-b043-6095502fdbe1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:35Z",
+      "message": "Successfully assigned dd-storage/first to deep-dive-worker2",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:35Z",
+        "name": "first.18e0dc84f23e4add",
+        "namespace": "dd-storage",
+        "resourceVersion": "2964",
+        "uid": "8b4be6ad-86a9-4dbc-b4b7-c0e3e83539e4"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 3,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:35Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "first",
+        "namespace": "dd-storage",
+        "resourceVersion": "2963",
+        "uid": "24e22cdd-3be5-4b34-b043-6095502fdbe1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:36Z",
+      "message": "MountVolume.SetUp failed for volume \"config\" : secret \"missing\" not found",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:35Z",
+        "name": "first.18e0dc84ff836614",
+        "namespace": "dd-storage",
+        "resourceVersion": "3005",
+        "uid": "81fb8af3-8fdf-4231-9e30-c08e86da2f80"
+      },
+      "reason": "FailedMount",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:35Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "first",
+        "namespace": "dd-storage",
+        "resourceVersion": "2963",
+        "uid": "24e22cdd-3be5-4b34-b043-6095502fdbe1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:35Z",
+      "message": "AttachVolume.Attach succeeded for volume \"pvc-642046e4-19dc-46ea-86ee-6a6416338199\" ",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:35Z",
+        "name": "first.18e0dc85168e839b",
+        "namespace": "dd-storage",
+        "resourceVersion": "2969",
+        "uid": "fc5ee2c1-af92-4706-a86c-28efce0a6a86"
+      },
+      "reason": "SuccessfulAttachVolume",
+      "reportingComponent": "attachdetach-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "attachdetach-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:40Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "first",
+        "namespace": "dd-storage",
+        "resourceVersion": "2963",
+        "uid": "24e22cdd-3be5-4b34-b043-6095502fdbe1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:40Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:40Z",
+        "name": "first.18e0dc862c54ced6",
+        "namespace": "dd-storage",
+        "resourceVersion": "3053",
+        "uid": "de702d5c-7bdc-42cc-914c-0c43f579e89d"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:40Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "first",
+        "namespace": "dd-storage",
+        "resourceVersion": "2963",
+        "uid": "24e22cdd-3be5-4b34-b043-6095502fdbe1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:40Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:40Z",
+        "name": "first.18e0dc8645789f0f",
+        "namespace": "dd-storage",
+        "resourceVersion": "3055",
+        "uid": "1ff7d64d-82a3-4338-a97a-a38cf916c01a"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:41Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "first",
+        "namespace": "dd-storage",
+        "resourceVersion": "2963",
+        "uid": "24e22cdd-3be5-4b34-b043-6095502fdbe1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:41Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:41Z",
+        "name": "first.18e0dc8655aa4d58",
+        "namespace": "dd-storage",
+        "resourceVersion": "3056",
+        "uid": "2ae8807e-95f5-46c2-8ed2-d210115d662d"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:43Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "first",
+        "namespace": "dd-storage",
+        "resourceVersion": "2963",
+        "uid": "24e22cdd-3be5-4b34-b043-6095502fdbe1"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:43Z",
+      "message": "Stopping container app",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:43Z",
+        "name": "first.18e0dc86eed70051",
+        "namespace": "dd-storage",
+        "resourceVersion": "3119",
+        "uid": "32bdc706-1fe7-45f7-b53a-42a72e2fb268"
+      },
+      "reason": "Killing",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:46Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "name": "late",
+        "namespace": "dd-storage",
+        "resourceVersion": "3137",
+        "uid": "b9f88362-1758-459a-a75c-158ac4b28f6e"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:46Z",
+      "message": "waiting for first consumer to be created before binding",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:46Z",
+        "name": "late.18e0dc87acb32c72",
+        "namespace": "dd-storage",
+        "resourceVersion": "3138",
+        "uid": "1b94d2d1-49eb-4177-8d8c-d2678982af05"
+      },
+      "reason": "WaitForFirstConsumer",
+      "reportingComponent": "persistentvolume-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "persistentvolume-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:47Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "name": "late",
+        "namespace": "dd-storage",
+        "resourceVersion": "3142",
+        "uid": "b9f88362-1758-459a-a75c-158ac4b28f6e"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:47Z",
+      "message": "Waiting for a volume to be created either by the external provisioner 'hostpath.csi.k8s.io' or manually by the system administrator. If volume creation is delayed, please verify that the provisioner is running and correctly registered.",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:47Z",
+        "name": "late.18e0dc87b8dded3c",
+        "namespace": "dd-storage",
+        "resourceVersion": "3144",
+        "uid": "f7922bce-4444-4ec1-97e6-72292be82332"
+      },
+      "reason": "ExternalProvisioning",
+      "reportingComponent": "persistentvolume-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "persistentvolume-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:47Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "name": "late",
+        "namespace": "dd-storage",
+        "resourceVersion": "3142",
+        "uid": "b9f88362-1758-459a-a75c-158ac4b28f6e"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:47Z",
+      "message": "External provisioner is provisioning volume for claim \"dd-storage/late\"",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:47Z",
+        "name": "late.18e0dc87b8df4b49",
+        "namespace": "dd-storage",
+        "resourceVersion": "3143",
+        "uid": "51b4d28d-d6aa-432e-b66a-1dc1dc28252b"
+      },
+      "reason": "Provisioning",
+      "reportingComponent": "hostpath.csi.k8s.io_csi-hostpathplugin-0_2f1acf01-ae37-48a7-a08e-e768a13be5e5",
+      "reportingInstance": "",
+      "source": {
+        "component": "hostpath.csi.k8s.io_csi-hostpathplugin-0_2f1acf01-ae37-48a7-a08e-e768a13be5e5"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:47Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "name": "late",
+        "namespace": "dd-storage",
+        "resourceVersion": "3142",
+        "uid": "b9f88362-1758-459a-a75c-158ac4b28f6e"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:47Z",
+      "message": "Successfully provisioned volume pvc-b9f88362-1758-459a-a75c-158ac4b28f6e",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:47Z",
+        "name": "late.18e0dc87b9145d09",
+        "namespace": "dd-storage",
+        "resourceVersion": "3146",
+        "uid": "a256d823-db2d-41c9-bfe7-8bf2d24742a9"
+      },
+      "reason": "ProvisioningSucceeded",
+      "reportingComponent": "hostpath.csi.k8s.io_csi-hostpathplugin-0_2f1acf01-ae37-48a7-a08e-e768a13be5e5",
+      "reportingInstance": "",
+      "source": {
+        "component": "hostpath.csi.k8s.io_csi-hostpathplugin-0_2f1acf01-ae37-48a7-a08e-e768a13be5e5"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:48Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "late",
+        "namespace": "dd-storage",
+        "resourceVersion": "3139",
+        "uid": "d9987886-ce1c-49e2-b255-ca7deba19f6b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:48Z",
+      "message": "Successfully assigned dd-storage/late to deep-dive-worker2",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:48Z",
+        "name": "late.18e0dc87f489a841",
+        "namespace": "dd-storage",
+        "resourceVersion": "3165",
+        "uid": "af1ed481-0073-476d-8ff4-ad1a1b96d582"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:48Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "late",
+        "namespace": "dd-storage",
+        "resourceVersion": "3164",
+        "uid": "d9987886-ce1c-49e2-b255-ca7deba19f6b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:48Z",
+      "message": "AttachVolume.Attach succeeded for volume \"pvc-b9f88362-1758-459a-a75c-158ac4b28f6e\" ",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:48Z",
+        "name": "late.18e0dc8816682b39",
+        "namespace": "dd-storage",
+        "resourceVersion": "3174",
+        "uid": "2aa80a56-2807-47d9-b125-f463fafa11cd"
+      },
+      "reason": "SuccessfulAttachVolume",
+      "reportingComponent": "attachdetach-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "attachdetach-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:59Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "late",
+        "namespace": "dd-storage",
+        "resourceVersion": "3164",
+        "uid": "d9987886-ce1c-49e2-b255-ca7deba19f6b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:59Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:59Z",
+        "name": "late.18e0dc8a8168148f",
+        "namespace": "dd-storage",
+        "resourceVersion": "3202",
+        "uid": "73efec38-3172-4618-a146-8aac35d1e2f2"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:59Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "late",
+        "namespace": "dd-storage",
+        "resourceVersion": "3164",
+        "uid": "d9987886-ce1c-49e2-b255-ca7deba19f6b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:59Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:59Z",
+        "name": "late.18e0dc8a82342fcc",
+        "namespace": "dd-storage",
+        "resourceVersion": "3203",
+        "uid": "81ef7674-0c7b-4a99-8d95-2701d0520531"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:59Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "late",
+        "namespace": "dd-storage",
+        "resourceVersion": "3164",
+        "uid": "d9987886-ce1c-49e2-b255-ca7deba19f6b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:59Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:59Z",
+        "name": "late.18e0dc8a847bcc94",
+        "namespace": "dd-storage",
+        "resourceVersion": "3204",
+        "uid": "9f5707c2-8def-4744-963e-b219fa3f73af"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:42Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "second",
+        "namespace": "dd-storage",
+        "resourceVersion": "3076",
+        "uid": "909fb1f0-b8fd-4979-90d1-ff43c85d47d6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:42Z",
+      "message": "Successfully assigned dd-storage/second to deep-dive-worker2",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:42Z",
+        "name": "second.18e0dc868d4dbdf0",
+        "namespace": "dd-storage",
+        "resourceVersion": "3078",
+        "uid": "d73a6849-f820-40e6-a561-7210a64614fd"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:42Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "second",
+        "namespace": "dd-storage",
+        "resourceVersion": "3077",
+        "uid": "909fb1f0-b8fd-4979-90d1-ff43c85d47d6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:42Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:42Z",
+        "name": "second.18e0dc86aa502f42",
+        "namespace": "dd-storage",
+        "resourceVersion": "3095",
+        "uid": "e2987faf-6750-4d67-a753-63d5cdc02aaa"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:42Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "second",
+        "namespace": "dd-storage",
+        "resourceVersion": "3077",
+        "uid": "909fb1f0-b8fd-4979-90d1-ff43c85d47d6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:42Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:42Z",
+        "name": "second.18e0dc86ab2048ac",
+        "namespace": "dd-storage",
+        "resourceVersion": "3096",
+        "uid": "70e27cbc-a607-4993-a1b7-7e2a58d9fbec"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:18:42Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "second",
+        "namespace": "dd-storage",
+        "resourceVersion": "3077",
+        "uid": "909fb1f0-b8fd-4979-90d1-ff43c85d47d6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:18:42Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:18:42Z",
+        "name": "second.18e0dc86ad83af03",
+        "namespace": "dd-storage",
+        "resourceVersion": "3097",
+        "uid": "abd2f65e-487e-4280-88d6-8dda6bc6518c"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

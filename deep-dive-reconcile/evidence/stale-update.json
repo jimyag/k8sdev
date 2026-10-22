@@ -1,0 +1,5 @@
+{
+  "cached_value": "one",
+  "current_value": "two",
+  "error": "Error from server (Conflict): error when replacing \"STDIN\": Operation cannot be fulfilled on configmaps \"desired\": the object has been modified; please apply your changes to the latest version and try again\n"
+}

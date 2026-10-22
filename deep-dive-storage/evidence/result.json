@@ -1,0 +1,6 @@
+{
+  "rwo_same_node_two_pods": true,
+  "rwop_second_pod_blocked": true,
+  "bound_not_running": true,
+  "delayed_binding": true
+}

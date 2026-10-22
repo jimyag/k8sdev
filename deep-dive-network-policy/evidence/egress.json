@@ -1,0 +1,5 @@
+{
+  "ingress_alone_insufficient": true,
+  "pod_ip_works_before_dns_rule": true,
+  "dns_works_after_rule": true
+}

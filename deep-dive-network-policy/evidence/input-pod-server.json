@@ -1,0 +1,26 @@
+{
+  "apiVersion": "v1",
+  "kind": "Pod",
+  "metadata": {
+    "name": "server",
+    "labels": {
+      "app": "server"
+    }
+  },
+  "spec": {
+    "terminationGracePeriodSeconds": 2,
+    "containers": [
+      {
+        "name": "app",
+        "image": "python:3.12-alpine",
+        "imagePullPolicy": "IfNotPresent",
+        "command": [
+          "python",
+          "-u",
+          "-c",
+          "import http.server, pathlib, time, os, urllib.request\nclass H(http.server.BaseHTTPRequestHandler):\n def do_GET(self):\n  status=200; body=b'ok'\n  if self.path == '/ready' and pathlib.Path('/state/not-ready').exists(): status=503\n  if self.path == '/live' and pathlib.Path('/state/not-live').exists(): status=503\n  if self.path == '/startup' and not pathlib.Path('/state/started').exists(): status=503\n  if self.path == '/work':\n   end=time.thread_time()+0.02\n   while time.thread_time()<end: pass\n  if self.path == '/slow': time.sleep(0.2)\n  if self.path == '/proxy':\n   with urllib.request.urlopen(os.environ['BACKEND']+'/slow',timeout=10) as r: body=r.read()\n  self.send_response(status); self.end_headers(); self.wfile.write(body)\n def log_message(self,*args): pass\nhttp.server.ThreadingHTTPServer(('0.0.0.0',8080),H).serve_forever()\n"
+        ]
+      }
+    ]
+  }
+}

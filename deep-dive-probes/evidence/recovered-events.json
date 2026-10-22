@@ -1,0 +1,304 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:24Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "app",
+        "namespace": "dd-probes",
+        "resourceVersion": "3894",
+        "uid": "ca8535db-67bc-4f6f-af18-22700210d0e6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:24Z",
+      "message": "Successfully assigned dd-probes/app to deep-dive-worker",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:24Z",
+        "name": "app.18e0dcc8530c9713",
+        "namespace": "dd-probes",
+        "resourceVersion": "3896",
+        "uid": "740a7e47-fdd2-4efe-bda5-8de291c48ed1"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:25Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app",
+        "namespace": "dd-probes",
+        "resourceVersion": "3895",
+        "uid": "ca8535db-67bc-4f6f-af18-22700210d0e6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:42Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:25Z",
+        "name": "app.18e0dcc86ec93576",
+        "namespace": "dd-probes",
+        "resourceVersion": "3959",
+        "uid": "46938611-9fae-443a-9513-4d74bddd2391"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:25Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app",
+        "namespace": "dd-probes",
+        "resourceVersion": "3895",
+        "uid": "ca8535db-67bc-4f6f-af18-22700210d0e6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:42Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:25Z",
+        "name": "app.18e0dcc86f679e82",
+        "namespace": "dd-probes",
+        "resourceVersion": "3960",
+        "uid": "28ba59a4-a8f3-4f91-9cd1-ea90c1387363"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:25Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app",
+        "namespace": "dd-probes",
+        "resourceVersion": "3895",
+        "uid": "ca8535db-67bc-4f6f-af18-22700210d0e6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:43Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:25Z",
+        "name": "app.18e0dcc8729db7b8",
+        "namespace": "dd-probes",
+        "resourceVersion": "3962",
+        "uid": "8791b856-a055-40fa-82a0-027739cb7b5f"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:26Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app",
+        "namespace": "dd-probes",
+        "resourceVersion": "3895",
+        "uid": "ca8535db-67bc-4f6f-af18-22700210d0e6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:28Z",
+      "message": "Startup probe failed: HTTP probe failed with statuscode: 503",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:26Z",
+        "name": "app.18e0dcc8dc9f0cb0",
+        "namespace": "dd-probes",
+        "resourceVersion": "3920",
+        "uid": "55e483e7-578a-4a51-b401-f50e70d8133f"
+      },
+      "reason": "Unhealthy",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 3,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:32Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app",
+        "namespace": "dd-probes",
+        "resourceVersion": "3895",
+        "uid": "ca8535db-67bc-4f6f-af18-22700210d0e6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:34Z",
+      "message": "Readiness probe failed: HTTP probe failed with statuscode: 503",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:32Z",
+        "name": "app.18e0dcca424e8d0e",
+        "namespace": "dd-probes",
+        "resourceVersion": "3939",
+        "uid": "555d5c54-779e-453c-b134-2b9ba909e5b0"
+      },
+      "reason": "Unhealthy",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 2,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:38Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app",
+        "namespace": "dd-probes",
+        "resourceVersion": "3895",
+        "uid": "ca8535db-67bc-4f6f-af18-22700210d0e6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:40Z",
+      "message": "Liveness probe failed: HTTP probe failed with statuscode: 503",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:38Z",
+        "name": "app.18e0dccba7db2535",
+        "namespace": "dd-probes",
+        "resourceVersion": "3955",
+        "uid": "4c4eff1f-e004-4dbe-b7d8-c69e6e4b5fa3"
+      },
+      "reason": "Unhealthy",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Warning"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:40Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app",
+        "namespace": "dd-probes",
+        "resourceVersion": "3895",
+        "uid": "ca8535db-67bc-4f6f-af18-22700210d0e6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:40Z",
+      "message": "Container app failed liveness probe, will be restarted",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:40Z",
+        "name": "app.18e0dccc1f1e9868",
+        "namespace": "dd-probes",
+        "resourceVersion": "3956",
+        "uid": "175e9ffd-44b7-4ea3-9622-83d294fc1df0"
+      },
+      "reason": "Killing",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:43Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app",
+        "namespace": "dd-probes",
+        "resourceVersion": "3895",
+        "uid": "ca8535db-67bc-4f6f-af18-22700210d0e6"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:43Z",
+      "message": "Readiness probe failed: Get \"http://192.168.190.83:8080/ready\": dial tcp 192.168.190.83:8080: connect: connection refused",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:43Z",
+        "name": "app.18e0dccc9de8e53a",
+        "namespace": "dd-probes",
+        "resourceVersion": "3963",
+        "uid": "2554657d-1b37-477e-8992-676c793360fc"
+      },
+      "reason": "Unhealthy",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Warning"
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

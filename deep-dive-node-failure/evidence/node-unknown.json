@@ -1,0 +1,308 @@
+{
+  "apiVersion": "v1",
+  "kind": "Node",
+  "metadata": {
+    "annotations": {
+      "node.alpha.kubernetes.io/ttl": "0",
+      "projectcalico.org/IPv4Address": "172.31.0.3/16",
+      "projectcalico.org/IPv4IPIPTunnelAddr": "192.168.190.64",
+      "projectcalico.org/Interfaces": "[{\"name\":\"eth0\",\"addresses\":[\"172.31.0.3\"]}]",
+      "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+    },
+    "creationTimestamp": "2026-10-22T13:03:06Z",
+    "labels": {
+      "beta.kubernetes.io/arch": "amd64",
+      "beta.kubernetes.io/os": "linux",
+      "kubernetes.io/arch": "amd64",
+      "kubernetes.io/hostname": "deep-dive-worker",
+      "kubernetes.io/os": "linux"
+    },
+    "name": "deep-dive-worker",
+    "resourceVersion": "4613",
+    "uid": "c02af953-383c-4d8d-a6d0-1ad447b53313"
+  },
+  "spec": {
+    "podCIDR": "192.168.1.0/24",
+    "podCIDRs": [
+      "192.168.1.0/24"
+    ],
+    "providerID": "kind://docker/deep-dive/deep-dive-worker",
+    "taints": [
+      {
+        "effect": "NoSchedule",
+        "key": "node.kubernetes.io/unreachable",
+        "timeAdded": "2026-10-22T13:25:06Z"
+      },
+      {
+        "effect": "NoExecute",
+        "key": "node.kubernetes.io/unreachable",
+        "timeAdded": "2026-10-22T13:25:06Z"
+      }
+    ]
+  },
+  "status": {
+    "addresses": [
+      {
+        "address": "172.31.0.3",
+        "type": "InternalIP"
+      },
+      {
+        "address": "deep-dive-worker",
+        "type": "Hostname"
+      }
+    ],
+    "allocatable": {
+      "cpu": "12",
+      "ephemeral-storage": "464766672Ki",
+      "hugepages-1Gi": "0",
+      "hugepages-2Mi": "0",
+      "memory": "65720036Ki",
+      "pods": "110"
+    },
+    "capacity": {
+      "cpu": "12",
+      "ephemeral-storage": "464766672Ki",
+      "hugepages-1Gi": "0",
+      "hugepages-2Mi": "0",
+      "memory": "65720036Ki",
+      "pods": "110"
+    },
+    "conditions": [
+      {
+        "lastHeartbeatTime": "2026-10-22T13:17:23Z",
+        "lastTransitionTime": "2026-10-22T13:17:23Z",
+        "message": "Calico is running on this node",
+        "reason": "CalicoIsUp",
+        "status": "False",
+        "type": "NetworkUnavailable"
+      },
+      {
+        "lastHeartbeatTime": "2026-10-22T13:22:31Z",
+        "lastTransitionTime": "2026-10-22T13:25:06Z",
+        "message": "Kubelet stopped posting node status.",
+        "reason": "NodeStatusUnknown",
+        "status": "Unknown",
+        "type": "MemoryPressure"
+      },
+      {
+        "lastHeartbeatTime": "2026-10-22T13:22:31Z",
+        "lastTransitionTime": "2026-10-22T13:25:06Z",
+        "message": "Kubelet stopped posting node status.",
+        "reason": "NodeStatusUnknown",
+        "status": "Unknown",
+        "type": "DiskPressure"
+      },
+      {
+        "lastHeartbeatTime": "2026-10-22T13:22:31Z",
+        "lastTransitionTime": "2026-10-22T13:25:06Z",
+        "message": "Kubelet stopped posting node status.",
+        "reason": "NodeStatusUnknown",
+        "status": "Unknown",
+        "type": "PIDPressure"
+      },
+      {
+        "lastHeartbeatTime": "2026-10-22T13:22:31Z",
+        "lastTransitionTime": "2026-10-22T13:25:06Z",
+        "message": "Kubelet stopped posting node status.",
+        "reason": "NodeStatusUnknown",
+        "status": "Unknown",
+        "type": "Ready"
+      }
+    ],
+    "daemonEndpoints": {
+      "kubeletEndpoint": {
+        "Port": 10250
+      }
+    },
+    "features": {
+      "supplementalGroupsPolicy": true
+    },
+    "images": [
+      {
+        "names": [
+          "quay.io/calico/node@sha256:5255c2844abb4eea023cd15ceda5380d5bab3d5cf714fd113774597d2265f876",
+          "quay.io/calico/node:v3.31.2"
+        ],
+        "sizeBytes": 416607432
+      },
+      {
+        "names": [
+          "quay.io/calico/kube-controllers:v3.31.2"
+        ],
+        "sizeBytes": 124822427
+      },
+      {
+        "names": [
+          "registry.k8s.io/kube-apiserver-amd64:v1.35.1",
+          "registry.k8s.io/kube-apiserver:v1.35.1"
+        ],
+        "sizeBytes": 90851068
+      },
+      {
+        "names": [
+          "registry.k8s.io/sig-storage/csi-provisioner:v5.2.0"
+        ],
+        "sizeBytes": 84250324
+      },
+      {
+        "names": [
+          "registry.k8s.io/metrics-server/metrics-server:v0.8.0"
+        ],
+        "sizeBytes": 83731991
+      },
+      {
+        "names": [
+          "registry.k8s.io/sig-storage/csi-resizer:v1.13.1"
+        ],
+        "sizeBytes": 79314617
+      },
+      {
+        "names": [
+          "registry.k8s.io/sig-storage/csi-attacher:v4.8.0"
+        ],
+        "sizeBytes": 79080127
+      },
+      {
+        "names": [
+          "registry.k8s.io/sig-storage/csi-external-health-monitor-controller:v0.14.0"
+        ],
+        "sizeBytes": 78849892
+      },
+      {
+        "names": [
+          "registry.k8s.io/kube-controller-manager-amd64:v1.35.1",
+          "registry.k8s.io/kube-controller-manager:v1.35.1"
+        ],
+        "sizeBytes": 76891746
+      },
+      {
+        "names": [
+          "registry.k8s.io/sig-storage/csi-snapshotter:v8.2.0"
+        ],
+        "sizeBytes": 76198628
+      },
+      {
+        "names": [
+          "quay.io/calico/cni@sha256:62f50ed3070fd5da4df907fc2d618faf53f2d69d2c64232f7f464a646806cb5b",
+          "quay.io/calico/cni:v3.31.2"
+        ],
+        "sizeBytes": 72114070
+      },
+      {
+        "names": [
+          "registry.k8s.io/kube-proxy-amd64:v1.35.1",
+          "registry.k8s.io/kube-proxy:v1.35.1"
+        ],
+        "sizeBytes": 71663305
+      },
+      {
+        "names": [
+          "registry.k8s.io/kube-scheduler-amd64:v1.35.1",
+          "registry.k8s.io/kube-scheduler:v1.35.1"
+        ],
+        "sizeBytes": 52762210
+      },
+      {
+        "names": [
+          "docker.io/library/python:3.12-alpine"
+        ],
+        "sizeBytes": 51188882
+      },
+      {
+        "names": [
+          "registry.k8s.io/sig-storage/hostpathplugin:v1.15.0"
+        ],
+        "sizeBytes": 43349259
+      },
+      {
+        "names": [
+          "docker.io/kindest/kindnetd:v20260213-ea8e5717"
+        ],
+        "sizeBytes": 42628416
+      },
+      {
+        "names": [
+          "registry.k8s.io/sig-storage/hostpathplugin:v1.16.1"
+        ],
+        "sizeBytes": 40766229
+      },
+      {
+        "names": [
+          "registry.k8s.io/sig-storage/livenessprobe:v2.15.0"
+        ],
+        "sizeBytes": 31410382
+      },
+      {
+        "names": [
+          "registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.13.0"
+        ],
+        "sizeBytes": 31161609
+      },
+      {
+        "names": [
+          "registry.k8s.io/etcd:3.6.6-0"
+        ],
+        "sizeBytes": 23641797
+      },
+      {
+        "names": [
+          "registry.k8s.io/coredns/coredns:v1.13.1"
+        ],
+        "sizeBytes": 23553139
+      },
+      {
+        "names": [
+          "docker.io/kindest/local-path-provisioner:v20260213-ea8e5717"
+        ],
+        "sizeBytes": 15481535
+      },
+      {
+        "names": [
+          "docker.io/kindest/local-path-helper:v20260131-7181c60a"
+        ],
+        "sizeBytes": 2872608
+      },
+      {
+        "names": [
+          "registry.k8s.io/pause:3.10"
+        ],
+        "sizeBytes": 320368
+      }
+    ],
+    "nodeInfo": {
+      "architecture": "amd64",
+      "bootID": "aa8fc4b1-2d6b-4b34-a9d5-27feaa16f34f",
+      "containerRuntimeVersion": "containerd://2.2.1",
+      "kernelVersion": "6.12.74+deb13+1-amd64",
+      "kubeProxyVersion": "",
+      "kubeletVersion": "v1.35.1",
+      "machineID": "fc4cb24730be467985f236045bae210a",
+      "operatingSystem": "linux",
+      "osImage": "Debian GNU/Linux 13 (trixie)",
+      "systemUUID": "a1528355-f16d-48e8-8086-fec5c3ac5f00"
+    },
+    "runtimeHandlers": [
+      {
+        "features": {
+          "recursiveReadOnlyMounts": true,
+          "userNamespaces": true
+        },
+        "name": ""
+      },
+      {
+        "features": {
+          "recursiveReadOnlyMounts": true,
+          "userNamespaces": true
+        },
+        "name": "runc"
+      },
+      {
+        "features": {
+          "recursiveReadOnlyMounts": true,
+          "userNamespaces": true
+        },
+        "name": "test-handler"
+      }
+    ]
+  }
+}

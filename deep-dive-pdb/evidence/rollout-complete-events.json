@@ -1,0 +1,1130 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:00Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "app-589f496b97-45jfk",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4166",
+        "uid": "58cd8bae-b190-4419-8061-3d22639a1f8f"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:00Z",
+      "message": "Successfully assigned dd-pdb/app-589f496b97-45jfk to deep-dive-worker2",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:00Z",
+        "name": "app-589f496b97-45jfk.18e0dcd0bfa58e20",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4172",
+        "uid": "b5794506-7e90-4f8e-b2b9-12bd956c7f9d"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:01Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-589f496b97-45jfk",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4171",
+        "uid": "58cd8bae-b190-4419-8061-3d22639a1f8f"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:01Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:01Z",
+        "name": "app-589f496b97-45jfk.18e0dcd0db190013",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4180",
+        "uid": "fd00cdd3-0cf9-419a-b05f-28d5182bf65a"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:01Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-589f496b97-45jfk",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4171",
+        "uid": "58cd8bae-b190-4419-8061-3d22639a1f8f"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:01Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:01Z",
+        "name": "app-589f496b97-45jfk.18e0dcd0dbc3cd08",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4181",
+        "uid": "e60f3f4a-d33c-437e-8bfc-5bef464d500a"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:01Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-589f496b97-45jfk",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4171",
+        "uid": "58cd8bae-b190-4419-8061-3d22639a1f8f"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:01Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:01Z",
+        "name": "app-589f496b97-45jfk.18e0dcd0dde17498",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4182",
+        "uid": "92cab03d-d39b-4fa0-bfb9-155e4dbbb43c"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:02Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "app-589f496b97-s8lpn",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4198",
+        "uid": "8f65e8b9-c4a1-47f4-aeb4-fd54d9800e12"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:02Z",
+      "message": "Successfully assigned dd-pdb/app-589f496b97-s8lpn to deep-dive-worker",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:02Z",
+        "name": "app-589f496b97-s8lpn.18e0dcd113854bf2",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4204",
+        "uid": "a33f35dd-de30-4a47-9bb8-edc40e2bc9cd"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:03Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-589f496b97-s8lpn",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4202",
+        "uid": "8f65e8b9-c4a1-47f4-aeb4-fd54d9800e12"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:03Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:03Z",
+        "name": "app-589f496b97-s8lpn.18e0dcd16b0b5233",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4216",
+        "uid": "7d563d3f-242a-4e45-a06b-5533ddc8a218"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-589f496b97-s8lpn",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4202",
+        "uid": "8f65e8b9-c4a1-47f4-aeb4-fd54d9800e12"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:04Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:04Z",
+        "name": "app-589f496b97-s8lpn.18e0dcd1946a02f8",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4220",
+        "uid": "68332833-bbd2-4173-b4fd-0047dc9107ef"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:04Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-589f496b97-s8lpn",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4202",
+        "uid": "8f65e8b9-c4a1-47f4-aeb4-fd54d9800e12"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:04Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:04Z",
+        "name": "app-589f496b97-s8lpn.18e0dcd1a4a04a74",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4223",
+        "uid": "cefcc586-5378-464f-b120-0d29811ee0a7"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:00Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "ReplicaSet",
+        "name": "app-589f496b97",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4164",
+        "uid": "b1a263f2-d937-4356-88ef-129d64da9676"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:00Z",
+      "message": "Created pod: app-589f496b97-45jfk",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:00Z",
+        "name": "app-589f496b97.18e0dcd0bf58a456",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4168",
+        "uid": "dff249d6-93b3-436e-ac3f-1995e2e9caa5"
+      },
+      "reason": "SuccessfulCreate",
+      "reportingComponent": "replicaset-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "replicaset-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:02Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "ReplicaSet",
+        "name": "app-589f496b97",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4194",
+        "uid": "b1a263f2-d937-4356-88ef-129d64da9676"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:02Z",
+      "message": "Created pod: app-589f496b97-s8lpn",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:02Z",
+        "name": "app-589f496b97.18e0dcd10afde009",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4200",
+        "uid": "019c19dd-9191-434f-a719-c3eaa9a481fa"
+      },
+      "reason": "SuccessfulCreate",
+      "reportingComponent": "replicaset-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "replicaset-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:54Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "app-844bdd584b-brcz8",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4084",
+        "uid": "ddf8d8d1-e8db-46b0-96f3-74a3a132f991"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:54Z",
+      "message": "Successfully assigned dd-pdb/app-844bdd584b-brcz8 to deep-dive-worker2",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:54Z",
+        "name": "app-844bdd584b-brcz8.18e0dccf5d6c3178",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4090",
+        "uid": "03eef144-2e18-4001-a312-85b1a4f6a6a3"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:55Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-844bdd584b-brcz8",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4086",
+        "uid": "ddf8d8d1-e8db-46b0-96f3-74a3a132f991"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:55Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:55Z",
+        "name": "app-844bdd584b-brcz8.18e0dccf78e4beea",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4104",
+        "uid": "475c740a-672d-450f-a2ec-3df58b3b4056"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:55Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-844bdd584b-brcz8",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4086",
+        "uid": "ddf8d8d1-e8db-46b0-96f3-74a3a132f991"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:55Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:55Z",
+        "name": "app-844bdd584b-brcz8.18e0dccf79bf1ece",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4106",
+        "uid": "41920008-4fe9-41e1-9fc6-81a38206d539"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:55Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-844bdd584b-brcz8",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4086",
+        "uid": "ddf8d8d1-e8db-46b0-96f3-74a3a132f991"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:55Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:55Z",
+        "name": "app-844bdd584b-brcz8.18e0dccf7d9d1ffc",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4108",
+        "uid": "ec2bedd5-a1c6-4aa7-99d7-f3aabbfc66ab"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:57Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-844bdd584b-brcz8",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4086",
+        "uid": "ddf8d8d1-e8db-46b0-96f3-74a3a132f991"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:57Z",
+      "message": "Stopping container app",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:57Z",
+        "name": "app-844bdd584b-brcz8.18e0dcd001fc6043",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4139",
+        "uid": "2eebea7f-33ac-4100-b37e-2b343fa1e3da"
+      },
+      "reason": "Killing",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:56Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "app-844bdd584b-h2ccf",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4119",
+        "uid": "d69c9580-1530-45bb-be76-500b3c3fc15b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:56Z",
+      "message": "Successfully assigned dd-pdb/app-844bdd584b-h2ccf to deep-dive-worker2",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:56Z",
+        "name": "app-844bdd584b-h2ccf.18e0dccfb4fcde98",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4125",
+        "uid": "f28b4ecc-a866-432d-981c-f703b8e6f3e0"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:56Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-844bdd584b-h2ccf",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4121",
+        "uid": "d69c9580-1530-45bb-be76-500b3c3fc15b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:56Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:56Z",
+        "name": "app-844bdd584b-h2ccf.18e0dccfd0846447",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4136",
+        "uid": "97dd6904-f772-4d92-a964-faa9f202c02f"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:56Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-844bdd584b-h2ccf",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4121",
+        "uid": "d69c9580-1530-45bb-be76-500b3c3fc15b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:56Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:56Z",
+        "name": "app-844bdd584b-h2ccf.18e0dccfd13042cf",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4137",
+        "uid": "ad21242b-a79b-4667-a873-b3ed455a4500"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:56Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-844bdd584b-h2ccf",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4121",
+        "uid": "d69c9580-1530-45bb-be76-500b3c3fc15b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:56Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:56Z",
+        "name": "app-844bdd584b-h2ccf.18e0dccfd352c6dc",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4138",
+        "uid": "7495f403-ff47-4bb1-9177-904f86e1ca6c"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:01Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-844bdd584b-h2ccf",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4121",
+        "uid": "d69c9580-1530-45bb-be76-500b3c3fc15b"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:01Z",
+      "message": "Stopping container app",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:01Z",
+        "name": "app-844bdd584b-h2ccf.18e0dcd0f26012f4",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4191",
+        "uid": "4dcce6ef-908c-427f-bbf5-fc3f92a028e2"
+      },
+      "reason": "Killing",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker2",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker2"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:54Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "kind": "Pod",
+        "name": "app-844bdd584b-tzsbb",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4087",
+        "uid": "e61eacd7-0b50-4bc0-8c96-40f3e2c487ae"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:54Z",
+      "message": "Successfully assigned dd-pdb/app-844bdd584b-tzsbb to deep-dive-worker",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:54Z",
+        "name": "app-844bdd584b-tzsbb.18e0dccf5db58129",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4093",
+        "uid": "cd0bd5f9-8cb2-46ae-a725-b0a7055a448c"
+      },
+      "reason": "Scheduled",
+      "reportingComponent": "default-scheduler",
+      "reportingInstance": "",
+      "source": {
+        "component": "default-scheduler"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:55Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-844bdd584b-tzsbb",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4092",
+        "uid": "e61eacd7-0b50-4bc0-8c96-40f3e2c487ae"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:55Z",
+      "message": "Container image \"python:3.12-alpine\" already present on machine and can be accessed by the pod",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:55Z",
+        "name": "app-844bdd584b-tzsbb.18e0dccf78f42111",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4105",
+        "uid": "b38d34d9-fc9b-4a8c-b81e-f5dafc0f3337"
+      },
+      "reason": "Pulled",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:55Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-844bdd584b-tzsbb",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4092",
+        "uid": "e61eacd7-0b50-4bc0-8c96-40f3e2c487ae"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:55Z",
+      "message": "Container created",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:55Z",
+        "name": "app-844bdd584b-tzsbb.18e0dccf79cb97a3",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4107",
+        "uid": "08bf6f7d-81ba-484c-a20c-e7a4b1db0aef"
+      },
+      "reason": "Created",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:55Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-844bdd584b-tzsbb",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4092",
+        "uid": "e61eacd7-0b50-4bc0-8c96-40f3e2c487ae"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:55Z",
+      "message": "Container started",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:55Z",
+        "name": "app-844bdd584b-tzsbb.18e0dccf7d9cf172",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4109",
+        "uid": "e367cc82-e3bf-45bd-867c-87c05cd308f6"
+      },
+      "reason": "Started",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:05Z",
+      "involvedObject": {
+        "apiVersion": "v1",
+        "fieldPath": "spec.containers{app}",
+        "kind": "Pod",
+        "name": "app-844bdd584b-tzsbb",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4092",
+        "uid": "e61eacd7-0b50-4bc0-8c96-40f3e2c487ae"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:05Z",
+      "message": "Stopping container app",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:05Z",
+        "name": "app-844bdd584b-tzsbb.18e0dcd1cd09bfd1",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4237",
+        "uid": "c7bb3bca-2b7b-470e-884f-5574dbf29d21"
+      },
+      "reason": "Killing",
+      "reportingComponent": "kubelet",
+      "reportingInstance": "deep-dive-worker",
+      "source": {
+        "component": "kubelet",
+        "host": "deep-dive-worker"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:54Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "ReplicaSet",
+        "name": "app-844bdd584b",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4081",
+        "uid": "d17d6dd9-5180-4d42-a8a5-a940c155bcf2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:54Z",
+      "message": "Created pod: app-844bdd584b-brcz8",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:54Z",
+        "name": "app-844bdd584b.18e0dccf5d2fac40",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4085",
+        "uid": "348fff2a-a84a-4202-9b91-7e17b4df1c48"
+      },
+      "reason": "SuccessfulCreate",
+      "reportingComponent": "replicaset-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "replicaset-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:54Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "ReplicaSet",
+        "name": "app-844bdd584b",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4081",
+        "uid": "d17d6dd9-5180-4d42-a8a5-a940c155bcf2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:54Z",
+      "message": "Created pod: app-844bdd584b-tzsbb",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:54Z",
+        "name": "app-844bdd584b.18e0dccf5d6a41c0",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4089",
+        "uid": "a96e5b3c-56b0-4efc-8d61-9f93408a7111"
+      },
+      "reason": "SuccessfulCreate",
+      "reportingComponent": "replicaset-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "replicaset-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:56Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "ReplicaSet",
+        "name": "app-844bdd584b",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4114",
+        "uid": "d17d6dd9-5180-4d42-a8a5-a940c155bcf2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:56Z",
+      "message": "Created pod: app-844bdd584b-h2ccf",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:56Z",
+        "name": "app-844bdd584b.18e0dccfb4bfca0c",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4122",
+        "uid": "72e3366f-5524-4925-a70e-432ad14ef6ee"
+      },
+      "reason": "SuccessfulCreate",
+      "reportingComponent": "replicaset-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "replicaset-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:01Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "ReplicaSet",
+        "name": "app-844bdd584b",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4186",
+        "uid": "d17d6dd9-5180-4d42-a8a5-a940c155bcf2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:01Z",
+      "message": "Deleted pod: app-844bdd584b-h2ccf",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:01Z",
+        "name": "app-844bdd584b.18e0dcd0f25d265c",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4190",
+        "uid": "ce8e8a21-c68d-40ae-a250-aafa2f0aeed0"
+      },
+      "reason": "SuccessfulDelete",
+      "reportingComponent": "replicaset-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "replicaset-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:05Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "ReplicaSet",
+        "name": "app-844bdd584b",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4233",
+        "uid": "d17d6dd9-5180-4d42-a8a5-a940c155bcf2"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:05Z",
+      "message": "Deleted pod: app-844bdd584b-tzsbb",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:05Z",
+        "name": "app-844bdd584b.18e0dcd1ccfff3f3",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4240",
+        "uid": "59068a36-384d-4893-a992-9431cb55cf78"
+      },
+      "reason": "SuccessfulDelete",
+      "reportingComponent": "replicaset-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "replicaset-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:23:54Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "Deployment",
+        "name": "app",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4080",
+        "uid": "267298ef-144e-41e6-8f31-41d1073b8c6d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:23:54Z",
+      "message": "Scaled up replica set app-844bdd584b from 0 to 2",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:23:54Z",
+        "name": "app.18e0dccf5cf1f322",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4082",
+        "uid": "de548fe1-5f8f-4e0d-a047-f4d5719b7d2d"
+      },
+      "reason": "ScalingReplicaSet",
+      "reportingComponent": "deployment-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "deployment-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:00Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "Deployment",
+        "name": "app",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4163",
+        "uid": "267298ef-144e-41e6-8f31-41d1073b8c6d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:00Z",
+      "message": "Scaled up replica set app-589f496b97 from 0 to 1",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:00Z",
+        "name": "app.18e0dcd0bf17a450",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4165",
+        "uid": "85f5d0d1-2467-4e49-94d0-35529260589f"
+      },
+      "reason": "ScalingReplicaSet",
+      "reportingComponent": "deployment-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "deployment-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:01Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "Deployment",
+        "name": "app",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4176",
+        "uid": "267298ef-144e-41e6-8f31-41d1073b8c6d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:01Z",
+      "message": "Scaled down replica set app-844bdd584b from 2 to 1",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:01Z",
+        "name": "app.18e0dcd0f1c8174e",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4188",
+        "uid": "fa4a113c-a00f-42f6-901b-1b95628a0210"
+      },
+      "reason": "ScalingReplicaSet",
+      "reportingComponent": "deployment-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "deployment-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:01Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "Deployment",
+        "name": "app",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4189",
+        "uid": "267298ef-144e-41e6-8f31-41d1073b8c6d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:01Z",
+      "message": "Scaled up replica set app-589f496b97 from 1 to 2",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:02Z",
+        "name": "app.18e0dcd1051bf265",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4197",
+        "uid": "6d759c07-c42c-4680-8ecb-9105c46a5839"
+      },
+      "reason": "ScalingReplicaSet",
+      "reportingComponent": "deployment-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "deployment-controller"
+      },
+      "type": "Normal"
+    },
+    {
+      "apiVersion": "v1",
+      "count": 1,
+      "eventTime": null,
+      "firstTimestamp": "2026-10-22T13:24:05Z",
+      "involvedObject": {
+        "apiVersion": "apps/v1",
+        "kind": "Deployment",
+        "name": "app",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4229",
+        "uid": "267298ef-144e-41e6-8f31-41d1073b8c6d"
+      },
+      "kind": "Event",
+      "lastTimestamp": "2026-10-22T13:24:05Z",
+      "message": "Scaled down replica set app-844bdd584b from 1 to 0",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:24:05Z",
+        "name": "app.18e0dcd1c83dc706",
+        "namespace": "dd-pdb",
+        "resourceVersion": "4235",
+        "uid": "69889c3c-e7cc-46e4-8ca2-4c3dc175130a"
+      },
+      "reason": "ScalingReplicaSet",
+      "reportingComponent": "deployment-controller",
+      "reportingInstance": "",
+      "source": {
+        "component": "deployment-controller"
+      },
+      "type": "Normal"
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

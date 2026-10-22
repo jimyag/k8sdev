@@ -1,0 +1,38 @@
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "app"
+  },
+  "spec": {
+    "replicas": 2,
+    "selector": {
+      "matchLabels": {
+        "app": "app"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "app"
+        }
+      },
+      "spec": {
+        "terminationGracePeriodSeconds": 2,
+        "containers": [
+          {
+            "name": "app",
+            "image": "python:3.12-alpine",
+            "imagePullPolicy": "IfNotPresent",
+            "command": [
+              "python",
+              "-u",
+              "-c",
+              "import time; time.sleep(3600)"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

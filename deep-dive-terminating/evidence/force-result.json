@@ -1,0 +1,4 @@
+{
+  "stdout": "pod \"held\" force deleted from dd-terminating namespace\n",
+  "stderr": "Warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.\n"
+}

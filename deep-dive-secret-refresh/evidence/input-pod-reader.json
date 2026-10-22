@@ -1,0 +1,58 @@
+{
+  "apiVersion": "v1",
+  "kind": "Pod",
+  "metadata": {
+    "name": "reader",
+    "labels": {
+      "app": "reader"
+    }
+  },
+  "spec": {
+    "terminationGracePeriodSeconds": 2,
+    "containers": [
+      {
+        "name": "app",
+        "image": "python:3.12-alpine",
+        "imagePullPolicy": "IfNotPresent",
+        "command": [
+          "python",
+          "-u",
+          "-c",
+          "import time,pathlib\np=pathlib.Path('/config/value'); cached=p.read_text(); pathlib.Path('/cached').write_text(cached)\nwhile True: time.sleep(1)\n"
+        ],
+        "env": [
+          {
+            "name": "VALUE",
+            "valueFrom": {
+              "secretKeyRef": {
+                "name": "settings",
+                "key": "value"
+              }
+            }
+          }
+        ],
+        "volumeMounts": [
+          {
+            "name": "settings",
+            "mountPath": "/config",
+            "readOnly": true
+          },
+          {
+            "name": "settings",
+            "mountPath": "/subpath-value",
+            "subPath": "value",
+            "readOnly": true
+          }
+        ]
+      }
+    ],
+    "volumes": [
+      {
+        "name": "settings",
+        "secret": {
+          "secretName": "settings"
+        }
+      }
+    ]
+  }
+}

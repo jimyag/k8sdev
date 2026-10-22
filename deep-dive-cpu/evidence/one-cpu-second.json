@@ -1,0 +1,34 @@
+{
+  "limited": {
+    "wall_seconds": 9.999775883974507,
+    "cpu_seconds": 1.000167515,
+    "cpu_max": "10000 100000",
+    "delta": {
+      "usage_usec": 1003265,
+      "user_usec": 614678,
+      "system_usec": 388587,
+      "nice_usec": 0,
+      "nr_periods": 100,
+      "nr_throttled": 100,
+      "throttled_usec": 5740603,
+      "nr_bursts": 0,
+      "burst_usec": 0
+    }
+  },
+  "unlimited": {
+    "wall_seconds": 1.0012305239215493,
+    "cpu_seconds": 1.0001667639999998,
+    "cpu_max": "max 100000",
+    "delta": {
+      "usage_usec": 1002287,
+      "user_usec": 426491,
+      "system_usec": 575796,
+      "nice_usec": 0,
+      "nr_periods": 0,
+      "nr_throttled": 0,
+      "throttled_usec": 0,
+      "nr_bursts": 0,
+      "burst_usec": 0
+    }
+  }
+}

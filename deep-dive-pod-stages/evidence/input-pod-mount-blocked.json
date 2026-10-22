@@ -1,0 +1,40 @@
+{
+  "apiVersion": "v1",
+  "kind": "Pod",
+  "metadata": {
+    "name": "mount-blocked",
+    "labels": {
+      "app": "mount-blocked"
+    }
+  },
+  "spec": {
+    "terminationGracePeriodSeconds": 2,
+    "containers": [
+      {
+        "name": "app",
+        "image": "python:3.12-alpine",
+        "imagePullPolicy": "IfNotPresent",
+        "command": [
+          "python",
+          "-u",
+          "-c",
+          "import time; time.sleep(3600)"
+        ],
+        "volumeMounts": [
+          {
+            "name": "config",
+            "mountPath": "/config"
+          }
+        ]
+      }
+    ],
+    "volumes": [
+      {
+        "name": "config",
+        "configMap": {
+          "name": "missing-config"
+        }
+      }
+    ]
+  }
+}

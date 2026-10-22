@@ -1,0 +1,61 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "data": {
+        "value": "two"
+      },
+      "kind": "ConfigMap",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"data\":{\"value\":\"one\"},\"kind\":\"ConfigMap\",\"metadata\":{\"annotations\":{},\"name\":\"desired\",\"namespace\":\"dd-reconcile\"}}\n",
+          "lab.example.com/observed": "two"
+        },
+        "creationTimestamp": "2026-10-22T13:11:04Z",
+        "name": "desired",
+        "namespace": "dd-reconcile",
+        "resourceVersion": "1546",
+        "uid": "c9af8c98-ab7e-4f0f-93e8-d41c7f225866"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "value": "two"
+      },
+      "kind": "ConfigMap",
+      "metadata": {
+        "creationTimestamp": "2026-10-22T13:11:04Z",
+        "labels": {
+          "app": "effect"
+        },
+        "name": "effect-c9af8c98-ab7e-4f0f-93e8-d41c7f225866",
+        "namespace": "dd-reconcile",
+        "resourceVersion": "1545",
+        "uid": "b2c45f3a-8d48-469a-8ce4-13cb2e714569"
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "data": {
+        "ca.crt": "-----BEGIN CERTIFICATE-----\nMIIDBTCCAe2gAwIBAgIIIFaFLPPOBQkwDQYJKoZIhvcNAQELBQAwFTETMBEGA1UE\nAxMKa3ViZXJuZXRlczAeFw0yNjEwMjIxMjU3NDhaFw0zNjEwMTkxMzAyNDhaMBUx\nEzARBgNVBAMTCmt1YmVybmV0ZXMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK\nAoIBAQDzcs5Cwde7CY9f0T3VpgYtp2JrRARADDAnjd5dZUOBCtabohE+8AZv0bMZ\nQxUzBLb6MZCvNX9RxioQrWdLTymFIEeQ+d4S2/SA7YdO250f/uWc3KrUjq8pyVMT\nXWgqg2sxKFAl0rPQG1bZO2wqiIRMmzzC9+xPhxQHfDhxOyMMlBmo+CVxewd5CEKi\nvlvvYifqVNQNSL2UvbTGDqdMMsQFgD/YN/yQRpnaA6pj0XPBMbWEkkglEsBoMxkn\ntq0YdGdsBPEm2qMEmAR/nRMYc9Nn6cSx90DM82YZhRxdUJ2BiYX5EzjPCDXc8D4c\n0pgJLg9POQPI7gYsmCDdjZQjD+63AgMBAAGjWTBXMA4GA1UdDwEB/wQEAwICpDAP\nBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBRLjRKs5H/Q4bE3O4CYDIIJ+AWuyTAV\nBgNVHREEDjAMggprdWJlcm5ldGVzMA0GCSqGSIb3DQEBCwUAA4IBAQAq1oZnN+OD\nFZgX34ggQNecHxhyHrftJb6iYeQhvcjuScTWC3Ab6fhRcl9NX7SeN0jseNfFdXuO\na6TjyACDROW+QWFQve0ohCoBpQ1iiJQuJEDuMQ1fuktsvw725zoDJy7LT/GeW6CW\nmw7Afsmblmx0ugIzG2vrpHartsLu4uOsJ7mknkOGERCnMDRpsQMXTjaZov4M1Tlz\noHw1teIIZYaI6+o9faDuKtej07iB6IZ0mCFrxPLa7OVZyF63lb1ZGg+MWP1cpPIr\nBRRSI4mMdbZrDKMSO8qtm3wl0Uasvs33s3c/KoenZT9cOUFzOijPejAsu5NR1xGK\nzzboZowLjMzb\n-----END CERTIFICATE-----\n"
+      },
+      "kind": "ConfigMap",
+      "metadata": {
+        "annotations": {
+          "kubernetes.io/description": "Contains a CA bundle that can be used to verify the kube-apiserver when using internal endpoints such as the internal service IP or kubernetes.default.svc. No other usage is guaranteed across distributions of Kubernetes clusters."
+        },
+        "creationTimestamp": "2026-10-22T13:11:04Z",
+        "name": "kube-root-ca.crt",
+        "namespace": "dd-reconcile",
+        "resourceVersion": "1541",
+        "uid": "397709c8-39c9-4428-9e06-43b015769dd4"
+      }
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

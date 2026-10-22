@@ -1,0 +1,40 @@
+{
+  "apiVersion": "policy/v1",
+  "kind": "PodDisruptionBudget",
+  "metadata": {
+    "annotations": {
+      "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"policy/v1\",\"kind\":\"PodDisruptionBudget\",\"metadata\":{\"annotations\":{},\"name\":\"keep-two\",\"namespace\":\"dd-pdb\"},\"spec\":{\"minAvailable\":2,\"selector\":{\"matchLabels\":{\"app\":\"app\"}}}}\n"
+    },
+    "creationTimestamp": "2026-10-22T13:23:56Z",
+    "generation": 1,
+    "name": "keep-two",
+    "namespace": "dd-pdb",
+    "resourceVersion": "4117",
+    "uid": "e8b74d75-2efe-43ea-9467-cbe7496e9e47"
+  },
+  "spec": {
+    "minAvailable": 2,
+    "selector": {
+      "matchLabels": {
+        "app": "app"
+      }
+    }
+  },
+  "status": {
+    "conditions": [
+      {
+        "lastTransitionTime": "2026-10-22T13:23:56Z",
+        "message": "",
+        "observedGeneration": 1,
+        "reason": "InsufficientPods",
+        "status": "False",
+        "type": "DisruptionAllowed"
+      }
+    ],
+    "currentHealthy": 2,
+    "desiredHealthy": 2,
+    "disruptionsAllowed": 0,
+    "expectedPods": 2,
+    "observedGeneration": 1
+  }
+}

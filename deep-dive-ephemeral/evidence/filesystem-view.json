@@ -1,0 +1,11 @@
+{
+  "own_root_has_file": false,
+  "target_files": [
+    {
+      "path": "/proc/1/root/application-only",
+      "content": "app-private-root"
+    }
+  ],
+  "uid": 0,
+  "netns": "net:[4026536016]"
+}

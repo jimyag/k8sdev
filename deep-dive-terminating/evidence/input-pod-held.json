@@ -1,0 +1,29 @@
+{
+  "apiVersion": "v1",
+  "kind": "Pod",
+  "metadata": {
+    "name": "held",
+    "labels": {
+      "app": "held"
+    },
+    "finalizers": [
+      "lab.example.com/cleanup"
+    ]
+  },
+  "spec": {
+    "terminationGracePeriodSeconds": 2,
+    "containers": [
+      {
+        "name": "app",
+        "image": "python:3.12-alpine",
+        "imagePullPolicy": "IfNotPresent",
+        "command": [
+          "python",
+          "-u",
+          "-c",
+          "import time; time.sleep(3600)"
+        ]
+      }
+    ]
+  }
+}
