@@ -8,7 +8,7 @@
 set -euo pipefail
 : "${ARTICLE_LABS_REV:?请先 export ARTICLE_LABS_REV=文章实验链接中的40位提交号}"
 [[ "$ARTICLE_LABS_REV" =~ ^[0-9a-f]{40}$ ]] || { echo '需要完整的40位小写提交号' >&2; exit 1; }
-export ARTICLE_REPO_ROOT="$(git rev-parse --show-toplevel)"
+export ARTICLE_REPO_ROOT="$(dirname "$(git rev-parse --path-format=absolute --git-common-dir)")"
 git -C "$ARTICLE_REPO_ROOT" remote get-url origin
 git -C "$ARTICLE_REPO_ROOT" fetch origin "$ARTICLE_LABS_REV"
 test "$(git -C "$ARTICLE_REPO_ROOT" rev-parse "$ARTICLE_LABS_REV^{commit}")" = "$ARTICLE_LABS_REV"
