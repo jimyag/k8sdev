@@ -18,7 +18,7 @@ if [[ ! -e "$ARTICLE_ROOT" ]]; then
 fi
 test "$(git -C "$ARTICLE_ROOT" rev-parse --show-toplevel)" = "$ARTICLE_ROOT"
 test "$(git -C "$ARTICLE_ROOT" rev-parse HEAD)" = "$ARTICLE_LABS_REV"
-git -C "$ARTICLE_ROOT" diff --quiet HEAD --
+git -C "$ARTICLE_ROOT" diff --quiet HEAD -- . ':(exclude)article-*/evidence/**' ':(exclude)article-resources-*/results.json'
 cd "$ARTICLE_ROOT"
 mkdir -p tmp/article-reproduction
 export TMPDIR="$ARTICLE_ROOT/tmp/article-reproduction"
@@ -26,7 +26,7 @@ git check-ignore -q tmp/article-reproduction/probe
 printf '实验文件提交：%s\n实验根目录：%s\n' "$ARTICLE_LABS_REV" "$ARTICLE_ROOT"
 ```
 
-这会在仓库根目录的 `.worktrees/` 下创建独立的 detached HEAD 工作目录，保留原工作区。已存在的目标目录只有在仓库根目录、HEAD 和已跟踪文件均符合检查时才复用；检查失败时先确认目录归属和改动，不重置或覆盖它。
+这会在仓库根目录的 `.worktrees/` 下创建独立的 detached HEAD 工作目录，保留原工作区。已存在的目标目录只有在仓库根目录、HEAD 和实验输入文件均符合检查时才复用；检查失败时先确认目录归属和改动，不重置或覆盖它。检查只排除约定的运行结果目录 `article-*/evidence/` 和资源实验的 `results.json`，因为复跑会更新这些结果；脚本、清单、README 和其他已跟踪文件仍必须与提交一致。结果变化不能当成源码版本变化，也不能把新结果误当成原提交已经保存的历史证据。
 
 在这个终端继续阅读目标实验 README。所有后续命令均使用 `$ARTICLE_ROOT`，工具、kubeconfig 和临时输出位于该工作目录的 `tmp/`。新开终端时，需要重新设置同一个 `ARTICLE_LABS_REV` 并执行上面的准备步骤。共享集群的多个主题应使用同一提交和同一工作目录，按各 README 的依赖顺序运行，不能在故障注入期间并发执行。
 
