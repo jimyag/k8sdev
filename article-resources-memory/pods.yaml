@@ -1,0 +1,18 @@
+# 只在隔离 kind 中写入最多 64 MiB 内存，触发容器 cgroup 限制。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: memory-oom
+  namespace: article-memory
+spec:
+  restartPolicy: Never # 保留一次退出状态，避免持续施压
+  containers:
+    - name: allocate
+      image: python:3.12-alpine
+      imagePullPolicy: IfNotPresent
+      command: ["python", "-c", "from pathlib import Path; print('memory.max='+Path('/sys/fs/cgroup/memory.max').read_text().strip(),flush=True); print('oom_score_adj='+Path('/proc/self/oom_score_adj').read_text().strip(),flush=True); a=bytearray(64*1024*1024); print(len(a),flush=True)"]
+      resources:
+        requests:
+          memory: 16Mi # request 用于调度，不是内存上限
+        limits:
+          memory: 32Mi # 实际分配超过容器限制

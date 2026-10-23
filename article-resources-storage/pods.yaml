@@ -1,0 +1,25 @@
+# 磁盘型 emptyDir 写入量固定为 32 MiB，不制造节点满盘。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: emptydir-limit
+  namespace: article-storage
+spec:
+  restartPolicy: Never
+  containers:
+    - name: writer
+      image: python:3.12-alpine
+      imagePullPolicy: IfNotPresent
+      command: ["python", "-c", "import time; f=open('/data/block','wb'); f.write(b'x'*32*1024*1024); f.close(); print('wrote 32 MiB',flush=True); time.sleep(600)"]
+      resources:
+        requests:
+          memory: 64Mi
+        limits:
+          memory: 128Mi # 包含写入缓冲区，避免误测成内存 OOM
+      volumeMounts:
+        - name: data
+          mountPath: /data
+  volumes:
+    - name: data
+      emptyDir:
+        sizeLimit: 16Mi # kubelet 通过统计异步发现超限

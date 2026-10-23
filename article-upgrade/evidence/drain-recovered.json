@@ -1,0 +1,22 @@
+{
+  "before": [
+    {
+      "uid": "21344ae8-8432-449d-bd01-a932da9892ce",
+      "node": "article-upgrade-worker2"
+    },
+    {
+      "uid": "ef0576c2-3c24-457a-bb7b-475cd171d123",
+      "node": "article-upgrade-worker"
+    }
+  ],
+  "after": [
+    {
+      "uid": "21344ae8-8432-449d-bd01-a932da9892ce",
+      "node": "article-upgrade-worker2"
+    },
+    {
+      "uid": "10b9d36c-a916-443b-a3b7-aab2a41e8334",
+      "node": "article-upgrade-worker2"
+    }
+  ]
+}

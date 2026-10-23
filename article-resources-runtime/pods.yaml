@@ -1,0 +1,29 @@
+# 双容器默认共享网络命名空间，未启用共享进程命名空间。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: runtime-pair
+  namespace: article-runtime
+spec:
+  containers:
+    - name: server
+      image: python:3.12-alpine
+      imagePullPolicy: IfNotPresent
+      command: ["python", "-m", "http.server", "8080"]
+    - name: peer
+      image: python:3.12-alpine
+      imagePullPolicy: IfNotPresent
+      command: ["python", "-c", "import time; time.sleep(3600)"]
+---
+# 无效可执行文件用于区分 sandbox 成功与应用容器启动失败。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: runtime-bad-command
+  namespace: article-runtime
+spec:
+  containers:
+    - name: bad
+      image: python:3.12-alpine
+      imagePullPolicy: IfNotPresent
+      command: ["/does-not-exist"]

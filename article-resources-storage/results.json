@@ -1,0 +1,41 @@
+{
+  "uid": "be4ef8a7-8cb8-4ba9-9698-a62e962b06a6",
+  "phase": "Failed",
+  "reason": "Evicted",
+  "message": "Usage of EmptyDir volume \"data\" exceeds the limit \"16Mi\". ",
+  "logs": "wrote 32 MiB\n",
+  "nodeConditions": [
+    {
+      "lastHeartbeatTime": "2026-10-23T14:01:18Z",
+      "lastTransitionTime": "2026-10-23T13:49:02Z",
+      "message": "kubelet has sufficient memory available",
+      "reason": "KubeletHasSufficientMemory",
+      "status": "False",
+      "type": "MemoryPressure"
+    },
+    {
+      "lastHeartbeatTime": "2026-10-23T14:01:18Z",
+      "lastTransitionTime": "2026-10-23T13:49:02Z",
+      "message": "kubelet has no disk pressure",
+      "reason": "KubeletHasNoDiskPressure",
+      "status": "False",
+      "type": "DiskPressure"
+    },
+    {
+      "lastHeartbeatTime": "2026-10-23T14:01:18Z",
+      "lastTransitionTime": "2026-10-23T13:49:02Z",
+      "message": "kubelet has sufficient PID available",
+      "reason": "KubeletHasSufficientPID",
+      "status": "False",
+      "type": "PIDPressure"
+    },
+    {
+      "lastHeartbeatTime": "2026-10-23T14:01:18Z",
+      "lastTransitionTime": "2026-10-23T13:49:31Z",
+      "message": "kubelet is posting ready status",
+      "reason": "KubeletReady",
+      "status": "True",
+      "type": "Ready"
+    }
+  ]
+}

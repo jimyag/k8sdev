@@ -1,0 +1,12 @@
+http://127.0.0.1:3379 is healthy: successfully committed proposal: took = 1.534286ms
+restored before=snapshot-value; after-snapshot key absent
+[{"Endpoint":"http://127.0.0.1:3379","Status":{"header":{"cluster_id":13802058342487778336,"member_id":15023255354651218625,"revision":1000001214,"raft_term":2},"version":"3.6.6","dbSize":3026944,"leader":15023255354651218625,"raftIndex":9,"raftTerm":2,"raftAppliedIndex":9,"dbSizeInUse":962560,"storageVersion":"3.6.0","dbSizeQuota":2147483648,"downgradeInfo":{}}}]
+{"level":"warn","ts":"2026-10-23T13:58:16.237811Z","logger":"etcd-client","caller":"v3@v3.6.6/retry_interceptor.go:65","msg":"retrying of unary invoker failed","target":"etcd-endpoints://0xc00031c5a0/127.0.0.1:3379","method":"/etcdserverpb.KV/Range","attempt":0,"error":"rpc error: code = OutOfRange desc = etcdserver: mvcc: required revision has been compacted"}
+Error: etcdserver: mvcc: required revision has been compacted
+execing command in container fee7a0ab916b47efa94864f80fc9bdfef89285eb2083bceac48c001ed7388104: command terminated with exit code 1
+old revision rejected after mark-compacted
+snapshot contains Kubernetes Deployment storage key
+watch was canceled (etcdserver: mvcc: required revision has been compacted)
+Error: watch is canceled by the server
+execing command in container fee7a0ab916b47efa94864f80fc9bdfef89285eb2083bceac48c001ed7388104: command terminated with exit code 5
+old watch rejected after mark-compacted

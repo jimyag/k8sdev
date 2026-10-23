@@ -1,0 +1,54 @@
+# 所有工作负载和预算都限制在本实验命名空间。
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: article-upgrade
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  namespace: article-upgrade
+spec:
+  # 先用单副本和严格 PDB 验证维护阻塞，再扩为两副本。
+  replicas: 1
+  selector:
+    matchLabels:
+      app: upgrade-web
+  template:
+    metadata:
+      labels:
+        app: upgrade-web
+    spec:
+      affinity:
+        podAntiAffinity:
+          # 软反亲和尽量分散副本；维护期间允许两个副本落在剩余节点。
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app: upgrade-web
+                topologyKey: kubernetes.io/hostname
+      containers:
+        - name: web
+          # 本实验验证维护与升级状态，不对 HTTP 请求连续性作保证。
+          image: registry.k8s.io/pause:3.10.1
+          resources:
+            requests:
+              cpu: 10m
+              memory: 8Mi
+            limits:
+              memory: 32Mi
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: web
+  namespace: article-upgrade
+spec:
+  # 单副本时预算为零；扩为两副本后允许驱逐一个健康副本。
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: upgrade-web

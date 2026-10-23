@@ -1,0 +1,15 @@
+{
+  "mutated": {
+    "article.example/mutated": "yes"
+  },
+  "explicit_deny": "Error from server: error when creating \"STDIN\": admission webhook \"validate.article.example\" denied the request: article policy denied this ConfigMap\n",
+  "timeout_ignore": "configmap/timeout-ignore created",
+  "deny_with_ignore": "Error from server: error when creating \"STDIN\": admission webhook \"validate.article.example\" denied the request: article policy denied this ConfigMap\n",
+  "timeout_fail": "Error from server (InternalError): error when creating \"STDIN\": Internal error occurred: failed calling webhook \"validate.article.example\": failed to call webhook: Post \"https://172.31.0.6:19443/validate?timeout=1s\": context deadline exceeded\n",
+  "webhook_requests": "{\"path\": \"/mutate\", \"name\": \"ready-0\", \"uid\": \"392430e5-dd36-44dc-a957-30d1c853b0da\"}\n{\"path\": \"/validate\", \"name\": \"ready-0\", \"uid\": \"9c7f5376-c38c-4962-9f09-3de092ec6876\"}\n{\"path\": \"/mutate\", \"name\": \"denied\", \"uid\": \"b525917d-57d3-4403-a993-bdced7a09296\"}\n{\"path\": \"/validate\", \"name\": \"denied\", \"uid\": \"48e1e321-fcce-48c0-a2b7-60a8921a858a\"}\n{\"path\": \"/mutate\", \"name\": \"timeout-ignore\", \"uid\": \"2c70b0ab-f477-414f-a5be-36c3aebd5ad2\"}\n{\"path\": \"/validate\", \"name\": \"timeout-ignore\", \"uid\": \"b3db0fce-e9f6-471d-af1f-05f32f4b75a9\"}\n{\"path\": \"/mutate\", \"name\": \"still-denied\", \"uid\": \"270098d3-5b44-4218-92e8-63499289066b\"}\n{\"path\": \"/validate\", \"name\": \"still-denied\", \"uid\": \"91e9e6e2-9fb5-4922-9d29-318a2e13588a\"}\n{\"path\": \"/mutate\", \"name\": \"timeout-fail\", \"uid\": \"685eb10d-bddc-4abd-bfd3-aaa1388c5792\"}\n{\"path\": \"/validate\", \"name\": \"timeout-fail\", \"uid\": \"3385f734-6433-4aa8-8818-cbaabb0d1129\"}\n",
+  "unavailable_fail": "Error from server (InternalError): error when creating \"STDIN\": Internal error occurred: failed calling webhook \"validate.article.example\": failed to call webhook: Post \"https://172.31.0.6:19443/validate?timeout=1s\": dial tcp 172.31.0.6:19443: connect: connection refused\n",
+  "unmatched_namespace": "configmap/unmatched created",
+  "unavailable_ignore": "configmap/unavailable-ignore created",
+  "psa_reject": "Error from server (Forbidden): pods \"privileged\" is forbidden: violates PodSecurity \"restricted:v1.35\": privileged (container \"privileged\" must not set securityContext.privileged=true), allowPrivilegeEscalation != false (container \"privileged\" must set securityContext.allowPrivilegeEscalation=false), unrestricted capabilities (container \"privileged\" must set securityContext.capabilities.drop=[\"ALL\"]), runAsNonRoot != true (pod or container \"privileged\" must set securityContext.runAsNonRoot=true), seccompProfile (pod or container \"privileged\" must set securityContext.seccompProfile.type to \"RuntimeDefault\" or \"Localhost\")\n",
+  "psa_allow": "pod/compliant created"
+}

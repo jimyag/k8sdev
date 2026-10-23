@@ -1,0 +1,6 @@
+kube-scheduler: all processes stopped
+scheduler absent: API accepted Pod; nodeName empty
+kube-scheduler: restored and convergence confirmed
+kube-controller-manager: all processes stopped
+controller absent: desired=3; actual=1
+kube-controller-manager: restored and convergence confirmed

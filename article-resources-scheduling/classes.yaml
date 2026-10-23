@@ -1,0 +1,16 @@
+# PriorityClass 是集群级对象，名称仅用于本实验。
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: article-low
+value: 100
+globalDefault: false
+description: 实验中的低优先级
+---
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: article-high
+value: 1000
+globalDefault: false
+description: 实验中的高优先级

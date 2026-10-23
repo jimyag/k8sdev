@@ -1,0 +1,52 @@
+[upgrade] Reading configuration from the "kubeadm-config" ConfigMap in namespace "kube-system"...
+[upgrade] Use 'kubeadm init phase upload-config kubeadm --config your-config-file' to re-upload it.
+[upgrade/preflight] Running preflight checks
+[upgrade] Running cluster health checks
+[upgrade/preflight] You have chosen to upgrade the cluster version to "v1.35.2"
+[upgrade/versions] Cluster version: v1.35.1
+[upgrade/versions] kubeadm version: v1.35.2
+[upgrade/preflight] Pulling images required for setting up a Kubernetes cluster
+[upgrade/preflight] This might take a minute or two, depending on the speed of your internet connection
+[upgrade/preflight] You can also perform this action beforehand using 'kubeadm config images pull'
+[upgrade/control-plane] Upgrading your static Pod-hosted control plane to version "v1.35.2" (timeout: 5m0s)...
+[upgrade/staticpods] Writing new Static Pod manifests to "/etc/kubernetes/tmp/kubeadm-upgraded-manifests2792590974"
+[upgrade/staticpods] Preparing for "kube-apiserver" upgrade
+[upgrade/staticpods] Moving new manifest to "/etc/kubernetes/manifests/kube-apiserver.yaml" and backing up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2026-10-23-13-58-09/kube-apiserver.yaml"
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This can take up to 5m0s
+[apiclient] Found 1 Pods for label selector component=kube-apiserver
+[upgrade/staticpods] Component "kube-apiserver" upgraded successfully!
+[upgrade/staticpods] Preparing for "kube-controller-manager" upgrade
+[upgrade/staticpods] Moving new manifest to "/etc/kubernetes/manifests/kube-controller-manager.yaml" and backing up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2026-10-23-13-58-09/kube-controller-manager.yaml"
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This can take up to 5m0s
+[apiclient] Found 1 Pods for label selector component=kube-controller-manager
+[upgrade/staticpods] Component "kube-controller-manager" upgraded successfully!
+[upgrade/staticpods] Preparing for "kube-scheduler" upgrade
+[upgrade/staticpods] Moving new manifest to "/etc/kubernetes/manifests/kube-scheduler.yaml" and backing up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2026-10-23-13-58-09/kube-scheduler.yaml"
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This can take up to 5m0s
+[apiclient] Found 1 Pods for label selector component=kube-scheduler
+[upgrade/staticpods] Component "kube-scheduler" upgraded successfully!
+[upgrade/control-plane] The control plane instance for this node was successfully upgraded!
+[upload-config] Storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace
+[kubelet] Creating a ConfigMap "kubelet-config" in namespace kube-system with the configuration for the kubelets in the cluster
+[upgrade/kubeconfig] The kubeconfig files for this node were successfully upgraded!
+[upgrade] Backing up kubelet config file to /etc/kubernetes/tmp/kubeadm-kubelet-config-2026-10-23-13-59-15/config.yaml
+[patches] Applied patch of type "application/strategic-merge-patch+json" to target "kubeletconfiguration"
+[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+[upgrade/kubelet-config] The kubelet configuration for this node was successfully upgraded!
+[upgrade/bootstrap-token] Configuring bootstrap token and cluster-info RBAC rules
+[bootstrap-token] Configured RBAC rules to allow Node Bootstrap tokens to get nodes
+[bootstrap-token] Configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
+[bootstrap-token] Configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
+[bootstrap-token] Configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
+[addons] Applied essential addon: CoreDNS
+[addons] Applied essential addon: kube-proxy
+[upgrade] Backing up kubelet env file to /etc/kubernetes/tmp/kubeadm-kubelet-env1321440677/kubeadm-flags.env
+
+[upgrade] SUCCESS! A control plane node of your cluster was upgraded to "v1.35.2".
+
+[upgrade] Now please proceed with upgrading the rest of the nodes by following the right order.
+W1023 13:59:15.132794    3507 postupgrade.go:105] Using temporary directory /etc/kubernetes/tmp/kubeadm-kubelet-config-2026-10-23-13-59-15 for kubelet config. To override it set the environment variable KUBEADM_UPGRADE_DRYRUN_DIR
+W1023 13:59:19.514022    3507 postupgrade.go:203] Using temporary directory /etc/kubernetes/tmp/kubeadm-kubelet-env1321440677 for kubelet env file. To override it set the environment variable KUBEADM_UPGRADE_DRYRUN_DIR

@@ -1,0 +1,9 @@
+{
+  "read_pod": "demo",
+  "log_forbidden": "Error from server (Forbidden): pods \"demo\" is forbidden: User \"system:serviceaccount:article-rbac:reader\" cannot get resource \"pods/log\" in API group \"\" in the namespace \"article-rbac\"\n",
+  "patch_forbidden": "Error from server (Forbidden): pods \"demo\" is forbidden: User \"system:serviceaccount:article-rbac:reader\" cannot patch resource \"pods\" in API group \"\" in the namespace \"article-rbac\"\n",
+  "other_namespace_forbidden": "Error from server (Forbidden): pods is forbidden: User \"system:serviceaccount:article-rbac:reader\" cannot list resource \"pods\" in API group \"\" in the namespace \"article-rbac-other\"\n",
+  "can_get_logs_before": "no",
+  "can_get_logs_after": "yes",
+  "invalid_token": "error: You must be logged in to the server (Unauthorized)\n"
+}

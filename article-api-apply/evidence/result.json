@@ -1,0 +1,123 @@
+{
+  "conflict": "error: Apply failed with 1 conflict: conflict with \"team-a\": .data.color\nPlease review the fields above--they currently have other managers. Here\nare the ways you can resolve this warning:\n* If you intend to manage all of these fields, please re-run the apply\n  command with the `--force-conflicts` flag.\n* If you do not intend to manage all of the fields, please edit your\n  manifest to remove references to the fields that should keep their\n  current managers.\n* You may co-own fields by updating your manifest to match the existing\n  value; in this case, you'll become the manager if the other manager(s)\n  stop managing the field (remove it from their configuration).\nSee https://kubernetes.io/docs/reference/using-api/server-side-apply/#conflicts\n",
+  "independent": {
+    "data": {
+      "color": "blue",
+      "obsolete": "remove-me",
+      "owner": "team-b"
+    },
+    "managedFields": [
+      {
+        "apiVersion": "v1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:data": {
+            "f:color": {},
+            "f:obsolete": {}
+          }
+        },
+        "manager": "team-a",
+        "operation": "Apply",
+        "time": "2026-10-23T13:51:40Z"
+      },
+      {
+        "apiVersion": "v1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:data": {
+            "f:owner": {}
+          }
+        },
+        "manager": "team-b",
+        "operation": "Apply",
+        "time": "2026-10-23T13:51:41Z"
+      }
+    ]
+  },
+  "omitted": {
+    "data": {
+      "color": "blue",
+      "owner": "team-b"
+    },
+    "managedFields": [
+      {
+        "apiVersion": "v1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:data": {
+            "f:color": {}
+          }
+        },
+        "manager": "team-a",
+        "operation": "Apply",
+        "time": "2026-10-23T13:51:41Z"
+      },
+      {
+        "apiVersion": "v1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:data": {
+            "f:owner": {}
+          }
+        },
+        "manager": "team-b",
+        "operation": "Apply",
+        "time": "2026-10-23T13:51:41Z"
+      }
+    ]
+  },
+  "forced": {
+    "data": {
+      "color": "red",
+      "owner": "team-b"
+    },
+    "managedFields": [
+      {
+        "apiVersion": "v1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:data": {
+            "f:color": {},
+            "f:owner": {}
+          }
+        },
+        "manager": "team-b",
+        "operation": "Apply",
+        "time": "2026-10-23T13:51:41Z"
+      }
+    ]
+  },
+  "old_owner_conflict": "error: Apply failed with 1 conflict: conflict with \"team-b\": .data.color\nPlease review the fields above--they currently have other managers. Here\nare the ways you can resolve this warning:\n* If you intend to manage all of these fields, please re-run the apply\n  command with the `--force-conflicts` flag.\n* If you do not intend to manage all of the fields, please edit your\n  manifest to remove references to the fields that should keep their\n  current managers.\n* You may co-own fields by updating your manifest to match the existing\n  value; in this case, you'll become the manager if the other manager(s)\n  stop managing the field (remove it from their configuration).\nSee https://kubernetes.io/docs/reference/using-api/server-side-apply/#conflicts\n",
+  "ordinary_patch": {
+    "data": {
+      "color": "green",
+      "owner": "team-b"
+    },
+    "managedFields": [
+      {
+        "apiVersion": "v1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:data": {
+            "f:owner": {}
+          }
+        },
+        "manager": "team-b",
+        "operation": "Apply",
+        "time": "2026-10-23T13:51:41Z"
+      },
+      {
+        "apiVersion": "v1",
+        "fieldsType": "FieldsV1",
+        "fieldsV1": {
+          "f:data": {
+            "f:color": {}
+          }
+        },
+        "manager": "operator",
+        "operation": "Update",
+        "time": "2026-10-23T13:51:41Z"
+      }
+    ]
+  }
+}

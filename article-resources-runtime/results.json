@@ -1,0 +1,27 @@
+{
+  "uid": "98c3de86-1155-4940-b6a1-3ac8d0846baa",
+  "netns": {
+    "server": "net:[4026535795]",
+    "peer": "net:[4026535795]"
+  },
+  "localhostHTTP": "200",
+  "sandboxBefore": {
+    "runtime-bad-command": "814eb94fe630da7667d70b119655e2896ff512a3f695b56006c5294dfa30c9db",
+    "runtime-pair": "a75ed1b968eaf31bb1e595e61c383cdd1b0f04271479c81e83868f80a9fb1969"
+  },
+  "sandboxAfter": {
+    "runtime-bad-command": "814eb94fe630da7667d70b119655e2896ff512a3f695b56006c5294dfa30c9db",
+    "runtime-pair": "a75ed1b968eaf31bb1e595e61c383cdd1b0f04271479c81e83868f80a9fb1969"
+  },
+  "serverContainerBefore": "containerd://53bb31147752f5e4e882df0e43c377d569cae3f25274deaae7edb9cd4ec5a706",
+  "serverContainerAfter": "containerd://53e436f9691539805fb7d2e1efd07a5ab0393fad556f8886f026e36f577a3637",
+  "peerContainerUnchanged": true,
+  "serverRestartCount": 1,
+  "badCommandWaiting": {
+    "message": "failed to create containerd task: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: exec: \"/does-not-exist\": stat /does-not-exist: no such file or directory",
+    "reason": "RunContainerError"
+  },
+  "badCommandErrors": [
+    "Error: failed to create containerd task: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: exec: \"/does-not-exist\": stat /does-not-exist: no such file or directory"
+  ]
+}

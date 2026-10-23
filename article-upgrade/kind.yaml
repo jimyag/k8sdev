@@ -1,0 +1,9 @@
+# 为节点维护和补丁升级创建独立集群，不复用业务集群。
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  # 单控制面便于观察升级时的 API 暂时不可用，不表示生产 HA 架构。
+  - role: control-plane
+  # 两个工作节点用于观察 cordon、PDB 和替代副本。
+  - role: worker
+  - role: worker

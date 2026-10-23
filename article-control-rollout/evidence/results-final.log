@@ -1,0 +1,15 @@
+namespace/control-rollout created
+new Pod unready: 2 old + 1 new, no old deletion
+{"pods": 3, "terminating": 0, "available": 2}
+{"pods": 3, "terminating": 0, "available": 2}
+{"pods": 3, "terminating": 0, "available": 2}
+{"pods": 3, "terminating": 0, "available": 2}
+{"pods": 3, "terminating": 0, "available": 2}
+{"pods": 3, "terminating": 0, "available": 2}
+{"pods": 4, "terminating": 1, "available": 2}
+{"pods": 4, "terminating": 1, "available": 2}
+{"pods": 4, "terminating": 1, "available": 2}
+{"pods": 4, "terminating": 1, "available": 2}
+{"pods": 4, "terminating": 1, "available": 2}
+{"pods": 4, "terminating": 2, "available": 2}
+rollout complete; terminating Pods are checked separately

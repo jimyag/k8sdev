@@ -1,0 +1,19 @@
+pause scheduler leader node: article-control-control-plane2
+article-control-control-plane2
+configmap/failover-verified created
+
+Waiting for deployment "baseline" rollout to finish: 3 of 4 updated replicas are available...
+deployment "baseline" successfully rolled out
+
+NAME                      HOLDER
+kube-scheduler            article-control-control-plane_32fc20ad-d434-4b4c-af41-6a96f173b285
+kube-controller-manager   article-control-control-plane_c8189f8f-d501-4330-9aec-09c753e7659c
+
+NAME                       READY   STATUS    RESTARTS   AGE     IP            NODE                     NOMINATED NODE   READINESS GATES
+baseline-9c6bbf79c-jpzw9   1/1     Running   0          3m7s    10.244.3.7    article-control-worker   <none>           <none>
+baseline-9c6bbf79c-kz7t7   1/1     Running   0          3m7s    10.244.3.6    article-control-worker   <none>           <none>
+baseline-9c6bbf79c-nqddp   1/1     Running   0          4m32s   10.244.3.2    article-control-worker   <none>           <none>
+baseline-9c6bbf79c-w9dvn   1/1     Running   0          18s     10.244.3.14   article-control-worker   <none>           <none>
+needs-scheduler            1/1     Running   0          3m44s   10.244.3.5    article-control-worker   <none>           <none>
+
+article-control-control-plane2

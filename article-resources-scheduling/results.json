@@ -1,0 +1,20 @@
+{
+  "allocatableCPU": "12",
+  "requestMillicoresEach": 9000,
+  "lowUID": "d9e3508d-5c48-4b33-94cc-60c7cbaae2fe",
+  "preemptedEvents": [
+    "Preempted by pod 59d6690a-570f-4df8-b086-adbfbb01041c on node article-resources-control-plane"
+  ],
+  "highNode": "article-resources-control-plane",
+  "impossibleConditions": [
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-10-23T13:57:58Z",
+      "message": "0/1 nodes are available: 1 node(s) didn't match Pod's node affinity/selector. no new claims to deallocate, preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.",
+      "observedGeneration": 1,
+      "reason": "Unschedulable",
+      "status": "False",
+      "type": "PodScheduled"
+    }
+  ]
+}

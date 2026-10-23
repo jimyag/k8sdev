@@ -1,0 +1,27 @@
+{
+  "version": {
+    "major": "1",
+    "minor": "35",
+    "emulationMajor": "1",
+    "emulationMinor": "35",
+    "minCompatibilityMajor": "1",
+    "minCompatibilityMinor": "34",
+    "gitVersion": "v1.35.1",
+    "gitCommit": "8fea90b45245ef5c8ba54e7ae044d3e777c22500",
+    "gitTreeState": "clean",
+    "buildDate": "2026-02-10T12:53:14Z",
+    "goVersion": "go1.25.6",
+    "compiler": "gc",
+    "platform": "linux/amd64"
+  },
+  "uid": "ff0f9e43-477b-4adc-aea8-4e3c4a00c8cb",
+  "qosClass": "Burstable",
+  "terminated": {
+    "containerID": "containerd://fa8a7db7e650ba4c42c61bb618af151d0a3127f4a916bf06dbf961333d88261a",
+    "exitCode": 137,
+    "finishedAt": "2026-10-23T13:53:24Z",
+    "reason": "OOMKilled",
+    "startedAt": "2026-10-23T13:53:23Z"
+  },
+  "logs": "memory.max=33554432\noom_score_adj=999\n"
+}

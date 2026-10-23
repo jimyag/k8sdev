@@ -1,0 +1,44 @@
+{
+  "defaulted_resources": {
+    "limits": {
+      "cpu": "200m",
+      "memory": "64Mi"
+    },
+    "requests": {
+      "cpu": "100m",
+      "memory": "32Mi"
+    }
+  },
+  "max_rejection": "Error from server (Forbidden): error when creating \"STDIN\": pods \"too-large\" is forbidden: maximum cpu usage per Container is 1, but limit is 2\n",
+  "quota_rejection": "Error from server (Forbidden): error when creating \"STDIN\": pods \"third\" is forbidden: exceeded quota: budget, requested: pods=1, used: pods=2, limited: pods=2\n",
+  "quota": {
+    "hard": {
+      "limits.cpu": "2",
+      "limits.memory": "512Mi",
+      "pods": "2",
+      "requests.cpu": "1",
+      "requests.memory": "256Mi"
+    },
+    "used": {
+      "limits.cpu": "400m",
+      "limits.memory": "128Mi",
+      "pods": "2",
+      "requests.cpu": "200m",
+      "requests.memory": "64Mi"
+    }
+  },
+  "capacity_pod": {
+    "phase": "Pending",
+    "conditions": [
+      {
+        "lastProbeTime": null,
+        "lastTransitionTime": "2026-10-23T13:51:42Z",
+        "message": "0/1 nodes are available: 1 Insufficient cpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.",
+        "observedGeneration": 1,
+        "reason": "Unschedulable",
+        "status": "False",
+        "type": "PodScheduled"
+      }
+    ]
+  }
+}

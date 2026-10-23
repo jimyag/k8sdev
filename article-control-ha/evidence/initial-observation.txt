@@ -1,0 +1,7 @@
+2026-10-23，首次执行 run.sh：
+集群：article-control，Kubernetes v1.35.1。
+该次使用主机默认 kubectl v1.37.1，输出版本偏差警告。
+暂停 article-control-control-plane 后，第一个 ConfigMap 写请求失败：
+error: failed to create configmap: etcdserver: request timed out
+脚本退出时 trap 恢复暂停节点。
+后续组件停止、单节点 failover 与全 API 停止实验全部使用匹配的 kubectl v1.35.1；详见其他日志。

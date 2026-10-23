@@ -1,0 +1,34 @@
+# 两副本、最多增加一个；readiness 文件由实验手动打开，用于可控慢启动。
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: slow
+  namespace: control-rollout
+spec:
+  replicas: 2
+  minReadySeconds: 5 # Ready 后还需稳定 5 秒才计入 Available。
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: slow
+  template:
+    metadata:
+      labels:
+        app: slow
+    spec:
+      terminationGracePeriodSeconds: 40 # preStop 也消耗这段宽限期。
+      containers:
+        - name: app
+          image: registry.k8s.io/e2e-test-images/busybox:1.29-4
+          command: [sh, -c, 'touch /ready; while true; do sleep 1; done']
+          readinessProbe:
+            exec:
+              command: [test, -f, /ready]
+            periodSeconds: 1
+          lifecycle:
+            preStop:
+              exec:
+                command: [sh, -c, 'sleep 25'] # 保留终止中的容器，观察实际进程重叠。

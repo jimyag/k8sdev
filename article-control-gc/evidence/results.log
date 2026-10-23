@@ -1,0 +1,10 @@
+namespace/control-gc created
+foreground: child terminating
+foreground: owner retained by blocking child
+foreground: cleanup complete
+background: owner absent
+background: child terminating with finalizer
+background: cleanup complete
+orphan: owner absent
+orphan: child ownerReferences removed
+orphan: cleanup complete

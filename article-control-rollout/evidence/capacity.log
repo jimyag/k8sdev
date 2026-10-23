@@ -1,0 +1,5 @@
+capacity blocked: new Pod Unschedulable, old available=2
+LAST SEEN   TYPE      REASON             OBJECT                     MESSAGE
+0s          Warning   FailedScheduling   pod/slow-875446948-sx5kh   0/4 nodes are available: 1 Insufficient cpu, 3 node(s) had untolerated taint(s). no new claims to deallocate, preemption: 0/4 nodes are available: 4 Preemption is not helpful for scheduling.
+
+deployment "slow" successfully rolled out

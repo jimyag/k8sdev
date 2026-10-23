@@ -1,0 +1,41 @@
+[preflight] Running pre-flight checks.
+[upgrade/config] Reading configuration from the "kubeadm-config" ConfigMap in namespace "kube-system"...
+[upgrade/config] Use 'kubeadm init phase upload-config kubeadm --config your-config-file' to re-upload it.
+[upgrade] Running cluster health checks
+[upgrade] Fetching available versions to upgrade to
+[upgrade/versions] Cluster version: 1.35.1
+[upgrade/versions] kubeadm version: v1.35.2
+[upgrade/versions] Target version: v1.35.2
+[upgrade/versions] Latest version in the v1.35 series: v1.35.2
+
+Components that must be upgraded manually after you have upgraded the control plane with 'kubeadm upgrade apply':
+COMPONENT   NODE                            CURRENT   TARGET
+kubelet     article-upgrade-control-plane   v1.35.1   v1.35.2
+kubelet     article-upgrade-worker          v1.35.1   v1.35.2
+kubelet     article-upgrade-worker2         v1.35.1   v1.35.2
+
+Upgrade to the latest version in the v1.35 series:
+
+COMPONENT                 NODE                            CURRENT   TARGET
+kube-apiserver            article-upgrade-control-plane   v1.35.1   v1.35.2
+kube-controller-manager   article-upgrade-control-plane   v1.35.1   v1.35.2
+kube-scheduler            article-upgrade-control-plane   v1.35.1   v1.35.2
+kube-proxy                                                1.35.1    v1.35.2
+CoreDNS                                                   v1.13.1   v1.13.1
+etcd                      article-upgrade-control-plane   3.6.6-0   3.6.6-0
+
+You can now apply the upgrade by executing the following command:
+
+	kubeadm upgrade apply v1.35.2
+
+_____________________________________________________________________
+
+The table below shows the current state of component configs as understood by this version of kubeadm.
+Configs that have a "yes" mark in the "MANUAL UPGRADE REQUIRED" column require manual config upgrade or
+resetting to kubeadm defaults before a successful upgrade can be performed. The version to manually
+upgrade to is denoted in the "PREFERRED VERSION" column.
+
+API GROUP                 CURRENT VERSION   PREFERRED VERSION   MANUAL UPGRADE REQUIRED
+kubeproxy.config.k8s.io   v1alpha1          v1alpha1            no
+kubelet.config.k8s.io     v1beta1           v1beta1             no
+_____________________________________________________________________
