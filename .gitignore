@@ -1,4 +1,5 @@
 bin
 .vscode
 /tmp/
+/.worktrees/
 __pycache__/

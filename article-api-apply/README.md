@@ -1,5 +1,9 @@
 # Server-Side Apply 实验
 
+## 固定提交准备
+
+先按[固定提交复现步骤](../article-labs-reproduction.md)设置文章链接中的 `ARTICLE_LABS_REV`，取得并核对独立工作目录。后续命令从该流程设置的 `$ARTICLE_ROOT` 执行；新终端也要先完成版本准备，不能直接使用当前分支目录。
+
 2026-10-23 在 `zj` 的 `article-api` kind 集群验证；kind v0.33.0，节点镜像 `kindest/node:v1.35.1`，客户端与服务端均为 v1.35.1（`8fea90b45245ef5c8ba54e7ae044d3e777c22500`）。需要 Docker、kind、Python 3 和匹配版本 kubectl。
 
 匹配客户端的下载、SHA-256 校验和集群创建完整命令见相邻 `article-api-rbac/README.md`，完成后从 k8sdev 根目录运行：

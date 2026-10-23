@@ -1,9 +1,13 @@
 # Deployment 慢启动、慢终止与容量实验
 
+## 固定提交准备
+
+先按[固定提交复现步骤](../article-labs-reproduction.md)设置文章链接中的 `ARTICLE_LABS_REV`，取得并核对独立工作目录。后续命令从该流程设置的 `$ARTICLE_ROOT` 执行；新终端也要先完成版本准备，不能直接使用当前分支目录。
+
 冷启动先完成相邻 `article-control-ha/README.md` 的工具准备和集群初始化，使用专用 `article-control` 集群、kubectl v1.35.1 与 Kubernetes v1.35.1。脚本只需 Python 3 标准库，运行主机为 `zj`。
 
 ```bash
-cd /home/jimyag/src/github.com/jimyag/k8sdev/article-control-rollout
+cd "$ARTICLE_ROOT/article-control-rollout"
 python3 run.py
 ```
 

@@ -30,6 +30,9 @@ p = wait(lambda: (p if (p := pod("memory-oom"))["status"].get("phase") == "Faile
 state = p["status"]["containerStatuses"][0]["state"]["terminated"]
 assert state["reason"] == "OOMKilled", state
 assert state["exitCode"] == 137, state
+logs = k("logs", "memory-oom", "-n", NS)
+settings = dict(line.split("=", 1) for line in logs.splitlines() if "=" in line)
+assert settings.get("memory.max") == "33554432", logs
 save({"version": json.loads(k("version", "-o", "json"))["serverVersion"],
       "uid": p["metadata"]["uid"], "qosClass": p["status"]["qosClass"], "terminated": state,
-      "logs": k("logs", "memory-oom", "-n", NS)})
+      "logs": logs})

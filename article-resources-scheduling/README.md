@@ -1,5 +1,9 @@
 # 请求量抢占与不可满足硬约束
 
+## 固定提交准备
+
+先按[固定提交复现步骤](../article-labs-reproduction.md)设置文章链接中的 `ARTICLE_LABS_REV`，取得并核对独立工作目录。后续命令从该流程设置的 `$ARTICLE_ROOT` 执行；新终端也要先完成版本准备，不能直接使用当前分支目录。
+
 单节点隔离集群上，以 node allocatable CPU 的四分之三作为每个 Pod request。容器只运行 sleep，不通过真实 CPU 压力制造调度失败。集群需默认 scheduler profile，不能在业务集群执行。
 
 ## 环境准备（只执行一次）
@@ -8,8 +12,7 @@
 
 ```bash
 set -euo pipefail
-cd /home/jimyag/src/github.com/jimyag/k8sdev
-export ARTICLE_ROOT="$PWD"
+cd "$ARTICLE_ROOT"
 mkdir -p "$ARTICLE_ROOT/tmp/article-resources/tools"
 export TMPDIR="$ARTICLE_ROOT/tmp/article-resources"
 export KUBECONFIG="$TMPDIR/kubeconfig"

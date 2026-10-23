@@ -1,5 +1,9 @@
 # emptyDir sizeLimit 异步驱逐实验
 
+## 固定提交准备
+
+先按[固定提交复现步骤](../article-labs-reproduction.md)设置文章链接中的 `ARTICLE_LABS_REV`，取得并核对独立工作目录。后续命令从该流程设置的 `$ARTICLE_ROOT` 执行；新终端也要先完成版本准备，不能直接使用当前分支目录。
+
 磁盘型 emptyDir sizeLimit 为 16Mi，固定写入量为 32Mi；容器 memory limit 为 128Mi，避免将写缓冲误测成内存 OOM。不会填满宿主磁盘，不创建无限写入任务。
 
 ## 环境准备（只执行一次）
@@ -8,8 +12,7 @@
 
 ```bash
 set -euo pipefail
-cd /home/jimyag/src/github.com/jimyag/k8sdev
-export ARTICLE_ROOT="$PWD"
+cd "$ARTICLE_ROOT"
 mkdir -p "$ARTICLE_ROOT/tmp/article-resources/tools"
 export TMPDIR="$ARTICLE_ROOT/tmp/article-resources"
 export KUBECONFIG="$TMPDIR/kubeconfig"

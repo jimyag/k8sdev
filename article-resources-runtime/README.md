@@ -1,5 +1,9 @@
 # Pod Sandbox 与业务容器实验
 
+## 固定提交准备
+
+先按[固定提交复现步骤](../article-labs-reproduction.md)设置文章链接中的 `ARTICLE_LABS_REV`，取得并核对独立工作目录。后续命令从该流程设置的 `$ARTICLE_ROOT` 执行；新终端也要先完成版本准备，不能直接使用当前分支目录。
+
 检验三个彼此独立的问题：双容器是否共享 netns 并通过 localhost 通信；人为触发一个容器主进程退出时是否仅重启该容器；已就绪的 Sandbox 是否仍可能有启动失败的业务容器。
 
 ## 环境准备（只执行一次）
@@ -8,8 +12,7 @@
 
 ```bash
 set -euo pipefail
-cd /home/jimyag/src/github.com/jimyag/k8sdev
-export ARTICLE_ROOT="$PWD"
+cd "$ARTICLE_ROOT"
 mkdir -p "$ARTICLE_ROOT/tmp/article-resources/tools"
 export TMPDIR="$ARTICLE_ROOT/tmp/article-resources"
 export KUBECONFIG="$TMPDIR/kubeconfig"

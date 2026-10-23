@@ -1,9 +1,13 @@
 # etcd 多数派、快照与隔离恢复
 
+## 固定提交准备
+
+先按[固定提交复现步骤](../article-labs-reproduction.md)设置文章链接中的 `ARTICLE_LABS_REV`，取得并核对独立工作目录。后续命令从该流程设置的 `$ARTICLE_ROOT` 执行；新终端也要先完成版本准备，不能直接使用当前分支目录。
+
 先按相邻 `article-control-ha/README.md` 完成工具准备与测试集群初始化。运行主机 `zj`，kind v0.33.0、Kubernetes v1.35.1、etcd/etcdctl/etcdutl 3.6.6。脚本通过本实验节点内的 CRI 调用镜像自带工具，不额外安装 etcd 二进制。
 
 ```bash
-cd /home/jimyag/src/github.com/jimyag/k8sdev/article-control-etcd
+cd "$ARTICLE_ROOT/article-control-etcd"
 bash run.sh
 ```
 
@@ -14,7 +18,7 @@ bash run.sh
 在另一个 SSH 终端运行以下前台服务：
 
 ```bash
-cd /home/jimyag/src/github.com/jimyag/k8sdev/article-control-etcd
+cd "$ARTICLE_ROOT/article-control-etcd"
 bash restored.sh
 ```
 

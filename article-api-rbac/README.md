@@ -1,5 +1,9 @@
 # 身份认证与 RBAC 实验
 
+## 固定提交准备
+
+先按[固定提交复现步骤](../article-labs-reproduction.md)设置文章链接中的 `ARTICLE_LABS_REV`，取得并核对独立工作目录。后续命令从该流程设置的 `$ARTICLE_ROOT` 执行；新终端也要先完成版本准备，不能直接使用当前分支目录。
+
 在 `zj` 的独立 kind 集群 `article-api` 上验证。2026-10-23 实际服务端和客户端均为 Kubernetes v1.35.1（`8fea90b45245ef5c8ba54e7ae044d3e777c22500`），kind v0.33.0。宿主机需要 Python 3、Docker，kind 节点镜像为 `kindest/node:v1.35.1`。不使用默认 kubeconfig。
 
 在 Linux amd64 的 `zj` 上，从 k8sdev 根目录下载并校验匹配客户端（不依赖系统默认 kubectl）：

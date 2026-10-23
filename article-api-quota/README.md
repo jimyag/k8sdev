@@ -1,5 +1,9 @@
 # LimitRange、ResourceQuota 与调度容量
 
+## 固定提交准备
+
+先按[固定提交复现步骤](../article-labs-reproduction.md)设置文章链接中的 `ARTICLE_LABS_REV`，取得并核对独立工作目录。后续命令从该流程设置的 `$ARTICLE_ROOT` 执行；新终端也要先完成版本准备，不能直接使用当前分支目录。
+
 2026-10-23 在 `zj` 的独立 kind 集群 `article-api` 验证；kind v0.33.0，`kindest/node:v1.35.1`，服务端与客户端 Kubernetes v1.35.1（`8fea90b45245ef5c8ba54e7ae044d3e777c22500`）。需要 Python 3、Docker 和匹配版本 kubectl。集群创建方法见相邻 `article-api-rbac/README.md`。
 
 先按相邻 `article-api-rbac/README.md` 下载并校验 v1.35.1 客户端、创建专用集群，再从 k8sdev 根目录执行：

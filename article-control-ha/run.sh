@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
-export PATH="$HOME/src/github.com/jimyag/k8sdev/tmp/article-tools:$HOME/.local/bin:$PATH"
 cd "$(dirname "$0")"
+export PATH="$(cd ../tmp/article-tools && pwd):$HOME/.local/bin:$PATH"
 mkdir -p ../tmp/article-control
 export TMPDIR="$(cd ../tmp/article-control && pwd)"
 export KUBECONFIG="$TMPDIR/kubeconfig"

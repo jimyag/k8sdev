@@ -1,9 +1,13 @@
 # OwnerReference 与垃圾回收实验
 
+## 固定提交准备
+
+先按[固定提交复现步骤](../article-labs-reproduction.md)设置文章链接中的 `ARTICLE_LABS_REV`，取得并核对独立工作目录。后续命令从该流程设置的 `$ARTICLE_ROOT` 执行；新终端也要先完成版本准备，不能直接使用当前分支目录。
+
 依赖相邻 `article-control-ha/README.md` 中的准备和 `setup.sh`、`run.sh`，使用专用 `article-control` 集群、`tmp/article-control/kubeconfig` 和已校验的 kubectl v1.35.1。运行主机为 `zj`，服务端 Kubernetes v1.35.1。
 
 ```bash
-cd /home/jimyag/src/github.com/jimyag/k8sdev/article-control-gc
+cd "$ARTICLE_ROOT/article-control-gc"
 python3 run.py
 ```
 

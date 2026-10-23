@@ -1,5 +1,9 @@
 # 准入、Webhook 故障与 Pod Security Admission
 
+## 固定提交准备
+
+先按[固定提交复现步骤](../article-labs-reproduction.md)设置文章链接中的 `ARTICLE_LABS_REV`，取得并核对独立工作目录。后续命令从该流程设置的 `$ARTICLE_ROOT` 执行；新终端也要先完成版本准备，不能直接使用当前分支目录。
+
 2026-10-23 在 `zj` 的专用 kind 集群 `article-api` 验证。kind v0.33.0，节点镜像 `kindest/node:v1.35.1`；客户端和服务端 Kubernetes v1.35.1（`8fea90b45245ef5c8ba54e7ae044d3e777c22500`）。需要宿主机 Python 3、OpenSSL、Docker，以及预置 `python:3.12-alpine` 镜像。镜像仅运行 Python 标准库 TLS 实验服务，不承担业务服务。
 
 匹配客户端的下载、SHA-256 校验、集群创建与独立 kubeconfig 见相邻 `article-api-rbac/README.md`。准备实验服务镜像并从 k8sdev 根目录运行：

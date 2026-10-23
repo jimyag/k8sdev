@@ -1,13 +1,17 @@
 # 控制面职责与故障实验
 
+## 固定提交准备
+
+先按[固定提交复现步骤](../article-labs-reproduction.md)设置文章链接中的 `ARTICLE_LABS_REV`，取得并核对独立工作目录。后续命令从该流程设置的 `$ARTICLE_ROOT` 执行；新终端也要先完成版本准备，不能直接使用当前分支目录。
+
 已验证环境：SSH 主机 `zj`，kind v0.33.0，Kubernetes v1.35.1，containerd 2.2.1，三个 stacked-etcd 控制面和一个 worker。所有操作只针对 `article-control`，不能替换成生产集群。实验 Python 使用系统 Python 3 标准库，不需要安装包。
 
 ## 准备与运行
 
-将这些实验目录放在 `zj` 的 `/home/jimyag/src/github.com/jimyag/k8sdev/`。要求 Docker 可用、`~/.local/bin/kind` 已安装且版本匹配，网络可拉取 kind 节点与 busybox 镜像。
+完成固定提交准备，在 `zj` 的 `$ARTICLE_ROOT` 工作目录中运行。要求 Docker 可用、`~/.local/bin/kind` 已安装且版本匹配，网络可拉取 kind 节点与 busybox 镜像。
 
 ```bash
-cd /home/jimyag/src/github.com/jimyag/k8sdev/article-control-ha
+cd "$ARTICLE_ROOT/article-control-ha"
 bash setup.sh
 bash run.sh
 python3 components.py
@@ -34,9 +38,9 @@ Scheduler 全停时新 Pod 没有 nodeName，恢复后 Ready；Controller Manage
 先完成依赖这个集群的 GC、rollout 和 etcd 实验，再执行：
 
 ```bash
-export TMPDIR=/home/jimyag/src/github.com/jimyag/k8sdev/tmp/article-control
+export TMPDIR="$ARTICLE_ROOT/tmp/article-control"
 ~/.local/bin/kind delete cluster --name article-control
-rm -f /home/jimyag/src/github.com/jimyag/k8sdev/tmp/article-control/kubeconfig
+rm -f "$ARTICLE_ROOT/tmp/article-control/kubeconfig"
 ```
 
 删除该集群会一并删除测试 etcd 快照、恢复数据和容器。`tmp/article-tools` 为其他并行文章共用的临时工具，不由本实验自动删除。不要把 kubeconfig、证书、数据库或快照复制进实验 Git 目录。

@@ -1,5 +1,9 @@
 # 容器 cgroup OOM 实验
 
+## 固定提交准备
+
+先按[固定提交复现步骤](../article-labs-reproduction.md)设置文章链接中的 `ARTICLE_LABS_REV`，取得并核对独立工作目录。后续命令从该流程设置的 `$ARTICLE_ROOT` 执行；新终端也要先完成版本准备，不能直接使用当前分支目录。
+
 使用 memory limit 32Mi 的容器尝试分配固定 64Mi 内存。只触发该容器限制，不耗尽节点或宿主机内存。`restartPolicy: Never` 避免持续分配循环。
 
 ## 环境准备（只执行一次）
@@ -8,8 +12,7 @@
 
 ```bash
 set -euo pipefail
-cd /home/jimyag/src/github.com/jimyag/k8sdev
-export ARTICLE_ROOT="$PWD"
+cd "$ARTICLE_ROOT"
 mkdir -p "$ARTICLE_ROOT/tmp/article-resources/tools"
 export TMPDIR="$ARTICLE_ROOT/tmp/article-resources"
 export KUBECONFIG="$TMPDIR/kubeconfig"
@@ -48,7 +51,9 @@ python3 run.py
 cat results.json
 ```
 
-断言 API phase 为 Failed、容器 reason 为 OOMKilled、exitCode 为 137，保存 UID、容器终止状态、版本和分配前的日志。本次日志为 `memory.max=33554432`、`oom_score_adj=999`；QoS 为 Burstable。没有 CPU request/limit，不能把只有 memory request 与 limit 的 Pod 当作 Guaranteed。
+断言 API phase 为 Failed、容器 reason 为 OOMKilled、exitCode 为 137，并要求分配前日志中的 `memory.max` 精确等于 `33554432`。字段缺失、`max`（无限制）或其他值都判为失败；保存 UID、容器终止状态、版本和日志。本次日志为 `memory.max=33554432`、`oom_score_adj=999`；QoS 为 Burstable。没有 CPU request/limit，不能把只有 memory request 与 limit 的 Pod 当作 Guaranteed。
+
+2026-10-23 复查时，在重新创建的隔离 kind 集群上执行修订脚本并通过，结果见 `evidence/memory-limit-review.json`。本地错误输入检查也确认：即使终止状态仍是 OOMKilled / 137，日志中的上限为 `67108864`、`max` 或字段缺失时，脚本都会以断言失败退出，不会写出成功结果。
 
 没有触发节点全局 OOM，也没有实测 MemoryPressure、QoS 驱逐次序或 MemoryQoS。源码分析不得写成这些分支已经通过运行验证。
 

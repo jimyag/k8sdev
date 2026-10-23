@@ -1,15 +1,19 @@
 # Kubernetes 维护与补丁升级实验
 
+## 固定提交准备
+
+先按[固定提交复现步骤](../article-labs-reproduction.md)设置文章链接中的 `ARTICLE_LABS_REV`，取得并核对独立工作目录。后续命令从该流程设置的 `$ARTICLE_ROOT` 执行；新终端也要先完成版本准备，不能直接使用当前分支目录。
+
 在 `zj` 的独立 kind 集群中验证 PDB 阻塞维护、替代副本、已移除 API 端点，以及 Kubernetes v1.35.1 到 v1.35.2 的实际补丁升级。集群为一个控制面、两个工作节点，不代表生产高可用拓扑。本实验不验证跨小版本升级、etcd 升级、证书轮换、业务 HTTP 请求连续性或生产插件兼容性。
 
 ## 环境与准备
 
 已验证条件：Linux 主机 `zj`，kind v0.33.0，Docker，Python 3，curl、sha256sum、Git、grep，以及 `kindest/node:v1.35.1`。kind 可执行文件位于 `$HOME/.local/bin`。需要能够下载 dl.k8s.io 二进制和 registry.k8s.io 镜像，且当前用户能够运行 Docker。脚本不依赖宿主默认 kubeconfig。
 
-将本目录放入 `zj` 的 `/home/jimyag/src/github.com/jimyag/k8sdev/article-upgrade/`，然后从仓库根目录执行：
+完成固定提交准备后，从 `zj` 的 `$ARTICLE_ROOT` 工作目录执行：
 
 ```sh
-cd /home/jimyag/src/github.com/jimyag/k8sdev
+cd "$ARTICLE_ROOT"
 export TMPDIR="$PWD/tmp/article-upgrade"
 mkdir -p "$TMPDIR"
 bash article-upgrade/setup.sh
