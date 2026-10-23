@@ -14,16 +14,31 @@ docker pause article-control-control-plane2
 trap 'docker unpause article-control-control-plane2 >/dev/null 2>&1 || true; docker unpause article-control-control-plane3 >/dev/null 2>&1 || true' EXIT
 ec put /article/one-down quorum-ok
 docker pause article-control-control-plane3
-if ec put /article/two-down must-fail; then
+if output=$(ec put /article/two-down uncertain-result 2>&1); then
   echo 'ERROR: minority unexpectedly accepted write' >&2
   exit 1
 fi
-echo 'two members unavailable: write rejected'
+printf '%s\n' "$output"
+if [[ "$output" != *"request timed out"* && "$output" != *"context deadline exceeded"* ]]; then
+  echo 'ERROR: write failed for a reason other than the expected timeout' >&2
+  exit 1
+fi
+echo 'two members unavailable: write timed out; commit status unknown'
 ec get /article/before --consistency=s
 docker unpause article-control-control-plane2
 docker unpause article-control-control-plane3
 trap - EXIT
 "$K" wait node --all --for=condition=Ready --timeout=120s
 ec endpoint health
+# 超时不会撤回已经提出的 Raft 日志；恢复多数派后单独核对最终状态。
+value=$(ec get /article/two-down --print-value-only)
+if [[ -z "$value" ]]; then
+  echo 'after quorum recovery: timed-out key absent at readback'
+elif [[ "$value" = uncertain-result ]]; then
+  echo 'after quorum recovery: timed-out key committed'
+else
+  echo 'ERROR: unexpected readback value for timed-out key' >&2
+  exit 1
+fi
 docker exec "$node" crictl exec "$id" etcdutl snapshot restore /var/lib/etcd/article-snapshot.db --data-dir=/var/lib/etcd/article-restored --name=restored --initial-cluster=restored=http://127.0.0.1:3380 --initial-advertise-peer-urls=http://127.0.0.1:3380 --bump-revision=1000000000 --mark-compacted
 echo 'snapshot restored into isolated data directory; start restored.sh for readback'

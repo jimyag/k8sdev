@@ -7,7 +7,7 @@ cd /home/jimyag/src/github.com/jimyag/k8sdev/article-control-etcd
 bash run.sh
 ```
 
-脚本创建 `/article/` 前缀的合成测试键，保存快照，再写快照后测试键。分别暂停第二和第三个控制面，验证剩余两个可写、剩余一个不可写但可 Serializable 读。退出 trap 恢复两个暂停节点；恢复多数派后检查 endpoint health。
+脚本创建 `/article/` 前缀的合成测试键，保存快照，再写快照后测试键。分别暂停第二和第三个控制面，验证剩余两个可写、剩余一个时写请求超时但仍可 Serializable 读。超时只表示未获得提交确认，不表示已经撤回提案；退出 trap 恢复两个暂停节点，恢复多数派后检查 endpoint health，并读回超时请求的键，单独记录最终观察结果，不固定断言该键一定不存在。
 
 快照保存在测试节点的 `/var/lib/etcd/article-snapshot.db`，恢复数据在同一测试节点的 `/var/lib/etcd/article-restored`，均不复制到 Git 工作区。恢复使用 revision bump=1,000,000,000 和 mark-compacted，这个增量只适用于本次实验。
 
@@ -25,6 +25,8 @@ bash verify.sh
 ```
 
 脚本以有截止时间的健康检查确认恢复实例可用，断言快照前键存在、快照后键不存在、Kubernetes Deployment 存储键存在，检查 revision，并断言旧历史 Range 与旧 revision Watch 被 compacted 错误拒绝。结果在 `evidence/`。
+
+2026-10-23 的复查重跑保存在 `evidence/review-run.log` 与 `evidence/review-verify.log`。本次写请求先返回 `context deadline exceeded`，恢复多数派后却读回已提交的键，说明超时不能解释为确定拒绝。恢复实例的 Range 与 Watch 均返回 `required revision has been compacted`，修订脚本检查了这个具体错误，而不是仅检查命令非零退出。该次恢复后的 revision 为 1000001272；revision 随快照状态变化，不是固定验收值。
 
 没有把恢复实例接回 Kubernetes，没有证明控制器和 Informer 完整恢复；只验证数据边界、隔离启动和历史失效机制。没有执行真实集群成员替换或磁盘损坏实验。
 

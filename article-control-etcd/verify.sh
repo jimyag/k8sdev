@@ -13,16 +13,22 @@ test "$before" = snapshot-value
 test -z "$after"
 echo "restored before=$before; after-snapshot key absent"
 ec endpoint status -w json
-# 旧 revision 的历史读取应被拒绝，而非把过期缓存当成当前状态。
-if ec get /article/before --rev=2; then
-  echo 'ERROR: old revision unexpectedly readable' >&2
-  exit 1
-fi
+# 必须识别 compaction 错误，连接失败或其他错误不能算验证通过。
+expect_compacted() {
+  local output
+  if output=$(ec "$@" 2>&1); then
+    echo 'ERROR: old revision unexpectedly accepted' >&2
+    return 1
+  fi
+  printf '%s\n' "$output"
+  if [[ "$output" != *"required revision has been compacted"* ]]; then
+    echo 'ERROR: expected a compaction error' >&2
+    return 1
+  fi
+}
+expect_compacted get /article/before --rev=2
 echo 'old revision rejected after mark-compacted'
 test "$(ec get /registry/deployments/control-ha/baseline --keys-only)" = /registry/deployments/control-ha/baseline
 echo 'snapshot contains Kubernetes Deployment storage key'
-if ec watch /article/ --prefix --rev=2; then
-  echo 'ERROR: old watch unexpectedly accepted' >&2
-  exit 1
-fi
+expect_compacted watch /article/ --prefix --rev=2
 echo 'old watch rejected after mark-compacted'

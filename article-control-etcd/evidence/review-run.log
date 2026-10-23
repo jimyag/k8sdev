@@ -1,0 +1,44 @@
+etcdctl version: 3.6.6
+API version: 3.6
+OK
+{"level":"info","ts":"2026-10-23T15:06:57.085819Z","caller":"snapshot/v3_snapshot.go:83","msg":"created temporary db file","path":"/var/lib/etcd/article-snapshot.db.part"}
+{"level":"info","ts":"2026-10-23T15:06:57.090179Z","logger":"client","caller":"v3@v3.6.6/maintenance.go:236","msg":"opened snapshot stream; downloading"}
+{"level":"info","ts":"2026-10-23T15:06:57.092587Z","caller":"snapshot/v3_snapshot.go:96","msg":"fetching snapshot","endpoint":"https://127.0.0.1:2379"}
+{"level":"info","ts":"2026-10-23T15:06:57.103654Z","logger":"client","caller":"v3@v3.6.6/maintenance.go:302","msg":"completed snapshot read; closing"}
+{"level":"info","ts":"2026-10-23T15:06:57.141686Z","caller":"snapshot/v3_snapshot.go:111","msg":"fetched snapshot","endpoint":"https://127.0.0.1:2379","size":"2.7 MB","took":"55.832488ms","etcd-version":"3.6.0"}
+{"level":"info","ts":"2026-10-23T15:06:57.141775Z","caller":"snapshot/v3_snapshot.go:121","msg":"saved","path":"/var/lib/etcd/article-snapshot.db"}
+Snapshot saved at /var/lib/etcd/article-snapshot.db
+Server version 3.6.0
+OK
+article-control-control-plane2
+OK
+article-control-control-plane3
+{"level":"warn","ts":"2026-10-23T15:07:02.499539Z","logger":"etcd-client","caller":"v3@v3.6.6/retry_interceptor.go:65","msg":"retrying of unary invoker failed","target":"etcd-endpoints://0xc00031c960/127.0.0.1:2379","method":"/etcdserverpb.KV/Put","attempt":0,"error":"rpc error: code = DeadlineExceeded desc = context deadline exceeded"}
+Error: context deadline exceeded
+execing command in container 88dc6e7fe216d248c71fbc65acf6ad1d527b0cf7d15784ec83bf59d84776ce9a: command terminated with exit code 1
+two members unavailable: write timed out; commit status unknown
+/article/before
+snapshot-value
+article-control-control-plane2
+article-control-control-plane3
+node/article-control-control-plane condition met
+node/article-control-control-plane2 condition met
+node/article-control-control-plane3 condition met
+node/article-control-worker condition met
+https://127.0.0.1:2379 is healthy: successfully committed proposal: took = 5.011503ms
+after quorum recovery: timed-out key committed
+2026-10-23T15:07:03Z	info	snapshot/v3_snapshot.go:305	restoring snapshot	{"path": "/var/lib/etcd/article-snapshot.db", "wal-dir": "/var/lib/etcd/article-restored/member/wal", "data-dir": "/var/lib/etcd/article-restored", "snap-dir": "/var/lib/etcd/article-restored/member/snap", "initial-memory-map-size": 10737418240}
+2026-10-23T15:07:03Z	info	bbolt	backend/backend.go:203	Opening db file (/var/lib/etcd/article-restored/member/snap/db) with mode -rw------- and with options: {Timeout: 0s, NoGrowSync: false, NoFreelistSync: true, PreLoadFreelist: false, FreelistType: , ReadOnly: false, MmapFlags: 8000, InitialMmapSize: 10737418240, PageSize: 0, NoSync: false, OpenFile: 0x0, Mlock: false, Logger: 0xc00006c2c0}
+2026-10-23T15:07:03Z	info	bbolt	bbolt@v1.4.3/db.go:321	Opening bbolt db (/var/lib/etcd/article-restored/member/snap/db) successfully
+2026-10-23T15:07:03Z	info	schema/membership.go:138	Trimming membership information from the backend...
+2026-10-23T15:07:03Z	info	bbolt	backend/backend.go:203	Opening db file (/var/lib/etcd/article-restored/member/snap/db) with mode -rw------- and with options: {Timeout: 0s, NoGrowSync: false, NoFreelistSync: true, PreLoadFreelist: false, FreelistType: , ReadOnly: false, MmapFlags: 8000, InitialMmapSize: 10737418240, PageSize: 0, NoSync: false, OpenFile: 0x0, Mlock: false, Logger: 0xc00006c328}
+2026-10-23T15:07:03Z	info	bbolt	bbolt@v1.4.3/db.go:321	Opening bbolt db (/var/lib/etcd/article-restored/member/snap/db) successfully
+2026-10-23T15:07:03Z	info	snapshot/v3_snapshot.go:396	bumping latest revision	{"latest-revision": 1272, "bump-amount": 1000000000, "new-latest-revision": 1000001272}
+2026-10-23T15:07:03Z	info	snapshot/v3_snapshot.go:413	marking revision compacted	{"revision": 1000001272}
+2026-10-23T15:07:03Z	info	bbolt	backend/backend.go:203	Opening db file (/var/lib/etcd/article-restored/member/snap/db) with mode -rw------- and with options: {Timeout: 0s, NoGrowSync: false, NoFreelistSync: true, PreLoadFreelist: false, FreelistType: , ReadOnly: false, MmapFlags: 8000, InitialMmapSize: 10737418240, PageSize: 0, NoSync: false, OpenFile: 0x0, Mlock: false, Logger: 0xc00006c398}
+2026-10-23T15:07:03Z	info	bbolt	bbolt@v1.4.3/db.go:321	Opening bbolt db (/var/lib/etcd/article-restored/member/snap/db) successfully
+2026-10-23T15:07:03Z	info	membership/cluster.go:424	added member	{"cluster-id": "bf8ac2efa1336420", "local-member-id": "0", "added-peer-id": "d07d5325fff892c1", "added-peer-peer-urls": ["http://127.0.0.1:3380"], "added-peer-is-learner": false}
+2026-10-23T15:07:03Z	info	bbolt	backend/backend.go:203	Opening db file (/var/lib/etcd/article-restored/member/snap/db) with mode -rw------- and with options: {Timeout: 0s, NoGrowSync: false, NoFreelistSync: true, PreLoadFreelist: false, FreelistType: , ReadOnly: false, MmapFlags: 8000, InitialMmapSize: 10737418240, PageSize: 0, NoSync: false, OpenFile: 0x0, Mlock: false, Logger: 0xc00006c8e8}
+2026-10-23T15:07:03Z	info	bbolt	bbolt@v1.4.3/db.go:321	Opening bbolt db (/var/lib/etcd/article-restored/member/snap/db) successfully
+2026-10-23T15:07:03Z	info	snapshot/v3_snapshot.go:333	restored snapshot	{"path": "/var/lib/etcd/article-snapshot.db", "wal-dir": "/var/lib/etcd/article-restored/member/wal", "data-dir": "/var/lib/etcd/article-restored", "snap-dir": "/var/lib/etcd/article-restored/member/snap", "initial-memory-map-size": 10737418240}
+snapshot restored into isolated data directory; start restored.sh for readback
