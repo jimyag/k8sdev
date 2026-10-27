@@ -1,0 +1,7 @@
+[
+  "Oct 26 12:15:04 article-image-control-plane kubelet[257]: E1026 12:15:04.984302     257 kubelet.go:1656] \"Image garbage collection failed once. Stats initialization may not have completed yet\" err=\"invalid capacity 0 on image filesystem\"",
+  "Oct 26 12:15:09 article-image-control-plane kubelet[767]: E1026 12:15:09.550348     767 kubelet.go:1656] \"Image garbage collection failed once. Stats initialization may not have completed yet\" err=\"invalid capacity 0 on image filesystem\"",
+  "Oct 26 12:20:09 article-image-control-plane kubelet[767]: I1026 12:20:09.559492     767 image_gc_manager.go:394] \"Disk usage on image filesystem is over the high threshold, trying to free bytes down to the low threshold\" usage=26 highThreshold=1 amountToFree=119640612864 lowThreshold=0",
+  "Oct 26 12:20:09 article-image-control-plane kubelet[767]: I1026 12:20:09.559511     767 image_gc_manager.go:528] \"Removing image to free bytes\" imageID=\"sha256:19aa6a21b42cb57f6f76e0f3584d7dfec241a3f3568cd6590a2967c28d9cdce3\" size=2872608 runtimeHandler=\"\"",
+  "Oct 26 12:20:11 article-image-control-plane kubelet[767]: E1026 12:20:11.201774     767 kubelet.go:1652] \"Image garbage collection failed multiple times in a row\" err=\"Insufficient free disk space on the node's image filesystem (26% of 443.2 GiB used). Failed to free sufficient space by deleting unused images (freed 2872608 bytes). Investigate disk usage, as it could be used by active images, logs, volumes, or other data.\""
+]

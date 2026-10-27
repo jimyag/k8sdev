@@ -1,0 +1,22 @@
+{
+  "apiVersion": "v1",
+  "kind": "Pod",
+  "metadata": {
+    "name": "pull-fail",
+    "labels": {
+      "app": "pull-fail"
+    }
+  },
+  "spec": {
+    "containers": [
+      {
+        "name": "app",
+        "image": "example.invalid/kubernetes-image-does-not-exist:never",
+        "imagePullPolicy": "Always",
+        "command": [
+          "true"
+        ]
+      }
+    ]
+  }
+}

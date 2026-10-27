@@ -1,0 +1,49 @@
+{
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": {
+    "name": "policy-fail",
+    "labels": {
+      "app": "policy-fail"
+    }
+  },
+  "spec": {
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "policy-fail"
+        }
+      },
+      "spec": {
+        "restartPolicy": "Never",
+        "containers": [
+          {
+            "name": "task",
+            "image": "alpine:3.20",
+            "imagePullPolicy": "IfNotPresent",
+            "command": [
+              "sh",
+              "-c",
+              "exit 42"
+            ]
+          }
+        ]
+      }
+    },
+    "backoffLimit": 3,
+    "podFailurePolicy": {
+      "rules": [
+        {
+          "action": "FailJob",
+          "onExitCodes": {
+            "containerName": "task",
+            "operator": "In",
+            "values": [
+              42
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

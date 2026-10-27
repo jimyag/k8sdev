@@ -1,0 +1,47 @@
+{
+  "exit_code": 1,
+  "stderr": "Error from server (Forbidden): persistentvolumeclaims \"no-expand\" is forbidden: only dynamically provisioned pvc can be resized and the storageclass that provisions the pvc must support resize",
+  "pvc": {
+    "apiVersion": "v1",
+    "kind": "PersistentVolumeClaim",
+    "metadata": {
+      "annotations": {
+        "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"PersistentVolumeClaim\",\"metadata\":{\"annotations\":{},\"name\":\"no-expand\",\"namespace\":\"article-pvc-expansion\"},\"spec\":{\"accessModes\":[\"ReadWriteOnce\"],\"resources\":{\"requests\":{\"storage\":\"64Mi\"}},\"storageClassName\":\"article-no-expand\"}}\n",
+        "pv.kubernetes.io/bind-completed": "yes",
+        "pv.kubernetes.io/bound-by-controller": "yes",
+        "volume.beta.kubernetes.io/storage-provisioner": "hostpath.csi.k8s.io",
+        "volume.kubernetes.io/storage-provisioner": "hostpath.csi.k8s.io"
+      },
+      "creationTimestamp": "2026-10-26T11:54:13Z",
+      "finalizers": [
+        "kubernetes.io/pvc-protection"
+      ],
+      "name": "no-expand",
+      "namespace": "article-pvc-expansion",
+      "resourceVersion": "3282",
+      "uid": "1e0a1bc4-a853-436f-8a23-8de03d5c7ddb"
+    },
+    "spec": {
+      "accessModes": [
+        "ReadWriteOnce"
+      ],
+      "resources": {
+        "requests": {
+          "storage": "64Mi"
+        }
+      },
+      "storageClassName": "article-no-expand",
+      "volumeMode": "Filesystem",
+      "volumeName": "pvc-1e0a1bc4-a853-436f-8a23-8de03d5c7ddb"
+    },
+    "status": {
+      "accessModes": [
+        "ReadWriteOnce"
+      ],
+      "capacity": {
+        "storage": "64Mi"
+      },
+      "phase": "Bound"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "apiVersion": "example.jimyag.com/v1alpha1",
+  "kind": "Widget",
+  "metadata": {
+    "name": "sample"
+  },
+  "spec": {
+    "label": "alpha",
+    "replicas": 3,
+    "unknown": "pruned"
+  }
+}

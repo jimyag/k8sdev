@@ -1,0 +1,154 @@
+{
+  "images": [
+    {
+      "id": "sha256:c4409203da813dff0f1b0955d1fd4e36fb591fc07d2b3de3029b61474d98471a",
+      "repoTags": [
+        "docker.io/kindest/kindnetd:v20260213-ea8e5717"
+      ],
+      "repoDigests": [],
+      "size": "42628416",
+      "username": "",
+      "pinned": false
+    },
+    {
+      "id": "sha256:62a903ec30b6c0e5074d26e46b142ca6f33512bc1c620003b250a73dc9893815",
+      "repoTags": [
+        "docker.io/kindest/local-path-provisioner:v20260213-ea8e5717"
+      ],
+      "repoDigests": [],
+      "size": "15481535",
+      "uid": {
+        "value": "0"
+      },
+      "username": "",
+      "pinned": false
+    },
+    {
+      "id": "sha256:bf8527eb54c3680e728d5b4b383a8ba730d72dae7236fbc8dff97ed6b224a731",
+      "repoTags": [
+        "docker.io/library/alpine:3.20"
+      ],
+      "repoDigests": [
+        "docker.io/library/alpine@sha256:d9e853e87e55526f6b2917df91a2115c36dd7c696a35be12163d44e6e2a4b6bc"
+      ],
+      "size": "3641182",
+      "username": "",
+      "pinned": false
+    },
+    {
+      "id": "sha256:061ea9add985a0120039e624f38cc0726f96949f298f7f0f2d52926db9763140",
+      "repoTags": [
+        "docker.io/library/article-unused:1"
+      ],
+      "repoDigests": [],
+      "size": "536873292",
+      "username": "",
+      "pinned": false
+    },
+    {
+      "id": "sha256:08d9fe8f3e3317c144fbd03b87ea960afea9c190c63a2f9f8a876c8c539fed7d",
+      "repoTags": [],
+      "repoDigests": [],
+      "size": "4496296269",
+      "username": "",
+      "pinned": false
+    },
+    {
+      "id": "sha256:aa5e3ebc0dfed0566805186b9e47110d8f9122291d8bad1497e78873ad291139",
+      "repoTags": [
+        "registry.k8s.io/coredns/coredns:v1.13.1"
+      ],
+      "repoDigests": [],
+      "size": "23553139",
+      "username": "nonroot",
+      "pinned": false
+    },
+    {
+      "id": "sha256:0a108f7189562e99793bdecab61fdf1a7c9d913af3385de9da17fb9d6ff430e2",
+      "repoTags": [
+        "registry.k8s.io/etcd:3.6.6-0"
+      ],
+      "repoDigests": [],
+      "size": "23641797",
+      "uid": {
+        "value": "0"
+      },
+      "username": "",
+      "pinned": false
+    },
+    {
+      "id": "sha256:6f9eeb0cff9812c46738ee2fb811ca962aba8994283b4468ac9226f7ee65c54a",
+      "repoTags": [
+        "registry.k8s.io/kube-apiserver-amd64:v1.35.1",
+        "registry.k8s.io/kube-apiserver:v1.35.1"
+      ],
+      "repoDigests": [],
+      "size": "90851068",
+      "uid": {
+        "value": "0"
+      },
+      "username": "",
+      "pinned": true
+    },
+    {
+      "id": "sha256:8d7002962c4843ec8e0a4daa875d19df608b0a2eb84fc6ee7106c1ab81e07e9e",
+      "repoTags": [
+        "registry.k8s.io/kube-controller-manager-amd64:v1.35.1",
+        "registry.k8s.io/kube-controller-manager:v1.35.1"
+      ],
+      "repoDigests": [],
+      "size": "76891746",
+      "uid": {
+        "value": "0"
+      },
+      "username": "",
+      "pinned": true
+    },
+    {
+      "id": "sha256:6521110cdb017762a8780b67128baef82ee1e0fd8a91f9a0e42b265eab7807b9",
+      "repoTags": [
+        "registry.k8s.io/kube-proxy-amd64:v1.35.1",
+        "registry.k8s.io/kube-proxy:v1.35.1"
+      ],
+      "repoDigests": [],
+      "size": "71663305",
+      "username": "",
+      "pinned": true
+    },
+    {
+      "id": "sha256:5f2a969bc7a43f057f9079ae7ec159afc993a01ffcdd779b287c7a3eeb3951c1",
+      "repoTags": [
+        "registry.k8s.io/kube-scheduler-amd64:v1.35.1",
+        "registry.k8s.io/kube-scheduler:v1.35.1"
+      ],
+      "repoDigests": [],
+      "size": "52762210",
+      "uid": {
+        "value": "0"
+      },
+      "username": "",
+      "pinned": true
+    },
+    {
+      "id": "sha256:873ed75102791e5b0b8a7fcd41606c92fcec98d56d05ead4ac5131650004c136",
+      "repoTags": [
+        "registry.k8s.io/pause:3.10"
+      ],
+      "repoDigests": [],
+      "size": "320368",
+      "uid": {
+        "value": "65535"
+      },
+      "username": "",
+      "pinned": true
+    },
+    {
+      "id": "sha256:dd649b716827990b7993d6a9c8edfbaf17c6f2a331ed542baec8535bf775d204",
+      "repoTags": [],
+      "repoDigests": [],
+      "size": "536873292",
+      "username": "",
+      "pinned": false
+    }
+  ]
+}

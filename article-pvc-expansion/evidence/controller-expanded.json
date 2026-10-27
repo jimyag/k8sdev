@@ -1,0 +1,133 @@
+{
+  "pvc": {
+    "apiVersion": "v1",
+    "kind": "PersistentVolumeClaim",
+    "metadata": {
+      "annotations": {
+        "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"PersistentVolumeClaim\",\"metadata\":{\"annotations\":{},\"name\":\"expand\",\"namespace\":\"article-pvc-expansion\"},\"spec\":{\"accessModes\":[\"ReadWriteOnce\"],\"resources\":{\"requests\":{\"storage\":\"64Mi\"}},\"storageClassName\":\"article-expand\"}}\n",
+        "pv.kubernetes.io/bind-completed": "yes",
+        "pv.kubernetes.io/bound-by-controller": "yes",
+        "volume.beta.kubernetes.io/storage-provisioner": "hostpath.csi.k8s.io",
+        "volume.kubernetes.io/storage-provisioner": "hostpath.csi.k8s.io"
+      },
+      "creationTimestamp": "2026-10-26T11:54:00Z",
+      "finalizers": [
+        "kubernetes.io/pvc-protection"
+      ],
+      "name": "expand",
+      "namespace": "article-pvc-expansion",
+      "resourceVersion": "3234",
+      "uid": "1eceea8a-c8d5-48e3-a87d-5537fdd0dd6d"
+    },
+    "spec": {
+      "accessModes": [
+        "ReadWriteOnce"
+      ],
+      "resources": {
+        "requests": {
+          "storage": "128Mi"
+        }
+      },
+      "storageClassName": "article-expand",
+      "volumeMode": "Filesystem",
+      "volumeName": "pvc-1eceea8a-c8d5-48e3-a87d-5537fdd0dd6d"
+    },
+    "status": {
+      "accessModes": [
+        "ReadWriteOnce"
+      ],
+      "allocatedResourceStatuses": {
+        "storage": "NodeResizePending"
+      },
+      "allocatedResources": {
+        "storage": "128Mi"
+      },
+      "capacity": {
+        "storage": "64Mi"
+      },
+      "conditions": [
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-26T11:54:02Z",
+          "status": "True",
+          "type": "Resizing"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-26T11:54:02Z",
+          "message": "Waiting for user to (re-)start a pod to finish file system resize of volume on node.",
+          "status": "True",
+          "type": "FileSystemResizePending"
+        }
+      ],
+      "phase": "Bound"
+    }
+  },
+  "pv": {
+    "apiVersion": "v1",
+    "kind": "PersistentVolume",
+    "metadata": {
+      "annotations": {
+        "pv.kubernetes.io/provisioned-by": "hostpath.csi.k8s.io",
+        "volume.alpha.kubernetes.io/pre-resize-capacity": "64Mi",
+        "volume.kubernetes.io/provisioner-deletion-secret-name": "",
+        "volume.kubernetes.io/provisioner-deletion-secret-namespace": ""
+      },
+      "creationTimestamp": "2026-10-26T11:54:00Z",
+      "finalizers": [
+        "external-provisioner.volume.kubernetes.io/finalizer",
+        "kubernetes.io/pv-protection"
+      ],
+      "name": "pvc-1eceea8a-c8d5-48e3-a87d-5537fdd0dd6d",
+      "resourceVersion": "3233",
+      "uid": "12273809-807d-4e3e-ac0b-0c45ddd1213f"
+    },
+    "spec": {
+      "accessModes": [
+        "ReadWriteOnce"
+      ],
+      "capacity": {
+        "storage": "128Mi"
+      },
+      "claimRef": {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "name": "expand",
+        "namespace": "article-pvc-expansion",
+        "resourceVersion": "3206",
+        "uid": "1eceea8a-c8d5-48e3-a87d-5537fdd0dd6d"
+      },
+      "csi": {
+        "driver": "hostpath.csi.k8s.io",
+        "volumeAttributes": {
+          "storage.kubernetes.io/csiProvisionerIdentity": "1793014547166-8541-hostpath.csi.k8s.io"
+        },
+        "volumeHandle": "eea685a1-d133-11f1-837e-a223d2fb1cf2"
+      },
+      "nodeAffinity": {
+        "required": {
+          "nodeSelectorTerms": [
+            {
+              "matchExpressions": [
+                {
+                  "key": "topology.hostpath.csi/node",
+                  "operator": "In",
+                  "values": [
+                    "article-next-worker2"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "persistentVolumeReclaimPolicy": "Delete",
+      "storageClassName": "article-expand",
+      "volumeMode": "Filesystem"
+    },
+    "status": {
+      "lastPhaseTransitionTime": "2026-10-26T11:54:00Z",
+      "phase": "Bound"
+    }
+  }
+}

@@ -1,0 +1,699 @@
+{
+  "pvc": {
+    "apiVersion": "v1",
+    "kind": "PersistentVolumeClaim",
+    "metadata": {
+      "annotations": {
+        "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"PersistentVolumeClaim\",\"metadata\":{\"annotations\":{},\"name\":\"expand\",\"namespace\":\"article-pvc-expansion\"},\"spec\":{\"accessModes\":[\"ReadWriteOnce\"],\"resources\":{\"requests\":{\"storage\":\"64Mi\"}},\"storageClassName\":\"article-expand\"}}\n",
+        "pv.kubernetes.io/bind-completed": "yes",
+        "pv.kubernetes.io/bound-by-controller": "yes",
+        "volume.beta.kubernetes.io/storage-provisioner": "hostpath.csi.k8s.io",
+        "volume.kubernetes.io/storage-provisioner": "hostpath.csi.k8s.io"
+      },
+      "creationTimestamp": "2026-10-26T11:54:00Z",
+      "finalizers": [
+        "kubernetes.io/pvc-protection"
+      ],
+      "name": "expand",
+      "namespace": "article-pvc-expansion",
+      "resourceVersion": "3263",
+      "uid": "1eceea8a-c8d5-48e3-a87d-5537fdd0dd6d"
+    },
+    "spec": {
+      "accessModes": [
+        "ReadWriteOnce"
+      ],
+      "resources": {
+        "requests": {
+          "storage": "128Mi"
+        }
+      },
+      "storageClassName": "article-expand",
+      "volumeMode": "Filesystem",
+      "volumeName": "pvc-1eceea8a-c8d5-48e3-a87d-5537fdd0dd6d"
+    },
+    "status": {
+      "accessModes": [
+        "ReadWriteOnce"
+      ],
+      "allocatedResources": {
+        "storage": "128Mi"
+      },
+      "capacity": {
+        "storage": "128Mi"
+      },
+      "phase": "Bound"
+    }
+  },
+  "pv": {
+    "apiVersion": "v1",
+    "kind": "PersistentVolume",
+    "metadata": {
+      "annotations": {
+        "pv.kubernetes.io/provisioned-by": "hostpath.csi.k8s.io",
+        "volume.kubernetes.io/provisioner-deletion-secret-name": "",
+        "volume.kubernetes.io/provisioner-deletion-secret-namespace": ""
+      },
+      "creationTimestamp": "2026-10-26T11:54:00Z",
+      "finalizers": [
+        "external-provisioner.volume.kubernetes.io/finalizer",
+        "kubernetes.io/pv-protection"
+      ],
+      "name": "pvc-1eceea8a-c8d5-48e3-a87d-5537fdd0dd6d",
+      "resourceVersion": "3265",
+      "uid": "12273809-807d-4e3e-ac0b-0c45ddd1213f"
+    },
+    "spec": {
+      "accessModes": [
+        "ReadWriteOnce"
+      ],
+      "capacity": {
+        "storage": "128Mi"
+      },
+      "claimRef": {
+        "apiVersion": "v1",
+        "kind": "PersistentVolumeClaim",
+        "name": "expand",
+        "namespace": "article-pvc-expansion",
+        "resourceVersion": "3206",
+        "uid": "1eceea8a-c8d5-48e3-a87d-5537fdd0dd6d"
+      },
+      "csi": {
+        "driver": "hostpath.csi.k8s.io",
+        "volumeAttributes": {
+          "storage.kubernetes.io/csiProvisionerIdentity": "1793014547166-8541-hostpath.csi.k8s.io"
+        },
+        "volumeHandle": "eea685a1-d133-11f1-837e-a223d2fb1cf2"
+      },
+      "nodeAffinity": {
+        "required": {
+          "nodeSelectorTerms": [
+            {
+              "matchExpressions": [
+                {
+                  "key": "topology.hostpath.csi/node",
+                  "operator": "In",
+                  "values": [
+                    "article-next-worker2"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "persistentVolumeReclaimPolicy": "Delete",
+      "storageClassName": "article-expand",
+      "volumeMode": "Filesystem"
+    },
+    "status": {
+      "lastPhaseTransitionTime": "2026-10-26T11:54:00Z",
+      "phase": "Bound"
+    }
+  },
+  "df": "Filesystem                Size      Used Available Use% Mounted on\n/dev/sda2               443.2G     67.3G    353.4G  16% /data\n",
+  "data": "persistent",
+  "events": {
+    "apiVersion": "v1",
+    "items": [
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T11:54:00Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "kind": "PersistentVolumeClaim",
+          "name": "expand",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3206",
+          "uid": "1eceea8a-c8d5-48e3-a87d-5537fdd0dd6d"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T11:54:00Z",
+        "message": "External provisioner is provisioning volume for claim \"article-pvc-expansion/expand\"",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T11:54:00Z",
+          "name": "expand.18e212399a87e397",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3209",
+          "uid": "d1e3f34c-a075-4f6c-b519-83940a340900"
+        },
+        "reason": "Provisioning",
+        "reportingComponent": "hostpath.csi.k8s.io_csi-hostpathplugin-0_d58a07cd-c5aa-4db0-b8dd-bd0982ef80dc",
+        "reportingInstance": "",
+        "source": {
+          "component": "hostpath.csi.k8s.io_csi-hostpathplugin-0_d58a07cd-c5aa-4db0-b8dd-bd0982ef80dc"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T11:54:00Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "kind": "PersistentVolumeClaim",
+          "name": "expand",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3206",
+          "uid": "1eceea8a-c8d5-48e3-a87d-5537fdd0dd6d"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T11:54:00Z",
+        "message": "Waiting for a volume to be created either by the external provisioner 'hostpath.csi.k8s.io' or manually by the system administrator. If volume creation is delayed, please verify that the provisioner is running and correctly registered.",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T11:54:00Z",
+          "name": "expand.18e212399a87eca2",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3208",
+          "uid": "8c2ba67d-5c9d-45d7-a409-cfbb0cde38bf"
+        },
+        "reason": "ExternalProvisioning",
+        "reportingComponent": "persistentvolume-controller",
+        "reportingInstance": "",
+        "source": {
+          "component": "persistentvolume-controller"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T11:54:00Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "kind": "PersistentVolumeClaim",
+          "name": "expand",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3206",
+          "uid": "1eceea8a-c8d5-48e3-a87d-5537fdd0dd6d"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T11:54:00Z",
+        "message": "Successfully provisioned volume pvc-1eceea8a-c8d5-48e3-a87d-5537fdd0dd6d",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T11:54:00Z",
+          "name": "expand.18e212399ab3d770",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3211",
+          "uid": "110539f7-c577-4751-acbd-de1f28a287a3"
+        },
+        "reason": "ProvisioningSucceeded",
+        "reportingComponent": "hostpath.csi.k8s.io_csi-hostpathplugin-0_d58a07cd-c5aa-4db0-b8dd-bd0982ef80dc",
+        "reportingInstance": "",
+        "source": {
+          "component": "hostpath.csi.k8s.io_csi-hostpathplugin-0_d58a07cd-c5aa-4db0-b8dd-bd0982ef80dc"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 2,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T11:54:02Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "kind": "PersistentVolumeClaim",
+          "name": "expand",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3229",
+          "uid": "1eceea8a-c8d5-48e3-a87d-5537fdd0dd6d"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T11:54:12Z",
+        "message": "waiting for an external controller to expand this PVC",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T11:54:02Z",
+          "name": "expand.18e2123a267c1d3d",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3266",
+          "uid": "8a360954-b48a-47e2-981e-caf8eee72266"
+        },
+        "reason": "ExternalExpanding",
+        "reportingComponent": "volume_expand",
+        "reportingInstance": "",
+        "source": {
+          "component": "volume_expand"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T11:54:02Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "kind": "PersistentVolumeClaim",
+          "name": "expand",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3230",
+          "uid": "1eceea8a-c8d5-48e3-a87d-5537fdd0dd6d"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T11:54:02Z",
+        "message": "External resizer is resizing volume pvc-1eceea8a-c8d5-48e3-a87d-5537fdd0dd6d",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T11:54:02Z",
+          "name": "expand.18e2123a26a81af0",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3232",
+          "uid": "a667358e-1fe1-4e9b-9abf-b0328e99e7b9"
+        },
+        "reason": "Resizing",
+        "reportingComponent": "external-resizer hostpath.csi.k8s.io",
+        "reportingInstance": "",
+        "source": {
+          "component": "external-resizer hostpath.csi.k8s.io"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T11:54:02Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "kind": "PersistentVolumeClaim",
+          "name": "expand",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3230",
+          "uid": "1eceea8a-c8d5-48e3-a87d-5537fdd0dd6d"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T11:54:02Z",
+        "message": "Require file system resize of volume on node",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T11:54:02Z",
+          "name": "expand.18e2123a2726e16b",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3235",
+          "uid": "d358ff7a-0056-4a2e-b8e4-78c7578a423e"
+        },
+        "reason": "FileSystemResizeRequired",
+        "reportingComponent": "external-resizer hostpath.csi.k8s.io",
+        "reportingInstance": "",
+        "source": {
+          "component": "external-resizer hostpath.csi.k8s.io"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T11:54:12Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "kind": "PersistentVolumeClaim",
+          "name": "expand",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3261",
+          "uid": "1eceea8a-c8d5-48e3-a87d-5537fdd0dd6d"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T11:54:12Z",
+        "message": "MountVolume.NodeExpandVolume succeeded for volume \"pvc-1eceea8a-c8d5-48e3-a87d-5537fdd0dd6d\" article-next-worker2",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T11:54:12Z",
+          "name": "expand.18e2123c6c2651fd",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3264",
+          "uid": "477c9fa3-9790-44d2-9565-ef08aa9c5b35"
+        },
+        "reason": "FileSystemResizeSuccessful",
+        "reportingComponent": "kubelet",
+        "reportingInstance": "article-next-worker2",
+        "source": {
+          "component": "kubelet",
+          "host": "article-next-worker2"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T11:54:00Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "kind": "Pod",
+          "name": "writer",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3214",
+          "uid": "25a9efdf-99a5-4b45-9128-7cb26b8bbd47"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T11:54:00Z",
+        "message": "Successfully assigned article-pvc-expansion/writer to article-next-worker2",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T11:54:00Z",
+          "name": "writer.18e21239a539af3a",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3216",
+          "uid": "832b2531-b14c-49b9-a153-cfca3390d807"
+        },
+        "reason": "Scheduled",
+        "reportingComponent": "default-scheduler",
+        "reportingInstance": "",
+        "source": {
+          "component": "default-scheduler"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T11:54:01Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "kind": "Pod",
+          "name": "writer",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3215",
+          "uid": "25a9efdf-99a5-4b45-9128-7cb26b8bbd47"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T11:54:01Z",
+        "message": "AttachVolume.Attach succeeded for volume \"pvc-1eceea8a-c8d5-48e3-a87d-5537fdd0dd6d\" ",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T11:54:01Z",
+          "name": "writer.18e21239c97f7382",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3221",
+          "uid": "44140aa6-4e37-4615-a535-78c8100d96c3"
+        },
+        "reason": "SuccessfulAttachVolume",
+        "reportingComponent": "attachdetach-controller",
+        "reportingInstance": "",
+        "source": {
+          "component": "attachdetach-controller"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T11:54:02Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "fieldPath": "spec.containers{app}",
+          "kind": "Pod",
+          "name": "writer",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3215",
+          "uid": "25a9efdf-99a5-4b45-9128-7cb26b8bbd47"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T11:54:02Z",
+        "message": "Container image \"alpine:3.20\" already present on machine and can be accessed by the pod",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T11:54:02Z",
+          "name": "writer.18e2123a15e4992d",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3225",
+          "uid": "1d7b8a42-aa98-403c-8027-fd3752a0ac9c"
+        },
+        "reason": "Pulled",
+        "reportingComponent": "kubelet",
+        "reportingInstance": "article-next-worker2",
+        "source": {
+          "component": "kubelet",
+          "host": "article-next-worker2"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T11:54:02Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "fieldPath": "spec.containers{app}",
+          "kind": "Pod",
+          "name": "writer",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3215",
+          "uid": "25a9efdf-99a5-4b45-9128-7cb26b8bbd47"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T11:54:02Z",
+        "message": "Container created",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T11:54:02Z",
+          "name": "writer.18e2123a1687d797",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3226",
+          "uid": "6c700339-f15e-461f-8e9d-2edee96a3681"
+        },
+        "reason": "Created",
+        "reportingComponent": "kubelet",
+        "reportingInstance": "article-next-worker2",
+        "source": {
+          "component": "kubelet",
+          "host": "article-next-worker2"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T11:54:02Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "fieldPath": "spec.containers{app}",
+          "kind": "Pod",
+          "name": "writer",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3215",
+          "uid": "25a9efdf-99a5-4b45-9128-7cb26b8bbd47"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T11:54:02Z",
+        "message": "Container started",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T11:54:02Z",
+          "name": "writer.18e2123a1a19b8eb",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3227",
+          "uid": "6bd84511-d630-412d-a9de-34d8238fae02"
+        },
+        "reason": "Started",
+        "reportingComponent": "kubelet",
+        "reportingInstance": "article-next-worker2",
+        "source": {
+          "component": "kubelet",
+          "host": "article-next-worker2"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T11:54:03Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "fieldPath": "spec.containers{app}",
+          "kind": "Pod",
+          "name": "writer",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3215",
+          "uid": "25a9efdf-99a5-4b45-9128-7cb26b8bbd47"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T11:54:03Z",
+        "message": "Stopping container app",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T11:54:03Z",
+          "name": "writer.18e2123a5a850d5f",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3238",
+          "uid": "e0422e3a-f415-4bf8-a95d-46dbb0c47faf"
+        },
+        "reason": "Killing",
+        "reportingComponent": "kubelet",
+        "reportingInstance": "article-next-worker2",
+        "source": {
+          "component": "kubelet",
+          "host": "article-next-worker2"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T11:54:06Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "kind": "Pod",
+          "name": "writer",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3250",
+          "uid": "3fc87cbd-fd76-46d9-ae0f-ad9cdd91a6b0"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T11:54:06Z",
+        "message": "Successfully assigned article-pvc-expansion/writer to article-next-worker2",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T11:54:06Z",
+          "name": "writer.18e2123b13127432",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3252",
+          "uid": "ef1b10fa-8b20-45d8-b12c-f2d9a0d38aba"
+        },
+        "reason": "Scheduled",
+        "reportingComponent": "default-scheduler",
+        "reportingInstance": "",
+        "source": {
+          "component": "default-scheduler"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T11:54:12Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "kind": "Pod",
+          "name": "writer",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3251",
+          "uid": "3fc87cbd-fd76-46d9-ae0f-ad9cdd91a6b0"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T11:54:12Z",
+        "message": "MountVolume.NodeExpandVolume succeeded for volume \"pvc-1eceea8a-c8d5-48e3-a87d-5537fdd0dd6d\" article-next-worker2",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T11:54:12Z",
+          "name": "writer.18e2123c6c263210",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3262",
+          "uid": "ad8d30b8-8760-48c6-8b36-ceb0069224af"
+        },
+        "reason": "FileSystemResizeSuccessful",
+        "reportingComponent": "kubelet",
+        "reportingInstance": "article-next-worker2",
+        "source": {
+          "component": "kubelet",
+          "host": "article-next-worker2"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T11:54:12Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "fieldPath": "spec.containers{app}",
+          "kind": "Pod",
+          "name": "writer",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3251",
+          "uid": "3fc87cbd-fd76-46d9-ae0f-ad9cdd91a6b0"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T11:54:12Z",
+        "message": "Container image \"alpine:3.20\" already present on machine and can be accessed by the pod",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T11:54:12Z",
+          "name": "writer.18e2123c7eb73538",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3267",
+          "uid": "2dca8511-865d-4ee6-b36b-7b4ffa5f49fb"
+        },
+        "reason": "Pulled",
+        "reportingComponent": "kubelet",
+        "reportingInstance": "article-next-worker2",
+        "source": {
+          "component": "kubelet",
+          "host": "article-next-worker2"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T11:54:12Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "fieldPath": "spec.containers{app}",
+          "kind": "Pod",
+          "name": "writer",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3251",
+          "uid": "3fc87cbd-fd76-46d9-ae0f-ad9cdd91a6b0"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T11:54:12Z",
+        "message": "Container created",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T11:54:12Z",
+          "name": "writer.18e2123c7f487f6b",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3268",
+          "uid": "9875dcb5-0839-4124-8a5a-509de2bdf805"
+        },
+        "reason": "Created",
+        "reportingComponent": "kubelet",
+        "reportingInstance": "article-next-worker2",
+        "source": {
+          "component": "kubelet",
+          "host": "article-next-worker2"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T11:54:12Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "fieldPath": "spec.containers{app}",
+          "kind": "Pod",
+          "name": "writer",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3251",
+          "uid": "3fc87cbd-fd76-46d9-ae0f-ad9cdd91a6b0"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T11:54:12Z",
+        "message": "Container started",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T11:54:12Z",
+          "name": "writer.18e2123c81513f21",
+          "namespace": "article-pvc-expansion",
+          "resourceVersion": "3269",
+          "uid": "4bdc4516-cc26-4526-b245-4bd7923960df"
+        },
+        "reason": "Started",
+        "reportingComponent": "kubelet",
+        "reportingInstance": "article-next-worker2",
+        "source": {
+          "component": "kubelet",
+          "host": "article-next-worker2"
+        },
+        "type": "Normal"
+      }
+    ],
+    "kind": "List",
+    "metadata": {
+      "resourceVersion": ""
+    }
+  }
+}

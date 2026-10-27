@@ -1,0 +1,9 @@
+{
+  "initial_capacity": "64Mi",
+  "expanded_capacity": "128Mi",
+  "data_preserved": true,
+  "shrink_rejected": true,
+  "storageclass_without_expansion_rejected": true,
+  "hostpath_df": "Filesystem                Size      Used Available Use% Mounted on\n/dev/sda2               443.2G     67.3G    353.4G  16% /data",
+  "hostpath_capacity_is_metadata_only": true
+}

@@ -1,0 +1,559 @@
+{
+  "pod": {
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+      "annotations": {
+        "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Pod\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"pull-fail\"},\"name\":\"pull-fail\",\"namespace\":\"article-image\"},\"spec\":{\"containers\":[{\"command\":[\"true\"],\"image\":\"example.invalid/kubernetes-image-does-not-exist:never\",\"imagePullPolicy\":\"Always\",\"name\":\"app\"}]}}\n"
+      },
+      "creationTimestamp": "2026-10-26T12:23:39Z",
+      "generation": 1,
+      "labels": {
+        "app": "pull-fail"
+      },
+      "name": "pull-fail",
+      "namespace": "article-image",
+      "resourceVersion": "1148",
+      "uid": "6a2b8719-adbe-4a78-aa45-be1f47f00bd1"
+    },
+    "spec": {
+      "containers": [
+        {
+          "command": [
+            "true"
+          ],
+          "image": "example.invalid/kubernetes-image-does-not-exist:never",
+          "imagePullPolicy": "Always",
+          "name": "app",
+          "resources": {},
+          "terminationMessagePath": "/dev/termination-log",
+          "terminationMessagePolicy": "File",
+          "volumeMounts": [
+            {
+              "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+              "name": "kube-api-access-d6trd",
+              "readOnly": true
+            }
+          ]
+        }
+      ],
+      "dnsPolicy": "ClusterFirst",
+      "enableServiceLinks": true,
+      "nodeName": "article-image-control-plane",
+      "preemptionPolicy": "PreemptLowerPriority",
+      "priority": 0,
+      "restartPolicy": "Always",
+      "schedulerName": "default-scheduler",
+      "securityContext": {},
+      "serviceAccount": "default",
+      "serviceAccountName": "default",
+      "terminationGracePeriodSeconds": 30,
+      "tolerations": [
+        {
+          "effect": "NoExecute",
+          "key": "node.kubernetes.io/not-ready",
+          "operator": "Exists",
+          "tolerationSeconds": 300
+        },
+        {
+          "effect": "NoExecute",
+          "key": "node.kubernetes.io/unreachable",
+          "operator": "Exists",
+          "tolerationSeconds": 300
+        }
+      ],
+      "volumes": [
+        {
+          "name": "kube-api-access-d6trd",
+          "projected": {
+            "defaultMode": 420,
+            "sources": [
+              {
+                "serviceAccountToken": {
+                  "expirationSeconds": 3607,
+                  "path": "token"
+                }
+              },
+              {
+                "configMap": {
+                  "items": [
+                    {
+                      "key": "ca.crt",
+                      "path": "ca.crt"
+                    }
+                  ],
+                  "name": "kube-root-ca.crt"
+                }
+              },
+              {
+                "downwardAPI": {
+                  "items": [
+                    {
+                      "fieldRef": {
+                        "apiVersion": "v1",
+                        "fieldPath": "metadata.namespace"
+                      },
+                      "path": "namespace"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "status": {
+      "conditions": [
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-26T12:23:40Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "PodReadyToStartContainers"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-26T12:23:39Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "Initialized"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-26T12:23:39Z",
+          "message": "containers with unready status: [app]",
+          "observedGeneration": 1,
+          "reason": "ContainersNotReady",
+          "status": "False",
+          "type": "Ready"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-26T12:23:39Z",
+          "message": "containers with unready status: [app]",
+          "observedGeneration": 1,
+          "reason": "ContainersNotReady",
+          "status": "False",
+          "type": "ContainersReady"
+        },
+        {
+          "lastProbeTime": null,
+          "lastTransitionTime": "2026-10-26T12:23:39Z",
+          "observedGeneration": 1,
+          "status": "True",
+          "type": "PodScheduled"
+        }
+      ],
+      "containerStatuses": [
+        {
+          "image": "example.invalid/kubernetes-image-does-not-exist:never",
+          "imageID": "",
+          "lastState": {},
+          "name": "app",
+          "ready": false,
+          "restartCount": 0,
+          "started": false,
+          "state": {
+            "waiting": {
+              "message": "Back-off pulling image \"example.invalid/kubernetes-image-does-not-exist:never\": ErrImagePull: failed to pull and unpack image \"example.invalid/kubernetes-image-does-not-exist:never\": failed to resolve reference \"example.invalid/kubernetes-image-does-not-exist:never\": failed to do request: Head \"https://example.invalid/v2/kubernetes-image-does-not-exist/manifests/never\": dial tcp: lookup example.invalid on 192.168.48.1:53: no such host",
+              "reason": "ImagePullBackOff"
+            }
+          },
+          "volumeMounts": [
+            {
+              "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+              "name": "kube-api-access-d6trd",
+              "readOnly": true,
+              "recursiveReadOnly": "Disabled"
+            }
+          ]
+        }
+      ],
+      "hostIP": "192.168.48.2",
+      "hostIPs": [
+        {
+          "ip": "192.168.48.2"
+        }
+      ],
+      "observedGeneration": 1,
+      "phase": "Pending",
+      "podIP": "10.244.0.10",
+      "podIPs": [
+        {
+          "ip": "10.244.0.10"
+        }
+      ],
+      "qosClass": "BestEffort",
+      "startTime": "2026-10-26T12:23:39Z"
+    }
+  },
+  "events": {
+    "apiVersion": "v1",
+    "items": [
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T12:23:39Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "kind": "Pod",
+          "name": "pull-fail",
+          "namespace": "article-image",
+          "resourceVersion": "1122",
+          "uid": "6a2b8719-adbe-4a78-aa45-be1f47f00bd1"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T12:23:39Z",
+        "message": "Successfully assigned article-image/pull-fail to article-image-control-plane",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T12:23:39Z",
+          "name": "pull-fail.18e213d7e308d128",
+          "namespace": "article-image",
+          "resourceVersion": "1124",
+          "uid": "641316f0-7309-494f-90bb-b20f7e0979e3"
+        },
+        "reason": "Scheduled",
+        "reportingComponent": "default-scheduler",
+        "reportingInstance": "",
+        "source": {
+          "component": "default-scheduler"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 2,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T12:23:40Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "fieldPath": "spec.containers{app}",
+          "kind": "Pod",
+          "name": "pull-fail",
+          "namespace": "article-image",
+          "resourceVersion": "1123",
+          "uid": "6a2b8719-adbe-4a78-aa45-be1f47f00bd1"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T12:23:51Z",
+        "message": "Pulling image \"example.invalid/kubernetes-image-does-not-exist:never\"",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T12:23:40Z",
+          "name": "pull-fail.18e213d7fbe8c3b2",
+          "namespace": "article-image",
+          "resourceVersion": "1147",
+          "uid": "819e6da5-ebc4-43e0-9d63-4d76ec4d5468"
+        },
+        "reason": "Pulling",
+        "reportingComponent": "kubelet",
+        "reportingInstance": "article-image-control-plane",
+        "source": {
+          "component": "kubelet",
+          "host": "article-image-control-plane"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 2,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T12:23:40Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "fieldPath": "spec.containers{app}",
+          "kind": "Pod",
+          "name": "pull-fail",
+          "namespace": "article-image",
+          "resourceVersion": "1123",
+          "uid": "6a2b8719-adbe-4a78-aa45-be1f47f00bd1"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T12:23:51Z",
+        "message": "Failed to pull image \"example.invalid/kubernetes-image-does-not-exist:never\": failed to pull and unpack image \"example.invalid/kubernetes-image-does-not-exist:never\": failed to resolve reference \"example.invalid/kubernetes-image-does-not-exist:never\": failed to do request: Head \"https://example.invalid/v2/kubernetes-image-does-not-exist/manifests/never\": dial tcp: lookup example.invalid on 192.168.48.1:53: no such host",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T12:23:40Z",
+          "name": "pull-fail.18e213d7fc3e58d4",
+          "namespace": "article-image",
+          "resourceVersion": "1149",
+          "uid": "22e22374-b129-4bb5-9796-8c505fc8533a"
+        },
+        "reason": "Failed",
+        "reportingComponent": "kubelet",
+        "reportingInstance": "article-image-control-plane",
+        "source": {
+          "component": "kubelet",
+          "host": "article-image-control-plane"
+        },
+        "type": "Warning"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 2,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T12:23:40Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "fieldPath": "spec.containers{app}",
+          "kind": "Pod",
+          "name": "pull-fail",
+          "namespace": "article-image",
+          "resourceVersion": "1123",
+          "uid": "6a2b8719-adbe-4a78-aa45-be1f47f00bd1"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T12:23:51Z",
+        "message": "Error: ErrImagePull",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T12:23:40Z",
+          "name": "pull-fail.18e213d7fc3f8531",
+          "namespace": "article-image",
+          "resourceVersion": "1150",
+          "uid": "5fe2df97-6eb8-4794-817f-376a0981bf3c"
+        },
+        "reason": "Failed",
+        "reportingComponent": "kubelet",
+        "reportingInstance": "article-image-control-plane",
+        "source": {
+          "component": "kubelet",
+          "host": "article-image-control-plane"
+        },
+        "type": "Warning"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T12:23:40Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "fieldPath": "spec.containers{app}",
+          "kind": "Pod",
+          "name": "pull-fail",
+          "namespace": "article-image",
+          "resourceVersion": "1123",
+          "uid": "6a2b8719-adbe-4a78-aa45-be1f47f00bd1"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T12:23:40Z",
+        "message": "Back-off pulling image \"example.invalid/kubernetes-image-does-not-exist:never\"",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T12:23:40Z",
+          "name": "pull-fail.18e213d81a33d1e1",
+          "namespace": "article-image",
+          "resourceVersion": "1129",
+          "uid": "70adb5c1-a9ee-40bd-80af-405e925c3447"
+        },
+        "reason": "BackOff",
+        "reportingComponent": "kubelet",
+        "reportingInstance": "article-image-control-plane",
+        "source": {
+          "component": "kubelet",
+          "host": "article-image-control-plane"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T12:23:40Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "fieldPath": "spec.containers{app}",
+          "kind": "Pod",
+          "name": "pull-fail",
+          "namespace": "article-image",
+          "resourceVersion": "1123",
+          "uid": "6a2b8719-adbe-4a78-aa45-be1f47f00bd1"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T12:23:40Z",
+        "message": "Error: ImagePullBackOff",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T12:23:40Z",
+          "name": "pull-fail.18e213d81a348f7f",
+          "namespace": "article-image",
+          "resourceVersion": "1130",
+          "uid": "22328b9d-080f-41de-9ea2-a42d97ce041e"
+        },
+        "reason": "Failed",
+        "reportingComponent": "kubelet",
+        "reportingInstance": "article-image-control-plane",
+        "source": {
+          "component": "kubelet",
+          "host": "article-image-control-plane"
+        },
+        "type": "Warning"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T12:23:36Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "kind": "Pod",
+          "name": "pull-ok",
+          "namespace": "article-image",
+          "resourceVersion": "1106",
+          "uid": "d1711de1-d627-48eb-8e68-7e7087553f96"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T12:23:36Z",
+        "message": "Successfully assigned article-image/pull-ok to article-image-control-plane",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T12:23:36Z",
+          "name": "pull-ok.18e213d73bf08a16",
+          "namespace": "article-image",
+          "resourceVersion": "1108",
+          "uid": "5e731fa8-8ab6-4831-a186-202f34fbb6fc"
+        },
+        "reason": "Scheduled",
+        "reportingComponent": "default-scheduler",
+        "reportingInstance": "",
+        "source": {
+          "component": "default-scheduler"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T12:23:37Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "fieldPath": "spec.containers{app}",
+          "kind": "Pod",
+          "name": "pull-ok",
+          "namespace": "article-image",
+          "resourceVersion": "1107",
+          "uid": "d1711de1-d627-48eb-8e68-7e7087553f96"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T12:23:37Z",
+        "message": "Pulling image \"alpine:3.20\"",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T12:23:37Z",
+          "name": "pull-ok.18e213d753fc39e4",
+          "namespace": "article-image",
+          "resourceVersion": "1113",
+          "uid": "9d442244-3af6-40df-9ce5-48779e4c8dc4"
+        },
+        "reason": "Pulling",
+        "reportingComponent": "kubelet",
+        "reportingInstance": "article-image-control-plane",
+        "source": {
+          "component": "kubelet",
+          "host": "article-image-control-plane"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T12:23:38Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "fieldPath": "spec.containers{app}",
+          "kind": "Pod",
+          "name": "pull-ok",
+          "namespace": "article-image",
+          "resourceVersion": "1107",
+          "uid": "d1711de1-d627-48eb-8e68-7e7087553f96"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T12:23:38Z",
+        "message": "Successfully pulled image \"alpine:3.20\" in 1.484s (1.484s including waiting). Image size: 3641182 bytes.",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T12:23:38Z",
+          "name": "pull-ok.18e213d7ac79fbc1",
+          "namespace": "article-image",
+          "resourceVersion": "1115",
+          "uid": "c040141e-9ce6-47b1-90d6-b8a69efa159f"
+        },
+        "reason": "Pulled",
+        "reportingComponent": "kubelet",
+        "reportingInstance": "article-image-control-plane",
+        "source": {
+          "component": "kubelet",
+          "host": "article-image-control-plane"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T12:23:38Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "fieldPath": "spec.containers{app}",
+          "kind": "Pod",
+          "name": "pull-ok",
+          "namespace": "article-image",
+          "resourceVersion": "1107",
+          "uid": "d1711de1-d627-48eb-8e68-7e7087553f96"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T12:23:38Z",
+        "message": "Container created",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T12:23:38Z",
+          "name": "pull-ok.18e213d7ad1c5884",
+          "namespace": "article-image",
+          "resourceVersion": "1116",
+          "uid": "47ff420c-b011-4816-9271-63e44781d30f"
+        },
+        "reason": "Created",
+        "reportingComponent": "kubelet",
+        "reportingInstance": "article-image-control-plane",
+        "source": {
+          "component": "kubelet",
+          "host": "article-image-control-plane"
+        },
+        "type": "Normal"
+      },
+      {
+        "apiVersion": "v1",
+        "count": 1,
+        "eventTime": null,
+        "firstTimestamp": "2026-10-26T12:23:38Z",
+        "involvedObject": {
+          "apiVersion": "v1",
+          "fieldPath": "spec.containers{app}",
+          "kind": "Pod",
+          "name": "pull-ok",
+          "namespace": "article-image",
+          "resourceVersion": "1107",
+          "uid": "d1711de1-d627-48eb-8e68-7e7087553f96"
+        },
+        "kind": "Event",
+        "lastTimestamp": "2026-10-26T12:23:38Z",
+        "message": "Container started",
+        "metadata": {
+          "creationTimestamp": "2026-10-26T12:23:38Z",
+          "name": "pull-ok.18e213d7b0b46c2f",
+          "namespace": "article-image",
+          "resourceVersion": "1117",
+          "uid": "4b6bd221-2225-4a16-9922-6a4fd0e62c2d"
+        },
+        "reason": "Started",
+        "reportingComponent": "kubelet",
+        "reportingInstance": "article-image-control-plane",
+        "source": {
+          "component": "kubelet",
+          "host": "article-image-control-plane"
+        },
+        "type": "Normal"
+      }
+    ],
+    "kind": "List",
+    "metadata": {
+      "resourceVersion": ""
+    }
+  }
+}

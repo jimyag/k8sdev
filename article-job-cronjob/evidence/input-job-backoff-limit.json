@@ -1,0 +1,35 @@
+{
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": {
+    "name": "backoff-limit",
+    "labels": {
+      "app": "backoff-limit"
+    }
+  },
+  "spec": {
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "backoff-limit"
+        }
+      },
+      "spec": {
+        "restartPolicy": "Never",
+        "containers": [
+          {
+            "name": "task",
+            "image": "alpine:3.20",
+            "imagePullPolicy": "IfNotPresent",
+            "command": [
+              "sh",
+              "-c",
+              "exit 1"
+            ]
+          }
+        ]
+      }
+    },
+    "backoffLimit": 1
+  }
+}

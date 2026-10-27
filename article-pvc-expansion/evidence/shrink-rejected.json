@@ -1,0 +1,4 @@
+{
+  "exit_code": 1,
+  "stderr": "The PersistentVolumeClaim \"expand\" is invalid: spec.resources.requests.storage: Forbidden: field can not be less than status.capacity"
+}

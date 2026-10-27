@@ -1,0 +1,74 @@
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "widget-webhook"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "widget-webhook"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "widget-webhook"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "webhook",
+            "image": "python:3.12-alpine",
+            "imagePullPolicy": "IfNotPresent",
+            "command": [
+              "python",
+              "/app/webhook.py"
+            ],
+            "ports": [
+              {
+                "name": "https",
+                "containerPort": 8443
+              }
+            ],
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/healthz",
+                "port": "https",
+                "scheme": "HTTPS"
+              },
+              "periodSeconds": 2
+            },
+            "volumeMounts": [
+              {
+                "name": "code",
+                "mountPath": "/app"
+              },
+              {
+                "name": "tls",
+                "mountPath": "/tls",
+                "readOnly": true
+              }
+            ]
+          }
+        ],
+        "volumes": [
+          {
+            "name": "code",
+            "configMap": {
+              "name": "webhook-code"
+            }
+          },
+          {
+            "name": "tls",
+            "secret": {
+              "secretName": "widget-webhook-tls"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

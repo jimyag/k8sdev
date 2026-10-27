@@ -1,0 +1,11 @@
+{
+  "indexed_completion_indices": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "pod_failure_policy_pod_count": 1,
+  "backoff_limit_pod_count": 2,
+  "cronjob_forbid_overlap": true
+}

@@ -1,0 +1,178 @@
+{
+  "v1alpha1": {
+    "apiVersion": "example.jimyag.com/v1alpha1",
+    "kind": "Widget",
+    "metadata": {
+      "annotations": {
+        "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"example.jimyag.com/v1alpha1\",\"kind\":\"Widget\",\"metadata\":{\"annotations\":{},\"name\":\"sample\",\"namespace\":\"article-crd-conversion\"},\"spec\":{\"label\":\"alpha\",\"replicas\":3,\"unknown\":\"pruned\"}}\n"
+      },
+      "creationTimestamp": "2026-10-26T11:51:28Z",
+      "generation": 1,
+      "name": "sample",
+      "namespace": "article-crd-conversion",
+      "resourceVersion": "2754",
+      "uid": "977ca6ac-39ec-42d1-96ad-bccfa5fb2c40"
+    },
+    "spec": {
+      "label": "alpha",
+      "replicas": 3
+    }
+  },
+  "v1beta1": {
+    "apiVersion": "example.jimyag.com/v1beta1",
+    "kind": "Widget",
+    "metadata": {
+      "annotations": {
+        "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"example.jimyag.com/v1alpha1\",\"kind\":\"Widget\",\"metadata\":{\"annotations\":{},\"name\":\"sample\",\"namespace\":\"article-crd-conversion\"},\"spec\":{\"label\":\"alpha\",\"replicas\":3,\"unknown\":\"pruned\"}}\n"
+      },
+      "creationTimestamp": "2026-10-26T11:51:28Z",
+      "generation": 1,
+      "name": "sample",
+      "namespace": "article-crd-conversion",
+      "resourceVersion": "2754",
+      "uid": "977ca6ac-39ec-42d1-96ad-bccfa5fb2c40"
+    },
+    "spec": {
+      "displayName": "alpha",
+      "replicas": 3
+    }
+  },
+  "crd": {
+    "apiVersion": "apiextensions.k8s.io/v1",
+    "kind": "CustomResourceDefinition",
+    "metadata": {
+      "annotations": {
+        "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apiextensions.k8s.io/v1\",\"kind\":\"CustomResourceDefinition\",\"metadata\":{\"annotations\":{},\"name\":\"widgets.example.jimyag.com\"},\"spec\":{\"conversion\":{\"strategy\":\"Webhook\",\"webhook\":{\"clientConfig\":{\"caBundle\":\"LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURFekNDQWZ1Z0F3SUJBZ0lVY085OXFJOFVWSkxYVFNCYXg1cGFHNU1XNlRjd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0dURVhNQlVHQTFVRUF3d09ZWEowYVdOc1pTMWpjbVF0WTJFd0hoY05Nall4TURJMk1URTFNVEkwV2hjTgpNall4TURJNE1URTFNVEkwV2pBWk1SY3dGUVlEVlFRRERBNWhjblJwWTJ4bExXTnlaQzFqWVRDQ0FTSXdEUVlKCktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQU0rb1JhRDdMYklOMElNZ0hwUzF0elJaN2VNd2F3YS8KTHJkV2UxVmV1SlYxaEREN3E5NzNlSmlCTlA2ekh0UzE2VTFtZTZKbzBzVDhrdnRnVkFSQVExdjVqaENKd1FWRApCUzdmV2grak5STHdjRFdIVGl0RmFmVFVNaWc2REozVUR1RDFzSnhEOTg5UW9IOEg2KzZKWlQ3QTRwV1VBdFBRCkw3eTBRcjVra2VUZGFKZ2lZQStEaytMR3laZWxzNjhQbE9pWWRCazFZajZ3OUpZRTBmNmFHb1pXdHRwTEdudm4KNS9QRWk1Z0NXSytRdHFnQ2h2S0hEb2IyaithZGcyZ2VkdEpPeTAxOEJIa1BVbmtoTW1JRWJOMTcxOXc3SW5mZwo5NVhTRUY2ZE9hVzZvdWM3eXAyVHQzMWFEUThrWUZVMW0xb09TVVBKenVrczVWdmlsSmx0eVRFQ0F3RUFBYU5UCk1GRXdIUVlEVlIwT0JCWUVGTGRsS2lxalR2ZkNkQmpRTGtkemRDTkVHS2EyTUI4R0ExVWRJd1FZTUJhQUZMZGwKS2lxalR2ZkNkQmpRTGtkemRDTkVHS2EyTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3RFFZSktvWklodmNOQVFFTApCUUFEZ2dFQkFDQStubzN3SnIvUTdObC93VEFtUytFZCs3dTRKVnpYY1p3NzNYWjJSb0taZkFwUFFYSjVpa08wCmlqTUM2SnVtRW1ZMFR1Z0FERzJ3U0pFR0dWU0V5V1Jibi9La28xdTN6L01yamNla0VDVTlsRnBXZUNYT2J3MDcKWDVvWVkwcnlzYitPeWwrUmhoYnBOOE5mbFF5UWJSRDZMeDNERXdUYXJFYzBMbndqa0IwVnNTdllVYlRPWk94UwpjYTBmRnlUVVFtNjdPeG82RDlqR0Q2akl6ZUNNTWwzRC9qRjZSbW52aXJ0dkJHclRQN1Y5UHdNaVhIU3RoNXVXCnZsQ1F5WTlOd3ZBNkpETk00QW1aYjYzL2pDb3ZRNWtlNlQrb3pBMUJUTGVPeS8xcWlmaUFBdkZaNnBkMlhkZXEKVXd6VE1jdHU4UEhCK2RQM2M0ZTczWGFZcTRZdHVwYz0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=\",\"service\":{\"name\":\"widget-webhook\",\"namespace\":\"article-crd-conversion\",\"path\":\"/convert\",\"port\":443}},\"conversionReviewVersions\":[\"v1\"]}},\"group\":\"example.jimyag.com\",\"names\":{\"kind\":\"Widget\",\"plural\":\"widgets\",\"singular\":\"widget\"},\"scope\":\"Namespaced\",\"versions\":[{\"name\":\"v1alpha1\",\"schema\":{\"openAPIV3Schema\":{\"properties\":{\"spec\":{\"properties\":{\"label\":{\"type\":\"string\"},\"replicas\":{\"minimum\":1,\"type\":\"integer\"}},\"required\":[\"label\"],\"type\":\"object\"},\"status\":{\"type\":\"object\",\"x-kubernetes-preserve-unknown-fields\":true}},\"type\":\"object\"}},\"served\":true,\"storage\":true,\"subresources\":{\"status\":{}}},{\"name\":\"v1beta1\",\"schema\":{\"openAPIV3Schema\":{\"properties\":{\"spec\":{\"properties\":{\"displayName\":{\"type\":\"string\"},\"replicas\":{\"minimum\":1,\"type\":\"integer\"}},\"required\":[\"displayName\"],\"type\":\"object\"},\"status\":{\"type\":\"object\",\"x-kubernetes-preserve-unknown-fields\":true}},\"type\":\"object\"}},\"served\":true,\"storage\":false,\"subresources\":{\"status\":{}}}]}}\n"
+      },
+      "creationTimestamp": "2026-10-26T11:51:26Z",
+      "generation": 1,
+      "name": "widgets.example.jimyag.com",
+      "resourceVersion": "2750",
+      "uid": "ecf2a02f-c662-4f95-a977-21b8922202c2"
+    },
+    "spec": {
+      "conversion": {
+        "strategy": "Webhook",
+        "webhook": {
+          "clientConfig": {
+            "caBundle": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURFekNDQWZ1Z0F3SUJBZ0lVY085OXFJOFVWSkxYVFNCYXg1cGFHNU1XNlRjd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0dURVhNQlVHQTFVRUF3d09ZWEowYVdOc1pTMWpjbVF0WTJFd0hoY05Nall4TURJMk1URTFNVEkwV2hjTgpNall4TURJNE1URTFNVEkwV2pBWk1SY3dGUVlEVlFRRERBNWhjblJwWTJ4bExXTnlaQzFqWVRDQ0FTSXdEUVlKCktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQU0rb1JhRDdMYklOMElNZ0hwUzF0elJaN2VNd2F3YS8KTHJkV2UxVmV1SlYxaEREN3E5NzNlSmlCTlA2ekh0UzE2VTFtZTZKbzBzVDhrdnRnVkFSQVExdjVqaENKd1FWRApCUzdmV2grak5STHdjRFdIVGl0RmFmVFVNaWc2REozVUR1RDFzSnhEOTg5UW9IOEg2KzZKWlQ3QTRwV1VBdFBRCkw3eTBRcjVra2VUZGFKZ2lZQStEaytMR3laZWxzNjhQbE9pWWRCazFZajZ3OUpZRTBmNmFHb1pXdHRwTEdudm4KNS9QRWk1Z0NXSytRdHFnQ2h2S0hEb2IyaithZGcyZ2VkdEpPeTAxOEJIa1BVbmtoTW1JRWJOMTcxOXc3SW5mZwo5NVhTRUY2ZE9hVzZvdWM3eXAyVHQzMWFEUThrWUZVMW0xb09TVVBKenVrczVWdmlsSmx0eVRFQ0F3RUFBYU5UCk1GRXdIUVlEVlIwT0JCWUVGTGRsS2lxalR2ZkNkQmpRTGtkemRDTkVHS2EyTUI4R0ExVWRJd1FZTUJhQUZMZGwKS2lxalR2ZkNkQmpRTGtkemRDTkVHS2EyTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3RFFZSktvWklodmNOQVFFTApCUUFEZ2dFQkFDQStubzN3SnIvUTdObC93VEFtUytFZCs3dTRKVnpYY1p3NzNYWjJSb0taZkFwUFFYSjVpa08wCmlqTUM2SnVtRW1ZMFR1Z0FERzJ3U0pFR0dWU0V5V1Jibi9La28xdTN6L01yamNla0VDVTlsRnBXZUNYT2J3MDcKWDVvWVkwcnlzYitPeWwrUmhoYnBOOE5mbFF5UWJSRDZMeDNERXdUYXJFYzBMbndqa0IwVnNTdllVYlRPWk94UwpjYTBmRnlUVVFtNjdPeG82RDlqR0Q2akl6ZUNNTWwzRC9qRjZSbW52aXJ0dkJHclRQN1Y5UHdNaVhIU3RoNXVXCnZsQ1F5WTlOd3ZBNkpETk00QW1aYjYzL2pDb3ZRNWtlNlQrb3pBMUJUTGVPeS8xcWlmaUFBdkZaNnBkMlhkZXEKVXd6VE1jdHU4UEhCK2RQM2M0ZTczWGFZcTRZdHVwYz0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=",
+            "service": {
+              "name": "widget-webhook",
+              "namespace": "article-crd-conversion",
+              "path": "/convert",
+              "port": 443
+            }
+          },
+          "conversionReviewVersions": [
+            "v1"
+          ]
+        }
+      },
+      "group": "example.jimyag.com",
+      "names": {
+        "kind": "Widget",
+        "listKind": "WidgetList",
+        "plural": "widgets",
+        "singular": "widget"
+      },
+      "scope": "Namespaced",
+      "versions": [
+        {
+          "name": "v1alpha1",
+          "schema": {
+            "openAPIV3Schema": {
+              "properties": {
+                "spec": {
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "replicas": {
+                      "minimum": 1,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "label"
+                  ],
+                  "type": "object"
+                },
+                "status": {
+                  "type": "object",
+                  "x-kubernetes-preserve-unknown-fields": true
+                }
+              },
+              "type": "object"
+            }
+          },
+          "served": true,
+          "storage": true,
+          "subresources": {
+            "status": {}
+          }
+        },
+        {
+          "name": "v1beta1",
+          "schema": {
+            "openAPIV3Schema": {
+              "properties": {
+                "spec": {
+                  "properties": {
+                    "displayName": {
+                      "type": "string"
+                    },
+                    "replicas": {
+                      "minimum": 1,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "displayName"
+                  ],
+                  "type": "object"
+                },
+                "status": {
+                  "type": "object",
+                  "x-kubernetes-preserve-unknown-fields": true
+                }
+              },
+              "type": "object"
+            }
+          },
+          "served": true,
+          "storage": false,
+          "subresources": {
+            "status": {}
+          }
+        }
+      ]
+    },
+    "status": {
+      "acceptedNames": {
+        "kind": "Widget",
+        "listKind": "WidgetList",
+        "plural": "widgets",
+        "singular": "widget"
+      },
+      "conditions": [
+        {
+          "lastTransitionTime": "2026-10-26T11:51:26Z",
+          "message": "no conflicts found",
+          "reason": "NoConflicts",
+          "status": "True",
+          "type": "NamesAccepted"
+        },
+        {
+          "lastTransitionTime": "2026-10-26T11:51:26Z",
+          "message": "the initial names have been accepted",
+          "reason": "InitialNamesAccepted",
+          "status": "True",
+          "type": "Established"
+        }
+      ],
+      "storedVersions": [
+        "v1alpha1"
+      ]
+    }
+  }
+}

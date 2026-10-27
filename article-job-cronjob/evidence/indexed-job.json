@@ -1,0 +1,106 @@
+{
+  "job": {
+    "apiVersion": "batch/v1",
+    "kind": "Job",
+    "metadata": {
+      "annotations": {
+        "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"indexed\"},\"name\":\"indexed\",\"namespace\":\"article-job-cronjob\"},\"spec\":{\"backoffLimit\":0,\"completionMode\":\"Indexed\",\"completions\":4,\"parallelism\":2,\"template\":{\"metadata\":{\"labels\":{\"app\":\"indexed\"}},\"spec\":{\"containers\":[{\"command\":[\"sh\",\"-c\",\"echo \\\"completion=${JOB_COMPLETION_INDEX}\\\"; sleep 1\"],\"image\":\"alpine:3.20\",\"imagePullPolicy\":\"IfNotPresent\",\"name\":\"task\"}],\"restartPolicy\":\"Never\"}}}}\n"
+      },
+      "creationTimestamp": "2026-10-26T11:40:36Z",
+      "generation": 1,
+      "labels": {
+        "app": "indexed"
+      },
+      "name": "indexed",
+      "namespace": "article-job-cronjob",
+      "resourceVersion": "1400",
+      "uid": "3d634547-81fe-4cc6-b6c0-70f2f0ab1b2a"
+    },
+    "spec": {
+      "backoffLimit": 0,
+      "completionMode": "Indexed",
+      "completions": 4,
+      "manualSelector": false,
+      "parallelism": 2,
+      "podReplacementPolicy": "TerminatingOrFailed",
+      "selector": {
+        "matchLabels": {
+          "batch.kubernetes.io/controller-uid": "3d634547-81fe-4cc6-b6c0-70f2f0ab1b2a"
+        }
+      },
+      "suspend": false,
+      "template": {
+        "metadata": {
+          "labels": {
+            "app": "indexed",
+            "batch.kubernetes.io/controller-uid": "3d634547-81fe-4cc6-b6c0-70f2f0ab1b2a",
+            "batch.kubernetes.io/job-name": "indexed",
+            "controller-uid": "3d634547-81fe-4cc6-b6c0-70f2f0ab1b2a",
+            "job-name": "indexed"
+          }
+        },
+        "spec": {
+          "containers": [
+            {
+              "command": [
+                "sh",
+                "-c",
+                "echo \"completion=${JOB_COMPLETION_INDEX}\"; sleep 1"
+              ],
+              "image": "alpine:3.20",
+              "imagePullPolicy": "IfNotPresent",
+              "name": "task",
+              "resources": {},
+              "terminationMessagePath": "/dev/termination-log",
+              "terminationMessagePolicy": "File"
+            }
+          ],
+          "dnsPolicy": "ClusterFirst",
+          "restartPolicy": "Never",
+          "schedulerName": "default-scheduler",
+          "securityContext": {},
+          "terminationGracePeriodSeconds": 30
+        }
+      }
+    },
+    "status": {
+      "completedIndexes": "0-3",
+      "completionTime": "2026-10-26T11:40:44Z",
+      "conditions": [
+        {
+          "lastProbeTime": "2026-10-26T11:40:44Z",
+          "lastTransitionTime": "2026-10-26T11:40:44Z",
+          "message": "Reached expected number of succeeded pods",
+          "reason": "CompletionsReached",
+          "status": "True",
+          "type": "SuccessCriteriaMet"
+        },
+        {
+          "lastProbeTime": "2026-10-26T11:40:44Z",
+          "lastTransitionTime": "2026-10-26T11:40:44Z",
+          "message": "Reached expected number of succeeded pods",
+          "reason": "CompletionsReached",
+          "status": "True",
+          "type": "Complete"
+        }
+      ],
+      "ready": 0,
+      "startTime": "2026-10-26T11:40:36Z",
+      "succeeded": 4,
+      "terminating": 0,
+      "uncountedTerminatedPods": {}
+    }
+  },
+  "pod_names": [
+    "indexed-0-7mtrd",
+    "indexed-1-28l46",
+    "indexed-2-4jbhp",
+    "indexed-3-ph7pc"
+  ],
+  "completion_indices": [
+    0,
+    1,
+    2,
+    3
+  ]
+}

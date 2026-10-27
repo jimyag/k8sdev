@@ -1,0 +1,6 @@
+{
+  "conversion_webhook": true,
+  "pruned_unknown_field": true,
+  "storage_version_has_v1beta1": true,
+  "old_version_unserved": true
+}

@@ -1,0 +1,8 @@
+{
+  "etcd_compacted_revision": "1162",
+  "apiserver_restarted": true,
+  "watch": {
+    "http_status": 200,
+    "first_event": "{\"type\":\"ERROR\",\"object\":{\"kind\":\"Status\",\"apiVersion\":\"v1\",\"metadata\":{},\"status\":\"Failure\",\"message\":\"too old resource version: 1162 (1163)\",\"reason\":\"Expired\",\"code\":410}}"
+  }
+}

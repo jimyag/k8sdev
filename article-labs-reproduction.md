@@ -1,6 +1,6 @@
 # 从文章固定提交复现实验
 
-13 个 `article-*` 实验目录共用这里的版本准备步骤。先在 `zj` 上取得 k8sdev 的 Git 克隆，再从文章的实验链接中复制完整的 40 位提交号，设置 `ARTICLE_LABS_REV`。例如链接形如 `https://github.com/jimyag/k8sdev/tree/<40位提交号>/article-resources-memory`，应复制 `tree/` 后的提交号，不使用分支名、`HEAD` 或 Kubernetes 自身的提交号。
+`article-*` 实验目录共用这里的版本准备步骤。先在 `zj` 上取得 k8sdev 的 Git 克隆，再从文章的实验链接中复制完整的 40 位提交号，设置 `ARTICLE_LABS_REV`。例如链接形如 `https://github.com/jimyag/k8sdev/tree/<40位提交号>/article-resources-memory`，应复制 `tree/` 后的提交号，不使用分支名、`HEAD` 或 Kubernetes 自身的提交号。
 
 下面的代码块在 Bash 中执行。`ARTICLE_LABS_REV` 必须由文章中的固定链接提供；没有设置或格式错误时停止，避免悄悄使用当前分支的文件。已有 k8sdev 克隆可以直接使用；没有克隆时，先在自己选择的父目录执行 `git clone https://github.com/jimyag/k8sdev.git`，再进入该克隆。
 

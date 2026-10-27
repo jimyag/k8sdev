@@ -1,0 +1,11 @@
+# 镜像回收实验独立使用单节点集群，避免修改其他实验的 kubelet 阈值。
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+kubeadmConfigPatches:
+  - |
+    kind: KubeletConfiguration
+    imageGCHighThresholdPercent: 1
+    imageGCLowThresholdPercent: 0
+    imageMinimumGCAge: 0s
+nodes:
+  - role: control-plane

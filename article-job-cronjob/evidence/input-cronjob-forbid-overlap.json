@@ -1,0 +1,39 @@
+{
+  "apiVersion": "batch/v1",
+  "kind": "CronJob",
+  "metadata": {
+    "name": "forbid-overlap"
+  },
+  "spec": {
+    "schedule": "*/1 * * * *",
+    "concurrencyPolicy": "Forbid",
+    "successfulJobsHistoryLimit": 2,
+    "failedJobsHistoryLimit": 1,
+    "jobTemplate": {
+      "spec": {
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "forbid-overlap"
+            }
+          },
+          "spec": {
+            "restartPolicy": "Never",
+            "containers": [
+              {
+                "name": "task",
+                "image": "alpine:3.20",
+                "imagePullPolicy": "IfNotPresent",
+                "command": [
+                  "sh",
+                  "-c",
+                  "sleep 75"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}
