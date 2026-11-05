@@ -1,0 +1,32 @@
+api-server=v1.37.2 scheduler=Kubernetes v1.37.2
+NAME                  NODE
+tolerate-soft-taint   score-candidate-a
+avoid-soft-taint      score-candidate-b
+"Plugin scored node for pod" pod="default/tolerate-soft-taint" plugin="TaintToleration" node="score-candidate-a" score=300
+"Plugin scored node for pod" pod="default/tolerate-soft-taint" plugin="NodeAffinity" node="score-candidate-a" score=200
+"Plugin scored node for pod" pod="default/tolerate-soft-taint" plugin="NodeResourcesFit" node="score-candidate-a" score=97
+"Plugin scored node for pod" pod="default/tolerate-soft-taint" plugin="VolumeBinding" node="score-candidate-a" score=0
+"Plugin scored node for pod" pod="default/tolerate-soft-taint" plugin="DynamicResources" node="score-candidate-a" score=0
+"Plugin scored node for pod" pod="default/tolerate-soft-taint" plugin="ImageLocality" node="score-candidate-a" score=0
+"Plugin scored node for pod" pod="default/tolerate-soft-taint" plugin="TaintToleration" node="score-candidate-b" score=300
+"Plugin scored node for pod" pod="default/tolerate-soft-taint" plugin="NodeAffinity" node="score-candidate-b" score=0
+"Plugin scored node for pod" pod="default/tolerate-soft-taint" plugin="NodeResourcesFit" node="score-candidate-b" score=97
+"Plugin scored node for pod" pod="default/tolerate-soft-taint" plugin="VolumeBinding" node="score-candidate-b" score=0
+"Plugin scored node for pod" pod="default/tolerate-soft-taint" plugin="DynamicResources" node="score-candidate-b" score=0
+"Plugin scored node for pod" pod="default/tolerate-soft-taint" plugin="ImageLocality" node="score-candidate-b" score=0
+"Calculated node's final score for pod" pod="default/tolerate-soft-taint" node="score-candidate-a" score=597
+"Calculated node's final score for pod" pod="default/tolerate-soft-taint" node="score-candidate-b" score=397
+"Plugin scored node for pod" pod="default/avoid-soft-taint" plugin="TaintToleration" node="score-candidate-a" score=0
+"Plugin scored node for pod" pod="default/avoid-soft-taint" plugin="NodeAffinity" node="score-candidate-a" score=200
+"Plugin scored node for pod" pod="default/avoid-soft-taint" plugin="NodeResourcesFit" node="score-candidate-a" score=96
+"Plugin scored node for pod" pod="default/avoid-soft-taint" plugin="VolumeBinding" node="score-candidate-a" score=0
+"Plugin scored node for pod" pod="default/avoid-soft-taint" plugin="DynamicResources" node="score-candidate-a" score=0
+"Plugin scored node for pod" pod="default/avoid-soft-taint" plugin="ImageLocality" node="score-candidate-a" score=0
+"Plugin scored node for pod" pod="default/avoid-soft-taint" plugin="TaintToleration" node="score-candidate-b" score=300
+"Plugin scored node for pod" pod="default/avoid-soft-taint" plugin="NodeAffinity" node="score-candidate-b" score=0
+"Plugin scored node for pod" pod="default/avoid-soft-taint" plugin="NodeResourcesFit" node="score-candidate-b" score=97
+"Plugin scored node for pod" pod="default/avoid-soft-taint" plugin="VolumeBinding" node="score-candidate-b" score=0
+"Plugin scored node for pod" pod="default/avoid-soft-taint" plugin="DynamicResources" node="score-candidate-b" score=0
+"Plugin scored node for pod" pod="default/avoid-soft-taint" plugin="ImageLocality" node="score-candidate-b" score=0
+"Calculated node's final score for pod" pod="default/avoid-soft-taint" node="score-candidate-a" score=296
+"Calculated node's final score for pod" pod="default/avoid-soft-taint" node="score-candidate-b" score=397

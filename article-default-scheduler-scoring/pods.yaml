@@ -1,0 +1,45 @@
+# 两个 Pod 约束相同，都偏好 a；唯一策略差异是是否容忍 a 的软污点。
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tolerate-soft-taint
+spec:
+  nodeSelector:
+    score.example/worker: "true"
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          preference:
+            matchExpressions:
+              - key: score.example/pool
+                operator: In
+                values: [a]
+  tolerations:
+    - key: score.example/soft
+      operator: Equal
+      value: "true"
+      effect: PreferNoSchedule
+  containers:
+    - name: pause
+      image: registry.k8s.io/pause:3.10
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: avoid-soft-taint
+spec:
+  nodeSelector:
+    score.example/worker: "true"
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          preference:
+            matchExpressions:
+              - key: score.example/pool
+                operator: In
+                values: [a]
+  containers:
+    - name: pause
+      image: registry.k8s.io/pause:3.10

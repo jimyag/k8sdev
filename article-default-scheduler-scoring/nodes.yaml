@@ -1,0 +1,35 @@
+# 仅在隔离的实验 API Server 中创建合成节点；没有 kubelet，验证到 PodScheduled 为止。
+apiVersion: v1
+kind: Node
+metadata:
+  name: score-candidate-a
+  labels:
+    score.example/worker: "true"
+    score.example/pool: a
+spec:
+  taints:
+    # 软污点允许两个 Pod 都通过过滤；未容忍时才影响打分。
+    - key: score.example/soft
+      value: "true"
+      effect: PreferNoSchedule
+status:
+  capacity: {cpu: "8", memory: 8Gi, pods: "100"}
+  allocatable: {cpu: "8", memory: 8Gi, pods: "100"}
+  conditions:
+    - type: Ready
+      status: "True"
+---
+apiVersion: v1
+kind: Node
+metadata:
+  name: score-candidate-b
+  labels:
+    score.example/worker: "true"
+    score.example/pool: b
+status:
+  # 与 a 使用相同的资源预算，避免资源差异影响对照。
+  capacity: {cpu: "8", memory: 8Gi, pods: "100"}
+  allocatable: {cpu: "8", memory: 8Gi, pods: "100"}
+  conditions:
+    - type: Ready
+      status: "True"
